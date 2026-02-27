@@ -1,0 +1,641 @@
+scene_id: SC_29
+scene_name: 西南乡绅
+scene_ref: scenes/SC_29_西南乡绅.md
+scene_type: reality
+scene_description: 金銮殿
+scene_mood: 雷霆手段、学堂开课
+scene_lighting: 宫廷光效
+shots:
+- id: SC_29_001
+  title: 我点头，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我点头，
+  - speaker: 苏映雪
+    text: 你本就不该困在闲云殿，
+  - speaker: 苏映雪
+    text: 不该只与花草为伴。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_001.png
+  image_status: pending
+- id: SC_29_002
+  title: 当天下午，我下旨，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 当天下午，我下旨，
+  - speaker: 旁白
+    text: 恢复萧凌的身份，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_002.png
+  image_status: pending
+- id: SC_29_003
+  title: 册封为"并肩王"，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 册封为"并肩王"，
+  - speaker: 旁白
+    text: 辅佐朝政，主理军事与火器研发。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_003.png
+  image_status: pending
+- id: SC_29_004
+  title: 旨意下达，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 旨意下达，
+  - speaker: 旁白
+    text: 朝堂之上无人反对，
+  - speaker: 旁白
+    text: 毕竟萧凌的能力有目共睹，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_004.png
+  image_status: pending
+- id: SC_29_005
+  title: 再加上新政推行以...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 再加上新政推行以来，
+  - speaker: 旁白
+    text: 众人早已信服我的决断。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_005.png
+  image_status: pending
+- id: SC_29_006
+  title: 陈默、周鹏等人更...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 陈默、周鹏等人更是欣喜不已，
+  - speaker: 旁白
+    text: 私下里对我说，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_006.png
+  image_status: pending
+- id: SC_29_007
+  title: 萧凌回归，大启如...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌回归，大启如虎添翼。
+  - speaker: 旁白
+    text: 萧凌接到旨意时，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_007.png
+  image_status: pending
+- id: SC_29_008
+  title: 正在闲云殿修剪桂...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 正在闲云殿修剪桂花枝，
+  - speaker: 旁白
+    text: 手里的剪刀顿在半空，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_008.png
+  image_status: pending
+- id: SC_29_009
+  title: 眼底泛起了微光。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼底泛起了微光。
+  - speaker: 旁白
+    text: 他没有推辞，
+  - speaker: 旁白
+    text: 只是郑重地向我行礼：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_009.png
+  image_status: pending
+- id: SC_29_010
+  title: 臣，定不辱使命，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 臣，定不辱使命，
+  - speaker: 萧凌
+    text: 辅佐陛下，
+  - speaker: 萧凌
+    text: 守护好大启河山，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_010.png
+  image_status: pending
+- id: SC_29_011
+  title: 护好天下百姓。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 护好天下百姓。
+  - speaker: 旁白
+    text: 那一刻，我知道，
+  - speaker: 旁白
+    text: 我们之间所有的隔阂，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_011.png
+  image_status: pending
+- id: SC_29_012
+  title: 都彻底烟消云散了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 都彻底烟消云散了。
+  - speaker: 旁白
+    text: 萧凌回归朝堂后，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_012.png
+  image_status: pending
+- id: SC_29_013
+  title: 很快便进入了状态，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 很快便进入了状态，
+  - speaker: 旁白
+    text: 凭借着多年的帝王经验和战术谋略，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_013.png
+  image_status: pending
+- id: SC_29_014
+  title: 将军事事务打理得...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 将军事事务打理得井井有条。
+  - speaker: 旁白
+    text: 他亲自前往军工部，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_014.png
+  image_status: pending
+- id: SC_29_015
+  title: 与学生们一同改良...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 与学生们一同改良火器，
+  - speaker: 旁白
+    text: 结合自己以往的战场经验，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_015.png
+  image_status: pending
+- id: SC_29_016
+  title: 提出了很多实用的...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 提出了很多实用的建议。
+  - speaker: 旁白
+    text: 短短一个月，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_016.png
+  image_status: pending
+- id: SC_29_017
+  title: 火器便有了新的突...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 火器便有了新的突破，
+  - speaker: 旁白
+    text: 改良后的火炮射程更远、威力更大，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_017.png
+  image_status: pending
+- id: SC_29_018
+  title: 还增加了防护装置...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 还增加了防护装置，不易炸膛。
+  - speaker: 旁白
+    text: 我带着内阁成员前往军工部视察，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_018.png
+  image_status: pending
+- id: SC_29_019
+  title: 看着改良后的火炮，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 看着改良后的火炮，
+  - speaker: 旁白
+    text: 心里十分欣慰。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_019.png
+  image_status: pending
+- id: SC_29_020
+  title: 萧凌站在我身边，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌站在我身边，
+  - speaker: 旁白
+    text: 耐心地为我讲解火炮的改进之处，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_020.png
+  image_status: pending
+- id: SC_29_021
+  title: 眼神明亮，语气坚定，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼神明亮，语气坚定，
+  - speaker: 旁白
+    text: 再也没有了往日的消沉。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_021.png
+  image_status: pending
+- id: SC_29_022
+  title: 有了这改良后的火...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 有了这改良后的火炮，
+  - speaker: 萧凌
+    text: 即便北燕与西域再次联手来犯，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_022.png
+  image_status: pending
+- id: SC_29_023
+  title: 我们也能从容应对，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 雷霆手段、学堂开课
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 我们也能从容应对，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，雷霆手段、学堂开课氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_29_西南乡绅/shot_023.png
+  image_status: pending

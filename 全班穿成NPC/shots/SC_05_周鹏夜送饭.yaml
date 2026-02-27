@@ -1,0 +1,558 @@
+scene_id: SC_05
+scene_name: 周鹏夜送饭
+scene_ref: scenes/SC_05_周鹏夜送饭.md
+scene_type: reality
+scene_description: 朝露殿
+scene_mood: 温馨、情报汇总
+scene_lighting: 宫廷光效
+shots:
+- id: SC_05_001
+  title: 让他帮我弄点能让...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 让他帮我弄点能让人上吐下泻，
+  - speaker: 旁白
+    text: 但又不伤根本的药粉。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_001.png
+  image_status: pending
+- id: SC_05_002
+  title: 一切准备就绪。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 一切准备就绪。
+  - speaker: 旁白
+    text: 三天后，宫里传出消息，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_002.png
+  image_status: pending
+- id: SC_05_003
+  title: 说我因为吃了馊饭，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 说我因为吃了馊饭，
+  - speaker: 旁白
+    text: 上吐下泻，快不行了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_003.png
+  image_status: pending
+- id: SC_05_004
+  title: 林燕容又来了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 林燕容又来了。
+  - speaker: 旁白
+    text: 这次，她带着太医，
+  - speaker: 旁白
+    text: 美其名曰"奉陛下之命前来探望"。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_004.png
+  image_status: pending
+- id: SC_05_005
+  title: 我躺在床上，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我躺在床上，
+  - speaker: 旁白
+    text: 面色蜡黄，气若游丝，
+  - speaker: 旁白
+    text: 活脱脱一个将死之人。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_005.png
+  image_status: pending
+- id: SC_05_006
+  title: 太医也是自己人，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太医也是自己人，
+  - speaker: 旁白
+    text: 装模作样地给我把了脉。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_006.png
+  image_status: pending
+- id: SC_05_007
+  title: 贵人，苏才人恐怕...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 太医
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太医
+    text: 贵人，苏才人恐怕是中了剧毒，
+  - speaker: 太医
+    text: 回天乏术了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_007.png
+  image_status: pending
+- id: SC_05_008
+  title: 林燕容心里狂喜，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 林燕容心里狂喜，
+  - speaker: 旁白
+    text: 却假惺惺地抹着泪。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_008.png
+  image_status: pending
+- id: SC_05_009
+  title: 怎么会这样？
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_linyanrong'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_linyanrong'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 林燕容
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 林燕容
+    text: 怎么会这样？
+  - speaker: 林燕容
+    text: 我可怜的姐姐……
+  - speaker: 旁白
+    text: 我垂死病中惊坐起，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    林燕容(@npc_linyanrong)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_009.png
+  image_status: pending
+- id: SC_05_010
+  title: 一把抓住她的手。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 一把抓住她的手。
+  - speaker: 苏映雪
+    text: 妹妹……我……我好恨啊……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_010.png
+  image_status: pending
+- id: SC_05_011
+  title: 我一边说，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我一边说，
+  - speaker: 旁白
+    text: 一边用涂了巴豆粉的手，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_011.png
+  image_status: pending
+- id: SC_05_012
+  title: 死死地抓着她的手...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 死死地抓着她的手腕。
+  - speaker: 旁白
+    text: 林燕容被我吓了一跳，想甩开，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_012.png
+  image_status: pending
+- id: SC_05_013
+  title: 但我的力气出奇的...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 但我的力气出奇的大。
+  - speaker: 苏映雪
+    text: 妹妹，黄泉路上，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_013.png
+  image_status: pending
+- id: SC_05_014
+  title: 我等你来相聚……
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 我等你来相聚……
+  - speaker: 旁白
+    text: 我说完，头一歪，
+  - speaker: 旁白
+    text: 彻底"断了气"。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_014.png
+  image_status: pending
+- id: SC_05_015
+  title: 林燕容花容失色地...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 林燕容花容失色地跑了。
+  - speaker: 旁白
+    text: 半个时辰后，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_015.png
+  image_status: pending
+- id: SC_05_016
+  title: 她的长春宫里传出...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 她的长春宫里传出了惊天动地的呕吐声和腹泻声。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_016.png
+  image_status: pending
+- id: SC_05_017
+  title: 据说，珍贵人上吐...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 据说，珍贵人上吐下泻，
+  - speaker: 旁白
+    text: 拉得虚脱，
+  - speaker: 旁白
+    text: 把整个太医院都惊动了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_017.png
+  image_status: pending
+- id: SC_05_018
+  title: 萧凌来看她。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌来看她。
+  - speaker: 旁白
+    text: 她哭得梨花带雨，
+  - speaker: 旁白
+    text: 指天发誓说是我死后冤魂不散，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_018.png
+  image_status: pending
+- id: SC_05_019
+  title: 回来害她。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 回来害她。
+  - speaker: 旁白
+    text: 萧凌本来是不信的。
+  - speaker: 旁白
+    text: 可就在这时，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_019.png
+  image_status: pending
+- id: SC_05_020
+  title: 王浩又连滚带爬地...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 温馨、情报汇总
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 王浩又连滚带爬地出现了。
+  - speaker: 王浩
+    text: 陛下！大事不好！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    朝露殿，温馨、情报汇总氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_05_周鹏夜送饭/shot_020.png
+  image_status: pending

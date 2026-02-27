@@ -1,0 +1,157 @@
+# 杀猪匠的使命_场景索引.yaml
+
+# 元数据
+meta:
+  title: 杀猪匠的使命
+  source_script: 杀猪匠的使命_对话脚本.md
+  total_scenes: 8
+  total_lines: 95
+  avg_lines_per_scene: 12
+  created_at: 2026-02-05
+
+# 类型统计
+type_summary:
+  prologue: 1
+  reality: 2
+  flashback: 3
+  montage: 1
+  dream: 0
+
+# 场景列表
+scenes:
+  - id: SC_01
+    name: 开篇悬念
+    type: prologue
+    location: 卧房
+    time_period: 某晚
+    script_lines:
+      start: 12
+      end: 18
+    line_count: 7
+    main_characters:
+      - 苏晚
+      - 陈屠
+    mood: 神秘、悬疑
+    notes: 预告性质hook，暗示陈屠的秘密能力
+    warnings: []
+
+  - id: SC_02
+    name: 西市日常
+    type: reality
+    location: 猪肉铺
+    time_period: 白天（嫁过来三个月后）
+    script_lines:
+      start: 20
+      end: 35
+    line_count: 14
+    main_characters:
+      - 苏晚
+      - 陈屠
+      - 街坊甲
+      - 街坊乙
+    mood: 市井、苦涩、隐忍
+    notes: 引出苏晚身世背景，触发闪回
+    warnings: []
+
+  - id: SC_03
+    name: 苏府抄家
+    type: flashback
+    location: 京城（苏府→诏狱→闺房→人市）
+    time_period: 过去（苏家被抄那日）
+    time_reference: 苏家被抄那日，大雪封城
+    script_lines:
+      start: 37
+      end: 46
+    line_count: 10
+    main_characters:
+      - 苏晚
+    mood: 悲凉、绝望、寒冷
+    notes: 交代苏晚家破人亡的背景
+    warnings: []
+
+  - id: SC_04
+    name: 人市被买
+    type: flashback
+    location: 人市
+    time_period: 紧接上一场（雪天）
+    time_reference: 同日，人市
+    script_lines:
+      start: 48
+      end: 60
+    line_count: 13
+    main_characters:
+      - 苏晚
+      - 陈屠
+      - 人牙子
+    mood: 绝望→一线生机
+    notes: 陈屠首次出场，展现粗犷外表下的善意
+    warnings: []
+
+  - id: SC_05
+    name: 新婚之夜
+    type: flashback
+    location: 猪肉铺后屋（里屋）
+    time_period: 当晚
+    time_reference: 被买当晚
+    script_lines:
+      start: 61
+      end: 70
+    line_count: 10
+    main_characters:
+      - 苏晚
+      - 陈屠
+    mood: 局促、温情
+    notes: 陈屠的体贴，分床而眠的设定
+    warnings: []
+
+  - id: SC_06
+    name: 日子过渡
+    type: montage
+    location: 猪肉铺
+    time_period: 三个月
+    time_span: 三个月
+    estimated_shots: 4-6
+    script_lines:
+      start: 72
+      end: 78
+    line_count: 7
+    main_characters:
+      - 苏晚
+      - 陈屠
+    mood: 平淡、温馨、隐忍
+    notes: 时间压缩，展示夫妻相处日常，为后续转折铺垫
+    warnings: []
+
+  - id: SC_07
+    name: 雨夜惊梦
+    type: reality
+    location: 里屋
+    time_period: 某晚至清晨
+    script_lines:
+      start: 80
+      end: 97
+    line_count: 18
+    main_characters:
+      - 苏晚
+      - 陈屠
+    mood: 紧张、恐惧、困惑
+    notes: 核心转折点，苏晚首次目睹陈屠梦中念名字
+    warnings: []
+
+  - id: SC_08
+    name: 张德坤死讯
+    type: reality
+    location: 猪肉铺
+    time_period: 早晨（紧接上一场）
+    script_lines:
+      start: 99
+      end: 119
+    line_count: 16
+    main_characters:
+      - 苏晚
+      - 陈屠
+      - 街坊丙
+      - 街坊丁
+    mood: 震惊、疑虑、试探
+    notes: 苏晚发现陈屠能力的证据，开放式结尾
+    warnings: []

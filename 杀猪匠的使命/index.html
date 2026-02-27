@@ -1,0 +1,3167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>杀猪匠的使命 - 分镜可视剧本</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-hover: #252545;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --accent: #e94560;
+      --accent-soft: #ff6b8a;
+      --narration: #ffd700;
+      --border: #2a2a4a;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --success: #4ecdc4;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--bg-card), #252545);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--narration));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .header .meta span { margin: 0 0.5rem; }
+
+    /* Toolbar */
+    .toolbar {
+      background: var(--bg-card);
+      padding: 0.8rem 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 85px;
+      z-index: 99;
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* Navigation */
+    .nav {
+      background: var(--bg-card);
+      padding: 0.8rem 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover { background: var(--bg-hover); color: var(--accent); }
+    .nav a.current { background: var(--accent); color: white; }
+
+    /* Main Content */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Scene Separator */
+    .scene-separator {
+      margin: 2.5rem 0 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border-left: 4px solid var(--success);
+    }
+
+    .scene-separator h2 {
+      font-size: 1.2rem;
+      color: var(--success);
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-separator .scene-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .scene-separator .scene-meta span { margin-right: 1rem; }
+
+    /* Shot Card */
+    .shot-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .shot-card:hover { transform: translateY(-2px); }
+    .shot-card.hidden { display: none; }
+    .shot-card.highlight { box-shadow: 0 0 0 2px var(--accent), 0 4px 20px var(--shadow); }
+
+    /* Image Area */
+    .shot-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 500px;
+      background: #0a0a15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .shot-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .shot-image .placeholder {
+      color: var(--text-muted);
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .shot-image .placeholder::before {
+      content: "🎬";
+      font-size: 3rem;
+    }
+
+    .shot-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .shot-status {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .shot-status.pending { background: var(--text-muted); }
+    .shot-status.completed { background: var(--narration); color: #000; }
+
+    /* Info Bar */
+    .shot-info {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shot-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+    .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+    }
+
+    .tag.scene { border-left: 3px solid var(--success); }
+    .tag.mood { border-left: 3px solid var(--accent); }
+    .tag.lighting { border-left: 3px solid var(--narration); }
+    .tag.shot-type { border-left: 3px solid #9b59b6; }
+
+    /* Characters Bar */
+    .characters-bar {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-hover);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .character-name { color: var(--accent-soft); font-weight: bold; }
+    .character-action { color: var(--text-secondary); }
+
+    /* Lines Area */
+    .lines { padding: 1.5rem; }
+
+    .line {
+      margin-bottom: 0.8rem;
+      padding-left: 1rem;
+      border-left: 2px solid transparent;
+    }
+
+    .line:last-child { margin-bottom: 0; }
+
+    .line.narration {
+      color: var(--narration);
+      border-left-color: var(--narration);
+      font-style: italic;
+    }
+
+    .line.character {
+      color: var(--text-primary);
+      border-left-color: var(--accent-soft);
+    }
+
+    .line .speaker { font-weight: bold; margin-right: 0.5rem; }
+
+    .line .emotion {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+      background: rgba(233, 69, 96, 0.2);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .line audio {
+      height: 28px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Collapsible Prompt */
+    .collapsible-toggle {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-hover);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      user-select: none;
+    }
+
+    .collapsible-toggle:hover { color: var(--accent); }
+    .collapsible-toggle .arrow { transition: transform 0.2s; }
+    .collapsible-toggle.open .arrow { transform: rotate(90deg); }
+
+    .collapsible-content {
+      display: none;
+      padding: 1rem 1.5rem;
+      background: #0a0a15;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .collapsible-content.show { display: block; }
+
+    /* Video Area */
+    .shot-video {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-hover);
+    }
+
+    .shot-video video {
+      width: 100%;
+      max-height: 400px;
+      border-radius: 6px;
+      background: #000;
+    }
+
+    .shot-video .video-meta {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .shot-video .video-meta .video-mode {
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      float: right;
+      padding: 0.3rem 0.6rem;
+      background: var(--border);
+      border: none;
+      border-radius: 3px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    .copy-btn:hover { background: var(--accent); color: white; }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: bold; color: var(--accent); }
+    .stat-label { color: var(--text-secondary); font-size: 0.85rem; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img { max-width: 95%; max-height: 95%; object-fit: contain; }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+
+    .back-to-top.show { opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.5rem; }
+      .header { padding: 1.5rem 1rem; }
+      .toolbar { flex-direction: column; padding: 1rem; position: relative; top: 0; }
+      .search-box { max-width: 100%; }
+      .container { padding: 1rem; }
+      .shot-info, .lines { padding: 1rem; }
+      .nav { display: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media print {
+      .toolbar, .nav, .collapsible-toggle, .collapsible-content,
+      .back-to-top, .modal, .filter-buttons { display: none !important; }
+      .shot-card { break-inside: avoid; page-break-inside: avoid; }
+      .header { position: relative; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>🎬 杀猪匠的使命</h1>
+    <p class="meta">
+      <span>共 72 个镜头 / 8 个场景</span>
+      <span>|</span>
+      <span>生成时间: 2026-02-06T18:00:00</span>
+    </p>
+  </header>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="search" placeholder="搜索台词、角色、场景...">
+    </div>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="pending">待生图</button>
+      <button class="filter-btn" data-filter="completed">已生图</button>
+    </div>
+  </div>
+
+  <nav class="nav" id="nav"></nav>
+
+  <main class="container">
+    <div class="stats" id="stats"></div>
+    <div id="shots-container"></div>
+  </main>
+
+  <footer class="footer">
+    <p>由 generate_storyboard.py 生成 | 数据内嵌，无需服务器</p>
+  </footer>
+
+  <!-- Image Modal -->
+  <div class="modal" id="modal" onclick="closeModal()">
+    <img id="modal-img" src="" alt="">
+  </div>
+
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // ── 内嵌数据（由 generate_storyboard.py 注入）──
+    const DATA = {
+  "manifest": {
+    "script_name": "杀猪匠的使命",
+    "generated_at": "2026-02-06T18:00:00",
+    "total_scenes": 8,
+    "total_shots": 72,
+    "source_script": "杀猪匠的使命_对话脚本.md",
+    "characters": [
+      {
+        "id": "@szj_suwan",
+        "name": "苏晚",
+        "type": "主角",
+        "prompt_ref": "18岁女性，乌发如缎及肩简单束起，杏眼清亮，肤若凝脂，粗布襦裙，袖口挽起，眼神坚韧中带哀伤"
+      },
+      {
+        "id": "@szj_chentu",
+        "name": "陈屠",
+        "type": "主角",
+        "prompt_ref": "28岁男性，身材魁梧高大，短发蓬乱乌黑，剑眉浓重，虬髯满腮，灰褐色粗布短衫，围着沾血围裙，手臂肌肉虬结，眼神沉稳中带杀气"
+      },
+      {
+        "id": "@szj_renyazi",
+        "name": "人牙子",
+        "type": "配角",
+        "prompt_ref": "中年男性，尖嘴猴腮，谄媚笑容，破旧长袍"
+      },
+      {
+        "id": "@szj_jiefang",
+        "name": "街坊",
+        "type": "群演",
+        "prompt_ref": "中年市井妇女，粗布衣裳，八卦神情"
+      }
+    ]
+  },
+  "scenes": [
+    {
+      "id": "SC_01",
+      "name": "开篇悬念",
+      "type": "预告(prologue)",
+      "description": "卧房某晚",
+      "mood": "神秘悬疑",
+      "lighting": "油灯暖光侧逆光"
+    },
+    {
+      "id": "SC_02",
+      "name": "西市日常",
+      "type": "现实(reality)",
+      "description": "猪肉铺白天",
+      "mood": "市井苦涩隐忍",
+      "lighting": "日光侧照"
+    },
+    {
+      "id": "SC_03",
+      "name": "苏府抄家",
+      "type": "闪回(flashback)",
+      "description": "京城多时空",
+      "mood": "悲凉绝望寒冷",
+      "lighting": "冷灰蓝色调大雪暗角"
+    },
+    {
+      "id": "SC_04",
+      "name": "人市被买",
+      "type": "闪回(flashback)",
+      "description": "人市雪天",
+      "mood": "绝望→一线生机",
+      "lighting": "冷灰蓝色调"
+    },
+    {
+      "id": "SC_05",
+      "name": "新婚之夜",
+      "type": "闪回(flashback)",
+      "description": "猪肉铺后屋当晚，局促温情",
+      "mood": "局促温情",
+      "lighting": "油灯暖光暖黄色调"
+    },
+    {
+      "id": "SC_06",
+      "name": "日子过渡",
+      "type": "蒙太奇(montage)",
+      "description": "猪肉铺三个月，平淡温馨隐忍",
+      "mood": "平淡温馨隐忍",
+      "lighting": "多种光线快切"
+    },
+    {
+      "id": "SC_07",
+      "name": "雨夜惊梦",
+      "type": "现实(reality)",
+      "description": "里屋某晚至清晨",
+      "mood": "紧张恐惧困惑",
+      "lighting": "雨夜暗调→天亮暖调"
+    },
+    {
+      "id": "SC_08",
+      "name": "张德坤死讯",
+      "type": "现实(reality)",
+      "description": "猪肉铺早晨",
+      "mood": "震惊疑虑试探",
+      "lighting": "日光"
+    }
+  ],
+  "shots": [
+    {
+      "id": "SC_01_001",
+      "title": "秘密揭示",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "躺在床上梦中挣扎"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "画外"
+        }
+      ],
+      "composition": {
+        "angle": "俯视",
+        "focus": "陈屠"
+      },
+      "mood": "神秘悬疑",
+      "lighting": "油灯暖光侧逆光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我那夫君，有个秘密。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他杀的，不止是猪。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，木板床，厚棉被，油灯摇曳，暖黄色调，陈屠(@szj_chentu)躺在床上，身材魁梧，短发蓬乱，虬髯满腮，眉头紧锁，额上青筋暴起，梦中挣扎，俯视镜头，神秘悬疑氛围，高清细节\n",
+      "image_path": "SC_01_开篇悬念/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368611061_f4388c57-ade0-457b-860a-20e3a5ab21f5.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_01",
+      "scene_name": "开篇悬念"
+    },
+    {
+      "id": "SC_01_002",
+      "title": "噩梦念名",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "梦中嘴唇微动"
+        }
+      ],
+      "composition": {
+        "angle": "特写俯视",
+        "focus": "陈屠面部"
+      },
+      "mood": "恐怖悬疑",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "每晚噩梦，他都会念出一个名字。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，油灯暖光，特写镜头：陈屠(@szj_chentu)面部俯视特写，眉头紧锁，嘴唇微动似在念叨什么，额头渗出汗珠，恐怖悬疑氛围，高清细节\n",
+      "image_path": "SC_01_开篇悬念/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368670456_389dac9a-282f-4fba-84e9-1a71cc0d8825.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_01",
+      "scene_name": "开篇悬念"
+    },
+    {
+      "id": "SC_01_003",
+      "title": "必定暴毙",
+      "shot_type": "中景",
+      "characters": [],
+      "composition": {
+        "angle": "平视",
+        "focus": "意象"
+      },
+      "mood": "不祥",
+      "lighting": "暗色调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "第二天，那名字的主人必定暴毙。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，暗色调，一只粗糙的大手握着斩骨刀，刀刃上映出模糊的人影，背景是黑暗虚化的卧房，不祥氛围，中景镜头，高清细节\n",
+      "image_path": "SC_01_开篇悬念/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5ec0/MeBxqEXmgx-x_V_NPZ-iy.png",
+      "generated_at": "2026-02-06T17:20:00",
+      "scene_ref": "SC_01",
+      "scene_name": "开篇悬念"
+    },
+    {
+      "id": "SC_01_004",
+      "title": "仇人之名",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "梦中挣扎加剧"
+        }
+      ],
+      "composition": {
+        "angle": "平视侧面",
+        "focus": "陈屠"
+      },
+      "mood": "紧张转折",
+      "lighting": "油灯摇曳",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "直到那晚他在梦中吐出害死我爹的仇人的名字——"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，油灯摇曳，陈屠(@szj_chentu)躺在床上挣扎加剧，双拳紧握，嘴唇大张似在呐喊，平视侧面镜头，紧张转折，高清细节\n",
+      "image_path": "SC_01_开篇悬念/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e39/CsveYxCRSOovQxvq6KcBE.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_01",
+      "scene_name": "开篇悬念"
+    },
+    {
+      "id": "SC_01_005",
+      "title": "苏晚握手决意",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "握住陈屠的手",
+          "emotion": "颤抖决绝"
+        },
+        {
+          "ref": "@szj_chentu",
+          "action": "熟睡中"
+        }
+      ],
+      "composition": {
+        "angle": "特写平视",
+        "focus": "双手交握"
+      },
+      "mood": "决绝悲壮",
+      "lighting": "油灯侧逆光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我颤抖着握住他的手，"
+        },
+        {
+          "speaker": "苏晚",
+          "text": "夫君，今晚，替我多砍几刀。",
+          "emotion": "颤抖决绝"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，油灯侧逆光，特写镜头：苏晚(@szj_suwan)纤细的手覆在陈屠(@szj_chentu)粗糙的大手上，手微微颤抖，指节泛白，决绝悲壮，暖黄色调，高清细节\n",
+      "image_path": "SC_01_开篇悬念/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e39/SKBu5AcUw32Ts11ZRwWE2.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_01",
+      "scene_name": "开篇悬念"
+    },
+    {
+      "id": "SC_02_001",
+      "title": "檀香已逝",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "低头工作"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚双手"
+      },
+      "mood": "苦涩适应",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "嫁给陈屠的第三个月，我身上从苏府带出来的最后一缕檀香，终于被那猪下水的味道彻底覆盖了。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，特写：苏晚(@szj_suwan)粗糙的双手正处理猪蹄，袖口挽起，手指泛红，苦涩适应，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368723396_9b1301de-f865-4315-b19d-e2bd08e40814.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_002",
+      "title": "街坊窥视",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "前景低头工作"
+        },
+        {
+          "ref": "@szj_jiefang",
+          "action": "背景窃窃私语"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "市井窥视",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "西市的街坊们看我的眼神，惋惜里掺着五分看好戏的幸灾乐祸，总有人窃窃私语，"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，苏晚(@szj_suwan)低头工作（前景），背景虚化处几个市井妇女(@szj_jiefang)窃窃私语指指点点，中景镜头，三分构图，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368674491_6f3680e1-97ff-4efa-b192-9d365fa17582.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_003",
+      "title": "闲言碎语",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang",
+          "action": "议论"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "街坊"
+      },
+      "mood": "闲言碎语",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "街坊甲",
+          "text": "苏家的大小姐，金枝玉叶，怎么最后配了个杀猪的？"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街边，日光，一个市井妇女(@szj_jiefang)凑近另一人耳边，一脸惊讶指向远处猪肉铺，中景镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368716646_114d8b34-3168-49e2-9f8e-716ba41f5649.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_004",
+      "title": "街坊回应",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang",
+          "action": "低声回应"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "街坊"
+      },
+      "mood": "世故同情",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "街坊乙",
+          "text": "嘘——家道中落，配个屠户，好歹是条活路，总比卖进窑子强。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街边，日光，另一个市井妇女(@szj_jiefang)做出嘘声手势，世故同情表情，低声回应，中景镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368768761_b6ca7d23-26ef-4af5-93d5-ac98728f4cf8.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_005",
+      "title": "苏晚隐忍",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "低头舀水",
+          "emotion": "隐忍"
+        }
+      ],
+      "composition": {
+        "angle": "侧面",
+        "focus": "苏晚"
+      },
+      "mood": "隐忍",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我只当听不见，低头，舀起一瓢滚烫的水，浇在盆子里的猪蹄上。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，苏晚(@szj_suwan)侧面，神情平静不动声色，低头舀起滚烫的水浇在猪蹄上，蒸汽升腾，中景侧面镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e42/gbaw2Lm6ta-Fn0paw9zu7.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_006",
+      "title": "案板闷响",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "用力剁骨"
+        }
+      ],
+      "composition": {
+        "angle": "低角度仰视",
+        "focus": "陈屠"
+      },
+      "mood": "震撼",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "案板那边，'砰'一声闷响，震得挂在铁钩上的半扇猪肉都晃了晃。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，动态模糊效果，西市猪肉铺内，案板前，挂肉铁钩，日光侧照，陈屠(@szj_chentu)身材魁梧，双手握斩骨刀用力劈下，铁钩上猪肉晃动，低角度仰视镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5ec0/uHtyx7xIbafR3wObuhxZ5.png",
+      "generated_at": "2026-02-06T17:20:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_007",
+      "title": "沉默护妻",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "剁骨",
+          "emotion": "沉默护妻"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "沉默关怀",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "是我的夫君，陈屠，"
+        },
+        {
+          "speaker": "旁白",
+          "text": "每当那些闲言碎语飘进来，他剁骨头的声音就格外响。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，陈屠(@szj_chentu)沉默地在案板前剁骨，围着沾血围裙，双手有力，神情平静却透着保护意味，中景镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_007.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5ec0/3-w32KqPDQSVDxh3lMscK.png",
+      "generated_at": "2026-02-06T17:20:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_008",
+      "title": "买烧饼",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "递烧饼"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "微愣接过"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "双手交接"
+      },
+      "mood": "温情",
+      "lighting": "日光暖调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "剁完，他会一声不吭地走到隔壁的烧饼铺，丢下两文钱，买一个刚出炉的芝麻烧饼回来，塞我手里。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光暖调，陈屠(@szj_chentu)粗糙的大手将芝麻烧饼塞进苏晚(@szj_suwan)手里，苏晚微愣抬头，中景镜头，温情，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_008.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368750569_ed01c327-3f95-492a-ae51-2c6d23f7fe1d.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_009",
+      "title": "一字千金",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "转身背影"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠背影"
+      },
+      "mood": "沉默关怀",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "吃。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他只说这一个字，转身又去切肉去了。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光，陈屠(@szj_chentu)转身背对，只留魁梧的背影，回到案板切肉，中景镜头，沉默关怀，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_009.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368763915_6c6f0b06-f27d-431f-9c9f-b832ec2c01a9.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_010",
+      "title": "苦涩回味",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "啃饼",
+          "emotion": "若有所思"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "若有所思",
+      "lighting": "日光柔和",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我小口啃着饼。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "芝麻粒在齿间迸开，焦香四溢。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)特写，小口啃着芝麻烧饼，神情若有所思，背景虚化，日光柔和，特写镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_010.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e3e/Tx8OnGPkEyzlND97qcVX7.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_011",
+      "title": "淡淡苦味",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "emotion": "苦涩"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "苦涩",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "可我总能尝到淡淡地苦味。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)眼神微垂特写，杏眼中泛起苦涩，嘴角微微下撇，特写镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_011.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368770283_ca85a636-2951-4e34-99e2-fc345639ddd3.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_02_012",
+      "title": "往昔追忆",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "望远方",
+          "emotion": "怀念"
+        }
+      ],
+      "composition": {
+        "angle": "侧面",
+        "focus": "苏晚"
+      },
+      "mood": "怀念",
+      "lighting": "日光逆光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "想当初，我也是京城路人人称羡的苏家千金苏晚。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)侧脸，望向远方，日光逆光在发丝上勾出金边，眼中怀念，特写镜头，高清细节\n",
+      "image_path": "SC_02_西市日常/shot_012.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e45/31Wr1NlmN6G1hb4_C6KWU.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_02",
+      "scene_name": "西市日常"
+    },
+    {
+      "id": "SC_03_001",
+      "title": "苏府被抄",
+      "shot_type": "全景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "画外"
+        }
+      ],
+      "composition": {
+        "angle": "远景",
+        "focus": "苏府大门"
+      },
+      "mood": "悲凉萧瑟",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "苏家被抄那日，大雪封了京城。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，颗粒感，京城官宅苏府大门前，大雪纷飞，冷灰蓝色调，一队官差冲入苏府，远景镜头，悲凉萧瑟，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e46/51-jFU5by1YIfNmbQOm9o.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_002",
+      "title": "构陷忠良",
+      "shot_type": "中景",
+      "characters": [],
+      "composition": {
+        "angle": "平视",
+        "focus": "奏折"
+      },
+      "mood": "权力冷酷",
+      "lighting": "冷色调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我爹，刑部侍郎苏蔺，一本弹劾丞相魏忠贤贪墨河工款的折子递上去，龙椅上那位连看都没看，只批了四个字：'构陷忠良'。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，大殿内，冷色调，一本奏折被抛落地面，上面隐约可见红色朱批\"构陷忠良\"四字，中景镜头，权力冷酷，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368807609_9d49dea8-e39d-4666-8ab5-e203394a4c3e.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_003",
+      "title": "父入诏狱",
+      "shot_type": "中景",
+      "characters": [],
+      "composition": {
+        "angle": "低角度",
+        "focus": "铁门"
+      },
+      "mood": "绝望阴暗",
+      "lighting": "幽暗微光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "人，就直接下了诏狱。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，诏狱阴暗角落，冷调幽暗，厚重铁门半开，里面透出微弱火光，暗示性画面，低角度镜头，绝望阴暗，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e47/Eb60YiSUmskEkbhi0aLG9.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_004",
+      "title": "母亲自缢",
+      "shot_type": "中景",
+      "characters": [],
+      "composition": {
+        "angle": "平视",
+        "focus": "白绫"
+      },
+      "mood": "悲痛绝望",
+      "lighting": "冷调月光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我娘听闻我爹在狱中被活活折磨至死，当晚便悬了梁，一根白绫，随我爹去了。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，闺房内，冷调月光透过窗户，一根白绫从房梁垂下在风中轻轻摇曳，暗示性画面，中景镜头，悲痛绝望，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368753786_0dd88982-a193-46a7-983d-ddadd3a7723b.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_005",
+      "title": "拖出闺房",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "被拖拽"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "凄惨",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我被官差从闺房里拖出来，只一身素白单衣，被扔进了人市。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，苏府门前，大雪纷飞，苏晚(@szj_suwan)一身素白单衣被官差拖拽，冷灰蓝色调，中景镜头，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e64/P7S3hNTiLWEj7It4sTbUg.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_006",
+      "title": "雪刀刮面",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "瑟缩"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "寒冷凄苦",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "那天真冷啊，雪片子跟刀子似的，刮在脸上生疼。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪纷飞，苏晚(@szj_suwan)单薄白衣跪在雪中，双臂环抱瑟瑟发抖，雪花刮在脸上，特写镜头，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e48/k4tqs54sUfw7g1JwWYX-0.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_007",
+      "title": "公子围观",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "前景跪地"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "屈辱",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "那些往日在我家门前争相递帖子的公子哥儿们，此刻都挤在人群外围，用一种轻佻的目光打量我。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，背景虚化处几个锦衣公子围观窃笑，前景苏晚(@szj_suwan)跪地，中景镜头，屈辱，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_007.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368768127_1084dcf7-a2f5-48f8-8039-66d451a99ef0.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_008",
+      "title": "等待窑子",
+      "shot_type": "中景",
+      "characters": [],
+      "composition": {
+        "angle": "平视",
+        "focus": "围观人群"
+      },
+      "mood": "冷酷人性",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他们等着看我被哪个下三滥的窑子买走，"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市围观人群特写，有人窃窃私语，有人嗤笑，冷灰蓝色调，中景镜头，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_008.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368761664_bc097312-8af5-4226-8990-19cffd077ce0.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_009",
+      "title": "风流谈资",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "emotion": "倔强"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "倔强不屈",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "好给他们日后的酒桌上添一桩风流谈资。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，苏晚(@szj_suwan)特写，面容苍白却目光倔强不屈，大雪打在脸上，特写镜头，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_009.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e48/SrD8pSuAtkjakb7jmKOnx.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_03_010",
+      "title": "黑影遮挡",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "仰望"
+        },
+        {
+          "ref": "@szj_chentu",
+          "action": "背影剪影遮挡"
+        }
+      ],
+      "composition": {
+        "angle": "低角度仰视",
+        "focus": "陈屠剪影"
+      },
+      "mood": "一线生机",
+      "lighting": "逆光剪影",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "就在我冻得快要失去意识的时候，一个高大的影子笼罩下来，挡住了所有不怀好意的视线。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，低角度仰视：一个魁梧的黑色剪影站在苏晚面前，陈屠(@szj_chentu)的背影遮挡住风雪，苏晚(@szj_suwan)抬头仰望，逆光剪影，一线生机，高清细节\n",
+      "image_path": "SC_03_苏府抄家/shot_010.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368831206_ecfaea35-7183-438c-af97-bfd933327ea3.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_03",
+      "scene_name": "苏府抄家"
+    },
+    {
+      "id": "SC_04_001",
+      "title": "陈屠买人",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "扔铜钱",
+          "emotion": "决断"
+        },
+        {
+          "ref": "@szj_renyazi",
+          "action": "旁观"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "震慑决断",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "这个，我买了。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "一袋沉甸甸的铜钱，砸在人牙子脚边。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，陈屠(@szj_chentu)面容冷峻，一袋铜钱从手中扔出砸在地上，人牙子(@szj_renyazi)旁边，中景镜头，震慑决断，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368887699_4d563f44-4f86-41b4-b46c-c847024bd7da.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_002",
+      "title": "人牙子谄媚",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_renyazi",
+          "action": "谄笑凑近",
+          "emotion": "谄媚"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "人牙子"
+      },
+      "mood": "油滑市侩",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "人牙子",
+          "text": "陈屠户，这可是正经的官家小姐，瞧瞧这皮肉……"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，人牙子(@szj_renyazi)尖嘴猴腮谄笑着凑近，一脸油滑市侩，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368825033_95005adb-432d-452b-a76e-d32de91d098c.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_003",
+      "title": "闭嘴前行",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "冷面前行"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "震慑",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "闭嘴。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他走到我面前。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)面容冷峻，一个字震慑全场，大步向前走来，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368841338_32f2263b-40f4-47cb-ad97-bd43236d41dd.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_004",
+      "title": "攥书不放",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "攥书",
+          "emotion": "警惕"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚双手"
+      },
+      "mood": "紧张警惕",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我死死攥着怀里我爹那本《洗冤集录》，那是我爹最后留给我的东西。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，苏晚(@szj_suwan)双手紧紧攥着怀中一本古书，手指冻裂泛红，眼神警惕，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368809119_e8c50317-83ad-4713-87f4-2afca68771ef.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_005",
+      "title": "注视冻手",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "注视"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "攥书"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠目光"
+      },
+      "mood": "冷峻转柔",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他的目光，先落在我冻裂的手上，顿了顿，又移向我怀里的那本书。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)的目光从苏晚(@szj_suwan)冻裂的手移向怀中的书，眼神从冷峻变为柔和，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368809880_20e29d11-db66-4ed7-a932-7131bd51eb5a.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_006",
+      "title": "披棉袄",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "披棉袄"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "接受",
+          "emotion": "惊愕"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠和苏晚"
+      },
+      "mood": "冷中透暖",
+      "lighting": "冷调中透暖意",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "然后，他脱下了身上那件打着补丁的旧棉袄，粗鲁地裹在了我身上。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，冷调中透暖意，陈屠(@szj_chentu)正将打着补丁的旧棉袄粗鲁地裹在苏晚(@szj_suwan)身上，苏晚眼神从警惕变为惊愕，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4a/EXZn1I02t8K_yprwiM-ef.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_007",
+      "title": "能走？",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "低头看"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "僵硬点头"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠和苏晚"
+      },
+      "mood": "简短关切",
+      "lighting": "冷灰蓝色调",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "能走？"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他问。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "我僵硬地点头。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)低头看着苏晚(@szj_suwan)，简短问话，苏晚僵硬点头，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_007.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368826771_93fdbcd5-5181-4e3a-8681-207ebf6f31cc.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_008",
+      "title": "转身就走",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "背影大步走"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠背影"
+      },
+      "mood": "果断",
+      "lighting": "大雪冷灰蓝",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他转身就走，步子迈得大。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，大雪纷飞，陈屠(@szj_chentu)魁梧的背影大步走在雪中，中景镜头，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_008.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4b/3uhyqZNVdyprJKOEzKNuX.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_04_009",
+      "title": "雪中跟随",
+      "shot_type": "全景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "前方大步走"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "踉跄跟随"
+        }
+      ],
+      "composition": {
+        "angle": "侧面",
+        "focus": "两人身影"
+      },
+      "mood": "命运转折",
+      "lighting": "冷灰蓝色调大雪",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我踉跄着，深一脚浅一脚踩在雪里，跟在他身后。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，京城街巷，大雪纷飞，冷灰蓝色调，陈屠(@szj_chentu)魁梧的背影大步在前，苏晚(@szj_suwan)裹着旧棉袄踉跄跟在身后，全景侧面镜头，命运转折，高清细节\n",
+      "image_path": "SC_04_人市被买/shot_009.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png",
+      "generated_at": "2026-02-06T17:10:00",
+      "scene_ref": "SC_04",
+      "scene_name": "人市被买"
+    },
+    {
+      "id": "SC_05_001",
+      "title": "洞房环境",
+      "shot_type": "全景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "站门口",
+          "emotion": "茫然"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "简陋房间"
+      },
+      "mood": "简陋温馨",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我们的'洞房'，就在猪肉铺后面。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "一张木板床，一张破桌子，就是全部。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜偏暖调，简陋卧房内，油灯暖光，一张木板床一张破桌子，陈屠(@szj_chentu)正将厚棉被丢在床上，苏晚(@szj_suwan)站在门口裹着旧棉袄茫然看着，全景镜头，高清细节\n",
+      "image_path": "SC_05_新婚之夜/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png",
+      "generated_at": "2026-02-06T17:06:05",
+      "scene_ref": "SC_05",
+      "scene_name": "新婚之夜"
+    },
+    {
+      "id": "SC_05_002",
+      "title": "丢棉被",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "丢棉被"
+        },
+        {
+          "ref": "@szj_suwan"
+        }
+      ],
+      "composition": {
+        "angle": "平视"
+      },
+      "mood": "沉默体贴",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他抱来一床厚棉被，丢在床上。"
+        },
+        {
+          "speaker": "陈屠",
+          "text": "你睡这。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜偏暖调，简陋卧房内，油灯暖光，陈屠(@szj_chentu)将厚棉被丢在床上，简短说话，苏晚(@szj_suwan)在旁局促，中景镜头，高清细节\n",
+      "image_path": "SC_05_新婚之夜/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4b/yOthPFLgo7CNzWGF0A0UA.png",
+      "generated_at": "2026-02-06T17:06:09",
+      "scene_ref": "SC_05",
+      "scene_name": "新婚之夜"
+    },
+    {
+      "id": "SC_05_003",
+      "title": "放烧饼",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "放烧饼"
+        }
+      ],
+      "composition": {
+        "angle": "平视"
+      },
+      "mood": "沉默温情",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "说完，又从怀里摸出一个还有点温乎气的烧饼，放在桌上。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜偏暖调，简陋卧房内，油灯暖光，陈屠(@szj_chentu)从怀里摸出烧饼放在破桌上，动作粗鲁却细心，中景镜头，高清细节\n",
+      "image_path": "SC_05_新婚之夜/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368814587_9c687f75-7372-4932-bb26-e7438091961a.png",
+      "generated_at": "2026-02-06T17:06:08",
+      "scene_ref": "SC_05",
+      "scene_name": "新婚之夜"
+    },
+    {
+      "id": "SC_05_004",
+      "title": "转身要走",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "转身"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "开口"
+        }
+      ],
+      "composition": {
+        "angle": "平视"
+      },
+      "mood": "局促",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "吃。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "然后他转身要走。"
+        },
+        {
+          "speaker": "苏晚",
+          "text": "你去哪？"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜偏暖调，简陋卧房内，油灯暖光，陈屠(@szj_chentu)转身背对要走，苏晚(@szj_suwan)在身后微微张口，中景镜头，高清细节\n",
+      "image_path": "SC_05_新婚之夜/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369862261_1d498263-a930-4c6e-810d-bed951ce4860.png",
+      "generated_at": "2026-02-06T17:17:00",
+      "scene_ref": "SC_05",
+      "scene_name": "新婚之夜"
+    },
+    {
+      "id": "SC_05_005",
+      "title": "分床守夜",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "站门口指外面"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "坐床边",
+          "emotion": "疑惑感动"
+        }
+      ],
+      "composition": {
+        "angle": "平视"
+      },
+      "mood": "尊重温情",
+      "lighting": "油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我哑着嗓子问。"
+        },
+        {
+          "speaker": "陈屠",
+          "text": "外面有长凳。我守夜。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜偏暖调，简陋卧房内，油灯暖光，陈屠(@szj_chentu)站在门口一只手指向外面，苏晚(@szj_suwan)坐在床边眼神疑惑中带感动，中景镜头，高清细节\n",
+      "image_path": "SC_05_新婚之夜/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4c/z0WXpPhA1HCPNtVYCp7x7.png",
+      "generated_at": "2026-02-06T17:06:07",
+      "scene_ref": "SC_05",
+      "scene_name": "新婚之夜"
+    },
+    {
+      "id": "SC_06_001",
+      "title": "时光流逝",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚忙碌身影"
+      },
+      "mood": "时光流逝",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "日子一天天过去。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，猪肉铺内，日光，苏晚(@szj_suwan)在猪肉铺内忙碌的身影，时光流逝感，中景镜头，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368828352_aa4be6f2-f69d-46a3-9d1a-3d15018d324c.png",
+      "generated_at": "2026-02-06T17:06:31",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_06_002",
+      "title": "学徒生活",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "蹲在大盆前工作"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚工作"
+      },
+      "mood": "辛苦勤劳",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我学会了用开水烫猪毛，用草木灰和醋反复揉搓猪大肠，手上那点从苏府带来的薄茧，很快就被更粗糙的新茧覆盖。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，猪肉铺内，日光侧照，苏晚(@szj_suwan)蹲在大木盆前用瓢舀开水烫猪毛，袖口挽起，蒸汽升腾，中景镜头，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e4e/jfUifuxnxi3b6vXn6y-Jv.png",
+      "generated_at": "2026-02-06T17:07:04",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_06_003",
+      "title": "留梅花肉",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "切肉"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "梅花肉特写"
+      },
+      "mood": "沉默体贴",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "陈屠话少，但会把铺子里最好的一块梅花肉留给我。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，猪肉铺案板上，日光侧照，特写：陈屠(@szj_chentu)粗糙的大手将一块纹理漂亮的梅花肉切下单独留着，特写镜头，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369140036_17390b2c-385a-443d-b8c0-0462ff66a8f0.png",
+      "generated_at": "2026-02-06T17:10:30",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_06_004",
+      "title": "推炭盆",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "推炭盆"
+        }
+      ],
+      "composition": {
+        "angle": "低角度",
+        "focus": "炭盆特写"
+      },
+      "mood": "沉默温情",
+      "lighting": "夜晚油灯暖光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "夜里，会不动声色地把唯一的炭盆，往我脚边推近些。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，简陋卧房内，夜晚油灯暖光，低角度特写：陈屠(@szj_chentu)粗糙的手不动声色地将炭盆往床边推，炭火通红，特写镜头，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368942181_0f4ee443-732d-410f-8d1c-7fcb3161d128.png",
+      "generated_at": "2026-02-06T17:07:03",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_06_005",
+      "title": "分床而眠",
+      "shot_type": "全景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "睡里屋"
+        },
+        {
+          "ref": "@szj_chentu",
+          "action": "睡长凳"
+        }
+      ],
+      "composition": {
+        "angle": "俯视",
+        "focus": "分割构图两人"
+      },
+      "mood": "距离感温情",
+      "lighting": "夜晚月光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我们同住一个屋檐下，却分床而眠。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他睡铺面的长凳，我睡里屋的床，"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，猪肉铺和里屋，夜晚月光，分割构图：左侧铺面长凳上陈屠(@szj_chentu)魁梧身影，右侧里屋床上苏晚(@szj_suwan)纤细身影，中间破布帘子隔开，俯视全景镜头，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368923558_9f389452-ac01-4b44-9030-7463e0001168.png",
+      "generated_at": "2026-02-06T17:07:03",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_06_006",
+      "title": "帘子隔世",
+      "shot_type": "特写",
+      "characters": [],
+      "composition": {
+        "angle": "平视",
+        "focus": "破布帘子"
+      },
+      "mood": "意境深远",
+      "lighting": "夜晚微光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "中间那道破布帘子，隔开了两个世界。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，蒙太奇快切风格，简陋房间内，夜晚微光，特写：一道破旧的布帘子在微风中轻轻摇曳，帘两侧隐约不同光影，特写镜头，意境深远，高清细节\n",
+      "image_path": "SC_06_日子过渡/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e51/4r_jkMO5kIhPdRJx8ynyi.png",
+      "generated_at": "2026-02-06T17:07:29",
+      "scene_ref": "SC_06",
+      "scene_name": "日子过渡"
+    },
+    {
+      "id": "SC_07_001",
+      "title": "雨夜惊醒",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "惊醒坐起",
+          "emotion": "惊恐"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "惊恐",
+      "lighting": "雨夜暗调，窗外闪电",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "直到那晚，瓢泼大雨。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "我被一声嘶吼声惊醒。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，窗外闪电，苏晚(@szj_suwan)惊醒坐起在床上，眼神惊恐，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368985573_1a15624f-cb51-4ff0-8c56-335969d2f076.png",
+      "generated_at": "2026-02-06T17:08:03",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_002",
+      "title": "陈屠地上",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "躺地上"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "异常",
+      "lighting": "雨夜暗调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "陈屠不知何时进了屋，躺在我床边的地上。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，陈屠(@szj_chentu)躺在床边地上，身形蜷缩，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e56/0KLYRpuiBX0E4HunCIY3D.png",
+      "generated_at": "2026-02-06T17:08:03",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_003",
+      "title": "扭曲念名",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "梦中",
+          "emotion": "痛苦"
+        }
+      ],
+      "composition": {
+        "angle": "俯视",
+        "focus": "陈屠面部"
+      },
+      "mood": "恐怖",
+      "lighting": "雨夜暗调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "昏暗中，他整个脸都扭曲了，额上青筋暴起。"
+        },
+        {
+          "speaker": "陈屠",
+          "text": "……张……德坤……"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，俯视特写：陈屠(@szj_chentu)面容扭曲，额上青筋暴起，嘴唇开合念着什么，雨夜暗调，特写镜头，恐怖，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369079032_c2eed839-fa05-4bca-ad1d-6217101e00e4.png",
+      "generated_at": "2026-02-06T17:08:03",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_004",
+      "title": "齿缝挤名",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "屏息观察",
+          "emotion": "紧张"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "紧张",
+      "lighting": "雨夜暗调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "一个模糊的名字，混着粗重的喘息，从他齿缝里挤出来。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，苏晚(@szj_suwan)紧贴床头，屏住呼吸注视地上的陈屠，中景镜头，紧张，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369039589_48dfdaa7-042e-45e4-91b9-d172b0cc8882.png",
+      "generated_at": "2026-02-06T17:08:05",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_005",
+      "title": "偿命呐喊",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "梦中挣扎"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "恐怖杀气",
+      "lighting": "雨夜暗调，闪电",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我屏住了呼吸，"
+        },
+        {
+          "speaker": "陈屠",
+          "text": "张德坤……偿命……！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，闪电照亮房间，陈屠(@szj_chentu)躺在地上猛地挣扎，嘴大张呐喊，中景镜头，恐怖杀气，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5ec0/Uc8Q8z--XiiSvlJWYKnq7.png",
+      "generated_at": "2026-02-06T17:20:00",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_006",
+      "title": "挥臂砸床",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "挥臂"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠挥臂动作"
+      },
+      "mood": "恐怖",
+      "lighting": "雨夜暗调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他猛地一挥手臂，'咚'一声砸在床沿的厚木板上，连带着整张床都剧烈地晃动起来。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，动态模糊，简陋卧房内，雨夜暗调，陈屠(@szj_chentu)猛地一挥手臂砸在床沿，整张床剧烈晃动，中景镜头，恐怖，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369042865_59e22423-ba40-4da5-b9d6-5c1e9e7e3aac.png",
+      "generated_at": "2026-02-06T17:08:07",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_007",
+      "title": "修罗现身",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "梦中",
+          "emotion": "狰狞"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠侧脸"
+      },
+      "mood": "恐怖",
+      "lighting": "雨夜暗调，闪电",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "白日里那个沉默寡言的陈屠不见了。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，雨夜暗调，闪电照亮，陈屠(@szj_chentu)侧脸特写，表情狰狞与白日判若两人，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_007.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e58/51eIQkJVsm_-4TGBFtkjK.png",
+      "generated_at": "2026-02-06T17:08:05",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_008",
+      "title": "血腥杀气",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "恐怖杀气",
+      "lighting": "雨夜暗调",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "此刻的他，像个从地狱里爬出来的修罗，浑身都是血腥的杀气。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，雨夜暗调，陈屠(@szj_chentu)躺在地上，浑身散发杀气，如同修罗，中景镜头，恐怖杀气，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_008.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5ec0/yz1_-42ifeAt5_4biwlwh.png",
+      "generated_at": "2026-02-06T17:20:00",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_009",
+      "title": "缩在床角",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "缩床角",
+          "emotion": "恐惧"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "恐惧困惑",
+      "lighting": "天色渐亮",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我缩在床角，抱着膝盖，睁着眼，直到天色泛白。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，天色渐亮，苏晚(@szj_suwan)缩在床角双臂抱膝，眼下青黑一夜未眠，中景镜头，恐惧困惑，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_009.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e59/Up4DQeuLUOLkfCZCosznc.png",
+      "generated_at": "2026-02-06T17:08:28",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_010",
+      "title": "雨停醒来",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "揉额角"
+        },
+        {
+          "ref": "@szj_suwan"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "两人互动"
+      },
+      "mood": "关心",
+      "lighting": "清晨柔光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "雨停了。陈屠醒来，揉了揉额角，看到我眼下的青黑，愣了一下。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，清晨柔光，陈屠(@szj_chentu)坐起揉额角，看到苏晚(@szj_suwan)眼下青黑，愣住，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_010.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369023191_65cbca1d-70fd-4d95-bfa9-7396c5c524b4.png",
+      "generated_at": "2026-02-06T17:08:30",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_011",
+      "title": "吵到你了",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "关心"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "摇头"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "两人对话"
+      },
+      "mood": "关心",
+      "lighting": "清晨柔光",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "吵到你了？"
+        },
+        {
+          "speaker": "旁白",
+          "text": "我摇摇头。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房/铺面，清晨柔光，陈屠(@szj_chentu)关心地看着苏晚(@szj_suwan)，苏晚摇摇头，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_011.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368993474_bb19b01b-20a9-44b1-be51-46fbc47dc2f8.png",
+      "generated_at": "2026-02-06T17:08:31",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_07_012",
+      "title": "水煮蛋",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "食不下咽"
+        },
+        {
+          "ref": "@szj_chentu",
+          "action": "低头吃饭"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚碗中蛋"
+      },
+      "mood": "心事重重",
+      "lighting": "清晨柔光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "早饭时，我碗里多了个剥好的水煮蛋。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "我却食不下咽。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋铺面，清晨柔光，苏晚(@szj_suwan)碗里一个剥好的水煮蛋却筷子不动，心事重重，陈屠(@szj_chentu)低头吃饭如常，中景镜头，高清细节\n",
+      "image_path": "SC_07_雨夜惊梦/shot_012.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770368975127_4000af74-7c13-4cc3-a4e0-115bb25e6576.png",
+      "generated_at": "2026-02-06T17:08:31",
+      "scene_ref": "SC_07",
+      "scene_name": "雨夜惊梦"
+    },
+    {
+      "id": "SC_08_001",
+      "title": "街坊喧哗",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang",
+          "action": "画外议论"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "铺子门外"
+      },
+      "mood": "喧哗",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "忽然，铺子外传来一阵喧哗，是早起买菜的街坊们在议论。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，苏晚视角看向门外，铺子外传来喧哗，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_001.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369018515_8bda2145-b3b5-4ce5-9e3a-4b987ee5f376.png",
+      "generated_at": "2026-02-06T17:09:03",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_002",
+      "title": "死讯传来",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "街坊"
+      },
+      "mood": "惊讶",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "街坊丙",
+          "text": "听说了吗？张德坤死了！就在昨晚！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街巷，日光，一个市井男子(@szj_jiefang)惊讶地对周围人说着什么，手舞足蹈，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_002.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e5c/bwoed7oSE_gsKdpaG8c9v.png",
+      "generated_at": "2026-02-06T17:09:04",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_003",
+      "title": "报应论",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang",
+          "action": "感叹"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "街坊们"
+      },
+      "mood": "义愤",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "街坊丁",
+          "text": "真是报应啊！这老贼贪了那么多修河堤的银子，去年大水淹死多少人！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街巷，日光，几个街坊围在一起议论，有人义愤填膺，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_003.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e65/jyt6o7m5tM9wVf98TgQrP.png",
+      "generated_at": "2026-02-06T17:10:30",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_004",
+      "title": "七窍流血",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_jiefang",
+          "emotion": "幸灾乐祸"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "街坊描述"
+      },
+      "mood": "幸灾乐祸",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "街坊丁",
+          "text": "可不是嘛，说是夜里喝酒，好端端的，被一口酒呛死了！七窍流血，惨得很！真是老天开眼！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街巷，日光，一个市井妇女(@szj_jiefang)绘声绘色地描述，周围人惊叹，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_004.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e66/iRrJ94zX3WW8JFW0H77_X.png",
+      "generated_at": "2026-02-06T17:10:31",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_005",
+      "title": "筷子掉落",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "emotion": "震惊"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "筷子掉落"
+      },
+      "mood": "震惊",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我手里的筷子，'啪嗒'一声掉在桌上，"
+        },
+        {
+          "speaker": "旁白",
+          "text": "张德坤。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，特写：苏晚(@szj_suwan)手中筷子掉落桌上，特写镜头，震惊，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_005.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369018579_f68d3343-7605-4ad5-9155-99b1183b4418.png",
+      "generated_at": "2026-02-06T17:09:06",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_006",
+      "title": "那个张德坤",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "瞳孔收缩",
+          "emotion": "震惊"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚眼部"
+      },
+      "mood": "震惊",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "是那个户部侍郎张德坤？！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)眼睛瞪大瞳孔收缩特写，震惊回忆，特写镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_006.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369064456_7868bb68-8e89-4577-a24b-eb4866c2557c.png",
+      "generated_at": "2026-02-06T17:09:06",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_007",
+      "title": "仇人身份",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "emotion": "心事重重"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚"
+      },
+      "mood": "凝重",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我爹还在时，就曾多次上奏弹劾他克扣军饷、贪墨工款！"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，苏晚(@szj_suwan)神情凝重，回忆闪过眼中，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_007.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e5d/mP7Buz-AsfsjOlAV62E0Y.png",
+      "generated_at": "2026-02-06T17:09:06",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_008",
+      "title": "猛然抬头",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "抬头看"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚目光方向"
+      },
+      "mood": "疑虑",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "我猛地抬头，看向案板前的陈屠户。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，苏晚(@szj_suwan)猛地抬头，目光越过桌面看向案板方向，中景镜头，疑虑，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_008.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369010970_d70a4384-c394-457a-b5c9-f18a1e0f5c08.png",
+      "generated_at": "2026-02-06T17:09:06",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_009",
+      "title": "陈屠背影",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "背对刮猪皮"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠背影"
+      },
+      "mood": "平静",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他正背对着我，用刮刀细细清理一块猪皮上的残毛。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光侧照，苏晚视角：陈屠(@szj_chentu)魁梧背影在案板前，手持刮刀清理猪皮，动作平稳，中景镜头，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_009.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369049245_1b93161a-cd4f-4908-ad4e-e90cb2644d84.png",
+      "generated_at": "2026-02-06T17:09:33",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_010",
+      "title": "若无其事",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "emotion": "平静"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠"
+      },
+      "mood": "悬疑",
+      "lighting": "日光侧照",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "他垂着眼，动作平稳，周遭的喧闹似乎半点也传不进他耳朵里。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光侧照，陈屠(@szj_chentu)垂眼专注工作，神情平静如常，周围喧闹仿佛与他无关，中景镜头，悬疑，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_010.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369074585_f4c4d1ba-1958-45b5-8050-de523436610a.png",
+      "generated_at": "2026-02-06T17:09:30",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_011",
+      "title": "内心疑问",
+      "shot_type": "特写",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "emotion": "内心震动"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "苏晚面部"
+      },
+      "mood": "悬疑",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "旁白",
+          "text": "难道……张德坤的暴毙，和陈屠昨夜……有关？"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)特写，眼神中闪过震动与疑虑，欲言又止，特写镜头，悬疑，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_011.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e5f/cKpLJgoQnW7QWyI_R26Ur.png",
+      "generated_at": "2026-02-06T17:09:30",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_012",
+      "title": "试探开口",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_suwan",
+          "action": "颤声试探"
+        },
+        {
+          "ref": "@szj_chentu",
+          "action": "背对"
+        }
+      ],
+      "composition": {
+        "angle": "侧面",
+        "focus": "两人构图"
+      },
+      "mood": "悬疑张力",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "苏晚",
+          "text": "当家的，张侍郎……没了。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "我颤着声开口。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，侧面构图：苏晚(@szj_suwan)微微前倾嘴唇微张试探，陈屠(@szj_chentu)在案板前背对，中景侧面镜头，悬疑张力，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_012.png",
+      "image_status": "completed",
+      "image_url": "https://v3b.fal.media/files/b/0a8d5e60/wNRR8wIx3_M22FlM2dcgX.png",
+      "generated_at": "2026-02-06T17:09:31",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    },
+    {
+      "id": "SC_08_013",
+      "title": "听见了",
+      "shot_type": "中景",
+      "characters": [
+        {
+          "ref": "@szj_chentu",
+          "action": "手上不停"
+        },
+        {
+          "ref": "@szj_suwan",
+          "action": "观察"
+        }
+      ],
+      "composition": {
+        "angle": "平视",
+        "focus": "陈屠回应"
+      },
+      "mood": "开放式结尾",
+      "lighting": "日光",
+      "lines": [
+        {
+          "speaker": "陈屠",
+          "text": "嗯。"
+        },
+        {
+          "speaker": "旁白",
+          "text": "他手上动作没停。"
+        },
+        {
+          "speaker": "陈屠",
+          "text": "听见了。"
+        }
+      ],
+      "prompt": "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，猪肉铺内，日光，陈屠(@szj_chentu)头也不回手上动作不停，淡淡回应，苏晚(@szj_suwan)在身后若有所思，中景镜头，开放式结尾，高清细节\n",
+      "image_path": "SC_08_张德坤死讯/shot_013.png",
+      "image_status": "completed",
+      "image_url": "https://cdn-video.51sux.com/uploads/1770369066915_aea64600-ae41-436a-aa94-08ebeb7e88bf.png",
+      "generated_at": "2026-02-06T17:10:04",
+      "scene_ref": "SC_08",
+      "scene_name": "张德坤死讯"
+    }
+  ]
+};
+
+    const manifest = DATA.manifest;
+    const allScenes = DATA.scenes;
+    const allShots = DATA.shots;
+
+    // ── 工具函数 ──
+
+    function getSceneInfo(sceneRef) {
+      return allScenes.find(s => s.id === sceneRef) || { name: sceneRef };
+    }
+
+    function getCharacterInfo(charRef) {
+      if (!manifest.characters) return { name: charRef, id: charRef };
+      return manifest.characters.find(c => c.id === charRef) || { name: charRef, id: charRef };
+    }
+
+    // ── 渲染函数 ──
+
+    function renderStats() {
+      const el = document.getElementById('stats');
+      const imgDone = allShots.filter(s => s.image_status === 'completed').length;
+      const totalLines = allShots.reduce((sum, s) => sum + (s.lines?.length || 0), 0);
+      const audioDone = allShots.reduce((sum, s) =>
+        sum + (s.lines || []).filter(l => l.audio_url).length, 0);
+      const videoDone = allShots.filter(s => s.video_url).length;
+
+      el.innerHTML = `
+        <div class="stat-item"><div class="stat-value">${allScenes.length}</div><div class="stat-label">场景数</div></div>
+        <div class="stat-item"><div class="stat-value">${allShots.length}</div><div class="stat-label">镜头数</div></div>
+        <div class="stat-item"><div class="stat-value">${imgDone}/${allShots.length}</div><div class="stat-label">已生图</div></div>
+        <div class="stat-item"><div class="stat-value">${audioDone}/${totalLines}</div><div class="stat-label">已配音</div></div>
+        <div class="stat-item"><div class="stat-value">${videoDone}/${allShots.length}</div><div class="stat-label">已生视频</div></div>
+        <div class="stat-item"><div class="stat-value">${totalLines}</div><div class="stat-label">总台词</div></div>
+      `;
+    }
+
+    function renderNav() {
+      const el = document.getElementById('nav');
+      el.innerHTML = allShots.map((shot, i) =>
+        `<a href="#${shot.id}" title="${shot.title}">${i + 1}. ${shot.title}</a>`
+      ).join('');
+    }
+
+    function renderShotCard(shot, index) {
+      const scene = getSceneInfo(shot.scene_ref);
+      const status = shot.image_status || 'pending';
+      const statusLabel = status === 'pending' ? '待生图' : '已生图';
+
+      // 图片：优先 image_url（远程），其次 image_path（相对路径）
+      const imgSrc = shot.image_url || (shot.image_path ? `shots/${shot.image_path}` : '');
+      const imageHtml = imgSrc && status !== 'pending'
+        ? `<img src="${imgSrc}" alt="${shot.title}" onclick="openModal('${imgSrc}')" onerror="this.parentElement.innerHTML='<div class=\\'placeholder\\'>图片加载失败</div>'">`
+        : `<div class="placeholder">待生成配图</div>`;
+
+      // 角色
+      const charsHtml = (shot.characters || []).map(c => {
+        const info = getCharacterInfo(c.ref);
+        return `<span><span class="character-name">${info.name}</span> <span class="character-action">${c.action || ''}${c.emotion ? ' · ' + c.emotion : ''}</span></span>`;
+      }).join('');
+
+      // 台词
+      const linesHtml = (shot.lines || []).map(line => {
+        const isNarr = line.speaker === '旁白';
+        const emo = line.emotion ? `<span class="emotion">⚡ ${line.emotion}</span>` : '';
+        const audio = line.audio_url ? `<audio controls preload="none" src="${line.audio_url}"></audio>` : '';
+        return `<p class="line ${isNarr ? 'narration' : 'character'}"><span class="speaker">【${line.speaker}】</span>${line.text}${emo}${audio}</p>`;
+      }).join('') || '<p class="line" style="color:var(--text-muted)">（无台词）</p>';
+
+      return `
+        <div class="shot-card" id="${shot.id}" data-status="${status}">
+          <div class="shot-image">
+            ${imageHtml}
+            <span class="shot-number">${String(index + 1).padStart(2, '0')}</span>
+            <span class="shot-status ${status}">${statusLabel}</span>
+          </div>
+          <div class="shot-info">
+            <h3>${shot.id} | ${shot.title}</h3>
+            <div class="tags">
+              <span class="tag scene">📍 ${scene.name}</span>
+              <span class="tag mood">💫 ${shot.mood || '—'}</span>
+              ${shot.lighting ? `<span class="tag lighting">💡 ${shot.lighting}</span>` : ''}
+              ${shot.shot_type ? `<span class="tag shot-type">📷 ${shot.shot_type}</span>` : ''}
+            </div>
+          </div>
+          ${charsHtml ? `<div class="characters-bar">${charsHtml}</div>` : ''}
+          <div class="lines">${linesHtml}</div>
+          ${shot.video_url ? `
+          <div class="shot-video">
+            <video controls preload="metadata" src="${shot.video_url}" poster="${imgSrc || ''}"></video>
+            <div class="video-meta">
+              ${shot.video_mode ? `<span>模式: <span class="video-mode">${shot.video_mode}</span></span>` : ''}
+              ${shot.video_duration ? `<span>时长: ${shot.video_duration}s</span>` : ''}
+            </div>
+          </div>` : ''}
+          <div class="collapsible-toggle" onclick="toggleCollapsible(this)">
+            <span class="arrow">▶</span> 查看配图提示词
+          </div>
+          <div class="collapsible-content">
+            <button class="copy-btn" onclick="copyPrompt(event, this)">复制</button>
+            ${shot.prompt || '（无提示词）'}
+          </div>
+        </div>`;
+    }
+
+    function renderShots() {
+      const container = document.getElementById('shots-container');
+      let html = '';
+      let currentScene = '';
+
+      allShots.forEach((shot, i) => {
+        if (shot.scene_ref !== currentScene) {
+          currentScene = shot.scene_ref;
+          const scene = getSceneInfo(currentScene);
+          html += `
+            <div class="scene-separator">
+              <h2>📍 ${scene.id} ${scene.name}</h2>
+              <div class="scene-meta">
+                ${scene.description ? `<span>${scene.description}</span>` : ''}
+                ${scene.mood ? `<span>💫 ${scene.mood}</span>` : ''}
+                ${scene.lighting ? `<span>💡 ${scene.lighting}</span>` : ''}
+              </div>
+            </div>`;
+        }
+        html += renderShotCard(shot, i);
+      });
+
+      container.innerHTML = html;
+    }
+
+    // ── 交互函数 ──
+
+    function toggleCollapsible(el) {
+      const content = el.nextElementSibling;
+      const isShow = content.classList.toggle('show');
+      el.classList.toggle('open', isShow);
+      el.querySelector('.arrow').textContent = isShow ? '▼' : '▶';
+    }
+
+    function copyPrompt(event, btn) {
+      event.stopPropagation();
+      const text = btn.parentElement.textContent.replace('复制', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '已复制!';
+        setTimeout(() => btn.textContent = '复制', 1500);
+      });
+    }
+
+    function openModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── 搜索 & 过滤 ──
+
+    document.getElementById('search').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.shot-card').forEach(card => {
+        if (!q) { card.classList.remove('hidden', 'highlight'); return; }
+        const match = card.textContent.toLowerCase().includes(q);
+        card.classList.toggle('hidden', !match);
+        card.classList.toggle('highlight', match);
+      });
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.shot-card').forEach(card => {
+          const status = card.dataset.status;
+          card.classList.toggle('hidden',
+            filter === 'pending' ? status !== 'pending' :
+            filter === 'completed' ? status === 'pending' : false
+          );
+        });
+      });
+    });
+
+    // ── 快捷键 ──
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === '/' && e.target.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.getElementById('search').focus();
+      }
+    });
+
+    // ── 返回顶部 ──
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 500);
+    });
+
+    // ── 导航高亮 ──
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav a').forEach(a => a.classList.remove('current'));
+          const link = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('current');
+        }
+      });
+    }, { rootMargin: '-100px 0px -70% 0px' });
+
+    // ── 初始化渲染 ──
+
+    renderStats();
+    renderNav();
+    renderShots();
+
+    // 观察所有卡片
+    document.querySelectorAll('.shot-card').forEach(card => observer.observe(card));
+
+    // URL hash 跳转
+    if (window.location.hash) {
+      const el = document.getElementById(window.location.hash.substring(1));
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+  </script>
+</body>
+</html>

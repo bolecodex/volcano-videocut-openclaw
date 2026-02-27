@@ -1,0 +1,917 @@
+scene_id: SC_20
+scene_name: 金銮殿抗洪
+scene_ref: scenes/SC_20_金銮殿抗洪.md
+scene_type: reality
+scene_description: 金銮殿
+scene_mood: 泄洪方案、民心
+scene_lighting: 宫廷光效
+shots:
+- id: SC_20_001
+  title: 无论男女，无论贫...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 无论男女，无论贫富，皆可入学。
+  - speaker: 旁白
+    text: 教材，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_001.png
+  image_status: pending
+- id: SC_20_002
+  title: 由我和我的学生们...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 由我和我的学生们连夜编写。
+  - speaker: 旁白
+    text: 语文、数学、物理、化学、思想品德……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_002.png
+  image_status: pending
+- id: SC_20_003
+  title: 我还要开办女子恩...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我还要开办女子恩科，
+  - speaker: 旁白
+    text: 允许女子入朝为官。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_003.png
+  image_status: pending
+- id: SC_20_004
+  title: 我要修路，要发展...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我要修路，要发展商业，
+  - speaker: 旁白
+    text: 要研究火器，要探索世界。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_004.png
+  image_status: pending
+- id: SC_20_005
+  title: 我的内阁成员，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我的内阁成员，
+  - speaker: 旁白
+    text: 就是我们班的班委会。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_005.png
+  image_status: pending
+- id: SC_20_006
+  title: 班长陈默是内阁首...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 班长陈默是内阁首辅。
+  - speaker: 旁白
+    text: 体育委员周鹏是兵马大元帅。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_006.png
+  image_status: pending
+- id: SC_20_007
+  title: 学习委员张静是教...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 学习委员张静是教育部长。
+  - speaker: 旁白
+    text: 生活委员刘胖子是财政部长。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_007.png
+  image_status: pending
+- id: SC_20_008
+  title: 每天的上朝，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 每天的上朝，
+  - speaker: 旁白
+    text: 都像是在开班会。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_008.png
+  image_status: pending
+- id: SC_20_009
+  title: 陛下，关于增设西...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 大臣
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 大臣
+    text: 陛下，关于增设西南地区希望小学的议案，
+  - speaker: 大臣
+    text: 臣觉得可行性很高！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_009.png
+  image_status: pending
+- id: SC_20_010
+  title: 陛下，臣反对！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 大臣
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 大臣
+    text: 陛下，臣反对！
+  - speaker: 大臣
+    text: 我们班……哦不，我们兵部的预算
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_010.png
+  image_status: pending
+- id: SC_20_011
+  title: 又被刘胖子克扣了！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 大臣
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 大臣
+    text: 又被刘胖子克扣了！
+  - speaker: 大臣
+    text: 这炮还造不造了！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_011.png
+  image_status: pending
+- id: SC_20_012
+  title: 陛下！钦天监急报！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 大臣
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 大臣
+    text: 陛下！钦天监急报！
+  - speaker: 大臣
+    text: 王浩说他夜观星象，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_012.png
+  image_status: pending
+- id: SC_20_013
+  title: 发现了一颗新的行...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 大臣
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 大臣
+    text: 发现了一颗新的行星，
+  - speaker: 大臣
+    text: 想用您的名字命名！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_013.png
+  image_status: pending
+- id: SC_20_014
+  title: 我坐在龙椅上，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我坐在龙椅上，
+  - speaker: 旁白
+    text: 看着下面这群吵吵闹闹，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_014.png
+  image_status: pending
+- id: SC_20_015
+  title: 但朝气蓬勃的年轻...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 但朝气蓬勃的年轻人。
+  - speaker: 旁白
+    text: 忍不住笑了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_015.png
+  image_status: pending
+- id: SC_20_016
+  title: 谁能想到，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 谁能想到，
+  - speaker: 旁白
+    text: 一个被学生气死的班主任，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_016.png
+  image_status: pending
+- id: SC_20_017
+  title: 最后带着全班同学，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 最后带着全班同学，
+  - speaker: 旁白
+    text: 把一个封建王朝，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_017.png
+  image_status: pending
+- id: SC_20_018
+  title: 玩成了一场轰轰烈...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 玩成了一场轰轰烈烈的强国总动员。
+  - speaker: 旁白
+    text: 至于那个狗脾气萧凌……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_018.png
+  image_status: pending
+- id: SC_20_019
+  title: 后来，我偶尔会去...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 后来，我偶尔会去看他。
+  - speaker: 旁白
+    text: 他不再是那个高高在上的帝王，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_019.png
+  image_status: pending
+- id: SC_20_020
+  title: 只是一个眉眼清俊...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 只是一个眉眼清俊的男人。
+  - speaker: 旁白
+    text: 他会为我洗手作羹汤，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_020.png
+  image_status: pending
+- id: SC_20_021
+  title: 会给我讲他少年时...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 会给我讲他少年时的趣事。
+  - speaker: 旁白
+    text: 只是看我的眼神，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_021.png
+  image_status: pending
+- id: SC_20_022
+  title: 总是带着一丝认命...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 总是带着一丝认命的宠溺和无奈。
+  - speaker: 旁白
+    text: 有一次，他又问我：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_022.png
+  image_status: pending
+- id: SC_20_023
+  title: 你到底，有没有爱...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 你到底，有没有爱过我？
+  - speaker: 旁白
+    text: 我正在吃他做的桂花糕，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_023.png
+  image_status: pending
+- id: SC_20_024
+  title: 随口答道：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 随口答道：
+  - speaker: 苏映雪
+    text: 爱过啊。
+  - speaker: 旁白
+    text: 他愣住了。
+  - speaker: 旁白
+    text: 我吃完最后一口桂花糕，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_024.png
+  image_status: pending
+- id: SC_20_025
+  title: 擦了擦嘴。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 擦了擦嘴。
+  - speaker: 苏映雪
+    text: 味道不错，下次多放点糖。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_025.png
+  image_status: pending
+- id: SC_20_026
+  title: 窗外，阳光正好。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 窗外，阳光正好。
+  - speaker: 旁白
+    text: 我的新世界，万象更新。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_026.png
+  image_status: pending
+- id: SC_20_027
+  title: 真好。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 真好。
+  - speaker: 旁白
+    text: 但是好景总是不长。
+  - speaker: 旁白
+    text: 推行义务教育的圣旨下达第三日，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_027.png
+  image_status: pending
+- id: SC_20_028
+  title: 西南地区的乡绅就...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 西南地区的乡绅就联名上书，
+  - speaker: 旁白
+    text: 以"女子无才便是德"
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_028.png
+  image_status: pending
+- id: SC_20_029
+  title: '"孩童应务农耕桑...'
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: '"孩童应务农耕桑"为由，'
+  - speaker: 旁白
+    text: 拒绝开设学堂。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_029.png
+  image_status: pending
+- id: SC_20_030
+  title: 我将奏折扔在御案...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我将奏折扔在御案上，
+  - speaker: 旁白
+    text: 指尖敲击着桌面。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_030.png
+  image_status: pending
+- id: SC_20_031
+  title: 这群乡绅盘踞一方，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 这群乡绅盘踞一方，
+  - speaker: 旁白
+    text: 垄断教育资源，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_031.png
+  image_status: pending
+- id: SC_20_032
+  title: 自然怕新政动了他...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 自然怕新政动了他们的根基。
+  - speaker: 苏映雪
+    text: 陈默，传旨。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_032.png
+  image_status: pending
+- id: SC_20_033
+  title: 命你带吏部官员亲...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 命你带吏部官员亲赴西南，
+  - speaker: 苏映雪
+    text: 宣示新政核心：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_033.png
+  image_status: pending
+- id: SC_20_034
+  title: 学堂经费由国库承...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 泄洪方案、民心
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 学堂经费由国库承担，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿，泄洪方案、民心氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_20_金銮殿抗洪/shot_034.png
+  image_status: pending

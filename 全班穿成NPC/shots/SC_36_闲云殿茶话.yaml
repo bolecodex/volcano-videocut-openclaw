@@ -1,0 +1,483 @@
+scene_id: SC_36
+scene_name: 闲云殿茶话
+scene_ref: scenes/SC_36_闲云殿茶话.md
+scene_type: reality
+scene_description: 闲云殿
+scene_mood: 粮食增产、第一次肯定
+scene_lighting: 宫廷光效
+shots:
+- id: SC_36_001
+  title: 萧凌的桂花糕做得...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌的桂花糕做得越来越好吃，
+  - speaker: 旁白
+    text: 我偶尔会去闲云殿坐坐。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_001.png
+  image_status: pending
+- id: SC_36_002
+  title: 这天，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 这天，
+  - speaker: 旁白
+    text: 我带着沈清瑶送来的西南农桑丰收的奏报，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_002.png
+  image_status: pending
+- id: SC_36_003
+  title: 来到闲云殿。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 来到闲云殿。
+  - speaker: 旁白
+    text: 萧凌正在煮茶，
+  - speaker: 旁白
+    text: 看到我进来，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_003.png
+  image_status: pending
+- id: SC_36_004
+  title: 熟练地给我倒了一...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 熟练地给我倒了一杯：
+  - speaker: 萧凌
+    text: 陛下今日心情不错？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_004.png
+  image_status: pending
+- id: SC_36_005
+  title: 西南丰收，百姓温...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 西南丰收，百姓温饱有望，
+  - speaker: 苏映雪
+    text: 心情自然好。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_005.png
+  image_status: pending
+- id: SC_36_006
+  title: 我把奏报递给他。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我把奏报递给他。
+  - speaker: 旁白
+    text: 他接过奏报，仔细看着，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_006.png
+  image_status: pending
+- id: SC_36_007
+  title: 脸上渐渐露出惊讶...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 脸上渐渐露出惊讶的神色。
+  - speaker: 萧凌
+    text: 新的耕种方法，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_007.png
+  image_status: pending
+- id: SC_36_008
+  title: 竟能让粮食增产三...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 竟能让粮食增产三成？
+  - speaker: 旁白
+    text: 他抬起头，
+  - speaker: 旁白
+    text: 眼里满是不可思议。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_008.png
+  image_status: pending
+- id: SC_36_009
+  title: 当然。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 当然。
+  - speaker: 旁白
+    text: 我喝了一口茶，
+  - speaker: 苏映雪
+    text: 百姓缺的不是勤劳，是方法。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_009.png
+  image_status: pending
+- id: SC_36_010
+  title: 他沉默了很久，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他沉默了很久，
+  - speaker: 旁白
+    text: 忽然开口：
+  - speaker: 萧凌
+    text: 陛下的新政，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_010.png
+  image_status: pending
+- id: SC_36_011
+  title: 确实让百姓过得更...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 确实让百姓过得更好了。
+  - speaker: 旁白
+    text: 这是他第一次正面肯定我的改革。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_011.png
+  image_status: pending
+- id: SC_36_012
+  title: 我看着他：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我看着他：
+  - speaker: 苏映雪
+    text: 你现在明白，
+  - speaker: 苏映雪
+    text: 我为什么要夺你的江山了？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_012.png
+  image_status: pending
+- id: SC_36_013
+  title: 他苦笑一声：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他苦笑一声：
+  - speaker: 萧凌
+    text: 明白，
+  - speaker: 萧凌
+    text: 朕以前，只想着开疆拓土，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_013.png
+  image_status: pending
+- id: SC_36_014
+  title: 却忽略了百姓的根...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 却忽略了百姓的根本。
+  - speaker: 萧凌
+    text: 朕不如你。
+  - speaker: 旁白
+    text: 我没有接话，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_014.png
+  image_status: pending
+- id: SC_36_015
+  title: 只是拿起一块桂花...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 只是拿起一块桂花糕，
+  - speaker: 旁白
+    text: 慢慢吃着。
+  - speaker: 旁白
+    text: 阳光透过窗户，洒在他身上，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_015.png
+  image_status: pending
+- id: SC_36_016
+  title: 竟让他多了几分温...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 粮食增产、第一次肯定
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 竟让他多了几分温和。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，粮食增产、第一次肯定氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_36_闲云殿茶话/shot_016.png
+  image_status: pending

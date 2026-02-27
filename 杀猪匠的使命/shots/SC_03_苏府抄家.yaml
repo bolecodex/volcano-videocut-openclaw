@@ -1,0 +1,216 @@
+# shots/SC_03_苏府抄家.yaml
+# 闪回场景 - 苏府被抄
+
+scene_id: SC_03
+scene_name: "苏府抄家"
+scene_ref: "scenes/SC_03_苏府抄家.md"
+scene_type: "闪回(flashback)"
+scene_description: "京城多时空"
+scene_mood: "悲凉绝望寒冷"
+scene_lighting: "冷灰蓝色调大雪暗角"
+visual_style: "闪回滤镜，冷色调，暗角，颗粒感"
+
+shots:
+  - id: SC_03_001
+    title: "苏府被抄"
+    shot_type: "全景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "画外"
+    composition:
+      angle: "远景"
+      focus: "苏府大门"
+    mood: "悲凉萧瑟"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "苏家被抄那日，大雪封了京城。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，颗粒感，京城官宅苏府大门前，大雪纷飞，冷灰蓝色调，一队官差冲入苏府，远景镜头，悲凉萧瑟，高清细节
+    image_path: "SC_03_苏府抄家/shot_001.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e46/51-jFU5by1YIfNmbQOm9o.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_002
+    title: "构陷忠良"
+    shot_type: "中景"
+    characters: []
+    composition:
+      angle: "平视"
+      focus: "奏折"
+    mood: "权力冷酷"
+    lighting: "冷色调"
+    lines:
+      - speaker: "旁白"
+        text: "我爹，刑部侍郎苏蔺，一本弹劾丞相魏忠贤贪墨河工款的折子递上去，龙椅上那位连看都没看，只批了四个字：'构陷忠良'。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，大殿内，冷色调，一本奏折被抛落地面，上面隐约可见红色朱批"构陷忠良"四字，中景镜头，权力冷酷，高清细节
+    image_path: "SC_03_苏府抄家/shot_002.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368807609_9d49dea8-e39d-4666-8ab5-e203394a4c3e.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_003
+    title: "父入诏狱"
+    shot_type: "中景"
+    characters: []
+    composition:
+      angle: "低角度"
+      focus: "铁门"
+    mood: "绝望阴暗"
+    lighting: "幽暗微光"
+    lines:
+      - speaker: "旁白"
+        text: "人，就直接下了诏狱。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，诏狱阴暗角落，冷调幽暗，厚重铁门半开，里面透出微弱火光，暗示性画面，低角度镜头，绝望阴暗，高清细节
+    image_path: "SC_03_苏府抄家/shot_003.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e47/Eb60YiSUmskEkbhi0aLG9.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_004
+    title: "母亲自缢"
+    shot_type: "中景"
+    characters: []
+    composition:
+      angle: "平视"
+      focus: "白绫"
+    mood: "悲痛绝望"
+    lighting: "冷调月光"
+    lines:
+      - speaker: "旁白"
+        text: "我娘听闻我爹在狱中被活活折磨至死，当晚便悬了梁，一根白绫，随我爹去了。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，闺房内，冷调月光透过窗户，一根白绫从房梁垂下在风中轻轻摇曳，暗示性画面，中景镜头，悲痛绝望，高清细节
+    image_path: "SC_03_苏府抄家/shot_004.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368753786_0dd88982-a193-46a7-983d-ddadd3a7723b.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_005
+    title: "拖出闺房"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "被拖拽"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "凄惨"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "我被官差从闺房里拖出来，只一身素白单衣，被扔进了人市。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，苏府门前，大雪纷飞，苏晚(@szj_suwan)一身素白单衣被官差拖拽，冷灰蓝色调，中景镜头，高清细节
+    image_path: "SC_03_苏府抄家/shot_005.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e64/P7S3hNTiLWEj7It4sTbUg.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_006
+    title: "雪刀刮面"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "瑟缩"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "寒冷凄苦"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "那天真冷啊，雪片子跟刀子似的，刮在脸上生疼。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪纷飞，苏晚(@szj_suwan)单薄白衣跪在雪中，双臂环抱瑟瑟发抖，雪花刮在脸上，特写镜头，高清细节
+    image_path: "SC_03_苏府抄家/shot_006.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e48/k4tqs54sUfw7g1JwWYX-0.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_007
+    title: "公子围观"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "前景跪地"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "屈辱"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "那些往日在我家门前争相递帖子的公子哥儿们，此刻都挤在人群外围，用一种轻佻的目光打量我。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，背景虚化处几个锦衣公子围观窃笑，前景苏晚(@szj_suwan)跪地，中景镜头，屈辱，高清细节
+    image_path: "SC_03_苏府抄家/shot_007.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368768127_1084dcf7-a2f5-48f8-8039-66d451a99ef0.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_008
+    title: "等待窑子"
+    shot_type: "中景"
+    characters: []
+    composition:
+      angle: "平视"
+      focus: "围观人群"
+    mood: "冷酷人性"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "旁白"
+        text: "他们等着看我被哪个下三滥的窑子买走，"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市围观人群特写，有人窃窃私语，有人嗤笑，冷灰蓝色调，中景镜头，高清细节
+    image_path: "SC_03_苏府抄家/shot_008.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368761664_bc097312-8af5-4226-8990-19cffd077ce0.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_009
+    title: "风流谈资"
+    shot_type: "特写"
+    characters:
+      - ref: "@szj_suwan"
+        emotion: "倔强"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "倔强不屈"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "好给他们日后的酒桌上添一桩风流谈资。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，苏晚(@szj_suwan)特写，面容苍白却目光倔强不屈，大雪打在脸上，特写镜头，高清细节
+    image_path: "SC_03_苏府抄家/shot_009.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e48/SrD8pSuAtkjakb7jmKOnx.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_03_010
+    title: "黑影遮挡"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "仰望"
+      - ref: "@szj_chentu"
+        action: "背影剪影遮挡"
+    composition:
+      angle: "低角度仰视"
+      focus: "陈屠剪影"
+    mood: "一线生机"
+    lighting: "逆光剪影"
+    lines:
+      - speaker: "旁白"
+        text: "就在我冻得快要失去意识的时候，一个高大的影子笼罩下来，挡住了所有不怀好意的视线。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，低角度仰视：一个魁梧的黑色剪影站在苏晚面前，陈屠(@szj_chentu)的背影遮挡住风雪，苏晚(@szj_suwan)抬头仰望，逆光剪影，一线生机，高清细节
+    image_path: "SC_03_苏府抄家/shot_010.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368831206_ecfaea35-7183-438c-af97-bfd933327ea3.png"
+    generated_at: "2026-02-06T17:10:00"

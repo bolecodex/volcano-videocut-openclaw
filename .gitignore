@@ -1,0 +1,13 @@
+.DS_Store
+.cursor/
+
+*.mp3
+*.mp4
+*.wav
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.mov
+*.webm

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全班穿成NPC，我把宫斗玩成总动员 · 角色资产</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #222222;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-muted: #555555;
+            --accent: #c9a961;
+            --accent-dim: #8a7444;
+            --border: #2a2a2a;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .header {
+            padding: 80px 40px 60px;
+            text-align: center;
+            border-bottom: 1px solid var(--border);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+        }
+        .header-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+        }
+        .header-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            margin-bottom: 12px;
+        }
+        .header-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+            letter-spacing: 0.1em;
+        }
+        .header-meta {
+            margin-top: 32px;
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+        }
+        .header-stat {
+            text-align: center;
+        }
+        .header-stat-value {
+            font-size: 2rem;
+            font-weight: 200;
+            color: var(--accent);
+        }
+        .header-stat-label {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-top: 4px;
+        }
+
+        .main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+        .section:last-child { margin-bottom: 0; }
+        .section-header {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+        }
+        .section-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: var(--bg-card);
+            border-radius: 4px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .card-image {
+            aspect-ratio: 9/16;
+            overflow: hidden;
+            background: var(--bg-secondary);
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+        .card-info {
+            padding: 20px;
+        }
+        .card-name {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 6px;
+            letter-spacing: 0.08em;
+        }
+        .card-id {
+            font-size: 0.7rem;
+            color: var(--accent-dim);
+            font-family: 'SF Mono', 'Monaco', monospace;
+            margin-bottom: 8px;
+        }
+        .card-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+        }
+        .lightbox-image {
+            max-height: 85vh;
+            max-width: 50vw;
+            object-fit: contain;
+            border-radius: 4px;
+        }
+        .lightbox-info {
+            width: 320px;
+            flex-shrink: 0;
+        }
+        .lightbox-close {
+            position: fixed;
+            top: 30px;
+            right: 40px;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1001;
+        }
+        .lightbox-close:hover { color: var(--text-primary); }
+        .lightbox-name {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 8px;
+            letter-spacing: 0.1em;
+        }
+        .lightbox-id {
+            font-size: 0.8rem;
+            color: var(--accent);
+            font-family: 'SF Mono', 'Monaco', monospace;
+            margin-bottom: 24px;
+        }
+        .lightbox-section {
+            margin-bottom: 20px;
+        }
+        .lightbox-section-title {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.15em;
+            margin-bottom: 8px;
+        }
+        .lightbox-section-content {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        .lightbox-features {
+            list-style: none;
+        }
+        .lightbox-features li {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            padding: 6px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .lightbox-features li:last-child { border-bottom: none; }
+
+        .footer {
+            padding: 40px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+        .footer-text {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 0.1em;
+        }
+
+        @media (max-width: 1024px) {
+            .lightbox-content { flex-direction: column; align-items: center; }
+            .lightbox-info { width: 100%; max-width: 500px; margin-top: 20px; }
+        }
+        @media (max-width: 768px) {
+            .header { padding: 60px 20px 40px; }
+            .header-title { font-size: 1.75rem; }
+            .header-meta { gap: 24px; }
+            .main { padding: 40px 20px; }
+            .grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .card-info { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-badge">CHARACTER ASSETS</div>
+        <h1 class="header-title">全班穿成NPC，我把宫斗玩成总动员</h1>
+        <p class="header-subtitle">角色资产展示</p>
+        <div class="header-meta">
+            <div class="header-stat">
+                <div class="header-stat-value">19</div>
+                <div class="header-stat-label">角色总数</div>
+            </div>
+            <div class="header-stat">
+                <div class="header-stat-value">18</div>
+                <div class="header-stat-label">主要角色</div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="section">
+    <div class="section-header">
+        <h2 class="section-title">主角</h2>
+        <span class="section-count">1位</span>
+    </div>
+    <div class="grid">
+                <div class="card" onclick="openLightbox('npc_suyingxue')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83bf/X9Qii1dpMeb6FBSujEgAH_7b85bf56711149c399bfaa64e7fc5d5a.png" alt="苏映雪" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">苏映雪</h3>
+                <p class="card-id">@npc_suyingxue</p>
+                <p class="card-desc">青年女性，乌发挽髻，杏眼清亮，肤若凝脂，身形匀称，先粗布才人装后凤袍龙袍，气质坚韧聪慧、反PUA、有格局</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">重要配角</h2>
+        <span class="section-count">17位</span>
+    </div>
+    <div class="grid">
+                <div class="card" onclick="openLightbox('npc_xiaoling')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c0/S49YGRcNu37HW0xu6vaaC_5c61dbd2107946c6af8797bb76f91830.png" alt="萧凌" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">萧凌</h3>
+                <p class="card-id">@npc_xiaoling</p>
+                <p class="card-desc">青年男性，眉眼俊朗，曾龙袍加身、后素色长衫，身形挺拔，气质先帝王多疑后温和认命，射箭时英气逼人</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_linyanrong')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c0/zNucrPF_fC2wipYhR6sKR_7ae42fccd4ac4b04a6c8dd8bd2377bbd.png" alt="林燕容" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">林燕容</h3>
+                <p class="card-id">@npc_linyanrong</p>
+                <p class="card-desc">青年女性，楚楚可怜白莲花长相，帕子掩口，珍贵人/妃嫔装束，气质表面柔弱、心机深</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_xianfei')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c0/BHpgVbuBVey9jJkPxqgBF_07cf43527d6d44e28edba8bd55684785.png" alt="贤妃" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">贤妃</h3>
+                <p class="card-id">@npc_xianfei</p>
+                <p class="card-desc">青年女性，兵部尚书之女，红色云锦宫装，性格张扬跋扈，爱出风头，志在必得笑容</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_shufei')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c0/oTRWg320cBjt9P3zDv8zy_65d935e1a6cd40b091294718f3324c99.png" alt="淑妃" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">淑妃</h3>
+                <p class="card-id">@npc_shufei</p>
+                <p class="card-desc">青年女性，看主角不顺眼，声音嗲，妃嫔装束，争宠时娇笑</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_taihou')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c1/_rsXau7sODcCAncC5E_8Y_10021f2a2b2045708aa7c4359b671e8e.png" alt="太后" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">太后</h3>
+                <p class="card-id">@npc_taihou</p>
+                <p class="card-desc">中年女性，萧凌之母，慈宁宫主位，凤冠常服，先敌意后温和，眼神锐利后慈爱</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_wanghao')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c2/4NLSfqcz8GSjmwppPJ3yc_1748da9ae8be4cca86bdb03d6b69abc2.png" alt="王浩" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">王浩</h3>
+                <p class="card-id">@npc_wanghao</p>
+                <p class="card-desc">青年男性，地理课代表，八品占星官/刘天师装扮，小老头式连滚带爬，沉迷星座塔罗紫微，神神叨叨</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_lidazhuang')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c2/rkpb4tLccWqhL9LhsTqWv_5fe56bd977ab40f797f5e60ab0f1db94.png" alt="李大壮" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">李大壮</h3>
+                <p class="card-id">@npc_lidazhuang</p>
+                <p class="card-desc">少年男性，捣蛋鬼双胞胎之一，小太监服饰，拼命拉占星官，手脚麻利</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_lierzhuang')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c3/tt96otEHhwt_VC6d-4F_s_925136233fcd4e5984fb873786b623d8.png" alt="李二壮" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">李二壮</h3>
+                <p class="card-id">@npc_lierzhuang</p>
+                <p class="card-desc">少年男性，捣蛋鬼双胞胎之二，小太监服饰，趁乱踹回凳子救老师，手脚麻利</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_zhangjing')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c3/LRKnrFtp5k5TZcHztwxhF_6ea97caa63444441b62ea9eeb345628f.png" alt="张静" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">张静</h3>
+                <p class="card-id">@npc_zhangjing</p>
+                <p class="card-desc">青年女性，学习委员，宫女小桃装扮，粗布宫女服，急得快哭、八卦，后教育部长</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_zhoupeng')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c4/QLSyLvpwO8t1z0ol1mGxC_58f44e05f0574ac98dda9cd54a15579f.png" alt="周鹏" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">周鹏</h3>
+                <p class="card-id">@npc_zhoupeng</p>
+                <p class="card-desc">青年男性，体育生，送饭小太监后御林军、大统领、兵马大元帅，人高马大，谄媚笑脸掩护，实则调皮护师</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_chenmo')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c4/bhIihKTFgjhvjRensP8Vf_1854b5f4c410497da97a5648b7a02068.png" alt="陈默" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">陈默</h3>
+                <p class="card-id">@npc_chenmo</p>
+                <p class="card-desc">青年男性，班长，吏部主事→大理寺少卿→吏部尚书→内阁首辅，推眼镜冷静分析，三步走策略</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_liupangzi')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c5/F_ciF68rYHJ2ct1B-DAh3_f2660428d3264cfbb7413a6ab1028f4b.png" alt="刘胖子" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">刘胖子</h3>
+                <p class="card-id">@npc_liupangzi</p>
+                <p class="card-desc">青年男性，生活委员，御膳房掌勺→皇商/财政部长，体型偏胖，绫罗绸缎后穿，跑得气喘吁吁</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_zhaolei')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c5/Yvm1kGZ8dCXZrHtML-Ond_6e8e7889ad2e4078b3c27243686fc076.png" alt="赵磊" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">赵磊</h3>
+                <p class="card-id">@npc_zhaolei</p>
+                <p class="card-desc">青年男性，纪律委员，敬事房翻牌子小太监，手抖递绿头牌，表情比哭还难看</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_sunmiao')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c5/rl_dS14BvVxkC3DCJLzFF_15502e57afe049108cfa30fb8d27a281.png" alt="孙淼" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">孙淼</h3>
+                <p class="card-id">@npc_sunmiao</p>
+                <p class="card-desc">青年男性，太医院学徒，弄上吐下泻不伤根本的药粉，自己人太医装模作样把脉</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_xuanchuan')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c6/Gka44aPAzqBtOdhtTRGYk_6c4951e1dd3d406f9b041776b0af04d3.png" alt="宣传委员" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">宣传委员</h3>
+                <p class="card-id">@npc_xuanchuan</p>
+                <p class="card-desc">青年，创办《后宫周报》《大启日报》，写反内卷倡议书、静嫔理财专栏，说书造势，舆论喉舌</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_shenqingyao')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c7/qRGluuGlfs34-qNzoZmMQ_b8d235e685c24351b3b0e0e6c5d132ba.png" alt="沈清瑶" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">沈清瑶</h3>
+                <p class="card-id">@npc_shenqingyao</p>
+                <p class="card-desc">青年女性，寒门女子，女子恩科状元，红袍游街，西南农桑使→农桑侯，英姿飒爽，答题思路清晰</p>
+            </div>
+        </div>
+        <div class="card" onclick="openLightbox('npc_anwang')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c7/N-2flc37QR2oo8adc0qdw_aa2f1ffab6b64776b32dec87321a1798.png" alt="安王" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">安王</h3>
+                <p class="card-id">@npc_anwang</p>
+                <p class="card-desc">青年男性，萧凌亲弟，有不臣之心，被用作“叛变”名目一网打尽</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">群演角色</h2>
+        <span class="section-count">1位</span>
+    </div>
+    <div class="grid">
+                <div class="card" onclick="openLightbox('npc_tiyuduan')">
+            <div class="card-image">
+                <img src="https://v3b.fal.media/files/b/0a8d83c8/m-Pe7IURwjW8IExb9qadr_a23525a7f1d04af0bbc8b0f8a60bff0d.png" alt="体育队四大金刚" loading="lazy">
+            </div>
+            <div class="card-info">
+                <h3 class="card-name">体育队四大金刚</h3>
+                <p class="card-id">@npc_tiyuduan</p>
+                <p class="card-desc">四名青年男性，抬被子卷送侍寝，絮絮叨叨跟送女儿上刑场似的，敬事房小太监装扮</p>
+            </div>
+        </div>
+    </div>
+</section>
+    </main>
+
+    <footer class="footer">
+        <p class="footer-text">全班穿成NPC，我把宫斗玩成总动员 · 角色资产 · 2026-02-07</p>
+    </footer>
+
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">关闭</span>
+        <div class="lightbox-content">
+            <img class="lightbox-image" id="lightbox-img" src="" alt="">
+            <div class="lightbox-info" id="lightbox-info"></div>
+        </div>
+    </div>
+
+    <script>
+        const characterData = {
+    "npc_suyingxue": {
+        "name": "苏映雪",
+        "id": "@npc_suyingxue",
+        "type": "主角",
+        "image": "https://v3b.fal.media/files/b/0a8d83bf/X9Qii1dpMeb6FBSujEgAH_7b85bf56711149c399bfaa64e7fc5d5a.png",
+        "description": "青年女性，乌发挽髻，杏眼清亮，肤若凝脂，身形匀称，先粗布才人装后凤袍龙袍，气质坚韧聪慧、反PUA、有格局",
+        "features": [
+            "乌发挽髻，发丝整齐",
+            "杏眼清亮，眼神坚定",
+            "肤若凝脂，面容清秀",
+            "气质坚韧聪慧、不卑不亢",
+            "可穿才人装/贵妃装/凤袍/龙袍，主色随身份变化"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，乌发挽髻，杏眼清亮，肤若凝脂，身形匀称，古风襦裙简约大方，气质坚韧聪慧，正面站立，面对镜头，全身像，双手自然下垂，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_xiaoling": {
+        "name": "萧凌",
+        "id": "@npc_xiaoling",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c0/S49YGRcNu37HW0xu6vaaC_5c61dbd2107946c6af8797bb76f91830.png",
+        "description": "青年男性，眉眼俊朗，曾龙袍加身、后素色长衫，身形挺拔，气质先帝王多疑后温和认命，射箭时英气逼人",
+        "features": [
+            "眉眼俊朗，长相出众",
+            "身形挺拔，肩宽腰窄",
+            "先龙袍后素衣，气质从凌厉到温和",
+            "射箭时动作行云流水、英气逼人"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，眉眼俊朗，黑发束冠，身形挺拔，古风龙袍金边装饰，气质帝王英气，正面站立，面对镜头，全身像，双手自然下垂，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_linyanrong": {
+        "name": "林燕容",
+        "id": "@npc_linyanrong",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c0/zNucrPF_fC2wipYhR6sKR_7ae42fccd4ac4b04a6c8dd8bd2377bbd.png",
+        "description": "青年女性，楚楚可怜白莲花长相，帕子掩口，珍贵人/妃嫔装束，气质表面柔弱、心机深",
+        "features": [
+            "楚楚可怜、白莲花长相",
+            "常用帕子掩口鼻",
+            "珍贵人/妃嫔华服",
+            "眼神柔弱中带算计"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，柳眉杏眼楚楚可怜，古风妃嫔华服，手持帕子，气质表面柔弱，正面站立，面对镜头，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_xianfei": {
+        "name": "贤妃",
+        "id": "@npc_xianfei",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c0/BHpgVbuBVey9jJkPxqgBF_07cf43527d6d44e28edba8bd55684785.png",
+        "description": "青年女性，兵部尚书之女，红色云锦宫装，性格张扬跋扈，爱出风头，志在必得笑容",
+        "features": [
+            "红色云锦宫装，华丽张扬",
+            "张扬跋扈、爱出风头",
+            "志在必得式笑容"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风红色云锦宫装华丽，气质张扬跋扈，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_shufei": {
+        "name": "淑妃",
+        "id": "@npc_shufei",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c0/oTRWg320cBjt9P3zDv8zy_65d935e1a6cd40b091294718f3324c99.png",
+        "description": "青年女性，看主角不顺眼，声音嗲，妃嫔装束，争宠时娇笑",
+        "features": [
+            "妃嫔华服",
+            "声音嗲、娇笑",
+            "与贤妃、林燕容同场争宠"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风妃嫔装束淡紫色，气质娇媚，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_taihou": {
+        "name": "太后",
+        "id": "@npc_taihou",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c1/_rsXau7sODcCAncC5E_8Y_10021f2a2b2045708aa7c4359b671e8e.png",
+        "description": "中年女性，萧凌之母，慈宁宫主位，凤冠常服，先敌意后温和，眼神锐利后慈爱",
+        "features": [
+            "太后凤冠常服",
+            "眼神先锐利后慈爱",
+            "慈宁宫主位"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，中年亚洲女性，太后凤冠常服，气质威严慈爱，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_wanghao": {
+        "name": "王浩",
+        "id": "@npc_wanghao",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c2/4NLSfqcz8GSjmwppPJ3yc_1748da9ae8be4cca86bdb03d6b69abc2.png",
+        "description": "青年男性，地理课代表，八品占星官/刘天师装扮，小老头式连滚带爬，沉迷星座塔罗紫微，神神叨叨",
+        "features": [
+            "八品占星官服饰，小老头形象",
+            "神神叨叨、掐指一算",
+            "涕泪横流、演技浮夸",
+            "后任钦天监监正"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，占星官服饰，瘦小精干，手持罗盘，气质神叨掐指一算，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_lidazhuang": {
+        "name": "李大壮",
+        "id": "@npc_lidazhuang",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c2/rkpb4tLccWqhL9LhsTqWv_5fe56bd977ab40f797f5e60ab0f1db94.png",
+        "description": "少年男性，捣蛋鬼双胞胎之一，小太监服饰，拼命拉占星官，手脚麻利",
+        "features": [
+            "小太监服饰",
+            "双胞胎之一，与李二壮同框",
+            "手脚麻利、捣蛋鬼气质"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，少年亚洲男性，小太监服饰，圆脸机灵，气质机灵捣蛋，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_lierzhuang": {
+        "name": "李二壮",
+        "id": "@npc_lierzhuang",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c3/tt96otEHhwt_VC6d-4F_s_925136233fcd4e5984fb873786b623d8.png",
+        "description": "少年男性，捣蛋鬼双胞胎之二，小太监服饰，趁乱踹回凳子救老师，手脚麻利",
+        "features": [
+            "小太监服饰",
+            "双胞胎之二，与李大壮同框",
+            "手脚麻利、机灵"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，少年亚洲男性，小太监服饰，圆脸机灵，气质机灵捏蛋，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_zhangjing": {
+        "name": "张静",
+        "id": "@npc_zhangjing",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c3/LRKnrFtp5k5TZcHztwxhF_6ea97caa63444441b62ea9eeb345628f.png",
+        "description": "青年女性，学习委员，宫女小桃装扮，粗布宫女服，急得快哭、八卦，后教育部长",
+        "features": [
+            "宫女服饰，朴素小桃形象",
+            "学习委员气质，认真又八卦",
+            "常端水盆、汇报情况"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，宫女粗布服饰，朴素小桃形象，气质认真略带八卦，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_zhoupeng": {
+        "name": "周鹏",
+        "id": "@npc_zhoupeng",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c4/QLSyLvpwO8t1z0ol1mGxC_58f44e05f0574ac98dda9cd54a15579f.png",
+        "description": "青年男性，体育生，送饭小太监后御林军、大统领、兵马大元帅，人高马大，谄媚笑脸掩护，实则调皮护师",
+        "features": [
+            "人高马大，体育生体型",
+            "先太监服后盔甲，带血盔甲踹门",
+            "谄媚笑/兴奋喊陛下牛逼"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，人高马大魁梧健硕，古风御林军盔甲，气质调皮阳刚，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_chenmo": {
+        "name": "陈默",
+        "id": "@npc_chenmo",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c4/bhIihKTFgjhvjRensP8Vf_1854b5f4c410497da97a5648b7a02068.png",
+        "description": "青年男性，班长，吏部主事→大理寺少卿→吏部尚书→内阁首辅，推眼镜冷静分析，三步走策略",
+        "features": [
+            "推眼镜动作（戴不存在的眼镜）",
+            "冷静、条理清晰",
+            "官服从七品到首辅"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风官服，推眼镜动作，气质沉稳冷静，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_liupangzi": {
+        "name": "刘胖子",
+        "id": "@npc_liupangzi",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c5/F_ciF68rYHJ2ct1B-DAh3_f2660428d3264cfbb7413a6ab1028f4b.png",
+        "description": "青年男性，生活委员，御膳房掌勺→皇商/财政部长，体型偏胖，绫罗绸缎后穿，跑得气喘吁吁",
+        "features": [
+            "体型偏胖",
+            "先御膳房后绫罗绸缎",
+            "管粮草、物价、皇家产业"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，体型偏胖，古风商贾绑罗绸缎服饰，气质精明和气，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_zhaolei": {
+        "name": "赵磊",
+        "id": "@npc_zhaolei",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c5/Yvm1kGZ8dCXZrHtML-Ond_6e8e7889ad2e4078b3c27243686fc076.png",
+        "description": "青年男性，纪律委员，敬事房翻牌子小太监，手抖递绿头牌，表情比哭还难看",
+        "features": [
+            "敬事房太监服饰",
+            "手抖、表情紧张",
+            "端盘子翻牌"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，敬事房太监服饰，气质紧张谨慎，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_sunmiao": {
+        "name": "孙淼",
+        "id": "@npc_sunmiao",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c5/rl_dS14BvVxkC3DCJLzFF_15502e57afe049108cfa30fb8d27a281.png",
+        "description": "青年男性，太医院学徒，弄上吐下泻不伤根本的药粉，自己人太医装模作样把脉",
+        "features": [
+            "太医院学徒/太医服饰",
+            "配合主角演戏把脉"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，太医院服饰，气质斯文，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_xuanchuan": {
+        "name": "宣传委员",
+        "id": "@npc_xuanchuan",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c6/Gka44aPAzqBtOdhtTRGYk_6c4951e1dd3d406f9b041776b0af04d3.png",
+        "description": "青年，创办《后宫周报》《大启日报》，写反内卷倡议书、静嫔理财专栏，说书造势，舆论喉舌",
+        "features": [
+            "宫中文职/报人形象",
+            "搞舆论、写稿、办报"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风文士内官服饰，手持书笔，气质机灵文气，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_shenqingyao": {
+        "name": "沈清瑶",
+        "id": "@npc_shenqingyao",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c7/qRGluuGlfs34-qNzoZmMQ_b8d235e685c24351b3b0e0e6c5d132ba.png",
+        "description": "青年女性，寒门女子，女子恩科状元，红袍游街，西南农桑使→农桑侯，英姿飒爽，答题思路清晰",
+        "features": [
+            "素衣考生→红袍状元→官服",
+            "英姿飒爽、眼神坚定",
+            "农桑、水利见解独到"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风红袍官服，英姿飒爽，眼神坚定，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_anwang": {
+        "name": "安王",
+        "id": "@npc_anwang",
+        "type": "配角",
+        "image": "https://v3b.fal.media/files/b/0a8d83c7/N-2flc37QR2oo8adc0qdw_aa2f1ffab6b64776b32dec87321a1798.png",
+        "description": "青年男性，萧凌亲弟，有不臣之心，被用作“叛变”名目一网打尽",
+        "features": [
+            "亲王/皇室装扮",
+            "与萧凌眉眼或有相似"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风亲王服饰，气质阴鸷有野心，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    },
+    "npc_tiyuduan": {
+        "name": "体育队四大金刚",
+        "id": "@npc_tiyuduan",
+        "type": "群演",
+        "image": "https://v3b.fal.media/files/b/0a8d83c8/m-Pe7IURwjW8IExb9qadr_a23525a7f1d04af0bbc8b0f8a60bff0d.png",
+        "description": "四名青年男性，抬被子卷送侍寝，絮絮叨叨跟送女儿上刑场似的，敬事房小太监装扮",
+        "features": [
+            "四人统一太监/力士装扮",
+            "抬被子、絮叨、护师心切"
+        ],
+        "prompt": "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风太监劲装，体型健壮，气质憨直护主，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    }
+};
+        
+        function openLightbox(id) {
+            const char = characterData[id];
+            if (!char) return;
+            
+            document.getElementById('lightbox-img').src = char.image;
+            document.getElementById('lightbox-info').innerHTML = `
+                <h2 class="lightbox-name">${char.name}</h2>
+                <p class="lightbox-id">${char.id}</p>
+                <div class="lightbox-section">
+                    <h3 class="lightbox-section-title">角色类型</h3>
+                    <p class="lightbox-section-content">${char.type}</p>
+                </div>
+                <div class="lightbox-section">
+                    <h3 class="lightbox-section-title">形象描述</h3>
+                    <p class="lightbox-section-content">${char.description}</p>
+                </div>
+                <div class="lightbox-section">
+                    <h3 class="lightbox-section-title">不可变特征</h3>
+                    <ul class="lightbox-features">
+                        ${char.features.map(f => `<li>${f}</li>`).join('')}
+                    </ul>
+                </div>
+            `;
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+    </script>
+</body>
+</html>

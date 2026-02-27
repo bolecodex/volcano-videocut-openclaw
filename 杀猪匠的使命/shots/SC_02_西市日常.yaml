@@ -1,0 +1,277 @@
+# shots/SC_02_西市日常.yaml
+# 现实场景 - 市井生活
+
+scene_id: SC_02
+scene_name: "西市日常"
+scene_ref: "scenes/SC_02_西市日常.md"
+scene_type: "现实(reality)"
+scene_description: "猪肉铺白天"
+scene_mood: "市井苦涩隐忍"
+scene_lighting: "日光侧照"
+
+shots:
+  - id: SC_02_001
+    title: "檀香已逝"
+    shot_type: "特写"
+    characters:
+      - ref: "@szj_suwan"
+        action: "低头工作"
+    composition:
+      angle: "平视"
+      focus: "苏晚双手"
+    mood: "苦涩适应"
+    lighting: "日光侧照"
+    lines:
+      - speaker: "旁白"
+        text: "嫁给陈屠的第三个月，我身上从苏府带出来的最后一缕檀香，终于被那猪下水的味道彻底覆盖了。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，特写：苏晚(@szj_suwan)粗糙的双手正处理猪蹄，袖口挽起，手指泛红，苦涩适应，高清细节
+    image_path: "SC_02_西市日常/shot_001.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368723396_9b1301de-f865-4315-b19d-e2bd08e40814.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_002
+    title: "街坊窥视"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "前景低头工作"
+      - ref: "@szj_jiefang"
+        action: "背景窃窃私语"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "市井窥视"
+    lighting: "日光侧照"
+    lines:
+      - speaker: "旁白"
+        text: "西市的街坊们看我的眼神，惋惜里掺着五分看好戏的幸灾乐祸，总有人窃窃私语，"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，苏晚(@szj_suwan)低头工作（前景），背景虚化处几个市井妇女(@szj_jiefang)窃窃私语指指点点，中景镜头，三分构图，高清细节
+    image_path: "SC_02_西市日常/shot_002.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368674491_6f3680e1-97ff-4efa-b192-9d365fa17582.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_003
+    title: "闲言碎语"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_jiefang"
+        action: "议论"
+    composition:
+      angle: "平视"
+      focus: "街坊"
+    mood: "闲言碎语"
+    lighting: "日光"
+    lines:
+      - speaker: "街坊甲"
+        text: "苏家的大小姐，金枝玉叶，怎么最后配了个杀猪的？"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街边，日光，一个市井妇女(@szj_jiefang)凑近另一人耳边，一脸惊讶指向远处猪肉铺，中景镜头，高清细节
+    image_path: "SC_02_西市日常/shot_003.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368716646_114d8b34-3168-49e2-9f8e-716ba41f5649.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_004
+    title: "街坊回应"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_jiefang"
+        action: "低声回应"
+    composition:
+      angle: "平视"
+      focus: "街坊"
+    mood: "世故同情"
+    lighting: "日光"
+    lines:
+      - speaker: "街坊乙"
+        text: "嘘——家道中落，配个屠户，好歹是条活路，总比卖进窑子强。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市街边，日光，另一个市井妇女(@szj_jiefang)做出嘘声手势，世故同情表情，低声回应，中景镜头，高清细节
+    image_path: "SC_02_西市日常/shot_004.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368768761_b6ca7d23-26ef-4af5-93d5-ac98728f4cf8.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_005
+    title: "苏晚隐忍"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "低头舀水"
+        emotion: "隐忍"
+    composition:
+      angle: "侧面"
+      focus: "苏晚"
+    mood: "隐忍"
+    lighting: "日光侧照"
+    lines:
+      - speaker: "旁白"
+        text: "我只当听不见，低头，舀起一瓢滚烫的水，浇在盆子里的猪蹄上。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，苏晚(@szj_suwan)侧面，神情平静不动声色，低头舀起滚烫的水浇在猪蹄上，蒸汽升腾，中景侧面镜头，高清细节
+    image_path: "SC_02_西市日常/shot_005.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e42/gbaw2Lm6ta-Fn0paw9zu7.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_006
+    title: "案板闷响"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "用力剁骨"
+    composition:
+      angle: "低角度仰视"
+      focus: "陈屠"
+    mood: "震撼"
+    lighting: "日光侧照"
+    lines:
+      - speaker: "旁白"
+        text: "案板那边，'砰'一声闷响，震得挂在铁钩上的半扇猪肉都晃了晃。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，动态模糊效果，西市猪肉铺内，案板前，挂肉铁钩，日光侧照，陈屠(@szj_chentu)身材魁梧，双手握斩骨刀用力劈下，铁钩上猪肉晃动，低角度仰视镜头，高清细节
+    image_path: "SC_02_西市日常/shot_006.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5ec0/uHtyx7xIbafR3wObuhxZ5.png"
+    generated_at: "2026-02-06T17:20:00"
+
+  - id: SC_02_007
+    title: "沉默护妻"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "剁骨"
+        emotion: "沉默护妻"
+    composition:
+      angle: "平视"
+      focus: "陈屠"
+    mood: "沉默关怀"
+    lighting: "日光侧照"
+    lines:
+      - speaker: "旁白"
+        text: "是我的夫君，陈屠，"
+      - speaker: "旁白"
+        text: "每当那些闲言碎语飘进来，他剁骨头的声音就格外响。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光侧照，陈屠(@szj_chentu)沉默地在案板前剁骨，围着沾血围裙，双手有力，神情平静却透着保护意味，中景镜头，高清细节
+    image_path: "SC_02_西市日常/shot_007.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5ec0/3-w32KqPDQSVDxh3lMscK.png"
+    generated_at: "2026-02-06T17:20:00"
+
+  - id: SC_02_008
+    title: "买烧饼"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "递烧饼"
+      - ref: "@szj_suwan"
+        action: "微愣接过"
+    composition:
+      angle: "平视"
+      focus: "双手交接"
+    mood: "温情"
+    lighting: "日光暖调"
+    lines:
+      - speaker: "旁白"
+        text: "剁完，他会一声不吭地走到隔壁的烧饼铺，丢下两文钱，买一个刚出炉的芝麻烧饼回来，塞我手里。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光暖调，陈屠(@szj_chentu)粗糙的大手将芝麻烧饼塞进苏晚(@szj_suwan)手里，苏晚微愣抬头，中景镜头，温情，高清细节
+    image_path: "SC_02_西市日常/shot_008.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368750569_ed01c327-3f95-492a-ae51-2c6d23f7fe1d.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_009
+    title: "一字千金"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "转身背影"
+    composition:
+      angle: "平视"
+      focus: "陈屠背影"
+    mood: "沉默关怀"
+    lighting: "日光"
+    lines:
+      - speaker: "陈屠"
+        text: "吃。"
+      - speaker: "旁白"
+        text: "他只说这一个字，转身又去切肉去了。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，西市猪肉铺内，日光，陈屠(@szj_chentu)转身背对，只留魁梧的背影，回到案板切肉，中景镜头，沉默关怀，高清细节
+    image_path: "SC_02_西市日常/shot_009.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368763915_6c6f0b06-f27d-431f-9c9f-b832ec2c01a9.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_010
+    title: "苦涩回味"
+    shot_type: "特写"
+    characters:
+      - ref: "@szj_suwan"
+        action: "啃饼"
+        emotion: "若有所思"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "若有所思"
+    lighting: "日光柔和"
+    lines:
+      - speaker: "旁白"
+        text: "我小口啃着饼。"
+      - speaker: "旁白"
+        text: "芝麻粒在齿间迸开，焦香四溢。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)特写，小口啃着芝麻烧饼，神情若有所思，背景虚化，日光柔和，特写镜头，高清细节
+    image_path: "SC_02_西市日常/shot_010.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e3e/Tx8OnGPkEyzlND97qcVX7.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_011
+    title: "淡淡苦味"
+    shot_type: "特写"
+    characters:
+      - ref: "@szj_suwan"
+        emotion: "苦涩"
+    composition:
+      angle: "平视"
+      focus: "苏晚"
+    mood: "苦涩"
+    lighting: "日光"
+    lines:
+      - speaker: "旁白"
+        text: "可我总能尝到淡淡地苦味。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)眼神微垂特写，杏眼中泛起苦涩，嘴角微微下撇，特写镜头，高清细节
+    image_path: "SC_02_西市日常/shot_011.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368770283_ca85a636-2951-4e34-99e2-fc345639ddd3.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_02_012
+    title: "往昔追忆"
+    shot_type: "特写"
+    characters:
+      - ref: "@szj_suwan"
+        action: "望远方"
+        emotion: "怀念"
+    composition:
+      angle: "侧面"
+      focus: "苏晚"
+    mood: "怀念"
+    lighting: "日光逆光"
+    lines:
+      - speaker: "旁白"
+        text: "想当初，我也是京城路人人称羡的苏家千金苏晚。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，苏晚(@szj_suwan)侧脸，望向远方，日光逆光在发丝上勾出金边，眼中怀念，特写镜头，高清细节
+    image_path: "SC_02_西市日常/shot_012.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e45/31Wr1NlmN6G1hb4_C6KWU.png"
+    generated_at: "2026-02-06T17:10:00"

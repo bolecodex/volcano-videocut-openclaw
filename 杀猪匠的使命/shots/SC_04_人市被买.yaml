@@ -1,0 +1,223 @@
+# shots/SC_04_人市被买.yaml
+# 闪回场景 - 陈屠买下苏晚
+
+scene_id: SC_04
+scene_name: "人市被买"
+scene_ref: "scenes/SC_04_人市被买.md"
+scene_type: "闪回(flashback)"
+scene_description: "人市雪天"
+scene_mood: "绝望→一线生机"
+scene_lighting: "冷灰蓝色调"
+visual_style: "闪回滤镜，冷色调，暗角"
+
+shots:
+  - id: SC_04_001
+    title: "陈屠买人"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "扔铜钱"
+        emotion: "决断"
+      - ref: "@szj_renyazi"
+        action: "旁观"
+    composition:
+      angle: "平视"
+      focus: "陈屠"
+    mood: "震慑决断"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "陈屠"
+        text: "这个，我买了。"
+      - speaker: "旁白"
+        text: "一袋沉甸甸的铜钱，砸在人牙子脚边。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，暗角处理，人市广场，大雪，陈屠(@szj_chentu)面容冷峻，一袋铜钱从手中扔出砸在地上，人牙子(@szj_renyazi)旁边，中景镜头，震慑决断，高清细节
+    image_path: "SC_04_人市被买/shot_001.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368887699_4d563f44-4f86-41b4-b46c-c847024bd7da.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_002
+    title: "人牙子谄媚"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_renyazi"
+        action: "谄笑凑近"
+        emotion: "谄媚"
+    composition:
+      angle: "平视"
+      focus: "人牙子"
+    mood: "油滑市侩"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "人牙子"
+        text: "陈屠户，这可是正经的官家小姐，瞧瞧这皮肉……"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，人牙子(@szj_renyazi)尖嘴猴腮谄笑着凑近，一脸油滑市侩，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_002.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368825033_95005adb-432d-452b-a76e-d32de91d098c.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_003
+    title: "闭嘴前行"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "冷面前行"
+    composition:
+      angle: "平视"
+      focus: "陈屠"
+    mood: "震慑"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "陈屠"
+        text: "闭嘴。"
+      - speaker: "旁白"
+        text: "他走到我面前。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)面容冷峻，一个字震慑全场，大步向前走来，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_003.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368841338_32f2263b-40f4-47cb-ad97-bd43236d41dd.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_004
+    title: "攥书不放"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_suwan"
+        action: "攥书"
+        emotion: "警惕"
+    composition:
+      angle: "平视"
+      focus: "苏晚双手"
+    mood: "紧张警惕"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "旁白"
+        text: "我死死攥着怀里我爹那本《洗冤集录》，那是我爹最后留给我的东西。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，苏晚(@szj_suwan)双手紧紧攥着怀中一本古书，手指冻裂泛红，眼神警惕，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_004.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368809119_e8c50317-83ad-4713-87f4-2afca68771ef.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_005
+    title: "注视冻手"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "注视"
+      - ref: "@szj_suwan"
+        action: "攥书"
+    composition:
+      angle: "平视"
+      focus: "陈屠目光"
+    mood: "冷峻转柔"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "旁白"
+        text: "他的目光，先落在我冻裂的手上，顿了顿，又移向我怀里的那本书。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)的目光从苏晚(@szj_suwan)冻裂的手移向怀中的书，眼神从冷峻变为柔和，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_005.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368809880_20e29d11-db66-4ed7-a932-7131bd51eb5a.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_006
+    title: "披棉袄"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "披棉袄"
+      - ref: "@szj_suwan"
+        action: "接受"
+        emotion: "惊愕"
+    composition:
+      angle: "平视"
+      focus: "陈屠和苏晚"
+    mood: "冷中透暖"
+    lighting: "冷调中透暖意"
+    lines:
+      - speaker: "旁白"
+        text: "然后，他脱下了身上那件打着补丁的旧棉袄，粗鲁地裹在了我身上。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，冷调中透暖意，陈屠(@szj_chentu)正将打着补丁的旧棉袄粗鲁地裹在苏晚(@szj_suwan)身上，苏晚眼神从警惕变为惊愕，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_006.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e4a/EXZn1I02t8K_yprwiM-ef.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_007
+    title: "能走？"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "低头看"
+      - ref: "@szj_suwan"
+        action: "僵硬点头"
+    composition:
+      angle: "平视"
+      focus: "陈屠和苏晚"
+    mood: "简短关切"
+    lighting: "冷灰蓝色调"
+    lines:
+      - speaker: "陈屠"
+        text: "能走？"
+      - speaker: "旁白"
+        text: "他问。"
+      - speaker: "旁白"
+        text: "我僵硬地点头。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，陈屠(@szj_chentu)低头看着苏晚(@szj_suwan)，简短问话，苏晚僵硬点头，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_007.png"
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368826771_93fdbcd5-5181-4e3a-8681-207ebf6f31cc.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_008
+    title: "转身就走"
+    shot_type: "中景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "背影大步走"
+    composition:
+      angle: "平视"
+      focus: "陈屠背影"
+    mood: "果断"
+    lighting: "大雪冷灰蓝"
+    lines:
+      - speaker: "旁白"
+        text: "他转身就走，步子迈得大。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，大雪纷飞，陈屠(@szj_chentu)魁梧的背影大步走在雪中，中景镜头，高清细节
+    image_path: "SC_04_人市被买/shot_008.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e4b/3uhyqZNVdyprJKOEzKNuX.png"
+    generated_at: "2026-02-06T17:10:00"
+
+  - id: SC_04_009
+    title: "雪中跟随"
+    shot_type: "全景"
+    characters:
+      - ref: "@szj_chentu"
+        action: "前方大步走"
+      - ref: "@szj_suwan"
+        action: "踉跄跟随"
+    composition:
+      angle: "侧面"
+      focus: "两人身影"
+    mood: "命运转折"
+    lighting: "冷灰蓝色调大雪"
+    lines:
+      - speaker: "旁白"
+        text: "我踉跄着，深一脚浅一脚踩在雪里，跟在他身后。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，闪回滤镜，京城街巷，大雪纷飞，冷灰蓝色调，陈屠(@szj_chentu)魁梧的背影大步在前，苏晚(@szj_suwan)裹着旧棉袄踉跄跟在身后，全景侧面镜头，命运转折，高清细节
+    image_path: "SC_04_人市被买/shot_009.png"
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png"
+    generated_at: "2026-02-06T17:10:00"

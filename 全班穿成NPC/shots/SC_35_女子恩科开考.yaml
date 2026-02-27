@@ -1,0 +1,424 @@
+scene_id: SC_35
+scene_name: 女子恩科开考
+scene_ref: scenes/SC_35_女子恩科开考.md
+scene_type: reality
+scene_description: 国子监/金銮殿
+scene_mood: 状元、农桑使
+scene_lighting: 宫廷光效
+shots:
+- id: SC_35_001
+  title: 女子恩科如期开考，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 女子恩科如期开考，
+  - speaker: 旁白
+    text: 考场设在国子监，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_001.png
+  image_status: pending
+- id: SC_35_002
+  title: 考生多达三千余人。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 考生多达三千余人。
+  - speaker: 旁白
+    text: 我亲自监考，
+  - speaker: 旁白
+    text: 看着一个个穿着素衣的女子，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_002.png
+  image_status: pending
+- id: SC_35_003
+  title: 握着笔杆认真答题，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 握着笔杆认真答题，
+  - speaker: 旁白
+    text: 眼神里满是对未来的憧憬。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_003.png
+  image_status: pending
+- id: SC_35_004
+  title: 其中一个叫沈清瑶...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 其中一个叫沈清瑶的寒门女子，
+  - speaker: 旁白
+    text: 答题思路清晰，见解独到，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_004.png
+  image_status: pending
+- id: SC_35_005
+  title: 尤其在农桑水利方...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 尤其在农桑水利方面，
+  - speaker: 旁白
+    text: 提出了很多实用的建议。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_005.png
+  image_status: pending
+- id: SC_35_006
+  title: 阅卷时，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 阅卷时，
+  - speaker: 旁白
+    text: 我毫不犹豫地将她定为状元。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_006.png
+  image_status: pending
+- id: SC_35_007
+  title: 放榜那日，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 放榜那日，
+  - speaker: 旁白
+    text: 沈清瑶站在状元游街的队伍最前面，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_007.png
+  image_status: pending
+- id: SC_35_008
+  title: 一身红袍，英姿飒爽。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 一身红袍，英姿飒爽。
+  - speaker: 旁白
+    text: 百姓们夹道欢呼，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_008.png
+  image_status: pending
+- id: SC_35_009
+  title: 曾经反对女子为官...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 曾经反对女子为官的声音，
+  - speaker: 旁白
+    text: 早已消失不见。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_009.png
+  image_status: pending
+- id: SC_35_010
+  title: 我在金銮殿召见前...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我在金銮殿召见前三名，
+  - speaker: 旁白
+    text: 沈清瑶跪在我面前，语气坚定：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_010.png
+  image_status: pending
+- id: SC_35_011
+  title: 陛下，臣愿前往西南，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_shenqingyao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_shenqingyao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 沈清瑶
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 沈清瑶
+    text: 陛下，臣愿前往西南，
+  - speaker: 沈清瑶
+    text: 推广新的农桑技术，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    沈清瑶(@npc_shenqingyao)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_011.png
+  image_status: pending
+- id: SC_35_012
+  title: 为百姓谋福祉。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_shenqingyao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 沈清瑶
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 沈清瑶
+    text: 为百姓谋福祉。
+  - speaker: 苏映雪
+    text: 准奏。
+  - speaker: 旁白
+    text: 我笑着点头，
+  - speaker: 苏映雪
+    text: 朕任命你为西南农桑使，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，沈清瑶(@npc_shenqingyao)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_012.png
+  image_status: pending
+- id: SC_35_013
+  title: 赐你尚方宝剑，可...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 赐你尚方宝剑，可便宜行事。
+  - speaker: 旁白
+    text: 沈清瑶磕头谢恩，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_013.png
+  image_status: pending
+- id: SC_35_014
+  title: 眼神里满是感激。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼神里满是感激。
+  - speaker: 旁白
+    text: 看着她离去的背影，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_014.png
+  image_status: pending
+- id: SC_35_015
+  title: 我知道，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 状元、农桑使
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我知道，
+  - speaker: 旁白
+    text: 越来越多的人才，
+  - speaker: 旁白
+    text: 正在为这个国家注入新的活力。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    国子监/金銮殿，状元、农桑使氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_35_女子恩科开考/shot_015.png
+  image_status: pending

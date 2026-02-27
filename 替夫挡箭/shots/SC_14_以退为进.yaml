@@ -1,0 +1,116 @@
+scene_id: "SC_14"
+scene_name: "以退为进"
+scene_ref: "scenes/SC_14_以退为进.md"
+scene_type: "reality"
+scene_description: "赏花宴后，许清栀吓得魂飞魄散跪地求饶。沈鸢以冷笑应之，提出条件：让陆恒处理江南水患戴罪立功，方可免许清栀一死。许清栀喜出望外替陆恒领旨。"
+scene_mood: "冷酷、算计"
+scene_lighting: "午后暖阳渐斜，光线明暗交织"
+
+shots:
+  - id: "SC_14_001"
+    title: "许清栀跪地求饶"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_xuqingzhi"
+        action: "连滚带爬扑到沈鸢脚边攥住裙摆"
+        emotion: 恐惧求饶
+      - ref: "@tfdj_shenyan"
+        action: "站立俯视"
+        emotion: 冷漠
+    composition:
+      angle: 俯拍
+      focus: 许清栀跪地攥裙摆
+    mood: "恐惧卑微"
+    lighting: "强光打亮沈鸢，许清栀处于阴影"
+    lines:
+      - speaker: 旁白
+        text: "许清栀吓得魂飞魄散，"
+      - speaker: 旁白
+        text: "连滚带爬扑到我脚边，攥住我的裙摆。"
+      - speaker: 许清栀
+        text: "郡主饶命！"
+      - speaker: 许清栀
+        text: "看在陆郎的份上，"
+      - speaker: 许清栀
+        text: "看在我腹中孩子的份上，饶我一次吧！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景俯拍，御花园，20岁女性许清栀(@tfdj_xuqingzhi)黑发散乱红色锦裙跪地攥住裙摆，面容恐惧哭泣求饶，18岁女性沈鸢(@tfdj_shenyan)锦衣华服站立俯视，冷漠居高临下
+    image_path: "SC_14_以退为进/shot_001.png"
+    image_status: pending
+
+  - id: "SC_14_002"
+    title: "沈鸢冷笑应允"
+    shot_type: "中近景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "冷笑一声开口"
+        emotion: 冷漠算计
+      - ref: "@tfdj_xuqingzhi"
+        action: "眼睛一亮连连磕头"
+        emotion: 惊喜
+    composition:
+      angle: 平视
+      focus: 沈鸢冷笑面容
+    mood: "冷酷掌控"
+    lighting: "侧光勾勒沈鸢冷峻轮廓"
+    lines:
+      - speaker: 旁白
+        text: "我看着她狼狈的模样，冷笑一声，"
+      - speaker: 沈鸢
+        text: "饶你可以。"
+      - speaker: 旁白
+        text: "许清栀眼睛一亮，连连磕头，"
+      - speaker: 许清栀
+        text: "谢郡主！谢郡主！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中近景平视，御花园，18岁女性沈鸢(@tfdj_shenyan)乌发束起锦衣华服，面露冷笑嘴角微扬，眼神冷漠算计，20岁女性许清栀(@tfdj_xuqingzhi)跪地磕头
+    image_path: "SC_14_以退为进/shot_002.png"
+    image_status: pending
+
+  - id: "SC_14_003"
+    title: "沈鸢设下条件"
+    shot_type: "近景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "提出条件"
+        emotion: 冷静掌控
+    composition:
+      angle: 微仰拍
+      focus: 沈鸢面部特写
+    mood: "冷酷算计"
+    lighting: "逆光轮廓，面部冷光"
+    lines:
+      - speaker: 沈鸢
+        text: "让你夫君陆恒戴罪立功，"
+      - speaker: 沈鸢
+        text: "处理江南水患一事。"
+      - speaker: 沈鸢
+        text: "此事办好了，可免你一死。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景微仰拍，18岁女性沈鸢(@tfdj_shenyan)乌发束起杏眼锦衣华服郡主装束，面容冷静从容，嘴角含笑胸有成竹，提出条件
+    image_path: "SC_14_以退为进/shot_003.png"
+    image_status: pending
+
+  - id: "SC_14_004"
+    title: "许清栀领旨谢恩"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_xuqingzhi"
+        action: "喜出望外磕头谢恩"
+        emotion: 欣喜感激
+    composition:
+      angle: 俯拍
+      focus: 许清栀跪地磕头
+    mood: "卑微感恩"
+    lighting: "柔光均匀"
+    lines:
+      - speaker: 许清栀
+        text: "谢郡主宽宏大量！"
+      - speaker: 旁白
+        text: "许清栀喜出望外，"
+      - speaker: 旁白
+        text: "连忙替陆恒领了旨，又磕了几个头。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景俯拍，御花园，20岁女性许清栀(@tfdj_xuqingzhi)黑发散乱红色锦裙跪地磕头，面露喜色如获大赦，连连叩首
+    image_path: "SC_14_以退为进/shot_004.png"
+    image_status: pending

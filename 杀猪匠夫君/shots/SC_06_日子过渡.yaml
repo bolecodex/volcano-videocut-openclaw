@@ -1,0 +1,174 @@
+scene_id: "SC_06"
+scene_name: "日子过渡"
+scene_ref: "scenes/SC_06_日子过渡.md"
+scene_type: "montage"
+scene_description: "猪肉铺/卧房，数月蒙太奇"
+scene_mood: "平淡、温馨"
+scene_lighting: "暖调柔光"
+
+shots:
+  - id: "SC_06_001"
+    title: "岁月流逝"
+    shot_type: "中景"
+    script_lines: { start: 102, end: 103 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 用开水烫猪毛
+        emotion: 认真
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 日常、蒙太奇
+    lighting: 自然暖光
+    lines:
+      - speaker: 旁白
+        text: 日子一天天过去。
+      - speaker: 旁白
+        text: 我学会了用开水烫猪毛，
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      猪肉铺内，苏晚(@szj_suwan)熟练地往猪身上浇开水烫猪毛，
+      蒸汽升腾，动作已经很熟练，表情认真专注，
+      中景镜头，蒙太奇快切风格，暖调柔光，高清细节
+    image_path: "SC_06_日子过渡/shot_001.png"
+    image_status: pending
+
+  - id: "SC_06_002"
+    title: "苦力成长"
+    shot_type: "特写"
+    script_lines: { start: 104, end: 105 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 揉搓猪大肠
+        emotion: 麻木坚韧
+    composition:
+      angle: 特写
+      focus: 苏晚的手
+    mood: 辛劳、成长
+    lighting: 暖调侧光
+    lines:
+      - speaker: 旁白
+        text: 用草木灰和醋反复揉搓猪大肠，
+      - speaker: 旁白
+        text: 手上那点从苏府带来的薄茧，
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      苏晚(@szj_suwan)双手揉搓猪大肠的特写，
+      手指粗糙，指节发红，曾经白皙的手已变得粗糙有力，
+      特写镜头，聚焦双手，暖调侧光，蒙太奇质感，高清细节
+    image_path: "SC_06_日子过渡/shot_002.png"
+    image_status: pending
+
+  - id: "SC_06_003"
+    title: "留梅花肉"
+    shot_type: "中景"
+    script_lines: { start: 106, end: 107 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 默默留下好肉
+        emotion: 沉默温柔
+      - ref: "@szj_suwan"
+        action: 发现好肉
+        emotion: 微微感动
+    composition:
+      angle: 平视
+      focus: 两人
+    mood: 温情、日常
+    lighting: 暖调
+    lines:
+      - speaker: 旁白
+        text: 很快就被更粗糙的新茧覆盖。
+      - speaker: 旁白
+        text: 陈屠话少，但会把铺子里最好的一块梅花肉留给我。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      猪肉铺内，陈屠(@szj_chentu)默默将一块品相最好的梅花肉推到苏晚面前，
+      目光不看她，表情平淡，苏晚(@szj_suwan)看着肉微微愣神，
+      中景镜头，蒙太奇快切，暖调，高清细节
+    image_path: "SC_06_日子过渡/shot_003.png"
+    image_status: pending
+
+  - id: "SC_06_004"
+    title: "推炭盆"
+    shot_type: "中景"
+    script_lines: { start: 108, end: 109 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 悄悄推炭盆
+        emotion: 沉默关怀
+    composition:
+      angle: 平视
+      focus: 炭盆和脚
+    mood: 温馨
+    lighting: 油灯暖光
+    lines:
+      - speaker: 旁白
+        text: 夜里，会不动声色地把唯一的炭盆，
+      - speaker: 旁白
+        text: 往我脚边推近些。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      夜晚卧房，陈屠(@szj_chentu)的大手悄悄把一个炭盆往苏晚脚边推近，
+      炭火微微发红，暖光映照，
+      中景镜头，蒙太奇快切，暖黄油灯光，高清细节
+    image_path: "SC_06_日子过渡/shot_004.png"
+    image_status: pending
+
+  - id: "SC_06_005"
+    title: "分床而眠"
+    shot_type: "全景"
+    script_lines: { start: 110, end: 111 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 睡在里屋床上
+        emotion: 安静
+      - ref: "@szj_chentu"
+        action: 睡在铺面长凳上
+        emotion: 安静
+    composition:
+      angle: 平视
+      focus: 帘子两侧
+    mood: 克制、温馨
+    lighting: 月光微弱
+    lines:
+      - speaker: 旁白
+        text: 我们同住一个屋檐下，却分床而眠。
+      - speaker: 旁白
+        text: 他睡铺面的长凳，我睡里屋的床，
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      全景镜头，破布帘子分隔两个空间，
+      帘子一侧苏晚(@szj_suwan)侧卧在木板床上入睡，
+      帘子另一侧陈屠(@szj_chentu)蜷缩在狭窄的长凳上，
+      月光透过窗缝，宁静氛围，
+      全景镜头，对称构图，帘子为中轴线，高清细节
+    image_path: "SC_06_日子过渡/shot_005.png"
+    image_status: pending
+
+  - id: "SC_06_006"
+    title: "两个世界"
+    shot_type: "特写"
+    script_lines: { start: 112, end: 112 }
+    characters: []
+    composition:
+      angle: 平视
+      focus: 破布帘子
+    mood: 克制、距离感
+    lighting: 月光微弱
+    lines:
+      - speaker: 旁白
+        text: 中间那道破布帘子，隔开了两个世界。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      暖调柔光，时间流逝感，日常温馨，
+      特写镜头，一道破布帘子悬挂在半空，
+      帘子随微风轻轻摆动，透过帘缝隐约可见另一侧模糊的身影，
+      月光洒在帘子上，蒙太奇结尾画面，
+      特写镜头，居中构图，意境留白，高清细节
+    image_path: "SC_06_日子过渡/shot_006.png"
+    image_status: pending

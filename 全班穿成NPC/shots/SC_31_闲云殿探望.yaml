@@ -1,0 +1,655 @@
+scene_id: SC_31
+scene_name: 闲云殿探望
+scene_ref: scenes/SC_31_闲云殿探望.md
+scene_type: reality
+scene_description: 闲云殿
+scene_mood: 桂花、落寞
+scene_lighting: 宫廷光效
+shots:
+- id: SC_31_001
+  title: 哀家听说，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 哀家听说，
+  - speaker: 太后
+    text: 凌儿重新辅佐陛下，
+  - speaker: 太后
+    text: 把军事事务打理得很好？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_001.png
+  image_status: pending
+- id: SC_31_002
+  title: 萧凌躬身行礼：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌躬身行礼：
+  - speaker: 萧凌
+    text: 劳母后挂心，
+  - speaker: 萧凌
+    text: 儿臣只是尽了分内之事，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_002.png
+  image_status: pending
+- id: SC_31_003
+  title: 多亏了陛下信任，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 多亏了陛下信任，
+  - speaker: 萧凌
+    text: 儿臣才能有机会为国效力。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_003.png
+  image_status: pending
+- id: SC_31_004
+  title: 太后点了点头，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后点了点头，
+  - speaker: 旁白
+    text: 又看向我，语气诚恳：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_004.png
+  image_status: pending
+- id: SC_31_005
+  title: 陛下，以前是哀家...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 陛下，以前是哀家糊涂，
+  - speaker: 太后
+    text: 总想着夺回江山，为难于你，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_005.png
+  image_status: pending
+- id: SC_31_006
+  title: 还请陛下恕罪。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 还请陛下恕罪。
+  - speaker: 苏映雪
+    text: 太后言重了。
+  - speaker: 旁白
+    text: 我连忙扶起她，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_006.png
+  image_status: pending
+- id: SC_31_007
+  title: 太后也是为了萧凌...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 太后也是为了萧凌，为了大启，
+  - speaker: 苏映雪
+    text: 如今误会解开，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_007.png
+  image_status: pending
+- id: SC_31_008
+  title: 我们便是一家人，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 我们便是一家人，
+  - speaker: 苏映雪
+    text: 不必再提过往。
+  - speaker: 旁白
+    text: 太后看着我，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_008.png
+  image_status: pending
+- id: SC_31_009
+  title: 眼里满是赞许：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼里满是赞许：
+  - speaker: 太后
+    text: 陛下胸襟宽广，心系百姓，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_009.png
+  image_status: pending
+- id: SC_31_010
+  title: 确实比凌儿更适合...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 确实比凌儿更适合做这大启的君主，
+  - speaker: 太后
+    text: 哀家放心了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_010.png
+  image_status: pending
+- id: SC_31_011
+  title: 那天，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 那天，
+  - speaker: 旁白
+    text: 我们三人坐在慈宁宫里，
+  - speaker: 旁白
+    text: 聊了很久，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_011.png
+  image_status: pending
+- id: SC_31_012
+  title: 从朝堂之事聊到百...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 从朝堂之事聊到百姓生计，
+  - speaker: 旁白
+    text: 气氛和睦而温暖。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_012.png
+  image_status: pending
+- id: SC_31_013
+  title: 太后还特意吩咐宫...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后还特意吩咐宫女，
+  - speaker: 旁白
+    text: 做了我和萧凌都爱吃的桂花糕，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_013.png
+  image_status: pending
+- id: SC_31_014
+  title: 就像寻常人家的长...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 就像寻常人家的长辈一样，
+  - speaker: 旁白
+    text: 亲切而慈爱。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_014.png
+  image_status: pending
+- id: SC_31_015
+  title: 走出慈宁宫时，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 走出慈宁宫时，
+  - speaker: 旁白
+    text: 萧凌轻声对我说：
+  - speaker: 萧凌
+    text: 谢谢你，陛下，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_015.png
+  image_status: pending
+- id: SC_31_016
+  title: 让我和母后，都放...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 让我和母后，都放下了过往。
+  - speaker: 苏映雪
+    text: 我们之间，无需说谢。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_016.png
+  image_status: pending
+- id: SC_31_017
+  title: 我转头看他，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我转头看他，
+  - speaker: 旁白
+    text: 嘴角扬起一抹温柔的笑意。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_017.png
+  image_status: pending
+- id: SC_31_018
+  title: 时间过得很快，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 时间过得很快，
+  - speaker: 旁白
+    text: 转眼之间，
+  - speaker: 旁白
+    text: 新政推行已满一年。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_018.png
+  image_status: pending
+- id: SC_31_019
+  title: 这一年里，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 这一年里，
+  - speaker: 旁白
+    text: 大启发生了翻天覆地的变化，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_019.png
+  image_status: pending
+- id: SC_31_020
+  title: 学堂遍布全国各地，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 学堂遍布全国各地，
+  - speaker: 旁白
+    text: 无论是寒门子弟还是女子，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_020.png
+  image_status: pending
+- id: SC_31_021
+  title: 都能免费入学读书。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 都能免费入学读书。
+  - speaker: 旁白
+    text: 农桑技术广泛推广，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_021.png
+  image_status: pending
+- id: SC_31_022
+  title: 玉米、番薯在全国...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 桂花、落寞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 玉米、番薯在全国范围内种植，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    闲云殿，桂花、落寞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_31_闲云殿探望/shot_022.png
+  image_status: pending

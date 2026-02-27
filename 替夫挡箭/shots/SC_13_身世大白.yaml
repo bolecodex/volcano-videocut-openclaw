@@ -1,0 +1,622 @@
+scene_id: "SC_13"
+scene_name: "身世大白"
+scene_ref: "scenes/SC_13_身世大白.md"
+scene_type: "reality"
+scene_description: "御花园赏花宴上，汪氏苏醒，沈鸢以银针救人证明医术。皇后当众揭露沈鸢乃沈神医之女，讲述十五年前沈家父母为救帝后舍命的往事。二公主忏悔认错，许清栀彻底崩溃。沈鸢向许清栀宣告算账。"
+scene_mood: "震撼、感动、逆转"
+scene_lighting: "午后暖阳透过花枝洒落，御花园光影斑驳，宫灯暖黄辅光"
+
+shots:
+  - id: "SC_13_001"
+    title: "汪氏苏醒"
+    shot_type: "近景"
+    characters:
+      - name: 汪氏
+        action: "轻哼一声缓缓睁开眼"
+        emotion: 虚弱
+    composition:
+      angle: 俯拍
+      focus: 汪氏面部
+    mood: "紧张转惊喜"
+    lighting: "午后暖阳侧照，面部柔光"
+    lines:
+      - speaker: 旁白
+        text: "话音未落，汪氏突然轻哼一声，"
+      - speaker: 旁白
+        text: "缓缓睁开眼。"
+      - speaker: 旁白
+        text: "众人一愣。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景俯拍，御花园石亭内，中年女性汪氏体态柔弱浅色衣裙，躺卧缓缓睁眼，面色苍白虚弱，周围女眷震惊围观，午后花影斑驳
+    image_path: "SC_13_身世大白/shot_001.png"
+    image_status: pending
+
+  - id: "SC_13_002"
+    title: "沈鸢收针问诊"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "收起银针站起身，不卑不亢询问"
+        emotion: 沉着自信
+      - name: 汪氏
+        action: "躺卧仰视"
+        emotion: 虚弱
+    composition:
+      angle: 平视
+      focus: 沈鸢侧身收针
+    mood: "从容淡定"
+    lighting: "暖阳侧照，沈鸢面部光线柔和"
+    lines:
+      - speaker: 旁白
+        text: "我缓缓收起银针，站起身，"
+      - speaker: 旁白
+        text: "不卑不亢，询问，"
+      - speaker: 沈鸢
+        text: "你可是月事在身？"
+      - speaker: 沈鸢
+        text: "平日里是不是时常手脚冰凉，"
+      - speaker: 沈鸢
+        text: "动辄头晕乏力？"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，18岁女性沈鸢(@tfdj_shenyan)乌发束起杏眼含情鹅蛋脸锦衣华服郡主装束，收起银针从容站立，神态沉着自信不卑不亢，俯身向汪氏询问
+    image_path: "SC_13_身世大白/shot_002.png"
+    image_status: pending
+
+  - id: "SC_13_003"
+    title: "汪氏确认病因"
+    shot_type: "近景"
+    characters:
+      - name: 汪氏
+        action: "脸红点头回应"
+        emotion: 羞涩感激
+    composition:
+      angle: 平视
+      focus: 汪氏面部表情
+    mood: "羞涩释然"
+    lighting: "柔和暖光"
+    lines:
+      - speaker: 旁白
+        text: "汪氏脸一红，点头，"
+      - speaker: 汪氏
+        text: "是……郡主说得没错。"
+      - speaker: 汪氏
+        text: "方才正是月事来潮，"
+      - speaker: 汪氏
+        text: "忽然便浑身发软晕了过去。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景平视，御花园，中年女性汪氏浅色衣裙体态柔弱，面色微红羞涩点头，神态感激，坐卧姿态
+    image_path: "SC_13_身世大白/shot_003.png"
+    image_status: pending
+
+  - id: "SC_13_004"
+    title: "沈鸢从容诊断"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "从容诊断开方"
+        emotion: 自信沉稳
+    composition:
+      angle: 微仰拍
+      focus: 沈鸢全身姿态
+    mood: "从容大气"
+    lighting: "暖阳打亮沈鸢，背景花枝虚化"
+    lines:
+      - speaker: 沈鸢
+        text: "这是失血过多导致的气血亏虚，"
+      - speaker: 沈鸢
+        text: "无大碍。"
+      - speaker: 沈鸢
+        text: "回去后多吃温补膳食，"
+      - speaker: 沈鸢
+        text: "补补气血便好。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景微仰拍，御花园花枝背景虚化，18岁女性沈鸢(@tfdj_shenyan)乌发束起杏眼含情锦衣华服郡主装束，站姿端正，神态从容自信，开口诊断
+    image_path: "SC_13_身世大白/shot_004.png"
+    image_status: pending
+
+  - id: "SC_13_005"
+    title: "汪氏感恩道谢"
+    shot_type: "中近景"
+    characters:
+      - name: 汪氏
+        action: "连忙道谢感激涕零"
+        emotion: 感激
+      - ref: "@tfdj_shenyan"
+        action: "站立接受道谢"
+        emotion: 平静
+    composition:
+      angle: 平视
+      focus: 汪氏向沈鸢道谢
+    mood: "感恩温暖"
+    lighting: "暖阳柔光"
+    lines:
+      - speaker: 旁白
+        text: "汪氏连忙道谢，感激涕零，"
+      - speaker: 汪氏
+        text: "多谢郡主！"
+      - speaker: 汪氏
+        text: "若非您，妾身今日怕是要出大丑了！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中近景平视，御花园，中年女性汪氏浅色衣裙感激涕零向沈鸢道谢，18岁女性沈鸢(@tfdj_shenyan)锦衣华服站立接受，神态平静温和
+    image_path: "SC_13_身世大白/shot_005.png"
+    image_status: pending
+
+  - id: "SC_13_006"
+    title: "二公主嘲讽质疑"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "回过神嘲讽质疑"
+        emotion: 不屑骄纵
+    composition:
+      angle: 平视
+      focus: 二公主面部表情
+    mood: "嘲讽尖刻"
+    lighting: "明亮日光，冷暖交织"
+    lines:
+      - speaker: 旁白
+        text: "二公主回过神，"
+      - speaker: 二公主
+        text: "哼！不过是瞎猫碰到死耗子！"
+      - speaker: 二公主
+        text: "你一个民间弃妇，懂什么医术？"
+      - speaker: 二公主
+        text: "定是胡乱猜测的！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，17岁女性二公主(@tfdj_ergongzhu)黑发双丸子头珠花粉紫色公主裙金步摇，面露不屑嘲讽，指手画脚质疑
+    image_path: "SC_13_身世大白/shot_006.png"
+    image_status: pending
+
+  - id: "SC_13_007"
+    title: "皇后喝止"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_xuqingzhi"
+        action: "附和二公主"
+        emotion: 得意
+      - ref: "@tfdj_huanghou"
+        action: "厉声喝止，冰冷扫视"
+        emotion: 威严愤怒
+    composition:
+      angle: 平视
+      focus: 皇后威严面容
+    mood: "威严震慑"
+    lighting: "皇后面部正光凸显威仪"
+    lines:
+      - speaker: 旁白
+        text: "许清栀立刻附和，"
+      - speaker: 许清栀
+        text: "没错！皇后娘娘可别信她！"
+      - speaker: 皇后
+        text: "住口！"
+      - speaker: 旁白
+        text: "皇后眼神冰冷地扫过二人，"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，40岁女性皇后(@tfdj_huanghou)黑发高髻凤冠明黄色凤袍珍珠璎珞，威严厉声喝止，眼神冰冷凌厉扫视，20岁女性许清栀(@tfdj_xuqingzhi)红色锦裙在旁惊惧
+    image_path: "SC_13_身世大白/shot_007.png"
+    image_status: pending
+
+  - id: "SC_13_008"
+    title: "皇后揭露身份"
+    shot_type: "近景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "怒斥二人揭露沈鸢身世"
+        emotion: 威严愤怒
+    composition:
+      angle: 微仰拍
+      focus: 皇后面部特写
+    mood: "震慑全场"
+    lighting: "正面强光凸显皇后威仪"
+    lines:
+      - speaker: 皇后
+        text: "郡主乃是沈神医之女，怎会不懂医术？"
+      - speaker: 皇后
+        text: "你们两个无知之辈，"
+      - speaker: 皇后
+        text: "竟敢在此妄加非议！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景微仰拍，御花园，40岁女性皇后(@tfdj_huanghou)黑发高髻凤冠明黄色凤袍，面容威严怒意，正面开口斥责，气场强大
+    image_path: "SC_13_身世大白/shot_008.png"
+    image_status: pending
+
+  - id: "SC_13_009"
+    title: "众人哗然"
+    shot_type: "全景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "呆住不动"
+        emotion: 难以置信
+    composition:
+      angle: 平视广角
+      focus: 御花园众女眷震惊群像
+    mood: "全场震撼"
+    lighting: "明亮午后阳光"
+    lines:
+      - speaker: 旁白
+        text: "众人哗然，"
+      - speaker: 旁白
+        text: "连一向跋扈的二公主都呆住了。"
+      - speaker: 旁白
+        text: "满脸难以置信。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，全景平视广角，御花园赏花宴，众女眷震惊哗然面面相觑，17岁二公主(@tfdj_ergongzhu)粉紫色公主裙呆立原地满脸难以置信，花枝繁茂背景
+    image_path: "SC_13_身世大白/shot_009.png"
+    image_status: pending
+
+  - id: "SC_13_010"
+    title: "沈神医的牵绊"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "缓缓开口讲述"
+        emotion: 感慨沉重
+    composition:
+      angle: 平视
+      focus: 皇后缓缓开口
+    mood: "肃穆庄重"
+    lighting: "暖光柔和，氛围凝重"
+    lines:
+      - speaker: 旁白
+        text: "世上无人不知沈神医与帝后之间的牵绊。"
+      - speaker: 旁白
+        text: "就连皇家陵墓里，"
+      - speaker: 旁白
+        text: "都供着他一家三口的牌位！"
+      - speaker: 旁白
+        text: "皇后看着众人震惊的模样，缓缓开口。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，40岁女性皇后(@tfdj_huanghou)明黄色凤袍凤冠，面容感慨沉重缓缓开口，众女眷肃穆注视
+    image_path: "SC_13_身世大白/shot_010.png"
+    image_status: pending
+
+  - id: "SC_13_011"
+    title: "皇后回忆—逃亡获救"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "回忆讲述往事"
+        emotion: 感慨悲伤
+    composition:
+      angle: 平视
+      focus: 皇后面部回忆神态
+    mood: "沉重回忆"
+    lighting: "暖光渐暗，回忆氛围"
+    lines:
+      - speaker: 皇后
+        text: "十五年前，陛下与本宫遭叛军追杀，"
+      - speaker: 皇后
+        text: "一路逃亡，幸得一对夫妇相救。"
+      - speaker: 皇后
+        text: "那便是鸢儿的父母。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，40岁女性皇后(@tfdj_huanghou)明黄色凤袍，面容悲切感慨，沉浸回忆缓缓讲述，眼含泪光
+    image_path: "SC_13_身世大白/shot_011.png"
+    image_status: pending
+
+  - id: "SC_13_012"
+    title: "鸢母舍命引追兵"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "悲痛讲述鸢母牺牲"
+        emotion: 悲痛
+    composition:
+      angle: 平视
+      focus: 皇后悲痛神态
+    mood: "悲壮惨烈"
+    lighting: "光线渐沉，悲壮氛围"
+    lines:
+      - speaker: 皇后
+        text: "彼时，太子与二公主尚且年幼，"
+      - speaker: 皇后
+        text: "叛军步步紧逼，"
+      - speaker: 皇后
+        text: "鸢儿的母亲为了护着两个孩子，"
+      - speaker: 皇后
+        text: "独自引开追兵，"
+      - speaker: 皇后
+        text: "最终惨死在乱刀之下！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，40岁女性皇后(@tfdj_huanghou)明黄色凤袍，面容悲痛激动，讲述惨烈往事，眼眶泛红
+    image_path: "SC_13_身世大白/shot_012.png"
+    image_status: pending
+
+  - id: "SC_13_013"
+    title: "二公主震惊/沈父试毒"
+    shot_type: "中近景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "浑身一颤脸色煞白"
+        emotion: 震惊恐惧
+      - ref: "@tfdj_huanghou"
+        action: "继续讲述"
+        emotion: 沉痛
+    composition:
+      angle: 平视
+      focus: 二公主震颤面容
+    mood: "震撼沉痛"
+    lighting: "侧光打亮二公主煞白面容"
+    lines:
+      - speaker: 旁白
+        text: "二公主浑身一颤，脸色煞白。"
+      - speaker: 皇后
+        text: "陛下中了剧毒，危在旦夕，"
+      - speaker: 皇后
+        text: "是鸢儿的父亲，"
+      - speaker: 皇后
+        text: "也就是当年名满天下的沈神医，"
+      - speaker: 皇后
+        text: "屡次以身试毒。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中近景平视，御花园，17岁女性二公主(@tfdj_ergongzhu)粉紫色公主裙，浑身颤抖脸色煞白，震惊恐惧，背景皇后继续讲述
+    image_path: "SC_13_身世大白/shot_013.png"
+    image_status: pending
+
+  - id: "SC_13_014"
+    title: "沈父殉难与托付"
+    shot_type: "近景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "目光落在沈鸢身上，满目疼惜"
+        emotion: 疼惜悲伤
+      - ref: "@tfdj_shenyan"
+        action: "静立聆听"
+        emotion: 隐忍
+    composition:
+      angle: 平视
+      focus: 皇后望向沈鸢的目光
+    mood: "悲伤疼惜"
+    lighting: "暖光柔和，母性光辉"
+    lines:
+      - speaker: 皇后
+        text: "终于解了陛下的毒，"
+      - speaker: 皇后
+        text: "自己却毒发身亡。"
+      - speaker: 旁白
+        text: "皇后的目光落在我身上，满目的疼惜，"
+      - speaker: 皇后
+        text: "他死前苦苦托付，"
+      - speaker: 皇后
+        text: "让我们护好他唯一的女儿，沈鸢。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景平视，御花园，40岁女性皇后(@tfdj_huanghou)明黄色凤袍，目光落在沈鸢身上满目疼惜泪光闪烁，18岁女性沈鸢(@tfdj_shenyan)锦衣华服静立聆听
+    image_path: "SC_13_身世大白/shot_014.png"
+    image_status: pending
+
+  - id: "SC_13_015"
+    title: "幼年沈鸢舍身引追兵"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_huanghou"
+        action: "讲述沈鸢幼时壮举"
+        emotion: 感动
+    composition:
+      angle: 平视
+      focus: 皇后讲述
+    mood: "悲壮感动"
+    lighting: "暖光，感动氛围"
+    lines:
+      - speaker: 皇后
+        text: "后来叛军追来，我们带着她一起逃。"
+      - speaker: 皇后
+        text: "无路可逃时，她抢了二公主的披风，"
+      - speaker: 皇后
+        text: "披在自己身上，引开了追兵。"
+      - speaker: 皇后
+        text: "让我们得以安全等到援军。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，40岁女性皇后(@tfdj_huanghou)明黄色凤袍凤冠，面容激动感慨，讲述往事壮举，众人凝神聆听
+    image_path: "SC_13_身世大白/shot_015.png"
+    image_status: pending
+
+  - id: "SC_13_016"
+    title: "沈鸢忆坠崖"
+    shot_type: "近景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "垂眸忍泪缓缓开口"
+        emotion: 隐忍感伤
+    composition:
+      angle: 平视
+      focus: 沈鸢含泪面容
+    mood: "感伤隐忍"
+    lighting: "逆光剪影，泪光闪烁"
+    lines:
+      - speaker: 旁白
+        text: "我垂眸，忍着眼眶的泪水，缓缓开口，"
+      - speaker: 沈鸢
+        text: "所幸我失足掉落悬崖，"
+      - speaker: 沈鸢
+        text: "被一位拾柴老人所救，才捡回一条性命。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景平视，御花园，18岁女性沈鸢(@tfdj_shenyan)乌发束起杏眼含情锦衣华服郡主装束，垂眸忍泪缓缓开口，眼眶泛红泪光闪烁，逆光柔和剪影
+    image_path: "SC_13_身世大白/shot_016.png"
+    image_status: pending
+
+  - id: "SC_13_017"
+    title: "珊瑚纹披风"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "回忆往事"
+        emotion: 怀念
+    composition:
+      angle: 平视
+      focus: 沈鸢回忆神态
+    mood: "怀念感伤"
+    lighting: "暖黄柔光"
+    lines:
+      - speaker: 旁白
+        text: "这些年，我一直留着那件珊瑚纹的披风。"
+      - speaker: 旁白
+        text: "那是我离开陆府时，唯一带出来的东西。"
+      - speaker: 旁白
+        text: "阿珂墓前，我托萧景然将此披风带去皇宫，"
+      - speaker: 旁白
+        text: "交给帝后。"
+      - speaker: 旁白
+        text: "他们一眼便认了出来。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，18岁女性沈鸢(@tfdj_shenyan)锦衣华服，手中持珊瑚纹披风，神态怀念感伤，暖黄柔光笼罩
+    image_path: "SC_13_身世大白/shot_017.png"
+    image_status: pending
+
+  - id: "SC_13_018"
+    title: "帝后痛哭相认"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "被拥抱"
+        emotion: 感动
+    composition:
+      angle: 平视
+      focus: 拥抱场景
+    mood: "感动催泪"
+    lighting: "暖光笼罩"
+    lines:
+      - speaker: 旁白
+        text: "连夜赶出城与我相见，"
+      - speaker: 旁白
+        text: "抱着我痛哭流涕。"
+      - speaker: 旁白
+        text: "整个御花园鸦雀无声。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，全场肃静鸦雀无声，众女眷沉默感动，氛围庄重催泪，暖光笼罩
+    image_path: "SC_13_身世大白/shot_018.png"
+    image_status: pending
+
+  - id: "SC_13_019"
+    title: "女眷低头"
+    shot_type: "全景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "泪流满面"
+        emotion: 悔恨悲伤
+    composition:
+      angle: 平视
+      focus: 女眷群像低头
+    mood: "惭愧肃穆"
+    lighting: "柔和均匀光"
+    lines:
+      - speaker: 旁白
+        text: "先前那些非议我的女眷，纷纷低下头，"
+      - speaker: 旁白
+        text: "不敢再看我一眼。"
+      - speaker: 旁白
+        text: "二公主早已泪流满面。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，全景平视，御花园赏花宴，众女眷纷纷低头不敢直视，17岁二公主(@tfdj_ergongzhu)粉紫色公主裙泪流满面，氛围惭愧肃穆
+    image_path: "SC_13_身世大白/shot_019.png"
+    image_status: pending
+
+  - id: "SC_13_020"
+    title: "二公主跪地认错"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "泪流满面跪地认错"
+        emotion: 悔恨忏悔
+      - ref: "@tfdj_shenyan"
+        action: "站立注视"
+        emotion: 平静
+    composition:
+      angle: 平视
+      focus: 二公主跪地忏悔
+    mood: "悔恨忏悔"
+    lighting: "柔和暖光"
+    lines:
+      - speaker: 二公主
+        text: "沈鸢……是我糊涂，听信谗言，错怪了你。"
+      - speaker: 二公主
+        text: "我自请去皇家陵墓跪拜思过，"
+      - speaker: 二公主
+        text: "在恩人牌位前忏悔。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景平视，御花园，17岁女性二公主(@tfdj_ergongzhu)粉紫色公主裙跪地泪流满面忏悔认错，18岁女性沈鸢(@tfdj_shenyan)锦衣华服站立注视
+    image_path: "SC_13_身世大白/shot_020.png"
+    image_status: pending
+
+  - id: "SC_13_021"
+    title: "二公主怒指许氏"
+    shot_type: "中近景"
+    characters:
+      - ref: "@tfdj_ergongzhu"
+        action: "抬眼瞪着许清栀咬牙切齿"
+        emotion: 愤怒
+      - ref: "@tfdj_xuqingzhi"
+        action: "被指控"
+        emotion: 惊恐
+    composition:
+      angle: 平视
+      focus: 二公主愤怒指向许清栀
+    mood: "愤怒指控"
+    lighting: "强光打亮二公主怒容"
+    lines:
+      - speaker: 旁白
+        text: "她抬眼瞪着许清栀，咬牙切齿，"
+      - speaker: 二公主
+        text: "都是这许氏！"
+      - speaker: 二公主
+        text: "连日来在我面前百般挑拨，"
+      - speaker: 二公主
+        text: "我一时昏了头，铸下大错！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中近景平视，御花园，17岁女性二公主(@tfdj_ergongzhu)粉紫色公主裙泪痕满面怒目圆睁咬牙切齿，手指向20岁女性许清栀(@tfdj_xuqingzhi)红色锦裙惊恐后退
+    image_path: "SC_13_身世大白/shot_021.png"
+    image_status: pending
+
+  - id: "SC_13_022"
+    title: "许清栀崩溃"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_xuqingzhi"
+        action: "面如死灰瘫坐在地"
+        emotion: 恐惧绝望
+      - ref: "@tfdj_shenyan"
+        action: "抬眼看向许清栀眼神犀利"
+        emotion: 冷峻犀利
+    composition:
+      angle: 俯拍
+      focus: 许清栀瘫坐地上
+    mood: "绝望崩塌"
+    lighting: "阴影笼罩许清栀"
+    lines:
+      - speaker: 旁白
+        text: "许清栀面如死灰，瘫坐在地上。"
+      - speaker: 旁白
+        text: "她万万没想到，自己拼命诋毁、"
+      - speaker: 旁白
+        text: "想要置于死地的人，"
+      - speaker: 旁白
+        text: "身份尊贵得远超她的想象！"
+      - speaker: 旁白
+        text: "我抬眼看向许清栀，眼神犀利。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，中景俯拍，御花园，20岁女性许清栀(@tfdj_xuqingzhi)黑发高髻红色锦裙面如死灰瘫坐在地，绝望恐惧，18岁女性沈鸢(@tfdj_shenyan)锦衣华服居高临下眼神犀利
+    image_path: "SC_13_身世大白/shot_022.png"
+    image_status: pending
+
+  - id: "SC_13_023"
+    title: "沈鸢宣告算账"
+    shot_type: "近景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: "冷眼注视许清栀宣告"
+        emotion: 冷峻决绝
+    composition:
+      angle: 微仰拍
+      focus: 沈鸢犀利眼神
+    mood: "冷峻决绝"
+    lighting: "逆光勾勒轮廓，面部冷光"
+    lines:
+      - speaker: 沈鸢
+        text: "许氏，你先前在郡主府对我不敬，"
+      - speaker: 沈鸢
+        text: "今日又当众构陷我杀人。"
+      - speaker: 沈鸢
+        text: "这笔账，我们该好好算算了。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华丽色调，暖黄宫灯光线，近景微仰拍，御花园，18岁女性沈鸢(@tfdj_shenyan)乌发束起杏眼含情锦衣华服郡主装束，冷眼注视居高临下，眼神犀利决绝，逆光勾勒轮廓
+    image_path: "SC_13_身世大白/shot_023.png"
+    image_status: pending

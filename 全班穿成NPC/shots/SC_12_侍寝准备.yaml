@@ -1,0 +1,548 @@
+scene_id: SC_12
+scene_name: 侍寝准备
+scene_ref: scenes/SC_12_侍寝准备.md
+scene_type: reality
+scene_description: 敬事房/揽月轩
+scene_mood: 荒诞、送刑场
+scene_lighting: 宫廷光效
+shots:
+- id: SC_12_001
+  title: 夜深了，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 夜深了，
+  - speaker: 苏映雪
+    text: 陛下早些歇息吧。
+  - speaker: 苏映雪
+    text: 臣妾……告退。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_001.png
+  image_status: pending
+- id: SC_12_002
+  title: 说完，我头也不回...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 说完，我头也不回地走了。
+  - speaker: 旁白
+    text: 留他一个人在龙床上，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_002.png
+  image_status: pending
+- id: SC_12_003
+  title: 吹着冷风，深刻反省。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 吹着冷风，深刻反省。
+  - speaker: 旁白
+    text: pua狗皇帝的最高境界，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_003.png
+  image_status: pending
+- id: SC_12_004
+  title: 就是反向pua他。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 就是反向pua他。
+  - speaker: 旁白
+    text: 让他觉得，
+  - speaker: 旁白
+    text: 是他配不上我的"大爱"。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_004.png
+  image_status: pending
+- id: SC_12_005
+  title: 赢麻了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 赢麻了。
+  - speaker: 旁白
+    text: 从那天晚上开始，
+  - speaker: 旁白
+    text: 萧凌就像变了个人。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_005.png
+  image_status: pending
+- id: SC_12_006
+  title: 他解散了后宫。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他解散了后宫。
+  - speaker: 旁白
+    text: 字面意义上的解散。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_006.png
+  image_status: pending
+- id: SC_12_007
+  title: 虽然妃嫔们的名分...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 虽然妃嫔们的名分还在，
+  - speaker: 旁白
+    text: 但他再也没踏足过任何人的宫殿。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_007.png
+  image_status: pending
+- id: SC_12_008
+  title: 每天下朝，准时来...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 每天下朝，准时来我这里报到。
+  - speaker: 旁白
+    text: 不是批折子，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_008.png
+  image_status: pending
+- id: SC_12_009
+  title: 就是拉着我讨论国...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 就是拉着我讨论国家大事。
+  - speaker: 旁白
+    text: 赏赐跟流水似的往我宫里送。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_009.png
+  image_status: pending
+- id: SC_12_010
+  title: 搞得我那宣传委员...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 搞得我那宣传委员学生，
+  - speaker: 旁白
+    text: 在《后宫周报》上都不知道该怎么写了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_010.png
+  image_status: pending
+- id: SC_12_011
+  title: 头版头条永远是：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 头版头条永远是：
+  - speaker: 旁白
+    text: 【震惊！静嫔娘娘今日又获赏东珠一百颗！】
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_011.png
+  image_status: pending
+- id: SC_12_012
+  title: 我让他别写了，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我让他别写了，
+  - speaker: 旁白
+    text: 再写下去，我要成后宫公敌了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_012.png
+  image_status: pending
+- id: SC_12_013
+  title: 老师，那咱们换个...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 宣传委员
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 宣传委员
+    text: 老师，那咱们换个思路！
+  - speaker: 宣传委员
+    text: 咱们搞'静嫔娘娘教你理财'专栏！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    宣传委员(@npc_xuanchuan)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_013.png
+  image_status: pending
+- id: SC_12_014
+  title: 教大家怎么把赏赐...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 宣传委员
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 宣传委员
+    text: 教大家怎么把赏赐变成不动产！
+  - speaker: 旁白
+    text: 我：……滚。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    宣传委员(@npc_xuanchuan)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_014.png
+  image_status: pending
+- id: SC_12_015
+  title: 萧凌为了讨我欢心...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌为了讨我欢心，花样百出。
+  - speaker: 旁白
+    text: 知道我喜欢看帅哥……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_015.png
+  image_status: pending
+- id: SC_12_016
+  title: 哦不，是喜欢看人...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 哦不，是喜欢看人展现阳刚之气。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_016.png
+  image_status: pending
+- id: SC_12_017
+  title: 他特地在皇家围场...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他特地在皇家围场搞了个大型射箭表演。
+  - speaker: 旁白
+    text: 那天，他换上一身劲装，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_017.png
+  image_status: pending
+- id: SC_12_018
+  title: 身姿挺拔，英气逼人。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 身姿挺拔，英气逼人。
+  - speaker: 旁白
+    text: 弯弓、搭箭、瞄准、发射。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_018.png
+  image_status: pending
+- id: SC_12_019
+  title: 动作行云流水，一...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 动作行云流水，一气呵成。
+  - speaker: 旁白
+    text: '"嗖"的一声，'
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_019.png
+  image_status: pending
+- id: SC_12_020
+  title: 正中百步之外的靶...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 荒诞、送刑场
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 正中百步之外的靶心。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    敬事房/揽月轩，荒诞、送刑场氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_12_侍寝准备/shot_020.png
+  image_status: pending

@@ -1,0 +1,298 @@
+# 全班穿成NPC_角色资产.yaml
+# 来源剧本：全班穿成NPC，我把宫斗玩成总动员 (npc.md)
+version: "1.0"
+project_name: "全班穿成NPC，我把宫斗玩成总动员"
+style_ref: "style.yaml"
+generated_at: "2026-02-07T12:00:00"
+total_characters: 20
+
+characters:
+  # ── 主角 ──
+  - id: "@npc_suyingxue"
+    name: 苏映雪
+    type: 主角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围"
+    description: "青年女性，乌发挽髻，杏眼清亮，肤若凝脂，身形匀称，先粗布才人装后凤袍龙袍，气质坚韧聪慧、反PUA、有格局"
+    view: "白底全身设定图"
+    immutable_features:
+      - 乌发挽髻，发丝整齐
+      - 杏眼清亮，眼神坚定
+      - 肤若凝脂，面容清秀
+      - 气质坚韧聪慧、不卑不亢
+      - 可穿才人装/贵妃装/凤袍/龙袍，主色随身份变化
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，乌发挽髻，杏眼清亮，肤若凝脂，身形匀称，古风襦裙简约大方，气质坚韧聪慧，正面站立，面对镜头，全身像，双手自然下垂，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83bf/X9Qii1dpMeb6FBSujEgAH_7b85bf56711149c399bfaa64e7fc5d5a.png"
+    image_status: completed
+
+  # ── 配角：皇帝与后宫 ──
+  - id: "@npc_xiaoling"
+    name: 萧凌
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宫廷华美色调"
+    description: "青年男性，眉眼俊朗，曾龙袍加身、后素色长衫，身形挺拔，气质先帝王多疑后温和认命，射箭时英气逼人"
+    view: "白底全身设定图"
+    immutable_features:
+      - 眉眼俊朗，长相出众
+      - 身形挺拔，肩宽腰窄
+      - 先龙袍后素衣，气质从凌厉到温和
+      - 射箭时动作行云流水、英气逼人
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，眉眼俊朗，黑发束冠，身形挺拔，古风龙袍金边装饰，气质帝王英气，正面站立，面对镜头，全身像，双手自然下垂，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c0/S49YGRcNu37HW0xu6vaaC_5c61dbd2107946c6af8797bb76f91830.png"
+    image_status: completed
+
+  - id: "@npc_linyanrong"
+    name: 林燕容
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，宫廷华美色调"
+    description: "青年女性，楚楚可怜白莲花长相，帕子掩口，珍贵人/妃嫔装束，气质表面柔弱、心机深"
+    view: "白底全身设定图"
+    immutable_features:
+      - 楚楚可怜、白莲花长相
+      - 常用帕子掩口鼻
+      - 珍贵人/妃嫔华服
+      - 眼神柔弱中带算计
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，柳眉杏眼楚楚可怜，古风妃嫔华服，手持帕子，气质表面柔弱，正面站立，面对镜头，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c0/zNucrPF_fC2wipYhR6sKR_7ae42fccd4ac4b04a6c8dd8bd2377bbd.png"
+    image_status: completed
+
+  - id: "@npc_xianfei"
+    name: 贤妃
+    type: 配角
+    first_appearance: SC_02
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年女性，兵部尚书之女，红色云锦宫装，性格张扬跋扈，爱出风头，志在必得笑容"
+    view: "白底全身设定图"
+    immutable_features:
+      - 红色云锦宫装，华丽张扬
+      - 张扬跋扈、爱出风头
+      - 志在必得式笑容
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风红色云锦宫装华丽，气质张扬跋扈，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c0/BHpgVbuBVey9jJkPxqgBF_07cf43527d6d44e28edba8bd55684785.png"
+    image_status: completed
+
+  - id: "@npc_shufei"
+    name: 淑妃
+    type: 配角
+    first_appearance: SC_06
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年女性，看主角不顺眼，声音嗲，妃嫔装束，争宠时娇笑"
+    view: "白底全身设定图"
+    immutable_features:
+      - 妃嫔华服
+      - 声音嗲、娇笑
+      - 与贤妃、林燕容同场争宠
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风妃嫔装束淡紫色，气质娇媚，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c0/oTRWg320cBjt9P3zDv8zy_65d935e1a6cd40b091294718f3324c99.png"
+    image_status: completed
+
+  - id: "@npc_taihou"
+    name: 太后
+    type: 配角
+    first_appearance: SC_11
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "中年女性，萧凌之母，慈宁宫主位，凤冠常服，先敌意后温和，眼神锐利后慈爱"
+    view: "白底全身设定图"
+    immutable_features:
+      - 太后凤冠常服
+      - 眼神先锐利后慈爱
+      - 慈宁宫主位
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，中年亚洲女性，太后凤冠常服，气质威严慈爱，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c1/_rsXau7sODcCAncC5E_8Y_10021f2a2b2045708aa7c4359b671e8e.png"
+    image_status: completed
+
+  # ── 配角：学生/班委 ──
+  - id: "@npc_wanghao"
+    name: 王浩
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，地理课代表，八品占星官/刘天师装扮，小老头式连滚带爬，沉迷星座塔罗紫微，神神叨叨"
+    view: "白底全身设定图"
+    immutable_features:
+      - 八品占星官服饰，小老头形象
+      - 神神叨叨、掐指一算
+      - 涕泪横流、演技浮夸
+      - 后任钦天监监正
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，占星官服饰，瘦小精干，手持罗盘，气质神叨掐指一算，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c2/4NLSfqcz8GSjmwppPJ3yc_1748da9ae8be4cca86bdb03d6b69abc2.png"
+    image_status: completed
+
+  - id: "@npc_lidazhuang"
+    name: 李大壮
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "少年男性，捣蛋鬼双胞胎之一，小太监服饰，拼命拉占星官，手脚麻利"
+    view: "白底全身设定图"
+    immutable_features:
+      - 小太监服饰
+      - 双胞胎之一，与李二壮同框
+      - 手脚麻利、捣蛋鬼气质
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，少年亚洲男性，小太监服饰，圆脸机灵，气质机灵捣蛋，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c2/rkpb4tLccWqhL9LhsTqWv_5fe56bd977ab40f797f5e60ab0f1db94.png"
+    image_status: completed
+
+  - id: "@npc_lierzhuang"
+    name: 李二壮
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "少年男性，捣蛋鬼双胞胎之二，小太监服饰，趁乱踹回凳子救老师，手脚麻利"
+    view: "白底全身设定图"
+    immutable_features:
+      - 小太监服饰
+      - 双胞胎之二，与李大壮同框
+      - 手脚麻利、机灵
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，少年亚洲男性，小太监服饰，圆脸机灵，气质机灵捏蛋，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c3/tt96otEHhwt_VC6d-4F_s_925136233fcd4e5984fb873786b623d8.png"
+    image_status: completed
+
+  - id: "@npc_zhangjing"
+    name: 张静
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年女性，学习委员，宫女小桃装扮，粗布宫女服，急得快哭、八卦，后教育部长"
+    view: "白底全身设定图"
+    immutable_features:
+      - 宫女服饰，朴素小桃形象
+      - 学习委员气质，认真又八卦
+      - 常端水盆、汇报情况
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，宫女粗布服饰，朴素小桃形象，气质认真略带八卦，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c3/LRKnrFtp5k5TZcHztwxhF_6ea97caa63444441b62ea9eeb345628f.png"
+    image_status: completed
+
+  - id: "@npc_zhoupeng"
+    name: 周鹏
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，体育生，送饭小太监后御林军、大统领、兵马大元帅，人高马大，谄媚笑脸掩护，实则调皮护师"
+    view: "白底全身设定图"
+    immutable_features:
+      - 人高马大，体育生体型
+      - 先太监服后盔甲，带血盔甲踹门
+      - 谄媚笑/兴奋喊陛下牛逼
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，人高马大魁梧健硕，古风御林军盔甲，气质调皮阳刚，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c4/QLSyLvpwO8t1z0ol1mGxC_58f44e05f0574ac98dda9cd54a15579f.png"
+    image_status: completed
+
+  - id: "@npc_chenmo"
+    name: 陈默
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，班长，吏部主事→大理寺少卿→吏部尚书→内阁首辅，推眼镜冷静分析，三步走策略"
+    view: "白底全身设定图"
+    immutable_features:
+      - 推眼镜动作（戴不存在的眼镜）
+      - 冷静、条理清晰
+      - 官服从七品到首辅
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风官服，推眼镜动作，气质沉稳冷静，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c4/bhIihKTFgjhvjRensP8Vf_1854b5f4c410497da97a5648b7a02068.png"
+    image_status: completed
+
+  - id: "@npc_liupangzi"
+    name: 刘胖子
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，生活委员，御膳房掌勺→皇商/财政部长，体型偏胖，绫罗绸缎后穿，跑得气喘吁吁"
+    view: "白底全身设定图"
+    immutable_features:
+      - 体型偏胖
+      - 先御膳房后绫罗绸缎
+      - 管粮草、物价、皇家产业
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，体型偏胖，古风商贾绑罗绸缎服饰，气质精明和气，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c5/F_ciF68rYHJ2ct1B-DAh3_f2660428d3264cfbb7413a6ab1028f4b.png"
+    image_status: completed
+
+  - id: "@npc_zhaolei"
+    name: 赵磊
+    type: 配角
+    first_appearance: SC_05
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，纪律委员，敬事房翻牌子小太监，手抖递绿头牌，表情比哭还难看"
+    view: "白底全身设定图"
+    immutable_features:
+      - 敬事房太监服饰
+      - 手抖、表情紧张
+      - 端盘子翻牌
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，敬事房太监服饰，气质紧张谨慎，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c5/Yvm1kGZ8dCXZrHtML-Ond_6e8e7889ad2e4078b3c27243686fc076.png"
+    image_status: completed
+
+  - id: "@npc_sunmiao"
+    name: 孙淼
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，太医院学徒，弄上吐下泻不伤根本的药粉，自己人太医装模作样把脉"
+    view: "白底全身设定图"
+    immutable_features:
+      - 太医院学徒/太医服饰
+      - 配合主角演戏把脉
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，太医院服饰，气质斯文，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c5/rl_dS14BvVxkC3DCJLzFF_15502e57afe049108cfa30fb8d27a281.png"
+    image_status: completed
+
+  - id: "@npc_xuanchuan"
+    name: 宣传委员
+    type: 配角
+    first_appearance: SC_01
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年，创办《后宫周报》《大启日报》，写反内卷倡议书、静嫔理财专栏，说书造势，舆论喉舌"
+    view: "白底全身设定图"
+    immutable_features:
+      - 宫中文职/报人形象
+      - 搞舆论、写稿、办报
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风文士内官服饰，手持书笔，气质机灵文气，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c6/Gka44aPAzqBtOdhtTRGYk_6c4951e1dd3d406f9b041776b0af04d3.png"
+    image_status: completed
+
+  - id: "@npc_shenqingyao"
+    name: 沈清瑶
+    type: 配角
+    first_appearance: SC_26
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年女性，寒门女子，女子恩科状元，红袍游街，西南农桑使→农桑侯，英姿飒爽，答题思路清晰"
+    view: "白底全身设定图"
+    immutable_features:
+      - 素衣考生→红袍状元→官服
+      - 英姿飒爽、眼神坚定
+      - 农桑、水利见解独到
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲女性，古风红袍官服，英姿飒爽，眼神坚定，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c7/qRGluuGlfs34-qNzoZmMQ_b8d235e685c24351b3b0e0e6c5d132ba.png"
+    image_status: completed
+
+  - id: "@npc_anwang"
+    name: 安王
+    type: 配角
+    first_appearance: SC_17
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "青年男性，萧凌亲弟，有不臣之心，被用作“叛变”名目一网打尽"
+    view: "白底全身设定图"
+    immutable_features:
+      - 亲王/皇室装扮
+      - 与萧凌眉眼或有相似
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风亲王服饰，气质阴鸷有野心，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c7/N-2flc37QR2oo8adc0qdw_aa2f1ffab6b64776b32dec87321a1798.png"
+    image_status: completed
+
+  # ── 群演 ──
+  - id: "@npc_tiyuduan"
+    name: 体育队四大金刚
+    type: 群演
+    first_appearance: SC_05
+    style: "真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准"
+    description: "四名青年男性，抬被子卷送侍寝，絮絮叨叨跟送女儿上刑场似的，敬事房小太监装扮"
+    view: "白底全身设定图"
+    immutable_features:
+      - 四人统一太监/力士装扮
+      - 抬被子、絮叨、护师心切
+    prompt: "solo, single character, 真人写实高清，超细节刻画，古风人像写实，光影细腻，服饰纹理清晰，面部神态精准，青年亚洲男性，古风太监劲装，体型健壮，气质憨直护主，正面站立，全身像，solid pure white background，no background elements，ultra detailed"
+    image_url: "https://v3b.fal.media/files/b/0a8d83c8/m-Pe7IURwjW8IExb9qadr_a23525a7f1d04af0bbc8b0f8a60bff0d.png"
+    image_status: completed

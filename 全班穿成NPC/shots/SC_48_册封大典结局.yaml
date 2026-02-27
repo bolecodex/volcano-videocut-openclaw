@@ -1,0 +1,704 @@
+scene_id: SC_48
+scene_name: 册封大典结局
+scene_ref: scenes/SC_48_册封大典结局.md
+scene_type: reality
+scene_description: 京城/皇宫
+scene_mood: 岁月静好、大启盛世
+scene_lighting: 宫廷光效
+shots:
+- id: SC_48_001
+  title: 不久后，我下旨，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 不久后，我下旨，
+  - speaker: 旁白
+    text: 举行大典，
+  - speaker: 旁白
+    text: 册封萧凌为后，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_001.png
+  image_status: pending
+- id: SC_48_002
+  title: 与我并肩共治天下。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 与我并肩共治天下。
+  - speaker: 旁白
+    text: 大典那天，
+  - speaker: 旁白
+    text: 京城张灯结彩，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_002.png
+  image_status: pending
+- id: SC_48_003
+  title: 百姓们普天同庆，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 百姓们普天同庆，
+  - speaker: 旁白
+    text: 朝堂之上，群臣举杯，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_003.png
+  image_status: pending
+- id: SC_48_004
+  title: 列国来贺，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 列国来贺，
+  - speaker: 旁白
+    text: 场面十分盛大。
+  - speaker: 旁白
+    text: 萧凌身着大红喜服，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_004.png
+  image_status: pending
+- id: SC_48_005
+  title: 站在我身边，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 站在我身边，
+  - speaker: 旁白
+    text: 眉眼温柔，意气风发。
+  - speaker: 旁白
+    text: 太后坐在观礼席上，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_005.png
+  image_status: pending
+- id: SC_48_006
+  title: 看着我们，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 看着我们，
+  - speaker: 旁白
+    text: 脸上露出了欣慰的笑容，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_006.png
+  image_status: pending
+- id: SC_48_007
+  title: 眼里满是欢喜。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼里满是欢喜。
+  - speaker: 旁白
+    text: 大典结束后，
+  - speaker: 旁白
+    text: 我和萧凌一同回到皇宫，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_007.png
+  image_status: pending
+- id: SC_48_008
+  title: 站在庭院里，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 站在庭院里，
+  - speaker: 旁白
+    text: 看着满院的桂花，
+  - speaker: 旁白
+    text: 香气袭人。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_008.png
+  image_status: pending
+- id: SC_48_009
+  title: 陛下，还记得当年，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 陛下，还记得当年，
+  - speaker: 萧凌
+    text: 臣在闲云殿，
+  - speaker: 萧凌
+    text: 给陛下做桂花糕吗？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_009.png
+  image_status: pending
+- id: SC_48_010
+  title: 萧凌笑着问我，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌笑着问我，
+  - speaker: 旁白
+    text: 语气里满是回忆。
+  - speaker: 苏映雪
+    text: 当然记得。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_010.png
+  image_status: pending
+- id: SC_48_011
+  title: 我笑着点头，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我笑着点头，
+  - speaker: 苏映雪
+    text: 那时候，你还很消沉，
+  - speaker: 苏映雪
+    text: 如今，你不仅找回了自己，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_011.png
+  image_status: pending
+- id: SC_48_012
+  title: 还成为了我最坚实...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 还成为了我最坚实的依靠。
+  - speaker: 旁白
+    text: 萧凌轻轻拥我入怀，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_012.png
+  image_status: pending
+- id: SC_48_013
+  title: 在我耳边轻声说道：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 在我耳边轻声说道：
+  - speaker: 萧凌
+    text: 能遇到陛下，是儿臣的幸运，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_013.png
+  image_status: pending
+- id: SC_48_014
+  title: 能陪在陛下身边，...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 能陪在陛下身边，辅佐陛下，
+  - speaker: 萧凌
+    text: 是儿臣毕生的荣幸。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_014.png
+  image_status: pending
+- id: SC_48_015
+  title: 我靠在他的怀里，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我靠在他的怀里，
+  - speaker: 旁白
+    text: 听着他沉稳的心跳，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_015.png
+  image_status: pending
+- id: SC_48_016
+  title: 心里满是安稳与幸...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 心里满是安稳与幸福。
+  - speaker: 旁白
+    text: 往后，大启会越来越强盛，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_016.png
+  image_status: pending
+- id: SC_48_017
+  title: 百姓会越来越安乐，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 百姓会越来越安乐，
+  - speaker: 旁白
+    text: 我们会携手并肩，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_017.png
+  image_status: pending
+- id: SC_48_018
+  title: 看遍这大好河山，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 看遍这大好河山，
+  - speaker: 旁白
+    text: 共度这岁岁年年。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_018.png
+  image_status: pending
+- id: SC_48_019
+  title: 没有纷争，没有隔...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 没有纷争，没有隔阂，没有苦难，
+  - speaker: 旁白
+    text: 只有安稳，只有欢喜，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_019.png
+  image_status: pending
+- id: SC_48_020
+  title: 只有岁岁年年的相...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 只有岁岁年年的相守与陪伴。
+  - speaker: 旁白
+    text: 我与萧凌如此，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_020.png
+  image_status: pending
+- id: SC_48_021
+  title: 我的学生们如此，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我的学生们如此，
+  - speaker: 旁白
+    text: 这天下的百姓也如此。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_021.png
+  image_status: pending
+- id: SC_48_022
+  title: 从庙堂的文臣武将，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 从庙堂的文臣武将，
+  - speaker: 旁白
+    text: 到乡野的庶民百姓，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_022.png
+  image_status: pending
+- id: SC_48_023
+  title: 我们一同携手
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我们一同携手
+  - speaker: 旁白
+    text: 向我们的大启盛世走去。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_023.png
+  image_status: pending
+- id: SC_48_024
+  title: 这是我们的盛世，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 这是我们的盛世，
+  - speaker: 旁白
+    text: 天下人的大启盛世，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_024.png
+  image_status: pending
+- id: SC_48_025
+  title: 人人幸福，家家和乐。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 岁月静好、大启盛世
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 人人幸福，家家和乐。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    京城/皇宫，岁月静好、大启盛世氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_48_册封大典结局/shot_025.png
+  image_status: pending

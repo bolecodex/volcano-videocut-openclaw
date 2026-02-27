@@ -1,0 +1,312 @@
+scene_id: SC_42
+scene_name: 并肩王
+scene_ref: scenes/SC_42_并肩王.md
+scene_type: reality
+scene_description: 金銮殿/闲云殿
+scene_mood: 江山共治、隔阂消散
+scene_lighting: 宫廷光效
+shots:
+- id: SC_42_001
+  title: 当天下午，我下旨，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 当天下午，我下旨，
+  - speaker: 旁白
+    text: 恢复萧凌的身份，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_001.png
+  image_status: pending
+- id: SC_42_002
+  title: 册封为"并肩王"，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 册封为"并肩王"，
+  - speaker: 旁白
+    text: 辅佐朝政，主理军事与火器研发。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_002.png
+  image_status: pending
+- id: SC_42_003
+  title: 旨意下达，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 旨意下达，
+  - speaker: 旁白
+    text: 朝堂之上无人反对，
+  - speaker: 旁白
+    text: 毕竟萧凌的能力有目共睹，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_003.png
+  image_status: pending
+- id: SC_42_004
+  title: 再加上新政推行以...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 再加上新政推行以来，
+  - speaker: 旁白
+    text: 众人早已信服我的决断。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_004.png
+  image_status: pending
+- id: SC_42_005
+  title: 陈默、周鹏等人更...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 陈默、周鹏等人更是欣喜不已，
+  - speaker: 旁白
+    text: 私下里对我说，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_005.png
+  image_status: pending
+- id: SC_42_006
+  title: 萧凌回归，大启如...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌回归，大启如虎添翼。
+  - speaker: 旁白
+    text: 萧凌接到旨意时，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_006.png
+  image_status: pending
+- id: SC_42_007
+  title: 正在闲云殿修剪桂...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 正在闲云殿修剪桂花枝，
+  - speaker: 旁白
+    text: 手里的剪刀顿在半空，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_007.png
+  image_status: pending
+- id: SC_42_008
+  title: 眼底泛起了微光。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼底泛起了微光。
+  - speaker: 旁白
+    text: 他没有推辞，
+  - speaker: 旁白
+    text: 只是郑重地向我行礼：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_008.png
+  image_status: pending
+- id: SC_42_009
+  title: 臣，定不辱使命，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 臣，定不辱使命，
+  - speaker: 萧凌
+    text: 辅佐陛下，
+  - speaker: 萧凌
+    text: 守护好大启河山，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_009.png
+  image_status: pending
+- id: SC_42_010
+  title: 护好天下百姓。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 护好天下百姓。
+  - speaker: 旁白
+    text: 那一刻，我知道，
+  - speaker: 旁白
+    text: 我们之间所有的隔阂，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_010.png
+  image_status: pending
+- id: SC_42_011
+  title: 都彻底烟消云散了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 江山共治、隔阂消散
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 都彻底烟消云散了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    金銮殿/闲云殿，江山共治、隔阂消散氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_42_并肩王/shot_011.png
+  image_status: pending

@@ -1,0 +1,261 @@
+scene_id: "SC_07"
+scene_name: "雨夜噩梦"
+scene_ref: "scenes/SC_07_雨夜噩梦.md"
+scene_type: "dream"
+scene_description: "卧房，深夜大雨，昏暗恐怖"
+scene_mood: "恐怖、震撼"
+scene_lighting: "昏暗闪电，雨影"
+
+shots:
+  - id: "SC_07_001"
+    title: "雨夜惊醒"
+    shot_type: "中景"
+    script_lines: { start: 113, end: 114 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 从床上惊醒
+        emotion: 惊恐
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 紧张、恐惧
+    lighting: 闪电照亮
+    lines:
+      - speaker: 旁白
+        text: 直到那晚，瓢泼大雨。
+      - speaker: 旁白
+        text: 我被一声嘶吼声惊醒。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，雾气弥漫，诡异光影，
+      暗夜卧房，大雨倾盆声中，苏晚(@szj_suwan)猛然从床上惊醒，
+      披散乌发，瞪大双眼，闪电照亮惊恐面容，
+      中景镜头，平视角度，昏暗高对比，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_001.png"
+    image_status: pending
+
+  - id: "SC_07_002"
+    title: "陈屠倒地"
+    shot_type: "中景"
+    script_lines: { start: 115, end: 116 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 躺在地上
+        emotion: 痛苦
+    composition:
+      angle: 俯视
+      focus: 陈屠
+    mood: 恐怖
+    lighting: 昏暗
+    lines:
+      - speaker: 旁白
+        text: 陈屠不知何时进了屋，
+      - speaker: 旁白
+        text: 躺在我床边的地上。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，雾气弥漫，诡异光影，
+      陈屠(@szj_chentu)躺在床边的木地板上，身体蜷缩，
+      昏暗中身形模糊，雨声沉闷，
+      中景镜头，俯视角度，昏暗色调，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_002.png"
+    image_status: pending
+
+  - id: "SC_07_003"
+    title: "面容扭曲"
+    shot_type: "特写"
+    script_lines: { start: 117, end: 118 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 噩梦中面容扭曲
+        emotion: 痛苦扭曲
+    composition:
+      angle: 俯视
+      focus: 陈屠面部
+    mood: 恐怖、震撼
+    lighting: 闪电照亮
+    lines:
+      - speaker: 旁白
+        text: 昏暗中，他整个脸都扭曲了，
+      - speaker: 旁白
+        text: 额上青筋暴起。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，诡异光影，
+      陈屠(@szj_chentu)面部特写，整张脸扭曲痛苦，
+      额头青筋暴起，紧咬牙关，汗水混着雨水，
+      闪电照亮一瞬间的恐怖表情，
+      特写镜头，俯视角度，闪电高对比，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_003.png"
+    image_status: pending
+
+  - id: "SC_07_004"
+    title: "念出名字"
+    shot_type: "特写"
+    script_lines: { start: 119, end: 121 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 齿缝间挤出名字
+        emotion: 仇恨
+    composition:
+      angle: 特写
+      focus: 陈屠嘴唇
+    mood: 恐怖、悬疑
+    lighting: 昏暗
+    lines:
+      - speaker: 陈屠
+        text: 张……德坤……
+      - speaker: 旁白
+        text: 一个模糊的名字，混着粗重的喘息，
+      - speaker: 旁白
+        text: 从他齿缝里挤出来。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，诡异光影，
+      陈屠(@szj_chentu)嘴唇特写，嘴唇颤动，齿缝间挤出模糊字眼，
+      粗重喘息，唾液在嘴角，
+      极致特写镜头，昏暗中嘴唇微动，恐怖氛围，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_004.png"
+    image_status: pending
+
+  - id: "SC_07_005"
+    title: "苏晚屏息"
+    shot_type: "特写"
+    script_lines: { start: 122, end: 123 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 屏住呼吸
+        emotion: 恐惧
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 恐惧、紧张
+    lighting: 昏暗
+    lines:
+      - speaker: 旁白
+        text: 我屏住了呼吸，
+      - speaker: 陈屠
+        text: 张德坤……偿命……！
+        emotion: 仇恨暴怒
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，诡异光影，
+      苏晚(@szj_suwan)面部特写，双手捂住嘴巴，瞪大眼睛，
+      屏住呼吸不敢出声，眼中满是恐惧，
+      昏暗卧房，
+      特写镜头，平视角度，昏暗色调，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_005.png"
+    image_status: pending
+
+  - id: "SC_07_006"
+    title: "暴力挥臂"
+    shot_type: "中景"
+    script_lines: { start: 124, end: 125 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 猛挥手臂砸床沿
+        emotion: 暴怒
+    composition:
+      angle: 平视
+      focus: 陈屠挥臂
+    mood: 暴力、震撼
+    lighting: 闪电照亮
+    lines:
+      - speaker: 旁白
+        text: 他猛地一挥手臂，
+      - speaker: 旁白
+        text: '"咚"一声砸在床沿的厚木板上，'
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，诡异光影，动态自然，
+      陈屠(@szj_chentu)在地上猛然挥起手臂砸向床沿厚木板，
+      力量爆发，木板震颤，闪电照亮动态瞬间，
+      中景镜头，动态构图，闪电高对比，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_006.png"
+    image_status: pending
+
+  - id: "SC_07_007"
+    title: "修罗现身"
+    shot_type: "中景"
+    script_lines: { start: 126, end: 128 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 噩梦中的修罗状态
+        emotion: 杀气腾腾
+    composition:
+      angle: 仰视
+      focus: 陈屠
+    mood: 恐怖、震撼
+    lighting: 闪电逆光
+    lines:
+      - speaker: 旁白
+        text: 连带着整张床都剧烈地晃动起来。
+      - speaker: 旁白
+        text: 白日里那个沉默寡言的陈屠不见了。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，诡异光影，
+      陈屠(@szj_chentu)半坐起身，整个人笼罩在暗影中，
+      白日里沉默温和的面容消失，取而代之是狰狞恐怖的表情，
+      闪电逆光勾勒出魁梧身形，杀气腾腾，
+      中景镜头，仰视角度，闪电逆光，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_007.png"
+    image_status: pending
+
+  - id: "SC_07_008"
+    title: "地狱修罗"
+    shot_type: "中景"
+    script_lines: { start: 129, end: 131 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 浑身杀气
+        emotion: 暴戾
+    composition:
+      angle: 仰视
+      focus: 陈屠
+    mood: 恐怖
+    lighting: 暗红色调
+    lines:
+      - speaker: 旁白
+        text: 此刻的他，
+      - speaker: 旁白
+        text: 像个从地狱里爬出来的修罗，
+      - speaker: 旁白
+        text: 浑身都是血腥的杀气。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，雾气弥漫，诡异光影，
+      陈屠(@szj_chentu)噩梦中的修罗状态，双眼充血泛红，
+      浑身笼罩着无形的血腥杀气，面容狰狞恐怖，
+      如同地狱爬出的恶鬼，暗红色雾气缭绕，
+      中景镜头，仰视角度，暗红色调，恐怖氛围，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_008.png"
+    image_status: pending
+
+  - id: "SC_07_009"
+    title: "苏晚恐惧"
+    shot_type: "中景"
+    script_lines: { start: 132, end: 133 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 缩在床角
+        emotion: 恐惧
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 恐惧、无助
+    lighting: 天色泛白
+    lines:
+      - speaker: 旁白
+        text: 我缩在床角，抱着膝盖，
+      - speaker: 旁白
+        text: 睁着眼，直到天色泛白。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，
+      昏暗阴冷色调，雾气弥漫，
+      苏晚(@szj_suwan)缩在床角，双臂紧紧抱着膝盖，
+      瞪大的杏眼中满是恐惧，一夜未眠，
+      窗外天色渐渐泛白，从黑暗过渡到微亮，
+      中景镜头，平视角度，冷暖交替光线，高清细节
+    image_path: "SC_07_雨夜噩梦/shot_009.png"
+    image_status: pending

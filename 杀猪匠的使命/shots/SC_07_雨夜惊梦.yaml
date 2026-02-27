@@ -1,0 +1,279 @@
+scene_id: SC_07
+scene_name: 雨夜惊梦
+scene_ref: scenes/SC_07_雨夜惊梦.md
+scene_type: 现实(reality)
+scene_description: 里屋某晚至清晨
+scene_mood: 紧张恐惧困惑
+scene_lighting: 雨夜暗调→天亮暖调
+
+shots:
+  - id: SC_07_001
+    title: 雨夜惊醒
+    shot_type: 中景
+    characters:
+      - ref: "@szj_suwan"
+        action: 惊醒坐起
+        emotion: 惊恐
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 惊恐
+    lighting: 雨夜暗调，窗外闪电
+    lines:
+      - speaker: 旁白
+        text: "直到那晚，瓢泼大雨。"
+      - speaker: 旁白
+        text: "我被一声嘶吼声惊醒。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，窗外闪电，苏晚(@szj_suwan)惊醒坐起在床上，眼神惊恐，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_001.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368985573_1a15624f-cb51-4ff0-8c56-335969d2f076.png"
+    generated_at: "2026-02-06T17:08:03"
+
+  - id: SC_07_002
+    title: 陈屠地上
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 躺地上
+    composition:
+      angle: 平视
+      focus: 陈屠
+    mood: 异常
+    lighting: 雨夜暗调
+    lines:
+      - speaker: 旁白
+        text: "陈屠不知何时进了屋，躺在我床边的地上。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，陈屠(@szj_chentu)躺在床边地上，身形蜷缩，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_002.png
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e56/0KLYRpuiBX0E4HunCIY3D.png"
+    generated_at: "2026-02-06T17:08:03"
+
+  - id: SC_07_003
+    title: 扭曲念名
+    shot_type: 特写
+    characters:
+      - ref: "@szj_chentu"
+        action: 梦中
+        emotion: 痛苦
+    composition:
+      angle: 俯视
+      focus: 陈屠面部
+    mood: 恐怖
+    lighting: 雨夜暗调
+    lines:
+      - speaker: 旁白
+        text: "昏暗中，他整个脸都扭曲了，额上青筋暴起。"
+      - speaker: 陈屠
+        text: "……张……德坤……"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，俯视特写：陈屠(@szj_chentu)面容扭曲，额上青筋暴起，嘴唇开合念着什么，雨夜暗调，特写镜头，恐怖，高清细节
+    image_path: SC_07_雨夜惊梦/shot_003.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770369079032_c2eed839-fa05-4bca-ad1d-6217101e00e4.png"
+    generated_at: "2026-02-06T17:08:03"
+
+  - id: SC_07_004
+    title: 齿缝挤名
+    shot_type: 中景
+    characters:
+      - ref: "@szj_suwan"
+        action: 屏息观察
+        emotion: 紧张
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 紧张
+    lighting: 雨夜暗调
+    lines:
+      - speaker: 旁白
+        text: "一个模糊的名字，混着粗重的喘息，从他齿缝里挤出来。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，苏晚(@szj_suwan)紧贴床头，屏住呼吸注视地上的陈屠，中景镜头，紧张，高清细节
+    image_path: SC_07_雨夜惊梦/shot_004.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770369039589_48dfdaa7-042e-45e4-91b9-d172b0cc8882.png"
+    generated_at: "2026-02-06T17:08:05"
+
+  - id: SC_07_005
+    title: 偿命呐喊
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 梦中挣扎
+    composition:
+      angle: 平视
+      focus: 陈屠
+    mood: 恐怖杀气
+    lighting: 雨夜暗调，闪电
+    lines:
+      - speaker: 旁白
+        text: "我屏住了呼吸，"
+      - speaker: 陈屠
+        text: "张德坤……偿命……！"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，雨夜暗调，闪电照亮房间，陈屠(@szj_chentu)躺在地上猛地挣扎，嘴大张呐喊，中景镜头，恐怖杀气，高清细节
+    image_path: SC_07_雨夜惊梦/shot_005.png
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5ec0/Uc8Q8z--XiiSvlJWYKnq7.png"
+    generated_at: "2026-02-06T17:20:00"
+
+  - id: SC_07_006
+    title: 挥臂砸床
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 挥臂
+    composition:
+      angle: 平视
+      focus: 陈屠挥臂动作
+    mood: 恐怖
+    lighting: 雨夜暗调
+    lines:
+      - speaker: 旁白
+        text: "他猛地一挥手臂，'咚'一声砸在床沿的厚木板上，连带着整张床都剧烈地晃动起来。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，动态模糊，简陋卧房内，雨夜暗调，陈屠(@szj_chentu)猛地一挥手臂砸在床沿，整张床剧烈晃动，中景镜头，恐怖，高清细节
+    image_path: SC_07_雨夜惊梦/shot_006.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770369042865_59e22423-ba40-4da5-b9d6-5c1e9e7e3aac.png"
+    generated_at: "2026-02-06T17:08:07"
+
+  - id: SC_07_007
+    title: 修罗现身
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 梦中
+        emotion: 狰狞
+    composition:
+      angle: 平视
+      focus: 陈屠侧脸
+    mood: 恐怖
+    lighting: 雨夜暗调，闪电
+    lines:
+      - speaker: 旁白
+        text: "白日里那个沉默寡言的陈屠不见了。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，雨夜暗调，闪电照亮，陈屠(@szj_chentu)侧脸特写，表情狰狞与白日判若两人，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_007.png
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e58/51eIQkJVsm_-4TGBFtkjK.png"
+    generated_at: "2026-02-06T17:08:05"
+
+  - id: SC_07_008
+    title: 血腥杀气
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+    composition:
+      angle: 平视
+      focus: 陈屠
+    mood: 恐怖杀气
+    lighting: 雨夜暗调
+    lines:
+      - speaker: 旁白
+        text: "此刻的他，像个从地狱里爬出来的修罗，浑身都是血腥的杀气。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，雨夜暗调，陈屠(@szj_chentu)躺在地上，浑身散发杀气，如同修罗，中景镜头，恐怖杀气，高清细节
+    image_path: SC_07_雨夜惊梦/shot_008.png
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5ec0/yz1_-42ifeAt5_4biwlwh.png"
+    generated_at: "2026-02-06T17:20:00"
+
+  - id: SC_07_009
+    title: 缩在床角
+    shot_type: 中景
+    characters:
+      - ref: "@szj_suwan"
+        action: 缩床角
+        emotion: 恐惧
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 恐惧困惑
+    lighting: 天色渐亮
+    lines:
+      - speaker: 旁白
+        text: "我缩在床角，抱着膝盖，睁着眼，直到天色泛白。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，天色渐亮，苏晚(@szj_suwan)缩在床角双臂抱膝，眼下青黑一夜未眠，中景镜头，恐惧困惑，高清细节
+    image_path: SC_07_雨夜惊梦/shot_009.png
+    image_status: completed
+    image_url: "https://v3b.fal.media/files/b/0a8d5e59/Up4DQeuLUOLkfCZCosznc.png"
+    generated_at: "2026-02-06T17:08:28"
+
+  - id: SC_07_010
+    title: 雨停醒来
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 揉额角
+      - ref: "@szj_suwan"
+    composition:
+      angle: 平视
+      focus: 两人互动
+    mood: 关心
+    lighting: 清晨柔光
+    lines:
+      - speaker: 旁白
+        text: "雨停了。陈屠醒来，揉了揉额角，看到我眼下的青黑，愣了一下。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房内，清晨柔光，陈屠(@szj_chentu)坐起揉额角，看到苏晚(@szj_suwan)眼下青黑，愣住，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_010.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770369023191_65cbca1d-70fd-4d95-bfa9-7396c5c524b4.png"
+    generated_at: "2026-02-06T17:08:30"
+
+  - id: SC_07_011
+    title: 吵到你了
+    shot_type: 中景
+    characters:
+      - ref: "@szj_chentu"
+        action: 关心
+      - ref: "@szj_suwan"
+        action: 摇头
+    composition:
+      angle: 平视
+      focus: 两人对话
+    mood: 关心
+    lighting: 清晨柔光
+    lines:
+      - speaker: 陈屠
+        text: "吵到你了？"
+      - speaker: 旁白
+        text: "我摇摇头。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋卧房/铺面，清晨柔光，陈屠(@szj_chentu)关心地看着苏晚(@szj_suwan)，苏晚摇摇头，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_011.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368993474_bb19b01b-20a9-44b1-be51-46fbc47dc2f8.png"
+    generated_at: "2026-02-06T17:08:31"
+
+  - id: SC_07_012
+    title: 水煮蛋
+    shot_type: 中景
+    characters:
+      - ref: "@szj_suwan"
+        action: 食不下咽
+      - ref: "@szj_chentu"
+        action: 低头吃饭
+    composition:
+      angle: 平视
+      focus: 苏晚碗中蛋
+    mood: 心事重重
+    lighting: 清晨柔光
+    lines:
+      - speaker: 旁白
+        text: "早饭时，我碗里多了个剥好的水煮蛋。"
+      - speaker: 旁白
+        text: "我却食不下咽。"
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，动态自然，暖黄色的光线，背景虚化氛围感强，简陋铺面，清晨柔光，苏晚(@szj_suwan)碗里一个剥好的水煮蛋却筷子不动，心事重重，陈屠(@szj_chentu)低头吃饭如常，中景镜头，高清细节
+    image_path: SC_07_雨夜惊梦/shot_012.png
+    image_status: completed
+    image_url: "https://cdn-video.51sux.com/uploads/1770368975127_4000af74-7c13-4cc3-a4e0-115bb25e6576.png"
+    generated_at: "2026-02-06T17:08:31"

@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杀猪匠的使命 - 分镜查看器</title>
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #242424;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --accent: #d4a853;
+            --accent-dim: #8b7355;
+            --border: #333;
+            --success: #4ade80;
+            --shadow: rgba(0,0,0,0.4);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* 页面标题 */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, #2a2520 0%, var(--bg-card) 100%);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+        }
+        
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .page-subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+        .stat-label { font-size: 0.85rem; color: var(--text-secondary); }
+        
+        /* 场景导航 */
+        .scene-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            justify-content: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--bg-primary);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .scene-nav-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+        }
+        
+        .scene-nav-btn:hover, .scene-nav-btn.active {
+            background: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+        }
+        
+        /* 场景区块 */
+        .scene-section { margin-bottom: 3rem; }
+        
+        .scene-header {
+            background: linear-gradient(135deg, #2a2520 0%, var(--bg-card) 100%);
+            border-radius: 16px;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .scene-title { font-size: 1.5rem; font-weight: 700; color: var(--accent); }
+        
+        .scene-id {
+            font-size: 0.85rem;
+            background: var(--accent-dim);
+            color: var(--bg-primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .scene-meta {
+            margin-left: auto;
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+        
+        /* 镜头网格 */
+        .shots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        @media (max-width: 500px) {
+            .shots-grid { grid-template-columns: 1fr; }
+        }
+        
+        .shot-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            cursor: pointer;
+        }
+        
+        .shot-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px var(--shadow);
+        }
+        
+        .shot-image-container {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: var(--bg-secondary);
+            overflow: hidden;
+        }
+        
+        .shot-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s;
+        }
+        
+        .shot-image-container.img-error .shot-image {
+            opacity: 0;
+        }
+        
+        .shot-image-container.img-error::after {
+            content: '🎬 图片加载失败';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .shot-number {
+            position: absolute;
+            top: 0.75rem;
+            left: 0.75rem;
+            background: var(--accent);
+            color: var(--bg-primary);
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 2;
+        }
+        
+        .shot-type-badge {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--text-primary);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            z-index: 2;
+        }
+        
+        .shot-info { padding: 1rem; }
+        
+        .shot-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        .shot-characters {
+            font-size: 0.85rem;
+            color: var(--accent-dim);
+            margin-bottom: 0.5rem;
+        }
+        
+        .shot-mood {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+        
+        .tag-mood {
+            background: rgba(212, 168, 83, 0.2);
+            color: var(--accent);
+        }
+        
+        .tag-lighting {
+            background: rgba(139, 115, 85, 0.3);
+            color: #c4a87a;
+        }
+        
+        /* 台词区域 */
+        .lines-section {
+            margin-top: 0.75rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid var(--border);
+        }
+        
+        .line-item {
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+            padding-left: 0.5rem;
+            border-left: 2px solid var(--accent-dim);
+        }
+        
+        .line-speaker { color: var(--accent); font-weight: 600; }
+        .line-text { color: var(--text-secondary); }
+        
+        /* 灯箱 */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .lightbox.active { display: flex; }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+        }
+        
+        .lightbox-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+        
+        .lightbox-info {
+            background: var(--bg-card);
+            padding: 1rem;
+            border-radius: 0 0 8px 8px;
+            margin-top: -4px;
+        }
+        
+        .lightbox-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--bg-card);
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 1rem;
+            border-radius: 8px;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        
+        .lightbox-nav:hover { opacity: 1; }
+        .lightbox-prev { left: -60px; }
+        .lightbox-next { right: -60px; }
+        
+        @media (max-width: 768px) {
+            .lightbox-prev { left: 10px; }
+            .lightbox-next { right: 10px; }
+        }
+        
+        /* 返回顶部 */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: var(--bg-primary);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 16px var(--shadow);
+            transition: all 0.2s;
+            z-index: 50;
+        }
+        
+        .back-to-top.visible { display: flex; }
+        .back-to-top:hover { transform: scale(1.1); }
+        
+        /* 镜头计数 */
+        .shot-counter {
+            position: absolute;
+            bottom: 0.75rem;
+            left: 0.75rem;
+            background: rgba(0,0,0,0.7);
+            color: var(--text-secondary);
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            z-index: 2;
+        }
+        
+        /* 滚动条 */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-secondary); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-dim); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 页面标题 -->
+        <div class="page-header">
+            <h1 class="page-title">🎬 杀猪匠的使命</h1>
+            <p class="page-subtitle">分镜查看器 · Storyboard Viewer</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-scenes">8</div>
+                    <div class="stat-label">场景</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-shots">72</div>
+                    <div class="stat-label">镜头</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="stat-images">72</div>
+                    <div class="stat-label">图片</div>
+                </div>
+            </div>
+            <p class="page-subtitle" style="margin-top:1rem;font-size:0.85rem;opacity:0.6;">生成时间: 2026-02-07T08:08:19</p>
+        </div>
+        
+        <!-- 场景导航 -->
+        <div class="scene-nav">
+            <button class="scene-nav-btn active" onclick="scrollToScene('all')">全部</button>
+            <button class="scene-nav-btn" onclick="scrollToScene('SC_01')">SC_01 开篇悬念</button><button class="scene-nav-btn" onclick="scrollToScene('SC_02')">SC_02 西市日常</button><button class="scene-nav-btn" onclick="scrollToScene('SC_03')">SC_03 苏府抄家</button><button class="scene-nav-btn" onclick="scrollToScene('SC_04')">SC_04 人市被买</button><button class="scene-nav-btn" onclick="scrollToScene('SC_05')">SC_05 新婚之夜</button><button class="scene-nav-btn" onclick="scrollToScene('SC_06')">SC_06 日子过渡</button><button class="scene-nav-btn" onclick="scrollToScene('SC_07')">SC_07 雨夜惊梦</button><button class="scene-nav-btn" onclick="scrollToScene('SC_08')">SC_08 张德坤死讯</button>
+        </div>
+        
+        
+<!-- SC_01 开篇悬念 -->
+<div class="scene-section" id="SC_01">
+    <div class="scene-header">
+        <span class="scene-id">SC_01</span>
+        <h2 class="scene-title">开篇悬念</h2>
+        <div class="scene-meta">
+            <span>🎬 预告(prologue)</span>
+            <span>🎭 神秘悬疑</span>
+            <span>💡 油灯暖光侧逆光</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(0)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368611061_f4388c57-ade0-457b-860a-20e3a5ab21f5.png" alt="秘密揭示" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">秘密揭示</h3>
+        <div class="shot-characters">@szj_chentu · 躺在床上梦中挣扎 | @szj_suwan · 画外</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 神秘悬疑</span>
+            <span class="tag tag-lighting">💡 油灯暖光侧逆光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我那夫君，有个秘密。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他杀的，不止是猪。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(1)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368670456_389dac9a-282f-4fba-84e9-1a71cc0d8825.png" alt="噩梦念名" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">噩梦念名</h3>
+        <div class="shot-characters">@szj_chentu · 梦中嘴唇微动</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖悬疑</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">每晚噩梦，他都会念出一个名字。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(2)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5ec0/MeBxqEXmgx-x_V_NPZ-iy.png" alt="必定暴毙" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">必定暴毙</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 不祥</span>
+            <span class="tag tag-lighting">💡 暗色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">第二天，那名字的主人必定暴毙。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(3)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e39/CsveYxCRSOovQxvq6KcBE.png" alt="仇人之名" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">仇人之名</h3>
+        <div class="shot-characters">@szj_chentu · 梦中挣扎加剧</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 紧张转折</span>
+            <span class="tag tag-lighting">💡 油灯摇曳</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">直到那晚他在梦中吐出害死我爹的仇人的名字——</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(4)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e39/SKBu5AcUw32Ts11ZRwWE2.png" alt="苏晚握手决意" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">苏晚握手决意</h3>
+        <div class="shot-characters">@szj_suwan · 握住陈屠的手 · 颤抖决绝 | @szj_chentu · 熟睡中</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 决绝悲壮</span>
+            <span class="tag tag-lighting">💡 油灯侧逆光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我颤抖着握住他的手，</span></div><div class="line-item"><span class="line-speaker">苏晚：</span><span class="line-text">夫君，今晚，替我多砍几刀。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_02 西市日常 -->
+<div class="scene-section" id="SC_02">
+    <div class="scene-header">
+        <span class="scene-id">SC_02</span>
+        <h2 class="scene-title">西市日常</h2>
+        <div class="scene-meta">
+            <span>🎬 现实(reality)</span>
+            <span>🎭 市井苦涩隐忍</span>
+            <span>💡 日光侧照</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(5)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368723396_9b1301de-f865-4315-b19d-e2bd08e40814.png" alt="檀香已逝" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">檀香已逝</h3>
+        <div class="shot-characters">@szj_suwan · 低头工作</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 苦涩适应</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">嫁给陈屠的第三个月，我身上从苏府带出来的最后一缕檀香，终于被那猪下水的味道彻底覆盖了。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(6)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368674491_6f3680e1-97ff-4efa-b192-9d365fa17582.png" alt="街坊窥视" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">街坊窥视</h3>
+        <div class="shot-characters">@szj_suwan · 前景低头工作 | @szj_jiefang · 背景窃窃私语</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 市井窥视</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">西市的街坊们看我的眼神，惋惜里掺着五分看好戏的幸灾乐祸，总有人窃窃私语，</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(7)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368716646_114d8b34-3168-49e2-9f8e-716ba41f5649.png" alt="闲言碎语" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">闲言碎语</h3>
+        <div class="shot-characters">@szj_jiefang · 议论</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 闲言碎语</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">街坊甲：</span><span class="line-text">苏家的大小姐，金枝玉叶，怎么最后配了个杀猪的？</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(8)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368768761_b6ca7d23-26ef-4af5-93d5-ac98728f4cf8.png" alt="街坊回应" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">街坊回应</h3>
+        <div class="shot-characters">@szj_jiefang · 低声回应</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 世故同情</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">街坊乙：</span><span class="line-text">嘘——家道中落，配个屠户，好歹是条活路，总比卖进窑子强。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(9)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e42/gbaw2Lm6ta-Fn0paw9zu7.png" alt="苏晚隐忍" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">苏晚隐忍</h3>
+        <div class="shot-characters">@szj_suwan · 低头舀水 · 隐忍</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 隐忍</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我只当听不见，低头，舀起一瓢滚烫的水，浇在盆子里的猪蹄上。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(10)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5ec0/uHtyx7xIbafR3wObuhxZ5.png" alt="案板闷响" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">案板闷响</h3>
+        <div class="shot-characters">@szj_chentu · 用力剁骨</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 震撼</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">案板那边，&#x27;砰&#x27;一声闷响，震得挂在铁钩上的半扇猪肉都晃了晃。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(11)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5ec0/3-w32KqPDQSVDxh3lMscK.png" alt="沉默护妻" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">07</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">沉默护妻</h3>
+        <div class="shot-characters">@szj_chentu · 剁骨 · 沉默护妻</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默关怀</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">是我的夫君，陈屠，</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">每当那些闲言碎语飘进来，他剁骨头的声音就格外响。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(12)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368750569_ed01c327-3f95-492a-ae51-2c6d23f7fe1d.png" alt="买烧饼" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">08</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">买烧饼</h3>
+        <div class="shot-characters">@szj_chentu · 递烧饼 | @szj_suwan · 微愣接过</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 温情</span>
+            <span class="tag tag-lighting">💡 日光暖调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">剁完，他会一声不吭地走到隔壁的烧饼铺，丢下两文钱，买一个刚出炉的芝麻烧饼回来，塞我手里。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(13)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368763915_6c6f0b06-f27d-431f-9c9f-b832ec2c01a9.png" alt="一字千金" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">09</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">一字千金</h3>
+        <div class="shot-characters">@szj_chentu · 转身背影</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默关怀</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">吃。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他只说这一个字，转身又去切肉去了。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(14)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e3e/Tx8OnGPkEyzlND97qcVX7.png" alt="苦涩回味" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">10</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">苦涩回味</h3>
+        <div class="shot-characters">@szj_suwan · 啃饼 · 若有所思</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 若有所思</span>
+            <span class="tag tag-lighting">💡 日光柔和</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我小口啃着饼。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">芝麻粒在齿间迸开，焦香四溢。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(15)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368770283_ca85a636-2951-4e34-99e2-fc345639ddd3.png" alt="淡淡苦味" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">11</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">淡淡苦味</h3>
+        <div class="shot-characters">@szj_suwan · 苦涩</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 苦涩</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">可我总能尝到淡淡地苦味。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(16)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e45/31Wr1NlmN6G1hb4_C6KWU.png" alt="往昔追忆" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">12</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">往昔追忆</h3>
+        <div class="shot-characters">@szj_suwan · 望远方 · 怀念</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 怀念</span>
+            <span class="tag tag-lighting">💡 日光逆光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">想当初，我也是京城路人人称羡的苏家千金苏晚。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_03 苏府抄家 -->
+<div class="scene-section" id="SC_03">
+    <div class="scene-header">
+        <span class="scene-id">SC_03</span>
+        <h2 class="scene-title">苏府抄家</h2>
+        <div class="scene-meta">
+            <span>🎬 闪回(flashback)</span>
+            <span>🎭 悲凉绝望寒冷</span>
+            <span>💡 冷灰蓝色调大雪暗角</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(17)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e46/51-jFU5by1YIfNmbQOm9o.png" alt="苏府被抄" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">全景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">苏府被抄</h3>
+        <div class="shot-characters">@szj_suwan · 画外</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 悲凉萧瑟</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">苏家被抄那日，大雪封了京城。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(18)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368807609_9d49dea8-e39d-4666-8ab5-e203394a4c3e.png" alt="构陷忠良" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">构陷忠良</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 权力冷酷</span>
+            <span class="tag tag-lighting">💡 冷色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我爹，刑部侍郎苏蔺，一本弹劾丞相魏忠贤贪墨河工款的折子递上去，龙椅上那位连看都没看，只批了四个字：&#x27;构陷忠良&#x27;。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(19)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e47/Eb60YiSUmskEkbhi0aLG9.png" alt="父入诏狱" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">父入诏狱</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 绝望阴暗</span>
+            <span class="tag tag-lighting">💡 幽暗微光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">人，就直接下了诏狱。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(20)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368753786_0dd88982-a193-46a7-983d-ddadd3a7723b.png" alt="母亲自缢" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">母亲自缢</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 悲痛绝望</span>
+            <span class="tag tag-lighting">💡 冷调月光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我娘听闻我爹在狱中被活活折磨至死，当晚便悬了梁，一根白绫，随我爹去了。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(21)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e64/P7S3hNTiLWEj7It4sTbUg.png" alt="拖出闺房" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">拖出闺房</h3>
+        <div class="shot-characters">@szj_suwan · 被拖拽</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 凄惨</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我被官差从闺房里拖出来，只一身素白单衣，被扔进了人市。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(22)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e48/k4tqs54sUfw7g1JwWYX-0.png" alt="雪刀刮面" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">雪刀刮面</h3>
+        <div class="shot-characters">@szj_suwan · 瑟缩</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 寒冷凄苦</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">那天真冷啊，雪片子跟刀子似的，刮在脸上生疼。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(23)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368768127_1084dcf7-a2f5-48f8-8039-66d451a99ef0.png" alt="公子围观" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">07</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">公子围观</h3>
+        <div class="shot-characters">@szj_suwan · 前景跪地</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 屈辱</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">那些往日在我家门前争相递帖子的公子哥儿们，此刻都挤在人群外围，用一种轻佻的目光打量我。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(24)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368761664_bc097312-8af5-4226-8990-19cffd077ce0.png" alt="等待窑子" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">08</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">等待窑子</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 冷酷人性</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他们等着看我被哪个下三滥的窑子买走，</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(25)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e48/SrD8pSuAtkjakb7jmKOnx.png" alt="风流谈资" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">09</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">风流谈资</h3>
+        <div class="shot-characters">@szj_suwan · 倔强</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 倔强不屈</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">好给他们日后的酒桌上添一桩风流谈资。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(26)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368831206_ecfaea35-7183-438c-af97-bfd933327ea3.png" alt="黑影遮挡" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">10</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">黑影遮挡</h3>
+        <div class="shot-characters">@szj_suwan · 仰望 | @szj_chentu · 背影剪影遮挡</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 一线生机</span>
+            <span class="tag tag-lighting">💡 逆光剪影</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">就在我冻得快要失去意识的时候，一个高大的影子笼罩下来，挡住了所有不怀好意的视线。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_04 人市被买 -->
+<div class="scene-section" id="SC_04">
+    <div class="scene-header">
+        <span class="scene-id">SC_04</span>
+        <h2 class="scene-title">人市被买</h2>
+        <div class="scene-meta">
+            <span>🎬 闪回(flashback)</span>
+            <span>🎭 绝望→一线生机</span>
+            <span>💡 冷灰蓝色调</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(27)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368887699_4d563f44-4f86-41b4-b46c-c847024bd7da.png" alt="陈屠买人" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">陈屠买人</h3>
+        <div class="shot-characters">@szj_chentu · 扔铜钱 · 决断 | @szj_renyazi · 旁观</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 震慑决断</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">这个，我买了。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">一袋沉甸甸的铜钱，砸在人牙子脚边。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(28)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368825033_95005adb-432d-452b-a76e-d32de91d098c.png" alt="人牙子谄媚" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">人牙子谄媚</h3>
+        <div class="shot-characters">@szj_renyazi · 谄笑凑近 · 谄媚</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 油滑市侩</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">人牙子：</span><span class="line-text">陈屠户，这可是正经的官家小姐，瞧瞧这皮肉……</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(29)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368841338_32f2263b-40f4-47cb-ad97-bd43236d41dd.png" alt="闭嘴前行" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">闭嘴前行</h3>
+        <div class="shot-characters">@szj_chentu · 冷面前行</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 震慑</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">闭嘴。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他走到我面前。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(30)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368809119_e8c50317-83ad-4713-87f4-2afca68771ef.png" alt="攥书不放" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">攥书不放</h3>
+        <div class="shot-characters">@szj_suwan · 攥书 · 警惕</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 紧张警惕</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我死死攥着怀里我爹那本《洗冤集录》，那是我爹最后留给我的东西。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(31)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368809880_20e29d11-db66-4ed7-a932-7131bd51eb5a.png" alt="注视冻手" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">注视冻手</h3>
+        <div class="shot-characters">@szj_chentu · 注视 | @szj_suwan · 攥书</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 冷峻转柔</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他的目光，先落在我冻裂的手上，顿了顿，又移向我怀里的那本书。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(32)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4a/EXZn1I02t8K_yprwiM-ef.png" alt="披棉袄" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">披棉袄</h3>
+        <div class="shot-characters">@szj_chentu · 披棉袄 | @szj_suwan · 接受 · 惊愕</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 冷中透暖</span>
+            <span class="tag tag-lighting">💡 冷调中透暖意</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">然后，他脱下了身上那件打着补丁的旧棉袄，粗鲁地裹在了我身上。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(33)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368826771_93fdbcd5-5181-4e3a-8681-207ebf6f31cc.png" alt="能走？" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">07</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">能走？</h3>
+        <div class="shot-characters">@szj_chentu · 低头看 | @szj_suwan · 僵硬点头</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 简短关切</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">能走？</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他问。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我僵硬地点头。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(34)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4b/3uhyqZNVdyprJKOEzKNuX.png" alt="转身就走" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">08</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">转身就走</h3>
+        <div class="shot-characters">@szj_chentu · 背影大步走</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 果断</span>
+            <span class="tag tag-lighting">💡 大雪冷灰蓝</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他转身就走，步子迈得大。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(35)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png" alt="雪中跟随" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">09</span>
+        <span class="shot-type-badge">全景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">雪中跟随</h3>
+        <div class="shot-characters">@szj_chentu · 前方大步走 | @szj_suwan · 踉跄跟随</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 命运转折</span>
+            <span class="tag tag-lighting">💡 冷灰蓝色调大雪</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我踉跄着，深一脚浅一脚踩在雪里，跟在他身后。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_05 新婚之夜 -->
+<div class="scene-section" id="SC_05">
+    <div class="scene-header">
+        <span class="scene-id">SC_05</span>
+        <h2 class="scene-title">新婚之夜</h2>
+        <div class="scene-meta">
+            <span>🎬 闪回(flashback)</span>
+            <span>🎭 局促温情</span>
+            <span>💡 油灯暖光暖黄色调</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(36)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png" alt="洞房环境" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">全景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">洞房环境</h3>
+        <div class="shot-characters">@szj_suwan · 站门口 · 茫然</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 简陋温馨</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我们的&#x27;洞房&#x27;，就在猪肉铺后面。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">一张木板床，一张破桌子，就是全部。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(37)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4b/yOthPFLgo7CNzWGF0A0UA.png" alt="丢棉被" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">丢棉被</h3>
+        <div class="shot-characters">@szj_chentu · 丢棉被 | @szj_suwan</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默体贴</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他抱来一床厚棉被，丢在床上。</span></div><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">你睡这。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(38)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368814587_9c687f75-7372-4932-bb26-e7438091961a.png" alt="放烧饼" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">放烧饼</h3>
+        <div class="shot-characters">@szj_chentu · 放烧饼</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默温情</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">说完，又从怀里摸出一个还有点温乎气的烧饼，放在桌上。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(39)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369862261_1d498263-a930-4c6e-810d-bed951ce4860.png" alt="转身要走" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">转身要走</h3>
+        <div class="shot-characters">@szj_chentu · 转身 | @szj_suwan · 开口</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 局促</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">吃。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">然后他转身要走。</span></div><div class="line-item"><span class="line-speaker">苏晚：</span><span class="line-text">你去哪？</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(40)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4c/z0WXpPhA1HCPNtVYCp7x7.png" alt="分床守夜" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">分床守夜</h3>
+        <div class="shot-characters">@szj_chentu · 站门口指外面 | @szj_suwan · 坐床边 · 疑惑感动</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 尊重温情</span>
+            <span class="tag tag-lighting">💡 油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我哑着嗓子问。</span></div><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">外面有长凳。我守夜。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_06 日子过渡 -->
+<div class="scene-section" id="SC_06">
+    <div class="scene-header">
+        <span class="scene-id">SC_06</span>
+        <h2 class="scene-title">日子过渡</h2>
+        <div class="scene-meta">
+            <span>🎬 蒙太奇(montage)</span>
+            <span>🎭 平淡温馨隐忍</span>
+            <span>💡 多种光线快切</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(41)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368828352_aa4be6f2-f69d-46a3-9d1a-3d15018d324c.png" alt="时光流逝" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">时光流逝</h3>
+        <div class="shot-characters">@szj_suwan</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 时光流逝</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">日子一天天过去。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(42)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e4e/jfUifuxnxi3b6vXn6y-Jv.png" alt="学徒生活" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">学徒生活</h3>
+        <div class="shot-characters">@szj_suwan · 蹲在大盆前工作</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 辛苦勤劳</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我学会了用开水烫猪毛，用草木灰和醋反复揉搓猪大肠，手上那点从苏府带来的薄茧，很快就被更粗糙的新茧覆盖。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(43)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369140036_17390b2c-385a-443d-b8c0-0462ff66a8f0.png" alt="留梅花肉" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">留梅花肉</h3>
+        <div class="shot-characters">@szj_chentu · 切肉</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默体贴</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">陈屠话少，但会把铺子里最好的一块梅花肉留给我。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(44)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368942181_0f4ee443-732d-410f-8d1c-7fcb3161d128.png" alt="推炭盆" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">推炭盆</h3>
+        <div class="shot-characters">@szj_chentu · 推炭盆</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 沉默温情</span>
+            <span class="tag tag-lighting">💡 夜晚油灯暖光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">夜里，会不动声色地把唯一的炭盆，往我脚边推近些。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(45)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368923558_9f389452-ac01-4b44-9030-7463e0001168.png" alt="分床而眠" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">全景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">分床而眠</h3>
+        <div class="shot-characters">@szj_suwan · 睡里屋 | @szj_chentu · 睡长凳</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 距离感温情</span>
+            <span class="tag tag-lighting">💡 夜晚月光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我们同住一个屋檐下，却分床而眠。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他睡铺面的长凳，我睡里屋的床，</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(46)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e51/4r_jkMO5kIhPdRJx8ynyi.png" alt="帘子隔世" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">帘子隔世</h3>
+        
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 意境深远</span>
+            <span class="tag tag-lighting">💡 夜晚微光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">中间那道破布帘子，隔开了两个世界。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_07 雨夜惊梦 -->
+<div class="scene-section" id="SC_07">
+    <div class="scene-header">
+        <span class="scene-id">SC_07</span>
+        <h2 class="scene-title">雨夜惊梦</h2>
+        <div class="scene-meta">
+            <span>🎬 现实(reality)</span>
+            <span>🎭 紧张恐惧困惑</span>
+            <span>💡 雨夜暗调→天亮暖调</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(47)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368985573_1a15624f-cb51-4ff0-8c56-335969d2f076.png" alt="雨夜惊醒" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">雨夜惊醒</h3>
+        <div class="shot-characters">@szj_suwan · 惊醒坐起 · 惊恐</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 惊恐</span>
+            <span class="tag tag-lighting">💡 雨夜暗调，窗外闪电</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">直到那晚，瓢泼大雨。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我被一声嘶吼声惊醒。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(48)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e56/0KLYRpuiBX0E4HunCIY3D.png" alt="陈屠地上" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">陈屠地上</h3>
+        <div class="shot-characters">@szj_chentu · 躺地上</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 异常</span>
+            <span class="tag tag-lighting">💡 雨夜暗调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">陈屠不知何时进了屋，躺在我床边的地上。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(49)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369079032_c2eed839-fa05-4bca-ad1d-6217101e00e4.png" alt="扭曲念名" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">扭曲念名</h3>
+        <div class="shot-characters">@szj_chentu · 梦中 · 痛苦</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖</span>
+            <span class="tag tag-lighting">💡 雨夜暗调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">昏暗中，他整个脸都扭曲了，额上青筋暴起。</span></div><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">……张……德坤……</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(50)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369039589_48dfdaa7-042e-45e4-91b9-d172b0cc8882.png" alt="齿缝挤名" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">齿缝挤名</h3>
+        <div class="shot-characters">@szj_suwan · 屏息观察 · 紧张</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 紧张</span>
+            <span class="tag tag-lighting">💡 雨夜暗调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">一个模糊的名字，混着粗重的喘息，从他齿缝里挤出来。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(51)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5ec0/Uc8Q8z--XiiSvlJWYKnq7.png" alt="偿命呐喊" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">偿命呐喊</h3>
+        <div class="shot-characters">@szj_chentu · 梦中挣扎</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖杀气</span>
+            <span class="tag tag-lighting">💡 雨夜暗调，闪电</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我屏住了呼吸，</span></div><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">张德坤……偿命……！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(52)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369042865_59e22423-ba40-4da5-b9d6-5c1e9e7e3aac.png" alt="挥臂砸床" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">挥臂砸床</h3>
+        <div class="shot-characters">@szj_chentu · 挥臂</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖</span>
+            <span class="tag tag-lighting">💡 雨夜暗调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他猛地一挥手臂，&#x27;咚&#x27;一声砸在床沿的厚木板上，连带着整张床都剧烈地晃动起来。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(53)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e58/51eIQkJVsm_-4TGBFtkjK.png" alt="修罗现身" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">07</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">修罗现身</h3>
+        <div class="shot-characters">@szj_chentu · 梦中 · 狰狞</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖</span>
+            <span class="tag tag-lighting">💡 雨夜暗调，闪电</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">白日里那个沉默寡言的陈屠不见了。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(54)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5ec0/yz1_-42ifeAt5_4biwlwh.png" alt="血腥杀气" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">08</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">血腥杀气</h3>
+        <div class="shot-characters">@szj_chentu</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐怖杀气</span>
+            <span class="tag tag-lighting">💡 雨夜暗调</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">此刻的他，像个从地狱里爬出来的修罗，浑身都是血腥的杀气。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(55)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e59/Up4DQeuLUOLkfCZCosznc.png" alt="缩在床角" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">09</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">缩在床角</h3>
+        <div class="shot-characters">@szj_suwan · 缩床角 · 恐惧</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 恐惧困惑</span>
+            <span class="tag tag-lighting">💡 天色渐亮</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我缩在床角，抱着膝盖，睁着眼，直到天色泛白。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(56)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369023191_65cbca1d-70fd-4d95-bfa9-7396c5c524b4.png" alt="雨停醒来" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">10</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">雨停醒来</h3>
+        <div class="shot-characters">@szj_chentu · 揉额角 | @szj_suwan</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 关心</span>
+            <span class="tag tag-lighting">💡 清晨柔光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">雨停了。陈屠醒来，揉了揉额角，看到我眼下的青黑，愣了一下。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(57)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368993474_bb19b01b-20a9-44b1-be51-46fbc47dc2f8.png" alt="吵到你了" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">11</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">吵到你了</h3>
+        <div class="shot-characters">@szj_chentu · 关心 | @szj_suwan · 摇头</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 关心</span>
+            <span class="tag tag-lighting">💡 清晨柔光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">吵到你了？</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我摇摇头。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(58)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770368975127_4000af74-7c13-4cc3-a4e0-115bb25e6576.png" alt="水煮蛋" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">12</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">水煮蛋</h3>
+        <div class="shot-characters">@szj_suwan · 食不下咽 | @szj_chentu · 低头吃饭</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 心事重重</span>
+            <span class="tag tag-lighting">💡 清晨柔光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">早饭时，我碗里多了个剥好的水煮蛋。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我却食不下咽。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+<!-- SC_08 张德坤死讯 -->
+<div class="scene-section" id="SC_08">
+    <div class="scene-header">
+        <span class="scene-id">SC_08</span>
+        <h2 class="scene-title">张德坤死讯</h2>
+        <div class="scene-meta">
+            <span>🎬 现实(reality)</span>
+            <span>🎭 震惊疑虑试探</span>
+            <span>💡 日光</span>
+        </div>
+    </div>
+    <div class="shots-grid">
+        <div class="shot-card" onclick="openLightbox(59)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369018515_8bda2145-b3b5-4ce5-9e3a-4b987ee5f376.png" alt="街坊喧哗" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">01</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">街坊喧哗</h3>
+        <div class="shot-characters">@szj_jiefang · 画外议论</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 喧哗</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">忽然，铺子外传来一阵喧哗，是早起买菜的街坊们在议论。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(60)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e5c/bwoed7oSE_gsKdpaG8c9v.png" alt="死讯传来" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">02</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">死讯传来</h3>
+        <div class="shot-characters">@szj_jiefang</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 惊讶</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">街坊丙：</span><span class="line-text">听说了吗？张德坤死了！就在昨晚！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(61)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e65/jyt6o7m5tM9wVf98TgQrP.png" alt="报应论" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">03</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">报应论</h3>
+        <div class="shot-characters">@szj_jiefang · 感叹</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 义愤</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">街坊丁：</span><span class="line-text">真是报应啊！这老贼贪了那么多修河堤的银子，去年大水淹死多少人！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(62)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e66/iRrJ94zX3WW8JFW0H77_X.png" alt="七窍流血" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">04</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">七窍流血</h3>
+        <div class="shot-characters">@szj_jiefang · 幸灾乐祸</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 幸灾乐祸</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">街坊丁：</span><span class="line-text">可不是嘛，说是夜里喝酒，好端端的，被一口酒呛死了！七窍流血，惨得很！真是老天开眼！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(63)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369018579_f68d3343-7605-4ad5-9155-99b1183b4418.png" alt="筷子掉落" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">05</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">筷子掉落</h3>
+        <div class="shot-characters">@szj_suwan · 震惊</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 震惊</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我手里的筷子，&#x27;啪嗒&#x27;一声掉在桌上，</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">张德坤。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(64)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369064456_7868bb68-8e89-4577-a24b-eb4866c2557c.png" alt="那个张德坤" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">06</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">那个张德坤</h3>
+        <div class="shot-characters">@szj_suwan · 瞳孔收缩 · 震惊</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 震惊</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">是那个户部侍郎张德坤？！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(65)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e5d/mP7Buz-AsfsjOlAV62E0Y.png" alt="仇人身份" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">07</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">仇人身份</h3>
+        <div class="shot-characters">@szj_suwan · 心事重重</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 凝重</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我爹还在时，就曾多次上奏弹劾他克扣军饷、贪墨工款！</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(66)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369010970_d70a4384-c394-457a-b5c9-f18a1e0f5c08.png" alt="猛然抬头" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">08</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">猛然抬头</h3>
+        <div class="shot-characters">@szj_suwan · 抬头看</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 疑虑</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我猛地抬头，看向案板前的陈屠户。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(67)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369049245_1b93161a-cd4f-4908-ad4e-e90cb2644d84.png" alt="陈屠背影" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">09</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">陈屠背影</h3>
+        <div class="shot-characters">@szj_chentu · 背对刮猪皮</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 平静</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他正背对着我，用刮刀细细清理一块猪皮上的残毛。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(68)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369074585_f4c4d1ba-1958-45b5-8050-de523436610a.png" alt="若无其事" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">10</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">若无其事</h3>
+        <div class="shot-characters">@szj_chentu · 平静</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 悬疑</span>
+            <span class="tag tag-lighting">💡 日光侧照</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他垂着眼，动作平稳，周遭的喧闹似乎半点也传不进他耳朵里。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(69)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e5f/cKpLJgoQnW7QWyI_R26Ur.png" alt="内心疑问" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">11</span>
+        <span class="shot-type-badge">特写</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">内心疑问</h3>
+        <div class="shot-characters">@szj_suwan · 内心震动</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 悬疑</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">难道……张德坤的暴毙，和陈屠昨夜……有关？</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(70)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://v3b.fal.media/files/b/0a8d5e60/wNRR8wIx3_M22FlM2dcgX.png" alt="试探开口" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">12</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">试探开口</h3>
+        <div class="shot-characters">@szj_suwan · 颤声试探 | @szj_chentu · 背对</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 悬疑张力</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">苏晚：</span><span class="line-text">当家的，张侍郎……没了。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">我颤着声开口。</span></div></div>
+    </div>
+</div><div class="shot-card" onclick="openLightbox(71)">
+    <div class="shot-image-container">
+        <img class="shot-image" src="https://cdn-video.51sux.com/uploads/1770369066915_aea64600-ae41-436a-aa94-08ebeb7e88bf.png" alt="听见了" loading="lazy"
+             onerror="this.onerror=null;this.parentElement.classList.add('img-error');">
+        <span class="shot-number">13</span>
+        <span class="shot-type-badge">中景</span>
+    </div>
+    <div class="shot-info">
+        <h3 class="shot-title">听见了</h3>
+        <div class="shot-characters">@szj_chentu · 手上不停 | @szj_suwan · 观察</div>
+        <div class="shot-mood">
+            <span class="tag tag-mood">🎭 开放式结尾</span>
+            <span class="tag tag-lighting">💡 日光</span>
+        </div>
+        <div class="lines-section"><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">嗯。</span></div><div class="line-item"><span class="line-speaker">旁白：</span><span class="line-text">他手上动作没停。</span></div><div class="line-item"><span class="line-speaker">陈屠：</span><span class="line-text">听见了。</span></div></div>
+    </div>
+</div>
+    </div>
+</div>
+    </div>
+    
+    <!-- 灯箱 -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+            <button class="lightbox-nav lightbox-prev" onclick="prevImage()">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" onclick="nextImage()">&#8250;</button>
+            <img class="lightbox-image" id="lightbox-image" src="" alt="">
+            <div class="lightbox-info">
+                <h3 class="lightbox-title" id="lightbox-title"></h3>
+                <p id="lightbox-desc" style="color: var(--text-secondary); font-size: 0.9rem;"></p>
+                <p id="lightbox-counter" style="color: var(--text-secondary); font-size: 0.8rem; margin-top: 0.5rem;"></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- 返回顶部 -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+    
+    <script>
+        const allShots = [
+            { url: "https://cdn-video.51sux.com/uploads/1770368611061_f4388c57-ade0-457b-860a-20e3a5ab21f5.png", title: "SC_01_001 秘密揭示", desc: "中景 · 神秘悬疑" },{ url: "https://cdn-video.51sux.com/uploads/1770368670456_389dac9a-282f-4fba-84e9-1a71cc0d8825.png", title: "SC_01_002 噩梦念名", desc: "特写 · 恐怖悬疑" },{ url: "https://v3b.fal.media/files/b/0a8d5ec0/MeBxqEXmgx-x_V_NPZ-iy.png", title: "SC_01_003 必定暴毙", desc: "中景 · 不祥" },{ url: "https://v3b.fal.media/files/b/0a8d5e39/CsveYxCRSOovQxvq6KcBE.png", title: "SC_01_004 仇人之名", desc: "中景 · 紧张转折" },{ url: "https://v3b.fal.media/files/b/0a8d5e39/SKBu5AcUw32Ts11ZRwWE2.png", title: "SC_01_005 苏晚握手决意", desc: "特写 · 决绝悲壮" },{ url: "https://cdn-video.51sux.com/uploads/1770368723396_9b1301de-f865-4315-b19d-e2bd08e40814.png", title: "SC_02_001 檀香已逝", desc: "特写 · 苦涩适应" },{ url: "https://cdn-video.51sux.com/uploads/1770368674491_6f3680e1-97ff-4efa-b192-9d365fa17582.png", title: "SC_02_002 街坊窥视", desc: "中景 · 市井窥视" },{ url: "https://cdn-video.51sux.com/uploads/1770368716646_114d8b34-3168-49e2-9f8e-716ba41f5649.png", title: "SC_02_003 闲言碎语", desc: "中景 · 闲言碎语" },{ url: "https://cdn-video.51sux.com/uploads/1770368768761_b6ca7d23-26ef-4af5-93d5-ac98728f4cf8.png", title: "SC_02_004 街坊回应", desc: "中景 · 世故同情" },{ url: "https://v3b.fal.media/files/b/0a8d5e42/gbaw2Lm6ta-Fn0paw9zu7.png", title: "SC_02_005 苏晚隐忍", desc: "中景 · 隐忍" },{ url: "https://v3b.fal.media/files/b/0a8d5ec0/uHtyx7xIbafR3wObuhxZ5.png", title: "SC_02_006 案板闷响", desc: "中景 · 震撼" },{ url: "https://v3b.fal.media/files/b/0a8d5ec0/3-w32KqPDQSVDxh3lMscK.png", title: "SC_02_007 沉默护妻", desc: "中景 · 沉默关怀" },{ url: "https://cdn-video.51sux.com/uploads/1770368750569_ed01c327-3f95-492a-ae51-2c6d23f7fe1d.png", title: "SC_02_008 买烧饼", desc: "中景 · 温情" },{ url: "https://cdn-video.51sux.com/uploads/1770368763915_6c6f0b06-f27d-431f-9c9f-b832ec2c01a9.png", title: "SC_02_009 一字千金", desc: "中景 · 沉默关怀" },{ url: "https://v3b.fal.media/files/b/0a8d5e3e/Tx8OnGPkEyzlND97qcVX7.png", title: "SC_02_010 苦涩回味", desc: "特写 · 若有所思" },{ url: "https://cdn-video.51sux.com/uploads/1770368770283_ca85a636-2951-4e34-99e2-fc345639ddd3.png", title: "SC_02_011 淡淡苦味", desc: "特写 · 苦涩" },{ url: "https://v3b.fal.media/files/b/0a8d5e45/31Wr1NlmN6G1hb4_C6KWU.png", title: "SC_02_012 往昔追忆", desc: "特写 · 怀念" },{ url: "https://v3b.fal.media/files/b/0a8d5e46/51-jFU5by1YIfNmbQOm9o.png", title: "SC_03_001 苏府被抄", desc: "全景 · 悲凉萧瑟" },{ url: "https://cdn-video.51sux.com/uploads/1770368807609_9d49dea8-e39d-4666-8ab5-e203394a4c3e.png", title: "SC_03_002 构陷忠良", desc: "中景 · 权力冷酷" },{ url: "https://v3b.fal.media/files/b/0a8d5e47/Eb60YiSUmskEkbhi0aLG9.png", title: "SC_03_003 父入诏狱", desc: "中景 · 绝望阴暗" },{ url: "https://cdn-video.51sux.com/uploads/1770368753786_0dd88982-a193-46a7-983d-ddadd3a7723b.png", title: "SC_03_004 母亲自缢", desc: "中景 · 悲痛绝望" },{ url: "https://v3b.fal.media/files/b/0a8d5e64/P7S3hNTiLWEj7It4sTbUg.png", title: "SC_03_005 拖出闺房", desc: "中景 · 凄惨" },{ url: "https://v3b.fal.media/files/b/0a8d5e48/k4tqs54sUfw7g1JwWYX-0.png", title: "SC_03_006 雪刀刮面", desc: "中景 · 寒冷凄苦" },{ url: "https://cdn-video.51sux.com/uploads/1770368768127_1084dcf7-a2f5-48f8-8039-66d451a99ef0.png", title: "SC_03_007 公子围观", desc: "中景 · 屈辱" },{ url: "https://cdn-video.51sux.com/uploads/1770368761664_bc097312-8af5-4226-8990-19cffd077ce0.png", title: "SC_03_008 等待窑子", desc: "中景 · 冷酷人性" },{ url: "https://v3b.fal.media/files/b/0a8d5e48/SrD8pSuAtkjakb7jmKOnx.png", title: "SC_03_009 风流谈资", desc: "特写 · 倔强不屈" },{ url: "https://cdn-video.51sux.com/uploads/1770368831206_ecfaea35-7183-438c-af97-bfd933327ea3.png", title: "SC_03_010 黑影遮挡", desc: "中景 · 一线生机" },{ url: "https://cdn-video.51sux.com/uploads/1770368887699_4d563f44-4f86-41b4-b46c-c847024bd7da.png", title: "SC_04_001 陈屠买人", desc: "中景 · 震慑决断" },{ url: "https://cdn-video.51sux.com/uploads/1770368825033_95005adb-432d-452b-a76e-d32de91d098c.png", title: "SC_04_002 人牙子谄媚", desc: "中景 · 油滑市侩" },{ url: "https://cdn-video.51sux.com/uploads/1770368841338_32f2263b-40f4-47cb-ad97-bd43236d41dd.png", title: "SC_04_003 闭嘴前行", desc: "中景 · 震慑" },{ url: "https://cdn-video.51sux.com/uploads/1770368809119_e8c50317-83ad-4713-87f4-2afca68771ef.png", title: "SC_04_004 攥书不放", desc: "中景 · 紧张警惕" },{ url: "https://cdn-video.51sux.com/uploads/1770368809880_20e29d11-db66-4ed7-a932-7131bd51eb5a.png", title: "SC_04_005 注视冻手", desc: "中景 · 冷峻转柔" },{ url: "https://v3b.fal.media/files/b/0a8d5e4a/EXZn1I02t8K_yprwiM-ef.png", title: "SC_04_006 披棉袄", desc: "中景 · 冷中透暖" },{ url: "https://cdn-video.51sux.com/uploads/1770368826771_93fdbcd5-5181-4e3a-8681-207ebf6f31cc.png", title: "SC_04_007 能走？", desc: "中景 · 简短关切" },{ url: "https://v3b.fal.media/files/b/0a8d5e4b/3uhyqZNVdyprJKOEzKNuX.png", title: "SC_04_008 转身就走", desc: "中景 · 果断" },{ url: "https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png", title: "SC_04_009 雪中跟随", desc: "全景 · 命运转折" },{ url: "https://v3b.fal.media/files/b/0a8d5e4b/liQvo69ezdA8oE-JhfKZ2.png", title: "SC_05_001 洞房环境", desc: "全景 · 简陋温馨" },{ url: "https://v3b.fal.media/files/b/0a8d5e4b/yOthPFLgo7CNzWGF0A0UA.png", title: "SC_05_002 丢棉被", desc: "中景 · 沉默体贴" },{ url: "https://cdn-video.51sux.com/uploads/1770368814587_9c687f75-7372-4932-bb26-e7438091961a.png", title: "SC_05_003 放烧饼", desc: "中景 · 沉默温情" },{ url: "https://cdn-video.51sux.com/uploads/1770369862261_1d498263-a930-4c6e-810d-bed951ce4860.png", title: "SC_05_004 转身要走", desc: "中景 · 局促" },{ url: "https://v3b.fal.media/files/b/0a8d5e4c/z0WXpPhA1HCPNtVYCp7x7.png", title: "SC_05_005 分床守夜", desc: "中景 · 尊重温情" },{ url: "https://cdn-video.51sux.com/uploads/1770368828352_aa4be6f2-f69d-46a3-9d1a-3d15018d324c.png", title: "SC_06_001 时光流逝", desc: "中景 · 时光流逝" },{ url: "https://v3b.fal.media/files/b/0a8d5e4e/jfUifuxnxi3b6vXn6y-Jv.png", title: "SC_06_002 学徒生活", desc: "中景 · 辛苦勤劳" },{ url: "https://cdn-video.51sux.com/uploads/1770369140036_17390b2c-385a-443d-b8c0-0462ff66a8f0.png", title: "SC_06_003 留梅花肉", desc: "特写 · 沉默体贴" },{ url: "https://cdn-video.51sux.com/uploads/1770368942181_0f4ee443-732d-410f-8d1c-7fcb3161d128.png", title: "SC_06_004 推炭盆", desc: "特写 · 沉默温情" },{ url: "https://cdn-video.51sux.com/uploads/1770368923558_9f389452-ac01-4b44-9030-7463e0001168.png", title: "SC_06_005 分床而眠", desc: "全景 · 距离感温情" },{ url: "https://v3b.fal.media/files/b/0a8d5e51/4r_jkMO5kIhPdRJx8ynyi.png", title: "SC_06_006 帘子隔世", desc: "特写 · 意境深远" },{ url: "https://cdn-video.51sux.com/uploads/1770368985573_1a15624f-cb51-4ff0-8c56-335969d2f076.png", title: "SC_07_001 雨夜惊醒", desc: "中景 · 惊恐" },{ url: "https://v3b.fal.media/files/b/0a8d5e56/0KLYRpuiBX0E4HunCIY3D.png", title: "SC_07_002 陈屠地上", desc: "中景 · 异常" },{ url: "https://cdn-video.51sux.com/uploads/1770369079032_c2eed839-fa05-4bca-ad1d-6217101e00e4.png", title: "SC_07_003 扭曲念名", desc: "特写 · 恐怖" },{ url: "https://cdn-video.51sux.com/uploads/1770369039589_48dfdaa7-042e-45e4-91b9-d172b0cc8882.png", title: "SC_07_004 齿缝挤名", desc: "中景 · 紧张" },{ url: "https://v3b.fal.media/files/b/0a8d5ec0/Uc8Q8z--XiiSvlJWYKnq7.png", title: "SC_07_005 偿命呐喊", desc: "中景 · 恐怖杀气" },{ url: "https://cdn-video.51sux.com/uploads/1770369042865_59e22423-ba40-4da5-b9d6-5c1e9e7e3aac.png", title: "SC_07_006 挥臂砸床", desc: "中景 · 恐怖" },{ url: "https://v3b.fal.media/files/b/0a8d5e58/51eIQkJVsm_-4TGBFtkjK.png", title: "SC_07_007 修罗现身", desc: "中景 · 恐怖" },{ url: "https://v3b.fal.media/files/b/0a8d5ec0/yz1_-42ifeAt5_4biwlwh.png", title: "SC_07_008 血腥杀气", desc: "中景 · 恐怖杀气" },{ url: "https://v3b.fal.media/files/b/0a8d5e59/Up4DQeuLUOLkfCZCosznc.png", title: "SC_07_009 缩在床角", desc: "中景 · 恐惧困惑" },{ url: "https://cdn-video.51sux.com/uploads/1770369023191_65cbca1d-70fd-4d95-bfa9-7396c5c524b4.png", title: "SC_07_010 雨停醒来", desc: "中景 · 关心" },{ url: "https://cdn-video.51sux.com/uploads/1770368993474_bb19b01b-20a9-44b1-be51-46fbc47dc2f8.png", title: "SC_07_011 吵到你了", desc: "中景 · 关心" },{ url: "https://cdn-video.51sux.com/uploads/1770368975127_4000af74-7c13-4cc3-a4e0-115bb25e6576.png", title: "SC_07_012 水煮蛋", desc: "中景 · 心事重重" },{ url: "https://cdn-video.51sux.com/uploads/1770369018515_8bda2145-b3b5-4ce5-9e3a-4b987ee5f376.png", title: "SC_08_001 街坊喧哗", desc: "中景 · 喧哗" },{ url: "https://v3b.fal.media/files/b/0a8d5e5c/bwoed7oSE_gsKdpaG8c9v.png", title: "SC_08_002 死讯传来", desc: "中景 · 惊讶" },{ url: "https://v3b.fal.media/files/b/0a8d5e65/jyt6o7m5tM9wVf98TgQrP.png", title: "SC_08_003 报应论", desc: "中景 · 义愤" },{ url: "https://v3b.fal.media/files/b/0a8d5e66/iRrJ94zX3WW8JFW0H77_X.png", title: "SC_08_004 七窍流血", desc: "中景 · 幸灾乐祸" },{ url: "https://cdn-video.51sux.com/uploads/1770369018579_f68d3343-7605-4ad5-9155-99b1183b4418.png", title: "SC_08_005 筷子掉落", desc: "特写 · 震惊" },{ url: "https://cdn-video.51sux.com/uploads/1770369064456_7868bb68-8e89-4577-a24b-eb4866c2557c.png", title: "SC_08_006 那个张德坤", desc: "特写 · 震惊" },{ url: "https://v3b.fal.media/files/b/0a8d5e5d/mP7Buz-AsfsjOlAV62E0Y.png", title: "SC_08_007 仇人身份", desc: "中景 · 凝重" },{ url: "https://cdn-video.51sux.com/uploads/1770369010970_d70a4384-c394-457a-b5c9-f18a1e0f5c08.png", title: "SC_08_008 猛然抬头", desc: "中景 · 疑虑" },{ url: "https://cdn-video.51sux.com/uploads/1770369049245_1b93161a-cd4f-4908-ad4e-e90cb2644d84.png", title: "SC_08_009 陈屠背影", desc: "中景 · 平静" },{ url: "https://cdn-video.51sux.com/uploads/1770369074585_f4c4d1ba-1958-45b5-8050-de523436610a.png", title: "SC_08_010 若无其事", desc: "中景 · 悬疑" },{ url: "https://v3b.fal.media/files/b/0a8d5e5f/cKpLJgoQnW7QWyI_R26Ur.png", title: "SC_08_011 内心疑问", desc: "特写 · 悬疑" },{ url: "https://v3b.fal.media/files/b/0a8d5e60/wNRR8wIx3_M22FlM2dcgX.png", title: "SC_08_012 试探开口", desc: "中景 · 悬疑张力" },{ url: "https://cdn-video.51sux.com/uploads/1770369066915_aea64600-ae41-436a-aa94-08ebeb7e88bf.png", title: "SC_08_013 听见了", desc: "中景 · 开放式结尾" }
+        ];
+        
+        let currentIndex = 0;
+        
+        function openLightbox(index) {
+            currentIndex = index;
+            updateLightbox();
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        
+        function updateLightbox() {
+            const shot = allShots[currentIndex];
+            document.getElementById('lightbox-image').src = shot.url;
+            document.getElementById('lightbox-title').textContent = shot.title;
+            document.getElementById('lightbox-desc').textContent = shot.desc;
+            document.getElementById('lightbox-counter').textContent = `${currentIndex + 1} / ${allShots.length}`;
+        }
+        
+        function prevImage() {
+            currentIndex = (currentIndex - 1 + allShots.length) % allShots.length;
+            updateLightbox();
+        }
+        
+        function nextImage() {
+            currentIndex = (currentIndex + 1) % allShots.length;
+            updateLightbox();
+        }
+        
+        function scrollToScene(sceneId) {
+            document.querySelectorAll('.scene-nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            if (sceneId === 'all') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else {
+                document.getElementById(sceneId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+        
+        // 键盘导航
+        document.addEventListener('keydown', (e) => {
+            if (!document.getElementById('lightbox').classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowLeft') prevImage();
+            if (e.key === 'ArrowRight') nextImage();
+        });
+        
+        // 点击背景关闭灯箱
+        document.getElementById('lightbox').addEventListener('click', (e) => {
+            if (e.target.id === 'lightbox') closeLightbox();
+        });
+        
+        // 返回顶部按钮
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('backToTop');
+            btn.classList.toggle('visible', window.scrollY > 500);
+        });
+    </script>
+</body>
+</html>

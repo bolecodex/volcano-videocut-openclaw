@@ -1,0 +1,96 @@
+# shots/_manifest.yaml
+# 分镜索引文件，列出所有分镜文件及统计信息
+
+version: "1.0"
+script_name: 杀猪匠夫君
+style_base: >-
+  真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，
+  服饰纹理清晰，面部神态精准，暗沉古朴色调，市井烟火氛围
+source_script: 杀猪匠夫君_对话脚本.md
+scene_index: 杀猪匠夫君_场景索引.yaml
+character_asset: 杀猪匠夫君_角色资产.yaml
+generated_at: "2026-02-07T14:00:00"
+total_scenes: 8
+total_shots: 68
+
+image_sizes:
+  storyboard:
+    preset: "portrait_16_9"
+
+video:
+  aspect_ratio: "9:16"
+  resolution: "720p"
+  duration_default: "5"
+  fps: 24
+
+characters:
+  - id: "@szj_suwan"
+    name: 苏晚
+    type: 主角
+    prompt_ref: "18岁女性，乌发如缎及肩简单束起，杏眼清亮中带哀伤，粗布灰蓝色襦裙，袖口挽起"
+  - id: "@szj_chentu"
+    name: 陈屠
+    type: 主角
+    prompt_ref: "30岁男性，短发粗犷，浓眉方脸，络腮胡茬，身形高大魁梧，粗布褐色短褐，腰系厚实围裙"
+  - id: "@szj_renyazi"
+    name: 人牙子
+    type: 配角
+    prompt_ref: "中年男性，尖嘴猴腮，三角眼，面色蜡黄，破旧灰色长袍"
+  - id: "@szj_jiefang_jia"
+    name: 街坊甲
+    type: 群演
+    prompt_ref: "中年女性，圆脸，头戴布巾，粗布褐色衣裳"
+  - id: "@szj_jiefang_yi"
+    name: 街坊乙
+    type: 群演
+    prompt_ref: "中年男性，瘦脸，小胡须，灰色短褐"
+  - id: "@szj_jiefang_bing"
+    name: 街坊丙
+    type: 群演
+    prompt_ref: "中年男性，方脸，粗眉，粗布青色衣裳"
+  - id: "@szj_jiefang_ding"
+    name: 街坊丁
+    type: 群演
+    prompt_ref: "老年男性，花白头发，皱纹深刻，灰色长袍"
+
+files:
+  - file: "SC_01_开篇悬念.yaml"
+    scene_id: "SC_01"
+    scene_name: "开篇悬念"
+    shots_count: 4
+    images_ready: 0
+  - file: "SC_02_西市日常.yaml"
+    scene_id: "SC_02"
+    scene_name: "西市日常"
+    shots_count: 13
+    images_ready: 0
+  - file: "SC_03_苏府抄家.yaml"
+    scene_id: "SC_03"
+    scene_name: "苏府抄家"
+    shots_count: 11
+    images_ready: 0
+  - file: "SC_04_人市被买.yaml"
+    scene_id: "SC_04"
+    scene_name: "人市被买"
+    shots_count: 7
+    images_ready: 0
+  - file: "SC_05_新婚之夜.yaml"
+    scene_id: "SC_05"
+    scene_name: "新婚之夜"
+    shots_count: 4
+    images_ready: 0
+  - file: "SC_06_日子过渡.yaml"
+    scene_id: "SC_06"
+    scene_name: "日子过渡"
+    shots_count: 6
+    images_ready: 0
+  - file: "SC_07_雨夜噩梦.yaml"
+    scene_id: "SC_07"
+    scene_name: "雨夜噩梦"
+    shots_count: 9
+    images_ready: 0
+  - file: "SC_08_张德坤死讯.yaml"
+    scene_id: "SC_08"
+    scene_name: "张德坤死讯"
+    shots_count: 14
+    images_ready: 0

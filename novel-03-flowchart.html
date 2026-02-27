@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>novel-03-scenes-to-storyboard 流程图</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: #0f0f14;
+    color: #e0e0e6;
+    min-height: 100vh;
+  }
+  .header {
+    text-align: center;
+    padding: 40px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    background: linear-gradient(180deg, #16161e 0%, #0f0f14 100%);
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #f0f0f5;
+    letter-spacing: 1px;
+  }
+  .header p {
+    margin-top: 8px;
+    font-size: 15px;
+    color: #888;
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+  .section {
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #c4b5fd;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 3px solid #7c3aed;
+  }
+  .mermaid-wrap {
+    background: #1a1a24;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 30px 20px;
+    overflow-x: auto;
+  }
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 30px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #1a1a24;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    font-size: 13px;
+  }
+  .legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 16px;
+    margin-top: 20px;
+  }
+  .detail-card {
+    background: #1a1a24;
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .detail-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #a78bfa;
+    margin-bottom: 12px;
+  }
+  .detail-card ul {
+    list-style: none;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #bbb;
+  }
+  .detail-card ul li::before {
+    content: "›";
+    color: #7c3aed;
+    font-weight: bold;
+    margin-right: 8px;
+  }
+  .detail-card .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    margin-right: 4px;
+  }
+  .tag-input { background: #1e3a5f; color: #7dd3fc; }
+  .tag-output { background: #1a3d2e; color: #6ee7b7; }
+  .tag-rule { background: #3d2e1a; color: #fbbf24; }
+  .tag-check { background: #3d1a2e; color: #f472b6; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>novel-03-scenes-to-storyboard</h1>
+  <p>场景文件 → 分镜数据 + 配图提示词 + HTML 查看器</p>
+</div>
+
+<div class="container">
+
+  <!-- 主流程图 -->
+  <div class="section">
+    <div class="section-title">完整执行流程</div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+flowchart TD
+    classDef inputCls fill:#1e3a5f,stroke:#3b82f6,color:#e0f2fe
+    classDef processCls fill:#2d1b69,stroke:#7c3aed,color:#ede9fe
+    classDef outputCls fill:#1a3d2e,stroke:#10b981,color:#d1fae5
+    classDef checkCls fill:#3d1a2e,stroke:#ec4899,color:#fce7f3
+    classDef condCls fill:#3d2e1a,stroke:#f59e0b,color:#fef3c7
+    classDef toolCls fill:#1a2e3d,stroke:#06b6d4,color:#cffafe
+
+    START(["开始"]):::processCls
+    LOCATE["Step 0: 定位项目目录\n在 workspace 下找到包含\nscenes/ 和 style.yaml 的子目录"]:::processCls
+
+    subgraph INPUTS ["📥 输入文件"]
+        I1["场景索引\n{剧本名}_场景索引.yaml"]:::inputCls
+        I2["场景文件目录\nscenes/SC_*.md"]:::inputCls
+        I3["全局风格\nstyle.yaml"]:::inputCls
+        I4["角色资产（可选）\n{剧本名}_角色资产.yaml"]:::inputCls
+    end
+
+    S1["Step 1: 读取场景索引\n• 加载场景索引 YAML\n• 验证场景文件完整性\n• 检查角色资产文件"]:::processCls
+
+    S2["Step 2: 遍历场景文件\n按索引顺序逐个处理"]:::processCls
+
+    LOOP{"还有未处理\n的场景？"}:::condCls
+    PICK["取下一个场景文件\nscenes/SC_XX_场景名.md"]:::processCls
+
+    S3["Step 3: 单场景内分镜\n在单个场景内按画面划分镜头\n• 目标时长：3-7 秒/镜头\n• 总字符数 12-28 字\n• 对话 1-2 条/镜头"]:::processCls
+
+    subgraph RULES ["🔍 分镜划分规则"]
+        direction TB
+        R1["时长控制\n字符数÷4 = 秒数\n>32字必须拆分"]:::checkCls
+        R2["触发新镜头\n• 人物出入场\n• 情绪剧烈转折\n• 动作高潮\n• 旁白时空跳跃"]:::checkCls
+        R3["短句合并\n≤10字短句不独占镜头\n合并后仍须≤28字"]:::checkCls
+        R4["特殊场景\n• 梦境：高密度\n• 闪回：褪色标记\n• 蒙太奇：快切"]:::checkCls
+    end
+
+    S4["Step 4: 生成配图提示词\n[风格锚点] + [场景描述]\n+ [角色@ID] + [动作/表情]\n+ [构图/镜头] + [技术参数]"]:::processCls
+
+    subgraph PROMPT_PARTS ["🎨 提示词结构"]
+        direction TB
+        P1["风格锚点\n真人写实/水墨/赛博朋克..."]:::toolCls
+        P2["场景描述\n室内/室外/特殊场景"]:::toolCls
+        P3["角色描述\n引用 @ID 或临时描述"]:::toolCls
+        P4["构图镜头\n景别 + 视角 + 构图法"]:::toolCls
+    end
+
+    S5["Step 5: 输出分镜 YAML\n• 生成 shots/SC_XX_场景名.yaml\n• 更新 shots/_manifest.yaml"]:::processCls
+
+    LOOP_END["返回遍历"]:::processCls
+
+    S6["Step 6: 生成 HTML 查看器\npython generate_storyboard.py\n--project {项目目录}/"]:::toolCls
+
+    S7["Step 7: 分镜自检\n逐项检查所有镜头"]:::checkCls
+
+    subgraph CHECKS ["✅ 自检清单"]
+        direction TB
+        C1["时长检查\n每镜头≤28字\n无>32字镜头"]:::checkCls
+        C2["条数检查\n对话≤2条（理想）\n无≥4条镜头"]:::checkCls
+        C3["时空一致性\n同一镜头同一时空\n无跨时空旁白"]:::checkCls
+        C4["画面检查\n每镜头一张图可表达\n焦点明确单一"]:::checkCls
+    end
+
+    PASS{"自检通过？"}:::condCls
+    FIX["修正问题镜头\n返回相应场景重新划分"]:::checkCls
+
+    subgraph OUTPUTS ["📦 输出产物"]
+        O1["shots/_manifest.yaml\n分镜索引"]:::outputCls
+        O2["shots/SC_XX_场景名.yaml\n各场景分镜数据"]:::outputCls
+        O3["index.html\n可视化查看器"]:::outputCls
+    end
+
+    DONE(["完成"]):::outputCls
+
+    START --> LOCATE
+    LOCATE --> INPUTS
+    INPUTS --> S1
+    S1 --> S2
+    S2 --> LOOP
+    LOOP -- "是" --> PICK
+    LOOP -- "否" --> S6
+    PICK --> S3
+    S3 --- RULES
+    S3 --> S4
+    S4 --- PROMPT_PARTS
+    S4 --> S5
+    S5 --> LOOP_END
+    LOOP_END --> LOOP
+    S6 --> S7
+    S7 --- CHECKS
+    S7 --> PASS
+    PASS -- "是" --> OUTPUTS
+    PASS -- "否" --> FIX
+    FIX --> S3
+    OUTPUTS --> DONE
+      </pre>
+    </div>
+  </div>
+
+  <!-- 上下游流程 -->
+  <div class="section">
+    <div class="section-title">在整体工作流中的位置</div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+flowchart LR
+    classDef prevCls fill:#1e3a5f,stroke:#3b82f6,color:#e0f2fe
+    classDef currCls fill:#2d1b69,stroke:#7c3aed,color:#ede9fe
+    classDef nextCls fill:#1a3d2e,stroke:#10b981,color:#d1fae5
+    classDef fileCls fill:#1a1a24,stroke:#555,color:#ccc
+
+    N01["novel-01\n角色提取"]:::prevCls
+    N02["novel-02\n场景切分"]:::prevCls
+
+    F1["scenes/*.md\n场景文件"]:::fileCls
+    F2["场景索引.yaml"]:::fileCls
+    F3["style.yaml"]:::fileCls
+    F4["角色资产.yaml"]:::fileCls
+
+    N03["novel-03\n场景转分镜\n（本 skill）"]:::currCls
+
+    F5["shots/*.yaml\n分镜数据"]:::fileCls
+    F6["_manifest.yaml\n分镜索引"]:::fileCls
+    F7["index.html\n查看器"]:::fileCls
+
+    N04["novel-04\n分镜转图片"]:::nextCls
+    N05["novel-05\n分镜转音频"]:::nextCls
+    N06["novel-06\n分镜转AI视频"]:::nextCls
+    N07["novel-07\n合成最终视频"]:::nextCls
+
+    N01 --> F4
+    N02 --> F1
+    N02 --> F2
+    N02 --> F3
+    F1 --> N03
+    F2 --> N03
+    F3 --> N03
+    F4 -.-> N03
+    N03 --> F5
+    N03 --> F6
+    N03 --> F7
+    F5 --> N04
+    F5 --> N05
+    F5 --> N06
+    F6 --> N04
+    F6 --> N05
+    F6 --> N06
+    N04 --> N07
+    N05 --> N07
+    N06 --> N07
+      </pre>
+    </div>
+  </div>
+
+  <!-- 单场景处理详细流程 -->
+  <div class="section">
+    <div class="section-title">单场景处理详细流程（Step 3-5 展开）</div>
+    <div class="mermaid-wrap">
+      <pre class="mermaid">
+flowchart TD
+    classDef processCls fill:#2d1b69,stroke:#7c3aed,color:#ede9fe
+    classDef checkCls fill:#3d1a2e,stroke:#ec4899,color:#fce7f3
+    classDef condCls fill:#3d2e1a,stroke:#f59e0b,color:#fef3c7
+    classDef outputCls fill:#1a3d2e,stroke:#10b981,color:#d1fae5
+    classDef ruleCls fill:#1a2e3d,stroke:#06b6d4,color:#cffafe
+
+    READ["读取场景 MD 文件\n解析台词、旁白、说话人"]:::processCls
+    META["读取场景元信息\n地点、时间、类型、情绪"]:::processCls
+    ESTIMATE["容量预估\n预估镜头数 ≈ 总字符数 ÷ 20"]:::processCls
+
+    TYPE{"场景类型？"}:::condCls
+    NORMAL["常规场景\n按规则逐步划分"]:::processCls
+    DREAM["梦境场景\n高密度镜头：入口→核心→退出"]:::ruleCls
+    FLASH["闪回场景\n常规划分 + 褪色视觉标记"]:::ruleCls
+    MONTAGE["蒙太奇场景\n按 estimated_shots 快切"]:::ruleCls
+
+    SCAN["逐条扫描台词/旁白"]:::processCls
+    CHECK_SPLIT{"需要新镜头？"}:::condCls
+
+    TRIGGER["触发条件命中\n• 时空跳跃\n• 人物出入场\n• 情绪转折\n• 动作高潮\n• 字符数超限"]:::checkCls
+
+    NEW_SHOT["开启新镜头\n创建新的 shot 对象"]:::processCls
+    APPEND["追加到当前镜头\n累加字符计数"]:::processCls
+
+    MERGE{"极短句\n≤10字？"}:::condCls
+    MERGE_YES["与相邻句合并\n（合并后≤28字）"]:::processCls
+
+    CHAR_CHECK{"总字符\n>28？"}:::condCls
+    FORCE_SPLIT["强制拆分\n开启新镜头"]:::checkCls
+
+    LINE_CHECK{"对话条数\n≥4？"}:::condCls
+    FORCE_SPLIT2["强制拆分\n减少每镜头台词数"]:::checkCls
+
+    GEN_PROMPT["生成配图提示词\n风格 + 场景 + 角色@ID\n+ 动作表情 + 构图镜头"]:::processCls
+
+    MOOD["从 style.yaml 读取\nmood_presets 追加色调"]:::ruleCls
+    LIGHT["从 style.yaml 读取\nlighting_presets 追加光照"]:::ruleCls
+
+    WRITE_YAML["写入 shots/SC_XX.yaml\n包含所有镜头数据"]:::outputCls
+
+    READ --> META --> ESTIMATE
+    ESTIMATE --> TYPE
+    TYPE -- "常规" --> NORMAL --> SCAN
+    TYPE -- "梦境" --> DREAM --> SCAN
+    TYPE -- "闪回" --> FLASH --> SCAN
+    TYPE -- "蒙太奇" --> MONTAGE --> SCAN
+
+    SCAN --> CHECK_SPLIT
+    CHECK_SPLIT -- "是" --> TRIGGER --> NEW_SHOT
+    CHECK_SPLIT -- "否" --> MERGE
+    MERGE -- "是" --> MERGE_YES --> CHAR_CHECK
+    MERGE -- "否" --> APPEND --> CHAR_CHECK
+    NEW_SHOT --> CHAR_CHECK
+
+    CHAR_CHECK -- ">28" --> FORCE_SPLIT --> SCAN
+    CHAR_CHECK -- "≤28" --> LINE_CHECK
+    LINE_CHECK -- "≥4" --> FORCE_SPLIT2 --> SCAN
+    LINE_CHECK -- "<4" --> SCAN
+
+    SCAN -- "扫描完毕" --> GEN_PROMPT
+    GEN_PROMPT --- MOOD
+    GEN_PROMPT --- LIGHT
+    GEN_PROMPT --> WRITE_YAML
+      </pre>
+    </div>
+  </div>
+
+  <!-- 图例 -->
+  <div class="section">
+    <div class="section-title">图例</div>
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#3b82f6"></div>
+        <span>输入文件 / 上游产物</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#7c3aed"></div>
+        <span>处理步骤</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#10b981"></div>
+        <span>输出产物</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#ec4899"></div>
+        <span>检查 / 校验</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#f59e0b"></div>
+        <span>条件判断</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-dot" style="background:#06b6d4"></div>
+        <span>工具 / 规则引用</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 关键规则卡片 -->
+  <div class="section">
+    <div class="section-title">各步骤关键规则</div>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Step 0 — 项目定位</h3>
+        <ul>
+          <li>用户指定项目名 → 直接使用</li>
+          <li>未指定 → 找包含 <code>scenes/</code> + <code>style.yaml</code> 的目录</li>
+          <li>禁止在 workspace 根目录直接读写</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Step 1 — 读取场景索引</h3>
+        <ul>
+          <li><span class="tag tag-input">必需</span> 场景索引 YAML</li>
+          <li><span class="tag tag-input">必需</span> scenes/*.md 场景文件</li>
+          <li><span class="tag tag-input">必需</span> style.yaml 全局风格</li>
+          <li><span class="tag tag-input">可选</span> 角色资产 YAML</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Step 3 — 分镜划分核心规则</h3>
+        <ul>
+          <li><span class="tag tag-rule">时长</span> 3-7秒/镜头，字符数 12-28</li>
+          <li><span class="tag tag-rule">条数</span> 1-2条理想，≥4条必拆</li>
+          <li><span class="tag tag-rule">合并</span> ≤10字短句不独占镜头</li>
+          <li><span class="tag tag-rule">拆分</span> >32字必须拆分</li>
+          <li><span class="tag tag-rule">公式</span> 镜头数 ≈ 总字符数 ÷ 20</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Step 4 — 提示词结构</h3>
+        <ul>
+          <li>风格锚点（来自 style.yaml）</li>
+          <li>场景描述（室内/室外/特殊）</li>
+          <li>角色描述（引用 @ID）</li>
+          <li>动作/表情（情绪 + 动态）</li>
+          <li>构图/镜头（景别 + 视角 + 构图法）</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Step 5 — 输出格式</h3>
+        <ul>
+          <li><span class="tag tag-output">索引</span> shots/_manifest.yaml</li>
+          <li><span class="tag tag-output">分镜</span> shots/SC_XX_场景名.yaml</li>
+          <li><span class="tag tag-output">配图</span> shots/SC_XX_场景名/shot_NNN.png</li>
+          <li>场景与分镜文件一一对应</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Step 7 — 自检清单</h3>
+        <ul>
+          <li><span class="tag tag-check">时长</span> 每镜头≤28字，无>32字</li>
+          <li><span class="tag tag-check">条数</span> 对话≤2条，无≥4条</li>
+          <li><span class="tag tag-check">时空</span> 同一镜头同一时空</li>
+          <li><span class="tag tag-check">画面</span> 一张图可表达、焦点单一</li>
+          <li><span class="tag tag-check">整体</span> 镜头数≈字符数÷20</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+mermaid.initialize({
+  startOnLoad: true,
+  theme: 'dark',
+  themeVariables: {
+    darkMode: true,
+    background: '#1a1a24',
+    primaryColor: '#2d1b69',
+    primaryTextColor: '#ede9fe',
+    primaryBorderColor: '#7c3aed',
+    lineColor: '#555',
+    secondaryColor: '#1e3a5f',
+    tertiaryColor: '#1a3d2e',
+    fontSize: '14px',
+  },
+  flowchart: {
+    useMaxWidth: true,
+    htmlLabels: true,
+    curve: 'basis',
+    padding: 20,
+    nodeSpacing: 30,
+    rankSpacing: 50,
+  }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,944 @@
+scene_id: SC_08
+scene_name: 揽月轩日常
+scene_ref: scenes/SC_08_揽月轩日常.md
+scene_type: reality
+scene_description: 揽月轩
+scene_mood: 规律、布局
+scene_lighting: 宫廷光效
+shots:
+- id: SC_08_001
+  title: 他又来看我了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他又来看我了。
+  - speaker: 旁白
+    text: 这次，他没有聊国运，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_001.png
+  image_status: pending
+- id: SC_08_002
+  title: 而是问我：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 而是问我：
+  - speaker: 萧凌
+    text: 映雪，你觉得，
+  - speaker: 萧凌
+    text: 朕是个什么样的人？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_002.png
+  image_status: pending
+- id: SC_08_003
+  title: 送命题来了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 送命题来了。
+  - speaker: 旁白
+    text: 我沉吟片刻，认真地回答。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_003.png
+  image_status: pending
+- id: SC_08_004
+  title: 陛下是天子，也是...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 陛下是天子，也是凡人。
+  - speaker: 苏映雪
+    text: 天子有天子的责任，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_004.png
+  image_status: pending
+- id: SC_08_005
+  title: 凡人有凡人的喜怒。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 凡人有凡人的喜怒。
+  - speaker: 苏映雪
+    text: 臣妾觉得，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_005.png
+  image_status: pending
+- id: SC_08_006
+  title: 陛下不必时时刻刻...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 陛下不必时时刻刻都做那个完美的帝王，
+  - speaker: 苏映雪
+    text: 偶尔，也可以做回萧凌。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_006.png
+  image_status: pending
+- id: SC_08_007
+  title: 他愣住了，看着我，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他愣住了，看着我，
+  - speaker: 旁白
+    text: 久久没有说话。
+  - speaker: 旁白
+    text: 那晚，他第一次留在了揽月轩。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_007.png
+  image_status: pending
+- id: SC_08_008
+  title: 虽然我们盖着棉被...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 虽然我们盖着棉被纯聊天……
+  - speaker: 旁白
+    text: 但他第二天走的时候，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_008.png
+  image_status: pending
+- id: SC_08_009
+  title: 脸色是前所未有的...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 脸色是前所未有的轻松。
+  - speaker: 旁白
+    text: 很快，我又被晋为了嫔。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_009.png
+  image_status: pending
+- id: SC_08_010
+  title: 封号，"静"。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 封号，"静"。
+  - speaker: 旁白
+    text: 静嫔。
+  - speaker: 旁白
+    text: 我靠着一系列"去油"、"反矫情"的操作，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_010.png
+  image_status: pending
+- id: SC_08_011
+  title: 在后宫杀出了一条...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 在后宫杀出了一条血路。
+  - speaker: 旁白
+    text: 御膳房总能给我送来最新鲜的食材。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_011.png
+  image_status: pending
+- id: SC_08_012
+  title: 太医院总能第一时...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太医院总能第一时间把后宫的"病情"动态汇报给我。
+  - speaker: 旁白
+    text: 御林军的学生，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_012.png
+  image_status: pending
+- id: SC_08_013
+  title: 则成了我安全的保...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 则成了我安全的保障。
+  - speaker: 旁白
+    text: 我甚至让宣传委员，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_013.png
+  image_status: pending
+- id: SC_08_014
+  title: 在宫里创办了一份...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 在宫里创办了一份《后宫周报》。
+  - speaker: 旁白
+    text: 每日报道宫中趣闻、养生知识、穿搭技巧……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_014.png
+  image_status: pending
+- id: SC_08_015
+  title: 潜移默化地转移了...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 潜移默化地转移了妃嫔们的注意力，
+  - speaker: 旁白
+    text: 大大降低了内斗的频率。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_015.png
+  image_status: pending
+- id: SC_08_016
+  title: 萧凌对此乐见其成。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌对此乐见其成。
+  - speaker: 旁白
+    text: 他觉得我不仅是他的解语花，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_016.png
+  image_status: pending
+- id: SC_08_017
+  title: 还是个管理奇才。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 还是个管理奇才。
+  - speaker: 旁白
+    text: 终于，在我入宫半年后，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_017.png
+  image_status: pending
+- id: SC_08_018
+  title: 我被晋为了贵妃。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我被晋为了贵妃。
+  - speaker: 旁白
+    text: 距离皇后之位，仅一步之遥。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_018.png
+  image_status: pending
+- id: SC_08_019
+  title: 意味着我再也不能...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 意味着我再也不能以"身体不适"或者"星象不合"为由拒绝侍寝了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_019.png
+  image_status: pending
+- id: SC_08_020
+  title: 那天，敬事房的太...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 那天，敬事房的太监端着盘子来到我面前时……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_020.png
+  image_status: pending
+- id: SC_08_021
+  title: 我班上那几个在敬...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我班上那几个在敬事房当差的学生，
+  - speaker: 旁白
+    text: 脸上的表情比哭还难看。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_021.png
+  image_status: pending
+- id: SC_08_022
+  title: 我面无表情地伸出...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我面无表情地伸出手，
+  - speaker: 旁白
+    text: 在刻着我名字的绿头牌上，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_022.png
+  image_status: pending
+- id: SC_08_023
+  title: 轻轻点了一下。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 轻轻点了一下。
+  - speaker: 旁白
+    text: 翻我牌子的那个小太监，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_023.png
+  image_status: pending
+- id: SC_08_024
+  title: 是我班的纪律委员...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 是我班的纪律委员，赵磊。
+  - speaker: 旁白
+    text: 他手都在抖。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_024.png
+  image_status: pending
+- id: SC_08_025
+  title: 老……娘娘，您……您保重。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_zhaolei'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 赵磊
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 赵磊
+    text: 老……娘娘，您……您保重。
+  - speaker: 苏映雪
+    text: 放心，死不了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，赵磊(@npc_zhaolei)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_025.png
+  image_status: pending
+- id: SC_08_026
+  title: 很快，四个小太监...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 很快，四个小太监抬着一卷巨大的被子进来了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_026.png
+  image_status: pending
+- id: SC_08_027
+  title: 他们是我班体育队...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他们是我班体育队的四大金刚。
+  - speaker: 旁白
+    text: 他们把我像卷寿司一样，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_027.png
+  image_status: pending
+- id: SC_08_028
+  title: 严严实实地卷进了...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 严严实实地卷进了被子里。
+  - speaker: 旁白
+    text: 然后四个人抬着，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_028.png
+  image_status: pending
+- id: SC_08_029
+  title: 一路往萧凌的寝宫...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 一路往萧凌的寝宫乾清宫走。
+  - speaker: 旁白
+    text: 一路上，四个人絮絮叨叨，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_029.png
+  image_status: pending
+- id: SC_08_030
+  title: 跟送女儿上刑场似...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_lidazhuang'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 跟送女儿上刑场似的。
+  - speaker: 李大壮
+    text: 老师，您忍着点，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    李大壮(@npc_lidazhuang)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_030.png
+  image_status: pending
+- id: SC_08_031
+  title: 千万别动手打他！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_lidazhuang'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_lierzhuang'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 李大壮
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 李大壮
+    text: 千万别动手打他！
+  - speaker: 李二壮
+    text: 对对对，伺候高兴了，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    李大壮(@npc_lidazhuang)，李二壮(@npc_lierzhuang)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_031.png
+  image_status: pending
+- id: SC_08_032
+  title: 说不定您就是皇后...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_lierzhuang'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_lidazhuang'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 李二壮
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 李二壮
+    text: 说不定您就是皇后了！
+  - speaker: 李大壮
+    text: 老师，他要是敢欺负你，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    李大壮(@npc_lidazhuang)，李二壮(@npc_lierzhuang)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_032.png
+  image_status: pending
+- id: SC_08_033
+  title: 你就咳嗽一声，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_lidazhuang'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_lidazhuang'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 李大壮
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 李大壮
+    text: 你就咳嗽一声，
+  - speaker: 李大壮
+    text: 我们在外面听着！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    李大壮(@npc_lidazhuang)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_033.png
+  image_status: pending
+- id: SC_08_034
+  title: 我们已经跟御林军...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_lierzhuang'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 李二壮
+  mood: 规律、布局
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 李二壮
+    text: 我们已经跟御林军的兄弟们打好招呼了，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，规律、布局氛围，烛光或自然光，
+
+    李二壮(@npc_lierzhuang)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_08_揽月轩日常/shot_034.png
+  image_status: pending

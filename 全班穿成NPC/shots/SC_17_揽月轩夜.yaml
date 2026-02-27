@@ -1,0 +1,688 @@
+scene_id: SC_17
+scene_name: 揽月轩夜
+scene_ref: scenes/SC_17_揽月轩夜.md
+scene_type: reality
+scene_description: 揽月轩
+scene_mood: 睡服、晋升皇贵妃
+scene_lighting: 宫廷光效
+shots:
+- id: SC_17_001
+  title: 我每次都深情款款...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我每次都深情款款地看着他：
+  - speaker: 苏映雪
+    text: 陛下，你就是臣妾的一切。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_001.png
+  image_status: pending
+- id: SC_17_002
+  title: 演得我自己都快信...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 演得我自己都快信了。
+  - speaker: 旁白
+    text: 权力是最好的春药。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_002.png
+  image_status: pending
+- id: SC_17_003
+  title: 当整个国家都像一...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 当整个国家都像一个精密的仪器，
+  - speaker: 旁白
+    text: 在我手中运转时，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_003.png
+  image_status: pending
+- id: SC_17_004
+  title: 我感到了前所未有...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我感到了前所未有的满足。
+  - speaker: 旁白
+    text: 但是，还不够。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_004.png
+  image_status: pending
+- id: SC_17_005
+  title: 只要萧凌还是皇帝，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 只要萧凌还是皇帝，
+  - speaker: 旁白
+    text: 我就永远是"他的"皇后。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_005.png
+  image_status: pending
+- id: SC_17_006
+  title: 我想要这个国家，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我想要这个国家，
+  - speaker: 旁白
+    text: 完完全全地属于我。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_006.png
+  image_status: pending
+- id: SC_17_007
+  title: 我等一个机会。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我等一个机会。
+  - speaker: 旁白
+    text: 机会很快就来了。
+  - speaker: 旁白
+    text: 邻国北燕，撕毁盟约，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_007.png
+  image_status: pending
+- id: SC_17_008
+  title: 集结三十万大军，...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 集结三十万大军，兵犯边境。
+  - speaker: 旁白
+    text: 来势汹汹，边关告急。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_008.png
+  image_status: pending
+- id: SC_17_009
+  title: 朝堂大乱。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 朝堂大乱。
+  - speaker: 旁白
+    text: 主战派和主和派吵得不可开交。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_009.png
+  image_status: pending
+- id: SC_17_010
+  title: 萧凌力排众议，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌力排众议，
+  - speaker: 旁白
+    text: 决定御驾亲征。
+  - speaker: 旁白
+    text: 他觉得，这是一个让他建功立业，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_010.png
+  image_status: pending
+- id: SC_17_011
+  title: 成为千古一帝的好...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 成为千古一帝的好机会。
+  - speaker: 旁白
+    text: 临走前一晚，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_011.png
+  image_status: pending
+- id: SC_17_012
+  title: 他拉着我的手，依...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他拉着我的手，依依不舍。
+  - speaker: 萧凌
+    text: 映雪，等朕回来。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_012.png
+  image_status: pending
+- id: SC_17_013
+  title: 朕会带着胜利，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 朕会带着胜利，
+  - speaker: 萧凌
+    text: 回来为你加冕。
+  - speaker: 萧凌
+    text: 到时候，这天下，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_013.png
+  image_status: pending
+- id: SC_17_014
+  title: 你我共治。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 你我共治。
+  - speaker: 旁白
+    text: 我为他整理好盔甲，眼眶微红。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_014.png
+  image_status: pending
+- id: SC_17_015
+  title: 陛下，臣妾等你。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 陛下，臣妾等你。
+  - speaker: 苏映雪
+    text: 但，请陛下答应臣妾一件事。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_015.png
+  image_status: pending
+- id: SC_17_016
+  title: 你说。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 你说。
+  - speaker: 苏映雪
+    text: 请陛下将监国之权，
+  - speaker: 苏映雪
+    text: 授予太子。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_016.png
+  image_status: pending
+- id: SC_17_017
+  title: 我们的太子，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我们的太子，
+  - speaker: 旁白
+    text: 是我和萧凌的儿子，
+  - speaker: 旁白
+    text: 今年刚满三岁。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_017.png
+  image_status: pending
+- id: SC_17_018
+  title: 让他监国，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 让他监国，
+  - speaker: 旁白
+    text: 就等于把权力交到我手上。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_018.png
+  image_status: pending
+- id: SC_17_019
+  title: 萧凌没有丝毫怀疑，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌没有丝毫怀疑，
+  - speaker: 旁白
+    text: 立刻答应了。
+  - speaker: 旁白
+    text: 他还把自己的私人印鉴给了我。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_019.png
+  image_status: pending
+- id: SC_17_020
+  title: 映雪，若有紧急军情，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 映雪，若有紧急军情，
+  - speaker: 萧凌
+    text: 可用此印，
+  - speaker: 萧凌
+    text: 调动京畿大营的兵马。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_020.png
+  image_status: pending
+- id: SC_17_021
+  title: 我接过印鉴，心中...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我接过印鉴，心中冷笑。
+  - speaker: 旁白
+    text: 狗皇帝啊狗皇帝，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_021.png
+  image_status: pending
+- id: SC_17_022
+  title: 你真是亲手把刀递...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 你真是亲手把刀递到了我手上。
+  - speaker: 旁白
+    text: 萧凌出征的第三个月。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_022.png
+  image_status: pending
+- id: SC_17_023
+  title: 前方传来"大捷"。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 前方传来"大捷"。
+  - speaker: 旁白
+    text: 周鹏派去前线的学生兵，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_023.png
+  image_status: pending
+- id: SC_17_024
+  title: 用我教的游击战术，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 睡服、晋升皇贵妃
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 用我教的游击战术，
+  - speaker: 旁白
+    text: 把北燕军队耍得团团转。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    揽月轩，睡服、晋升皇贵妃氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_17_揽月轩夜/shot_024.png
+  image_status: pending

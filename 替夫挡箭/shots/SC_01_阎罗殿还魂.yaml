@@ -1,0 +1,262 @@
+scene_id: "SC_01"
+scene_name: "阎罗殿还魂"
+scene_ref: "scenes/SC_01_阎罗殿还魂.md"
+scene_type: "prologue"
+scene_description: "阎罗殿内，幽暗阴森，绿色鬼火飘摇，黑色殿柱高耸，两排鬼差肃立两侧"
+scene_mood: "嘲讽、荒诞、悬念"
+scene_lighting: "幽暗冥殿绿光，鬼火飘摇，阴冷光线笼罩"
+
+shots:
+  - id: "SC_01_001"
+    title: "魂入阎罗殿"
+    shot_type: "全景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: 恍惚站在阎罗殿中央
+        emotion: 茫然无措
+    composition:
+      angle: 平视
+      focus: 阎罗殿全貌与沈鸢身影
+    mood: "阴森荒诞"
+    lighting: "幽暗冥殿绿光鬼火飘摇"
+    lines:
+      - speaker: 旁白
+        text: 替夫君挡箭死后，
+      - speaker: 旁白
+        text: 阎王殿里满殿的嫌弃声。
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阴森幽暗的阎罗殿内，绿色鬼火飘摇，黑色殿柱高耸，地面弥漫薄雾，
+      沈鸢(@tfdj_shenyan)身着淡粉色襦裙，恍惚站在殿中央，茫然无措，身形单薄，
+      全景构图，对称殿堂布局，冷绿色调笼罩
+    image_path: "SC_01_阎罗殿还魂/shot_001.png"
+    image_status: pending
+
+  - id: "SC_01_002"
+    title: "鬼差群嘲"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: 站在殿中被鬼差围指
+        emotion: 不明所以
+    composition:
+      angle: 俯视
+      focus: 众鬼差嘲讽的面孔
+    mood: "嘲讽鄙夷"
+    lighting: "幽暗绿光映照鬼差面容"
+    lines:
+      - speaker: 众鬼差
+        text: 恋爱脑真是没得救！
+        emotion: 嘲讽
+      - speaker: 众鬼差
+        text: 就该扔去十八层地狱，
+        emotion: 嘲讽
+      - speaker: 众鬼差
+        text: 永世不得超生。
+        emotion: 嘲讽
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，两排鬼差身着黑色甲胄，面目狰狞，手指前方嘲笑，
+      沈鸢(@tfdj_shenyan)身着淡粉色襦裙站在中间，被鬼差围指嘲讽，
+      中景俯视构图，众鬼差环绕，绿光映照
+    image_path: "SC_01_阎罗殿还魂/shot_002.png"
+    image_status: pending
+
+  - id: "SC_01_003"
+    title: "阎王登场"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: 恍惚站立
+        emotion: 迷茫
+      - ref: "@tfdj_yanwang"
+        action: 坐在审判台后，捏着生死簿冷笑
+        emotion: 不屑冷笑
+    composition:
+      angle: 仰视
+      focus: 阎王端坐审判台
+    mood: "威严压迫"
+    lighting: "阎王身后烛光映照，面容半明半暗"
+    lines:
+      - speaker: 旁白
+        text: 我恍惚站着，不明所以。
+      - speaker: 旁白
+        text: 阎王捏着生死簿，冷笑一声。
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿审判台前，阎王(@tfdj_yanwang)身着黑色冥王袍金色纹饰，端坐高台之上，手捏生死簿冷笑，
+      沈鸢(@tfdj_shenyan)身着淡粉色襦裙恍惚站在台下，身形渺小，
+      中景仰视构图，阎王居高临下，烛光映照半明半暗
+    image_path: "SC_01_阎罗殿还魂/shot_003.png"
+    image_status: pending
+
+  - id: "SC_01_004"
+    title: "第十次送命"
+    shot_type: "特写"
+    characters:
+      - ref: "@tfdj_yanwang"
+        action: 手指生死簿，厉声训斥
+        emotion: 怒其不争
+    composition:
+      angle: 仰视
+      focus: 阎王面部特写
+    mood: "震慑沉重"
+    lighting: "烛火映照阎王铁青面容"
+    lines:
+      - speaker: 阎王
+        text: 你这是第十次，
+        emotion: 不耐
+      - speaker: 阎王
+        text: 为那负心汉送命了。
+        emotion: 怒其不争
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，阎王(@tfdj_yanwang)面容铁青威严，怒目圆睁，手指生死簿厉声训斥，
+      特写仰视构图，聚焦阎王面部，烛火映照铁青面容，背景幽暗
+    image_path: "SC_01_阎罗殿还魂/shot_004.png"
+    image_status: pending
+
+  - id: "SC_01_005"
+    title: "死而无憾"
+    shot_type: "特写"
+    characters:
+      - ref: "@tfdj_shenyan"
+        action: 双手交握胸前，眼含深情
+        emotion: 温柔坚定
+    composition:
+      angle: 平视
+      focus: 沈鸢面部表情
+    mood: "深情执念"
+    lighting: "柔光映照沈鸢面容，殿内绿光为底"
+    lines:
+      - speaker: 旁白
+        text: 提及夫君，我心头一暖。
+      - speaker: 沈鸢
+        text: 只要他安好，我死而无憾。
+        emotion: 深情坚定
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，沈鸢(@tfdj_shenyan)乌发如缎及肩，杏眼含情，双手交握胸前，面露温柔坚定神色，
+      特写平视构图，聚焦沈鸢面部，柔光映照面容，背景殿内绿光朦胧
+    image_path: "SC_01_阎罗殿还魂/shot_005.png"
+    image_status: pending
+
+  - id: "SC_01_006"
+    title: "阎王怒骂"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_yanwang"
+        action: 淬口唾沫，恨铁不成钢地拍案
+        emotion: 愤怒恨铁不成钢
+    composition:
+      angle: 平视
+      focus: 阎王拍案动作
+    mood: "愤怒无奈"
+    lighting: "烛火摇曳映照阎王怒容"
+    lines:
+      - speaker: 阎王
+        text: 呸！
+        emotion: 愤怒
+      - speaker: 旁白
+        text: 阎王淬了口唾沫，恨铁不成钢。
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，阎王(@tfdj_yanwang)身着黑色冥王袍，怒目圆睁拍案而起，恨铁不成钢，
+      中景平视构图，聚焦阎王动作，烛火摇曳，殿内回荡怒气
+    image_path: "SC_01_阎罗殿还魂/shot_006.png"
+    image_status: pending
+
+  - id: "SC_01_007"
+    title: "揭露负心"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_yanwang"
+        action: 翻开生死簿指点，痛陈事实
+        emotion: 义愤填膺
+      - ref: "@tfdj_shenyan"
+        action: 站在台下聆听
+        emotion: 震惊难以置信
+    composition:
+      angle: 平视
+      focus: 阎王与沈鸢对峙
+    mood: "揭露残酷"
+    lighting: "冷绿光线笼罩，阎王身侧烛光闪烁"
+    lines:
+      - speaker: 阎王
+        text: 你每次一死，
+        emotion: 痛心
+      - speaker: 阎王
+        text: 他转头就娶新妇，纳美妾，
+        emotion: 愤怒
+      - speaker: 阎王
+        text: 对你半分念想都无！
+        emotion: 痛斥
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，阎王(@tfdj_yanwang)手持生死簿翻开指点，义愤填膺痛陈事实，
+      沈鸢(@tfdj_shenyan)站在台下聆听，面露震惊难以置信，
+      中景平视构图，阎王与沈鸢对峙，冷绿光线笼罩
+    image_path: "SC_01_阎罗殿还魂/shot_007.png"
+    image_status: pending
+
+  - id: "SC_01_008"
+    title: "许你还魂"
+    shot_type: "中景"
+    characters:
+      - ref: "@tfdj_yanwang"
+        action: 抬手指向沈鸢，语气决绝
+        emotion: 严肃郑重
+      - ref: "@tfdj_shenyan"
+        action: 微微抬头望向阎王
+        emotion: 困惑期待
+    composition:
+      angle: 平视
+      focus: 阎王抬手动作
+    mood: "悬念转折"
+    lighting: "殿内光线渐亮，隐有金光初现"
+    lines:
+      - speaker: 阎王
+        text: 你若不信，我便许你还魂。
+        emotion: 决绝
+      - speaker: 阎王
+        text: 让你亲眼看看，
+        emotion: 严肃
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，阎王(@tfdj_yanwang)抬手指向沈鸢，语气决绝严肃，殿内光线渐亮，
+      沈鸢(@tfdj_shenyan)微微抬头望向阎王，面露困惑与期待，
+      中景平视构图，阎王居中指点，隐有金光初现
+    image_path: "SC_01_阎罗殿还魂/shot_008.png"
+    image_status: pending
+
+  - id: "SC_01_009"
+    title: "亮光闪现"
+    shot_type: "全景"
+    characters:
+      - ref: "@tfdj_yanwang"
+        action: 挥手施法
+        emotion: 威严
+      - ref: "@tfdj_shenyan"
+        action: 被亮光笼罩，身形逐渐虚化
+        emotion: 震惊
+    composition:
+      angle: 平视
+      focus: 亮光笼罩沈鸢
+    mood: "悬念高潮"
+    lighting: "刺目金色亮光从阎王掌心射出，笼罩全殿"
+    lines:
+      - speaker: 阎王
+        text: 你掏心掏肺护着的，
+        emotion: 讽刺
+      - speaker: 阎王
+        text: 是人还是鬼！
+        emotion: 质问
+      - speaker: 旁白
+        text: 一道亮光闪现。
+    prompt: |
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      阎罗殿内，一道刺目金色亮光从阎王(@tfdj_yanwang)掌心射出笼罩全殿，
+      沈鸢(@tfdj_shenyan)被亮光笼罩，身形逐渐虚化消散，
+      全景平视构图，亮光为画面核心，殿内鬼差惊退，光影对比强烈
+    image_path: "SC_01_阎罗殿还魂/shot_009.png"
+    image_status: pending

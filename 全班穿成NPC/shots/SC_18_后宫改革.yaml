@@ -1,0 +1,818 @@
+scene_id: SC_18
+scene_name: 后宫改革
+scene_ref: scenes/SC_18_后宫改革.md
+scene_type: reality
+scene_description: 后宮
+scene_mood: 兴趣班、反雌竞
+scene_lighting: 宫廷光效
+shots:
+- id: SC_18_001
+  title: 但传回京城的战报，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 但传回京城的战报，
+  - speaker: 旁白
+    text: 却是节节败退，陛下被困。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_001.png
+  image_status: pending
+- id: SC_18_002
+  title: 这是我和陈默他们...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 这是我和陈默他们商量好的计策。
+  - speaker: 旁白
+    text: 一时间，京城人心惶惶。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_002.png
+  image_status: pending
+- id: SC_18_003
+  title: 朝中那些被架空的...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 朝中那些被架空的老臣们，
+  - speaker: 旁白
+    text: 又开始蠢蠢欲动。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_003.png
+  image_status: pending
+- id: SC_18_004
+  title: 他们以为，机会来了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 他们以为，机会来了。
+  - speaker: 旁白
+    text: 他们联名上书，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_004.png
+  image_status: pending
+- id: SC_18_005
+  title: 请求太后垂帘听政，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 请求太后垂帘听政，
+  - speaker: 旁白
+    text: 废黜太子，另立新君。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_005.png
+  image_status: pending
+- id: SC_18_006
+  title: 太后被他们说动，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后被他们说动，
+  - speaker: 旁白
+    text: 把我叫到了慈宁宫。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_006.png
+  image_status: pending
+- id: SC_18_007
+  title: 皇后，如今国难当头，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 皇后，如今国难当头，
+  - speaker: 太后
+    text: 皇帝生死未卜，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_007.png
+  image_status: pending
+- id: SC_18_008
+  title: 太子年幼，恐难当...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 太子年幼，恐难当大任。
+  - speaker: 太后
+    text: 哀家觉得，
+  - speaker: 太后
+    text: 为了江山社稷，还是……
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_008.png
+  image_status: pending
+- id: SC_18_009
+  title: 她话还没说完。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 她话还没说完。
+  - speaker: 旁白
+    text: 殿外传来一声巨响。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_009.png
+  image_status: pending
+- id: SC_18_010
+  title: 太后娘娘！皇后娘娘！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 周鹏
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 周鹏
+    text: 太后娘娘！皇后娘娘！
+  - speaker: 周鹏
+    text: 大事不好！
+  - speaker: 周鹏
+    text: 大营叛变了！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    周鹏(@npc_zhoupeng)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_010.png
+  image_status: pending
+- id: SC_18_011
+  title: 他们拥立了安王，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 周鹏
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 周鹏
+    text: 他们拥立了安王，
+  - speaker: 周鹏
+    text: 正朝皇宫杀来！
+  - speaker: 旁白
+    text: 安王，是萧凌的亲弟弟，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    周鹏(@npc_zhoupeng)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_011.png
+  image_status: pending
+- id: SC_18_012
+  title: 一直有不臣之心。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 一直有不臣之心。
+  - speaker: 旁白
+    text: 太后当场吓得昏了过去。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_012.png
+  image_status: pending
+- id: SC_18_013
+  title: 那些老臣们，也一...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 那些老臣们，也一个个面如土色。
+  - speaker: 旁白
+    text: 我却异常冷静。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_013.png
+  image_status: pending
+- id: SC_18_014
+  title: 我站起身，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我站起身，
+  - speaker: 旁白
+    text: 目光扫过在场的每一个人。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_014.png
+  image_status: pending
+- id: SC_18_015
+  title: 慌什么？
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 慌什么？
+  - speaker: 苏映雪
+    text: 陛下临走前，
+  - speaker: 苏映雪
+    text: 已将京城防务全权交由本宫。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_015.png
+  image_status: pending
+- id: SC_18_016
+  title: 周鹏！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 周鹏！
+  - speaker: 周鹏
+    text: 末将在！
+  - speaker: 苏映雪
+    text: 命你即刻率领御林军，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    周鹏(@npc_zhoupeng)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_016.png
+  image_status: pending
+- id: SC_18_017
+  title: 封锁皇宫，任何人...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 封锁皇宫，任何人不得进出！
+  - speaker: 苏映雪
+    text: 陈默！
+  - speaker: 陈默
+    text: 臣在！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_017.png
+  image_status: pending
+- id: SC_18_018
+  title: 班长从周鹏身后走...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 班长从周鹏身后走出。
+  - speaker: 苏映雪
+    text: 命你立刻拟旨，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_018.png
+  image_status: pending
+- id: SC_18_019
+  title: 昭告天下，安王谋逆，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 昭告天下，安王谋逆，
+  - speaker: 苏映雪
+    text: 罪不容诛！
+  - speaker: 苏映雪
+    text: 凡京中官员，各司其职，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_019.png
+  image_status: pending
+- id: SC_18_020
+  title: 安守本分，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 安守本分，
+  - speaker: 苏映雪
+    text: 敢有异动者，杀无赦！
+  - speaker: 苏映雪
+    text: 刘胖子！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_020.png
+  image_status: pending
+- id: SC_18_021
+  title: 草民在！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_liupangzi'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 刘胖子
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 刘胖子
+    text: 草民在！
+  - speaker: 旁白
+    text: 生活委员一身绫罗绸缎，
+  - speaker: 旁白
+    text: 跑得气喘吁吁。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    刘胖子(@npc_liupangzi)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_021.png
+  image_status: pending
+- id: SC_18_022
+  title: 命你即刻调动京中...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 命你即刻调动京中所有粮草，
+  - speaker: 苏映雪
+    text: 稳定物价，安抚百姓！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_022.png
+  image_status: pending
+- id: SC_18_023
+  title: 王浩！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 王浩！
+  - speaker: 王浩
+    text: 臣在！
+  - speaker: 苏映雪
+    text: 你……去给本宫算一卦，
+  - speaker: 苏映雪
+    text: 算算本宫今日，宜不宜杀人。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_023.png
+  image_status: pending
+- id: SC_18_024
+  title: 回娘娘！
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 王浩
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 王浩
+    text: 回娘娘！
+  - speaker: 王浩
+    text: 今日天狗食日，紫气东来，
+  - speaker: 王浩
+    text: 大利杀伐，宜登基！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_024.png
+  image_status: pending
+- id: SC_18_025
+  title: 我满意地点点头。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我满意地点点头。
+  - speaker: 旁白
+    text: 一道道命令，
+  - speaker: 旁白
+    text: 从我口中有条不紊地发出。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_025.png
+  image_status: pending
+- id: SC_18_026
+  title: 那些刚才还想逼宫...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 兴趣班、反雌竞
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 那些刚才还想逼宫的老臣，
+  - speaker: 旁白
+    text: 全都跪在地上，瑟瑟发抖。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    后宮，兴趣班、反雌竞氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_18_后宫改革/shot_026.png
+  image_status: pending

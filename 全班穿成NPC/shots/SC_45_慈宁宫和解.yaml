@@ -1,0 +1,629 @@
+scene_id: SC_45
+scene_name: 慈宁宫和解
+scene_ref: scenes/SC_45_慈宁宫和解.md
+scene_type: reality
+scene_description: 慈宁宫
+scene_mood: 恕罪、一家人
+scene_lighting: 宫廷光效
+shots:
+- id: SC_45_001
+  title: 太后得知萧凌被册...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后得知萧凌被册封为并肩王、
+  - speaker: 旁白
+    text: 辅佐朝政的消息后，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_001.png
+  image_status: pending
+- id: SC_45_002
+  title: 特意让人召我和萧...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 特意让人召我和萧凌前往慈宁宫。
+  - speaker: 旁白
+    text: 走进慈宁宫时，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_002.png
+  image_status: pending
+- id: SC_45_003
+  title: 太后正坐在榻上，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后正坐在榻上，
+  - speaker: 旁白
+    text: 脸色比之前好了很多，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_003.png
+  image_status: pending
+- id: SC_45_004
+  title: 眼神也温和了不少，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼神也温和了不少，
+  - speaker: 旁白
+    text: 再也没有了往日的敌意。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_004.png
+  image_status: pending
+- id: SC_45_005
+  title: 哀家听说，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 哀家听说，
+  - speaker: 太后
+    text: 凌儿重新辅佐陛下，
+  - speaker: 太后
+    text: 把军事事务打理得很好？
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_005.png
+  image_status: pending
+- id: SC_45_006
+  title: 萧凌躬身行礼：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 萧凌躬身行礼：
+  - speaker: 萧凌
+    text: 劳母后挂心，
+  - speaker: 萧凌
+    text: 儿臣只是尽了分内之事，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_006.png
+  image_status: pending
+- id: SC_45_007
+  title: 多亏了陛下信任，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 多亏了陛下信任，
+  - speaker: 萧凌
+    text: 儿臣才能有机会为国效力。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_007.png
+  image_status: pending
+- id: SC_45_008
+  title: 太后点了点头，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后点了点头，
+  - speaker: 旁白
+    text: 又看向我，语气诚恳：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_008.png
+  image_status: pending
+- id: SC_45_009
+  title: 陛下，以前是哀家...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 陛下，以前是哀家糊涂，
+  - speaker: 太后
+    text: 总想着夺回江山，为难于你，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_009.png
+  image_status: pending
+- id: SC_45_010
+  title: 还请陛下恕罪。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 还请陛下恕罪。
+  - speaker: 苏映雪
+    text: 太后言重了。
+  - speaker: 旁白
+    text: 我连忙扶起她，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_010.png
+  image_status: pending
+- id: SC_45_011
+  title: 太后也是为了萧凌...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 太后也是为了萧凌，为了大启，
+  - speaker: 苏映雪
+    text: 如今误会解开，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_011.png
+  image_status: pending
+- id: SC_45_012
+  title: 我们便是一家人，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 我们便是一家人，
+  - speaker: 苏映雪
+    text: 不必再提过往。
+  - speaker: 旁白
+    text: 太后看着我，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_012.png
+  image_status: pending
+- id: SC_45_013
+  title: 眼里满是赞许：
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 眼里满是赞许：
+  - speaker: 太后
+    text: 陛下胸襟宽广，心系百姓，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    太后(@npc_taihou)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_013.png
+  image_status: pending
+- id: SC_45_014
+  title: 确实比凌儿更适合...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_taihou'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 太后
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 太后
+    text: 确实比凌儿更适合做这大启的君主，
+  - speaker: 太后
+    text: 哀家放心了。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    太后(@npc_taihou)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_014.png
+  image_status: pending
+- id: SC_45_015
+  title: 那天，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 那天，
+  - speaker: 旁白
+    text: 我们三人坐在慈宁宫里，
+  - speaker: 旁白
+    text: 聊了很久，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_015.png
+  image_status: pending
+- id: SC_45_016
+  title: 从朝堂之事聊到百...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 从朝堂之事聊到百姓生计，
+  - speaker: 旁白
+    text: 气氛和睦而温暖。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_016.png
+  image_status: pending
+- id: SC_45_017
+  title: 太后还特意吩咐宫...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 太后还特意吩咐宫女，
+  - speaker: 旁白
+    text: 做了我和萧凌都爱吃的桂花糕，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_017.png
+  image_status: pending
+- id: SC_45_018
+  title: 就像寻常人家的长...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 就像寻常人家的长辈一样，
+  - speaker: 旁白
+    text: 亲切而慈爱。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_018.png
+  image_status: pending
+- id: SC_45_019
+  title: 走出慈宁宫时，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 走出慈宁宫时，
+  - speaker: 旁白
+    text: 萧凌轻声对我说：
+  - speaker: 萧凌
+    text: 谢谢你，陛下，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_019.png
+  image_status: pending
+- id: SC_45_020
+  title: 让我和母后，都放...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xiaoling'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 萧凌
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 萧凌
+    text: 让我和母后，都放下了过往。
+  - speaker: 苏映雪
+    text: 我们之间，无需说谢。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    萧凌(@npc_xiaoling)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_020.png
+  image_status: pending
+- id: SC_45_021
+  title: 我转头看他，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 恕罪、一家人
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我转头看他，
+  - speaker: 旁白
+    text: 嘴角扬起一抹温柔的笑意。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    慈宁宫，恕罪、一家人氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_45_慈宁宫和解/shot_021.png
+  image_status: pending

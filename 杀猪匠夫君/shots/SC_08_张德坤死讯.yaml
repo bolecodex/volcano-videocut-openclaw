@@ -1,0 +1,421 @@
+scene_id: "SC_08"
+scene_name: "张德坤死讯"
+scene_ref: "scenes/SC_08_张德坤死讯.md"
+scene_type: "reality"
+scene_description: "猪肉铺，次日清晨"
+scene_mood: "震惊、疑惑"
+scene_lighting: "清晨自然光"
+
+shots:
+  - id: "SC_08_001"
+    title: "雨后清晨"
+    shot_type: "中景"
+    script_lines: { start: 134, end: 136 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 醒来揉额角
+        emotion: 困惑
+      - ref: "@szj_suwan"
+        action: 眼下青黑
+        emotion: 疲惫
+    composition:
+      angle: 平视
+      focus: 两人
+    mood: 疲惫、不安
+    lighting: 清晨柔光
+    lines:
+      - speaker: 旁白
+        text: 雨停了。陈屠醒来，
+      - speaker: 旁白
+        text: 揉了揉额角，看到我眼下的青黑，
+      - speaker: 旁白
+        text: 愣了一下。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，
+      清晨卧房，陈屠(@szj_chentu)从地上坐起揉着额角，
+      看到苏晚(@szj_suwan)眼下深重的青黑，愣了一下，
+      清晨柔和的光线透过窗缝，
+      中景镜头，平视角度，清晨柔光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_001.png"
+    image_status: pending
+
+  - id: "SC_08_002"
+    title: "水煮蛋"
+    shot_type: "中景"
+    script_lines: { start: 137, end: 139 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 问"吵到你了？"
+        emotion: 愧疚
+      - ref: "@szj_suwan"
+        action: 摇头不语
+        emotion: 压抑
+    composition:
+      angle: 平视
+      focus: 两人
+    mood: 压抑、关怀
+    lighting: 暖调侧光
+    lines:
+      - speaker: 陈屠
+        text: 吵到你了？
+      - speaker: 旁白
+        text: 我摇摇头。
+      - speaker: 旁白
+        text: 早饭时，我碗里多了个剥好的水煮蛋。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，暖调侧光，
+      猪肉铺后简陋饭桌，苏晚(@szj_suwan)碗里放着一个剥好的白嫩水煮蛋，
+      苏晚低头看着碗，对面陈屠(@szj_chentu)沉默吃饭，
+      中景镜头，平视角度，暖调侧光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_002.png"
+    image_status: pending
+
+  - id: "SC_08_003"
+    title: "食不下咽"
+    shot_type: "中景"
+    script_lines: { start: 140, end: 142 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 筷子停在半空
+        emotion: 心事重重
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 不安、心事重重
+    lighting: 自然光
+    lines:
+      - speaker: 旁白
+        text: 我却食不下咽。
+      - speaker: 旁白
+        text: 忽然，铺子外传来一阵喧哗，
+      - speaker: 旁白
+        text: 是早起买菜的街坊们在议论。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，
+      苏晚(@szj_suwan)筷子停在半空，食不下咽的表情，
+      目光望向铺子外面传来喧哗的方向，心事重重，
+      中景镜头，平视角度，自然光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_003.png"
+    image_status: pending
+
+  - id: "SC_08_004"
+    title: "惊天消息"
+    shot_type: "中景"
+    script_lines: { start: 143, end: 145 }
+    characters:
+      - ref: "@szj_jiefang_bing"
+        action: 兴奋传讯
+        emotion: 惊讶兴奋
+    composition:
+      angle: 平视
+      focus: 街坊丙
+    mood: 惊讶、兴奋
+    lighting: 自然光
+    lines:
+      - speaker: 街坊丙
+        text: 听说了吗？张德坤死了！
+      - speaker: 街坊丙
+        text: 就在昨晚！
+      - speaker: 街坊丁
+        text: 真是报应啊！
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，市井烟火氛围，
+      猪肉铺外，街坊丙(@szj_jiefang_bing)方脸粗眉，粗布青色衣裳，
+      激动地向周围人传递消息，表情惊讶又兴奋，
+      街坊丁(@szj_jiefang_ding)花白头发在旁附和，
+      中景镜头，平视角度，市井氛围，高清细节
+    image_path: "SC_08_张德坤死讯/shot_004.png"
+    image_status: pending
+
+  - id: "SC_08_005"
+    title: "贪官报应"
+    shot_type: "中景"
+    script_lines: { start: 146, end: 147 }
+    characters:
+      - ref: "@szj_jiefang_ding"
+        action: 义愤填膺
+        emotion: 愤怒解恨
+    composition:
+      angle: 平视
+      focus: 街坊丁
+    mood: 义愤、解恨
+    lighting: 自然光
+    lines:
+      - speaker: 街坊丁
+        text: 这老贼贪了那么多修河堤的银子，
+      - speaker: 街坊丁
+        text: 去年大水淹死多少人！
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，市井烟火氛围，
+      街坊丁(@szj_jiefang_ding)花白头发皱纹深刻，灰色长袍，
+      义愤填膺地拍着大腿，痛骂贪官的表情，
+      中景镜头，平视角度，高清细节
+    image_path: "SC_08_张德坤死讯/shot_005.png"
+    image_status: pending
+
+  - id: "SC_08_006"
+    title: "死因描述"
+    shot_type: "中景"
+    script_lines: { start: 148, end: 150 }
+    characters:
+      - ref: "@szj_jiefang_bing"
+        action: 绘声绘色
+        emotion: 惊叹
+    composition:
+      angle: 平视
+      focus: 街坊丙
+    mood: 惊叹、恐怖
+    lighting: 自然光
+    lines:
+      - speaker: 街坊丙
+        text: 可不是嘛，说是夜里喝酒，
+      - speaker: 街坊丙
+        text: 好端端的，被一口酒呛死了！
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，市井烟火氛围，
+      街坊丙(@szj_jiefang_bing)绘声绘色地描述，方脸上满是惊叹表情，
+      手舞足蹈比划着，周围人围成一圈倾听，
+      中景镜头，平视角度，市井群像，高清细节
+    image_path: "SC_08_张德坤死讯/shot_006.png"
+    image_status: pending
+
+  - id: "SC_08_007"
+    title: "七窍流血"
+    shot_type: "中景"
+    script_lines: { start: 151, end: 152 }
+    characters:
+      - ref: "@szj_jiefang_bing"
+        action: 描述惨状
+        emotion: 惊恐
+    composition:
+      angle: 平视
+      focus: 街坊丙
+    mood: 恐怖、解恨
+    lighting: 自然光
+    lines:
+      - speaker: 街坊丙
+        text: 七窍流血，惨得很！
+      - speaker: 街坊丙
+        text: 真是老天开眼！
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，市井烟火氛围，
+      街坊丙(@szj_jiefang_bing)压低声音但表情夸张地描述惨状，
+      周围人满脸唏嘘，有人双手合十说报应，
+      中景镜头，平视角度，高清细节
+    image_path: "SC_08_张德坤死讯/shot_007.png"
+    image_status: pending
+
+  - id: "SC_08_008"
+    title: "筷子落地"
+    shot_type: "特写"
+    script_lines: { start: 153, end: 155 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 筷子掉落
+        emotion: 震惊
+    composition:
+      angle: 特写
+      focus: 筷子落桌
+    mood: 震惊
+    lighting: 自然光
+    lines:
+      - speaker: 旁白
+        text: 我手里的筷子，
+      - speaker: 旁白
+        text: '"啪嗒"一声掉在桌上，'
+      - speaker: 旁白
+        text: 张德坤。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，
+      暗沉古朴色调，
+      特写镜头，苏晚(@szj_suwan)的手松开，筷子啪嗒掉落在粗糙木桌上，
+      碗中水煮蛋旁，筷子翻滚的瞬间，
+      表达巨大震惊的物件特写，
+      特写镜头，俯视角度，定格瞬间，高清细节
+    image_path: "SC_08_张德坤死讯/shot_008.png"
+    image_status: pending
+
+  - id: "SC_08_009"
+    title: "关联记忆"
+    shot_type: "特写"
+    script_lines: { start: 156, end: 158 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 回忆
+        emotion: 震惊关联
+    composition:
+      angle: 平视
+      focus: 苏晚面部
+    mood: 震惊、顿悟
+    lighting: 自然光
+    lines:
+      - speaker: 旁白
+        text: 是那个户部侍郎张德坤？！
+      - speaker: 旁白
+        text: 我爹还在时，
+      - speaker: 旁白
+        text: 就曾多次上奏弹劾他克扣军饷、贪墨工款！
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，
+      苏晚(@szj_suwan)面部特写，瞳孔微缩，嘴唇微张，
+      脑海中闪过父亲弹劾贪官的记忆，满脸震惊顿悟，
+      特写镜头，聚焦苏晚表情变化，自然光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_009.png"
+    image_status: pending
+
+  - id: "SC_08_010"
+    title: "猛然抬头"
+    shot_type: "中景"
+    script_lines: { start: 159, end: 160 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 猛地抬头看向陈屠
+        emotion: 震惊疑虑
+      - ref: "@szj_chentu"
+        action: 背对干活
+        emotion: 平静
+    composition:
+      angle: 平视
+      focus: 苏晚望向陈屠
+    mood: 震惊、疑虑
+    lighting: 自然光
+    lines:
+      - speaker: 旁白
+        text: 我猛地抬头，看向案板前的陈屠。
+      - speaker: 旁白
+        text: 他正背对着我，
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，
+      苏晚(@szj_suwan)猛然抬头，震惊的目光投向案板前方，
+      陈屠(@szj_chentu)宽厚的背影在案板前忙碌，
+      纵深构图，前景苏晚震惊表情，后景陈屠平静背影，
+      中景镜头，纵深构图，自然光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_010.png"
+    image_status: pending
+
+  - id: "SC_08_011"
+    title: "若无其事"
+    shot_type: "中景"
+    script_lines: { start: 161, end: 162 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 专注刮猪皮
+        emotion: 平静如常
+    composition:
+      angle: 平视
+      focus: 陈屠
+    mood: 平静、反差
+    lighting: 自然侧光
+    lines:
+      - speaker: 旁白
+        text: 用刮刀细细清理一块猪皮上的残毛。
+      - speaker: 旁白
+        text: 他垂着眼，动作平稳，
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      暗沉古朴色调，自然光线，
+      陈屠(@szj_chentu)专注地用刮刀清理猪皮上的残毛，
+      垂着眼，动作平稳从容，丝毫不受外界喧哗影响，
+      中景镜头，侧面构图，自然侧光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_011.png"
+    image_status: pending
+
+  - id: "SC_08_012"
+    title: "疑虑丛生"
+    shot_type: "中景"
+    script_lines: { start: 163, end: 165 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 内心翻涌
+        emotion: 疑虑震惊
+      - ref: "@szj_chentu"
+        action: 若无其事干活
+        emotion: 平静
+    composition:
+      angle: 平视
+      focus: 苏晚与陈屠
+    mood: 疑虑、悬疑
+    lighting: 自然光
+    lines:
+      - speaker: 旁白
+        text: 周遭的喧闹似乎半点也传不进他耳朵里。
+      - speaker: 旁白
+        text: 难道……张德坤的暴毙，
+      - speaker: 旁白
+        text: 和陈屠昨夜……有关？
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，自然光线，悬疑氛围，
+      苏晚(@szj_suwan)坐在桌边目不转睛盯着案板前的陈屠(@szj_chentu)，
+      苏晚表情复杂，疑虑与震惊交织，
+      陈屠若无其事地背对干活，形成强烈反差，
+      中景镜头，纵深构图，悬疑氛围，高清细节
+    image_path: "SC_08_张德坤死讯/shot_012.png"
+    image_status: pending
+
+  - id: "SC_08_013"
+    title: "试探开口"
+    shot_type: "特写"
+    script_lines: { start: 166, end: 167 }
+    characters:
+      - ref: "@szj_suwan"
+        action: 颤声试探
+        emotion: 紧张试探
+    composition:
+      angle: 平视
+      focus: 苏晚
+    mood: 紧张、试探
+    lighting: 自然光
+    lines:
+      - speaker: 苏晚
+        text: 当家的，张侍郎……没了。
+        emotion: 颤抖、试探
+      - speaker: 旁白
+        text: 我颤着声开口。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，面部神态精准，
+      暗沉古朴色调，
+      苏晚(@szj_suwan)面部特写，嘴唇微颤，试探性开口，
+      杏眼紧紧盯着陈屠方向，紧张中带着期待和恐惧，
+      特写镜头，聚焦苏晚表情，自然光，高清细节
+    image_path: "SC_08_张德坤死讯/shot_013.png"
+    image_status: pending
+
+  - id: "SC_08_014"
+    title: "听见了"
+    shot_type: "中景"
+    script_lines: { start: 168, end: 170 }
+    characters:
+      - ref: "@szj_chentu"
+        action: 手上不停地干活
+        emotion: 平静淡漠
+    composition:
+      angle: 平视
+      focus: 陈屠背影
+    mood: 悬疑、意味深长
+    lighting: 自然光
+    lines:
+      - speaker: 陈屠
+        text: 嗯。
+      - speaker: 旁白
+        text: 他手上动作没停，
+      - speaker: 陈屠
+        text: 听见了。
+    prompt: >-
+      真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，
+      暗沉古朴色调，自然光线，悬疑氛围，
+      陈屠(@szj_chentu)依然背对镜头，手上刮刀动作不停，
+      只淡淡"嗯"了一声，仿佛在说一件无关紧要的事，
+      背影沉稳如山，留下巨大悬念，
+      中景镜头，背影构图，悬疑留白，高清细节
+    image_path: "SC_08_张德坤死讯/shot_014.png"
+    image_status: pending

@@ -1,0 +1,326 @@
+meta:
+  title: 替夫挡箭
+  source_script: 替夫挡箭_对话脚本.md
+  character_asset: 替夫挡箭_角色资产.yaml
+  total_scenes: 23
+  total_lines: 588
+  avg_lines_per_scene: 26
+  created_at: 2026-02-25
+
+type_summary:
+  prologue: 1
+  reality: 18
+  montage: 4
+
+scenes:
+  - id: SC_01
+    name: 阎罗殿还魂
+    type: prologue
+    location: 阎罗殿
+    time_period: 死后
+    line_count: 21
+    main_characters:
+      - 沈鸢
+      - 阎王
+      - 众鬼差
+    mood: 嘲讽、荒诞、悬念
+    notes: 开篇hook，阎王揭露十世轮回真相
+
+  - id: SC_02
+    name: 尸骨未寒
+    type: reality
+    location: 陆府前厅
+    time_period: 还魂后
+    line_count: 30
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 管家
+    mood: 震惊、绝望
+    notes: 沈鸢还魂发现丈夫已另娶，被打后逃入柴房
+
+  - id: SC_03
+    name: 柴房真相
+    type: reality
+    location: 后院柴房
+    time_period: 当晚
+    line_count: 33
+    main_characters:
+      - 沈鸢
+      - 萧景然
+      - 陆恒
+    mood: 痛惜、愤怒、冲突
+    notes: 萧景然揭露真相，陆恒踹门指责
+
+  - id: SC_04
+    name: 虚情假意
+    type: reality
+    location: 柴房→卧房
+    time_period: 当晚至天亮
+    line_count: 36
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 萧景然
+    mood: 纠结、欺骗、隐忍
+    notes: 萧景然离去后陆恒假意温柔，沈鸢被骗原谅
+
+  - id: SC_05
+    name: 许清栀挑衅
+    type: reality
+    location: 前厅回廊
+    time_period: 第二日上午
+    line_count: 28
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 许清栀
+      - 管家
+    mood: 骄横、刺痛、屈辱
+    notes: 发现嫁妆，许清栀揭露怀孕事实
+
+  - id: SC_06
+    name: 阿珂之死
+    type: reality
+    location: 陆府屋内
+    time_period: 同日稍后
+    line_count: 27
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 许清栀
+    mood: 崩溃、愤怒、悲痛
+    notes: 许清栀推搡→陆恒怒斥→沈鸢吐血昏倒→得知阿珂被打死
+
+  - id: SC_07
+    name: 休书决裂
+    type: reality
+    location: 陆府屋内
+    time_period: 醒来后
+    line_count: 36
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 婆子甲
+      - 婆子乙
+    mood: 决绝、凄凉、解脱
+    notes: 沈鸢决心休书，与陆恒正式决裂
+
+  - id: SC_08
+    name: 离府出城
+    type: reality
+    location: 陆府→城门外→山脚墓碑前
+    time_period: 紧接上一场
+    line_count: 33
+    main_characters:
+      - 沈鸢
+      - 萧景然
+      - 老妈子
+    mood: 悲恸→感激→决绝
+    notes: 离开陆府，萧景然接应，阿珂墓前立约
+
+  - id: SC_09
+    name: 郡主加封
+    type: montage
+    location: 京都各处
+    time_period: 数日后
+    time_span: 数日
+    estimated_shots: 4-6
+    line_count: 17
+    main_characters:
+      - 旁白叙述
+    mood: 风云突变、逆转
+    notes: 陆恒大婚VS帝后认义女，双线并行蒙太奇
+
+  - id: SC_10
+    name: 郡主府对峙
+    type: reality
+    location: 郡主府正殿
+    time_period: 陆恒新婚后
+    line_count: 49
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 许清栀
+      - 皇后
+      - 护卫
+      - 刘嬷嬷
+    mood: 震撼、逆转、解气
+    notes: 身份揭露→护卫削指→皇后惩罚→大快人心
+    warnings:
+      - "台词数接近50，含多个情绪段落"
+
+  - id: SC_11
+    name: 养伤流言
+    type: montage
+    location: 郡主府/京都
+    time_period: 养伤期间
+    time_span: 数日
+    estimated_shots: 3-4
+    line_count: 16
+    main_characters:
+      - 沈鸢
+      - 刘嬷嬷
+    mood: 平静中暗涌
+    notes: 养伤期间流言四起，铺垫赏花宴
+
+  - id: SC_12
+    name: 赏花宴风波
+    type: reality
+    location: 御花园
+    time_period: 赏花宴当日
+    line_count: 36
+    main_characters:
+      - 沈鸢
+      - 许清栀
+      - 二公主
+      - 汪氏
+      - 刘嬷嬷
+    mood: 紧张、对抗、悬念
+    notes: 许清栀联合二公主挑衅，汪氏晕倒→沈鸢施针
+
+  - id: SC_13
+    name: 身世大白
+    type: reality
+    location: 御花园
+    time_period: 紧接上一场
+    line_count: 48
+    main_characters:
+      - 沈鸢
+      - 皇后
+      - 二公主
+      - 许清栀
+      - 汪氏
+    mood: 震撼、感动、逆转
+    notes: 皇后揭露沈鸢身世，二公主悔悟
+    warnings:
+      - "台词数接近50，含皇后长段叙述"
+
+  - id: SC_14
+    name: 以退为进
+    type: reality
+    location: 赏花宴后
+    time_period: 紧接上一场
+    line_count: 12
+    main_characters:
+      - 沈鸢
+      - 许清栀
+    mood: 冷酷、算计
+    notes: 许清栀求饶，沈鸢派治水任务设局
+
+  - id: SC_15
+    name: 陆恒失势
+    type: montage
+    location: 朝堂/陆府
+    time_period: 数日后
+    time_span: 数日至数周
+    estimated_shots: 5-6
+    line_count: 18
+    main_characters:
+      - 陆恒
+      - 许清栀
+    mood: 讽刺、落魄
+    notes: 陆恒治水失败→太子厌弃→许清栀回娘家
+
+  - id: SC_16
+    name: 门前闹剧
+    type: reality
+    location: 郡主府门外
+    time_period: 某日
+    line_count: 30
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 许清栀
+      - 许太傅
+    mood: 荒诞、讽刺、暴烈
+    notes: 陆恒门外纠缠→许清栀来打→两人扭打→许清栀流产
+
+  - id: SC_17
+    name: 春猎真相
+    type: reality
+    location: 郡主府内→大理寺
+    time_period: 紧接上一场
+    line_count: 26
+    main_characters:
+      - 沈鸢
+      - 陆恒
+      - 萧景然
+    mood: 嘲讽→震怒→正义
+    notes: 陆恒痴心妄想→管家招供→春猎刺客真相大白
+
+  - id: SC_18
+    name: 天牢诀别
+    type: reality
+    location: 天牢
+    time_period: 问斩前
+    line_count: 27
+    main_characters:
+      - 沈鸢
+      - 陆恒
+    mood: 决绝、悲凉
+    notes: 沈鸢见陆恒最后一面，彻底了断
+
+  - id: SC_19
+    name: 二公主释怀
+    type: reality
+    location: 天牢门外
+    time_period: 紧接上一场
+    line_count: 24
+    main_characters:
+      - 沈鸢
+      - 二公主
+    mood: 释然、温情、决意
+    notes: 沈鸢讲述过去，二公主同行复仇
+
+  - id: SC_20
+    name: 阿珂墓复仇
+    type: reality
+    location: 许府→城外阿珂墓前
+    time_period: 当晚
+    line_count: 22
+    main_characters:
+      - 沈鸢
+      - 二公主
+      - 许清栀
+    mood: 阴森、复仇、畅快
+    notes: 夜间抓许清栀至阿珂墓前，吓至疯癫
+
+  - id: SC_21
+    name: 尘埃落定
+    type: montage
+    location: 朝堂/城门
+    time_period: 数日后
+    time_span: 数日
+    estimated_shots: 3-4
+    line_count: 14
+    main_characters:
+      - 旁白叙述
+    mood: 正义伸张、尘埃落定
+    notes: 陆恒问斩，许太傅贬谪，恶人皆得报应
+
+  - id: SC_22
+    name: 问心斋
+    type: reality
+    location: 京都问心斋医馆
+    time_period: 此后
+    line_count: 27
+    main_characters:
+      - 沈鸢
+      - 萧景然
+      - 二公主
+      - 皇后
+    mood: 温暖、治愈、新生
+    notes: 开医馆践行父愿，萧景然默默守护
+
+  - id: SC_23
+    name: 元宵佳节
+    type: reality
+    location: 问心斋→繁华街道
+    time_period: 元宵节
+    line_count: 18
+    main_characters:
+      - 沈鸢
+      - 萧景然
+    mood: 温馨、圆满
+    notes: 尾声，二人并肩前行，余生可期

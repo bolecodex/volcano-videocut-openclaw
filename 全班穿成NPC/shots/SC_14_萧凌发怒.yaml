@@ -1,0 +1,1032 @@
+scene_id: SC_14
+scene_name: 萧凌发怒
+scene_ref: scenes/SC_14_萧凌发怒.md
+scene_type: reality
+scene_description: 乾清宫
+scene_mood: 质问、格局碾压
+scene_lighting: 宫廷光效
+shots:
+- id: SC_14_001
+  title: 是陛下赏的料子吧？
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 妃嫔
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 妃嫔
+    text: 是陛下赏的料子吧？
+  - speaker: 旁白
+    text: 现在妃子们见面：
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_001.png
+  image_status: pending
+- id: SC_14_002
+  title: 哎，三缺一，来不来？
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 妃嫔
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 妃嫔
+    text: 哎，三缺一，来不来？
+  - speaker: 妃嫔
+    text: 不了不了，我下午还有个古筝课。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_002.png
+  image_status: pending
+- id: SC_14_003
+  title: 雌竞？不存在的。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 雌竞？不存在的。
+  - speaker: 旁白
+    text: 大家都忙着搞事业，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_003.png
+  image_status: pending
+- id: SC_14_004
+  title: 谁还有空算计来算...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 谁还有空算计来算计去。
+  - speaker: 旁白
+    text: 萧凌对此，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_004.png
+  image_status: pending
+- id: SC_14_005
+  title: 不仅不反对，反而...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 不仅不反对，反而大力支持。
+  - speaker: 旁白
+    text: 他觉得我把后宫管理得井井有条，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_005.png
+  image_status: pending
+- id: SC_14_006
+  title: 简直是天生的皇后...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 简直是天生的皇后料子。
+  - speaker: 旁白
+    text: 于是，册封我为皇后的事情，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_006.png
+  image_status: pending
+- id: SC_14_007
+  title: 被提上了日程。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 被提上了日程。
+  - speaker: 旁白
+    text: 但，阻力巨大。
+  - speaker: 旁白
+    text: 以林太师为首的朝中老臣，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_007.png
+  image_status: pending
+- id: SC_14_008
+  title: 集体上奏，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 集体上奏，
+  - speaker: 旁白
+    text: 说我出身低微，家世不显，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_008.png
+  image_status: pending
+- id: SC_14_009
+  title: 不堪为国母。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 不堪为国母。
+  - speaker: 旁白
+    text: 林燕容那个白莲花，
+  - speaker: 旁白
+    text: 更是天天在太后面前哭，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_009.png
+  image_status: pending
+- id: SC_14_010
+  title: 说我妖言惑众，蛊...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 说我妖言惑众，蛊惑君心。
+  - speaker: 旁白
+    text: 太后也被她说动了，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_010.png
+  image_status: pending
+- id: SC_14_011
+  title: 对我的印象极差。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 对我的印象极差。
+  - speaker: 旁白
+    text: 萧凌被搞得焦头烂额。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_011.png
+  image_status: pending
+- id: SC_14_012
+  title: 班会时间。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 班会时间。
+  - speaker: 旁白
+    text: 我把这事儿跟我的学生们一说。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_012.png
+  image_status: pending
+- id: SC_14_013
+  title: 全班炸了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 全班炸了。
+  - speaker: 众人
+    text: 卧槽！敢欺负我们老师？！
+  - speaker: 众人
+    text: 老师，你下令吧！刀谁！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_013.png
+  image_status: pending
+- id: SC_14_014
+  title: 林太屎？老师你等着，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_zhoupeng'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 周鹏
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 周鹏
+    text: 林太屎？老师你等着，
+  - speaker: 周鹏
+    text: 我这就去把他家房梁给他拆了！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    周鹏(@npc_zhoupeng)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_014.png
+  image_status: pending
+- id: SC_14_015
+  title: 我摆摆手，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我摆摆手，
+  - speaker: 苏映雪
+    text: 冷静，我们是文明人。
+  - speaker: 苏映雪
+    text: 要用脑子。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_015.png
+  image_status: pending
+- id: SC_14_016
+  title: 我看向我们班长，...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我看向我们班长，陈默。
+  - speaker: 旁白
+    text: 他如今已经是大理寺少卿，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_016.png
+  image_status: pending
+- id: SC_14_017
+  title: 官居四品，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 官居四品，
+  - speaker: 旁白
+    text: 是我在朝堂上最得力的臂助。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_017.png
+  image_status: pending
+- id: SC_14_018
+  title: 老师，这件事，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 陈默
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 陈默
+    text: 老师，这件事，
+  - speaker: 陈默
+    text: 要分三步走。
+  - speaker: 陈默
+    text: 第一，舆论造势。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_018.png
+  image_status: pending
+- id: SC_14_019
+  title: 第二，釜底抽薪。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 陈默
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 陈默
+    text: 第二，釜底抽薪。
+  - speaker: 陈默
+    text: 第三，请君入瓮。
+  - speaker: 苏映雪
+    text: 讲。
+  - speaker: 陈默
+    text: 第一，舆论。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_019.png
+  image_status: pending
+- id: SC_14_020
+  title: 陈默看向宣传委员，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 陈默看向宣传委员，
+  - speaker: 陈默
+    text: 这事儿你熟。
+  - speaker: 宣传委员
+    text: 放心吧老师！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    宣传委员(@npc_xuanchuan)，陈默(@npc_chenmo)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_020.png
+  image_status: pending
+- id: SC_14_021
+  title: 三天之内，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_xuanchuan'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 宣传委员
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 宣传委员
+    text: 三天之内，
+  - speaker: 宣传委员
+    text: 我要让全京城都知道您是活菩萨下凡！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    宣传委员(@npc_xuanchuan)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_021.png
+  image_status: pending
+- id: SC_14_022
+  title: 第二天，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 第二天，
+  - speaker: 旁白
+    text: 京城各大茶楼的说书先生，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_022.png
+  image_status: pending
+- id: SC_14_023
+  title: 都开始讲一个新故...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 都开始讲一个新故事。
+  - speaker: 旁白
+    text: 《凤星娘娘传奇》。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_023.png
+  image_status: pending
+- id: SC_14_024
+  title: 故事里，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 故事里，
+  - speaker: 旁白
+    text: 我上能引来甘霖解救旱灾，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_024.png
+  image_status: pending
+- id: SC_14_025
+  title: 下能预知地震拯救...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 下能预知地震拯救百姓，
+  - speaker: 旁白
+    text: 中间还能感化后宫怨妇，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_025.png
+  image_status: pending
+- id: SC_14_026
+  title: 促进家庭和谐。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 促进家庭和谐。
+  - speaker: 旁白
+    text: 简直是圣母玛利亚在东方的分身。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_026.png
+  image_status: pending
+- id: SC_14_027
+  title: 第二，釜底抽薪。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 陈默
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 陈默
+    text: 第二，釜底抽薪。
+  - speaker: 旁白
+    text: 陈默继续说，
+  - speaker: 陈默
+    text: 我已经查到，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_027.png
+  image_status: pending
+- id: SC_14_028
+  title: 林太师贪赃枉法，...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 陈默
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 陈默
+    text: 林太师贪赃枉法，结党营私的证据，
+  - speaker: 陈默
+    text: 足够他抄家灭族。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_028.png
+  image_status: pending
+- id: SC_14_029
+  title: 但是，现在还不能...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_chenmo'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 陈默
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 陈默
+    text: 但是，现在还不能动他。
+  - speaker: 陈默
+    text: 要等一个时机。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    陈默(@npc_chenmo)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_029.png
+  image_status: pending
+- id: SC_14_030
+  title: 第三，请君入瓮。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 第三，请君入瓮。
+  - speaker: 旁白
+    text: 我接过话头，
+  - speaker: 旁白
+    text: 看向了地理课代表王浩。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_030.png
+  image_status: pending
+- id: SC_14_031
+  title: 王浩，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 苏映雪
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 苏映雪
+    text: 王浩，
+  - speaker: 苏映雪
+    text: 最近有什么天灾人祸吗？
+  - speaker: 王浩
+    text: 老师！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，苏映雪(@npc_suyingxue)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_031.png
+  image_status: pending
+- id: SC_14_032
+  title: 根据我的计算，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 王浩
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 王浩
+    text: 根据我的计算，
+  - speaker: 王浩
+    text: 七日后，京城将有特大暴雨，
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_032.png
+  image_status: pending
+- id: SC_14_033
+  title: 届时，护城河水位...
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  - ref: '@npc_wanghao'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 王浩
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 王浩
+    text: 届时，护城河水位暴涨，
+  - speaker: 王浩
+    text: 有决堤的风险！
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    王浩(@npc_wanghao)，表情动作自然，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_033.png
+  image_status: pending
+- id: SC_14_034
+  title: 我笑了。
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters:
+  - ref: '@npc_suyingxue'
+    action: 对话
+    emotion: ''
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 我笑了。
+  - speaker: 苏映雪
+    text: 很好，时机来了。
+  - speaker: 旁白
+    text: 七天后，一切如我所料。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    苏映雪(@npc_suyingxue)，站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_034.png
+  image_status: pending
+- id: SC_14_035
+  title: 暴雨倾盆，
+  shot_type: 中景
+  script_lines:
+    start: 0
+    end: 0
+  characters: []
+  composition:
+    angle: 平视
+    focus: 场景
+  mood: 质问、格局碾压
+  lighting: 烛光/自然光
+  lines:
+  - speaker: 旁白
+    text: 暴雨倾盆，
+  - speaker: 旁白
+    text: 下了整整两天两夜。
+  prompt: '真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满， 服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围，
+
+    乾清宫，质问、格局碾压氛围，烛光或自然光，
+
+    站立或对话，
+
+    中景镜头，三分构图，古风宫廷色调，高清细节'
+  image_path: SC_14_萧凌发怒/shot_035.png
+  image_status: pending

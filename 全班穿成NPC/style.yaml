@@ -1,0 +1,33 @@
+# style.yaml - 全班穿成NPC 项目全局风格
+# 古风宫廷、真人写实，用于角色/场景/分镜
+
+version: "1.0"
+
+style_base: >-
+  真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，
+  服饰纹理清晰，面部神态精准，宫廷华美色调，古风宫廷氛围
+
+style_base_character: >-
+  真人写实高清，超细节刻画，古风人像写实，光影细腻，
+  服饰纹理清晰，面部神态精准
+
+negative_prompt: >-
+  低质量，模糊，变形，多余手指，文字水印，
+  过度曝光，卡通风格，2D平面
+
+image_sizes:
+  character:
+    preset: "portrait_16_9"
+    description: "角色全身立绘，9:16 竖版，白底设定图，适配抖音/快手"
+  storyboard:
+    preset: "portrait_16_9"
+    description: "分镜头配图，9:16 竖版"
+  scene:
+    preset: "landscape_16_9"
+    description: "场景全景图，16:9 横版"
+
+video:
+  aspect_ratio: "9:16"
+  resolution: "720p"
+  duration_default: "5"
+  fps: 24
