@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{SCRIPT_NAME}} - 分镜可视剧本</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg-primary: #0f0f1a;
+      --bg-card: #1a1a2e;
+      --bg-hover: #252545;
+      --text-primary: #f0f0f0;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --accent: #e94560;
+      --accent-soft: #ff6b8a;
+      --narration: #ffd700;
+      --border: #2a2a4a;
+      --shadow: rgba(0, 0, 0, 0.5);
+      --success: #4ecdc4;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--bg-card), #252545);
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--accent), var(--narration));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .meta {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .header .meta span { margin: 0 0.5rem; }
+
+    /* Toolbar */
+    .toolbar {
+      background: var(--bg-card);
+      padding: 0.8rem 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 85px;
+      z-index: 99;
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 300px;
+      position: relative;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 0.5rem 1rem 0.5rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+    }
+
+    .search-box::before {
+      content: "🔍";
+      position: absolute;
+      left: 0.8rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 0.9rem;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.4rem 0.8rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: transparent;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    /* Navigation */
+    .nav {
+      background: var(--bg-card);
+      padding: 0.8rem 2rem;
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      border-bottom: 1px solid var(--border);
+      max-height: 120px;
+      overflow-y: auto;
+    }
+
+    .nav a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .nav a:hover { background: var(--bg-hover); color: var(--accent); }
+    .nav a.current { background: var(--accent); color: white; }
+
+    /* Main Content */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Scene Separator */
+    .scene-separator {
+      margin: 2.5rem 0 1.5rem;
+      padding: 1rem 1.5rem;
+      background: var(--bg-card);
+      border-radius: 8px;
+      border-left: 4px solid var(--success);
+    }
+
+    .scene-separator h2 {
+      font-size: 1.2rem;
+      color: var(--success);
+      margin-bottom: 0.3rem;
+    }
+
+    .scene-separator .scene-meta {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .scene-separator .scene-meta span { margin-right: 1rem; }
+
+    /* Shot Card */
+    .shot-card {
+      background: var(--bg-card);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px var(--shadow);
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .shot-card:hover { transform: translateY(-2px); }
+    .shot-card.hidden { display: none; }
+    .shot-card.highlight { box-shadow: 0 0 0 2px var(--accent), 0 4px 20px var(--shadow); }
+
+    /* Image Area */
+    .shot-image {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9 / 16;
+      max-height: 500px;
+      background: #0a0a15;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .shot-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      cursor: zoom-in;
+    }
+
+    .shot-image .placeholder {
+      color: var(--text-muted);
+      font-size: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .shot-image .placeholder::before {
+      content: "🎬";
+      font-size: 3rem;
+    }
+
+    .shot-number {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--accent);
+      color: white;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      font-weight: bold;
+      font-size: 0.9rem;
+    }
+
+    .shot-status {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .shot-status.pending { background: var(--text-muted); }
+    .shot-status.completed { background: var(--narration); color: #000; }
+
+    /* Info Bar */
+    .shot-info {
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .shot-info h3 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+
+    .tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      background: var(--bg-hover);
+      color: var(--text-secondary);
+    }
+
+    .tag.scene { border-left: 3px solid var(--success); }
+    .tag.mood { border-left: 3px solid var(--accent); }
+    .tag.lighting { border-left: 3px solid var(--narration); }
+    .tag.shot-type { border-left: 3px solid #9b59b6; }
+
+    /* Characters Bar */
+    .characters-bar {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-hover);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+    }
+
+    .character-name { color: var(--accent-soft); font-weight: bold; }
+    .character-action { color: var(--text-secondary); }
+
+    /* Lines Area */
+    .lines { padding: 1.5rem; }
+
+    .line {
+      margin-bottom: 0.8rem;
+      padding-left: 1rem;
+      border-left: 2px solid transparent;
+    }
+
+    .line:last-child { margin-bottom: 0; }
+
+    .line.narration {
+      color: var(--narration);
+      border-left-color: var(--narration);
+      font-style: italic;
+    }
+
+    .line.character {
+      color: var(--text-primary);
+      border-left-color: var(--accent-soft);
+    }
+
+    .line .speaker { font-weight: bold; margin-right: 0.5rem; }
+
+    .line .emotion {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+      background: rgba(233, 69, 96, 0.2);
+      padding: 0.1rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .line audio {
+      height: 28px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Collapsible Prompt */
+    .collapsible-toggle {
+      padding: 0.8rem 1.5rem;
+      background: var(--bg-hover);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+      user-select: none;
+    }
+
+    .collapsible-toggle:hover { color: var(--accent); }
+    .collapsible-toggle .arrow { transition: transform 0.2s; }
+    .collapsible-toggle.open .arrow { transform: rotate(90deg); }
+
+    .collapsible-content {
+      display: none;
+      padding: 1rem 1.5rem;
+      background: #0a0a15;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      white-space: pre-wrap;
+      line-height: 1.6;
+    }
+
+    .collapsible-content.show { display: block; }
+
+    /* Video Area */
+    .shot-video {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      background: var(--bg-hover);
+    }
+
+    .shot-video video {
+      width: 100%;
+      max-height: 400px;
+      border-radius: 6px;
+      background: #000;
+    }
+
+    .shot-video .video-meta {
+      margin-top: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      gap: 1rem;
+    }
+
+    .shot-video .video-meta .video-mode {
+      color: var(--success);
+      font-weight: bold;
+    }
+
+    /* Copy Button */
+    .copy-btn {
+      float: right;
+      padding: 0.3rem 0.6rem;
+      background: var(--border);
+      border: none;
+      border-radius: 3px;
+      color: var(--text-secondary);
+      cursor: pointer;
+      font-size: 0.75rem;
+    }
+
+    .copy-btn:hover { background: var(--accent); color: white; }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      padding: 1.5rem;
+      background: var(--bg-card);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .stat-item { text-align: center; }
+    .stat-value { font-size: 2rem; font-weight: bold; color: var(--accent); }
+    .stat-label { color: var(--text-secondary); font-size: 0.85rem; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* Image Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+
+    .modal.show {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal img { max-width: 95%; max-height: 95%; object-fit: contain; }
+
+    /* Back to Top */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      z-index: 100;
+    }
+
+    .back-to-top.show { opacity: 1; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 { font-size: 1.5rem; }
+      .header { padding: 1.5rem 1rem; }
+      .toolbar { flex-direction: column; padding: 1rem; position: relative; top: 0; }
+      .search-box { max-width: 100%; }
+      .container { padding: 1rem; }
+      .shot-info, .lines { padding: 1rem; }
+      .nav { display: none; }
+      .stats { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media print {
+      .toolbar, .nav, .collapsible-toggle, .collapsible-content,
+      .back-to-top, .modal, .filter-buttons { display: none !important; }
+      .shot-card { break-inside: avoid; page-break-inside: avoid; }
+      .header { position: relative; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <h1>🎬 {{SCRIPT_NAME}}</h1>
+    <p class="meta">
+      <span>共 {{TOTAL_SHOTS}} 个镜头 / {{TOTAL_SCENES}} 个场景</span>
+      <span>|</span>
+      <span>生成时间: {{GENERATED_AT}}</span>
+    </p>
+  </header>
+
+  <div class="toolbar">
+    <div class="search-box">
+      <input type="text" id="search" placeholder="搜索台词、角色、场景...">
+    </div>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">全部</button>
+      <button class="filter-btn" data-filter="pending">待生图</button>
+      <button class="filter-btn" data-filter="completed">已生图</button>
+    </div>
+  </div>
+
+  <nav class="nav" id="nav"></nav>
+
+  <main class="container">
+    <div class="stats" id="stats"></div>
+    <div id="shots-container"></div>
+  </main>
+
+  <footer class="footer">
+    <p>由 generate_storyboard.py 生成 | 数据内嵌，无需服务器</p>
+  </footer>
+
+  <!-- Image Modal -->
+  <div class="modal" id="modal" onclick="closeModal()">
+    <img id="modal-img" src="" alt="">
+  </div>
+
+  <button class="back-to-top" id="back-to-top" onclick="scrollToTop()">↑</button>
+
+  <script>
+    // ── 内嵌数据（由 generate_storyboard.py 注入）──
+    const DATA = {{STORYBOARD_DATA_JSON}};
+
+    const manifest = DATA.manifest;
+    const allScenes = DATA.scenes;
+    const allShots = DATA.shots;
+
+    // ── 工具函数 ──
+
+    function getSceneInfo(sceneRef) {
+      return allScenes.find(s => s.id === sceneRef) || { name: sceneRef };
+    }
+
+    function getCharacterInfo(charRef) {
+      if (!manifest.characters) return { name: charRef, id: charRef };
+      return manifest.characters.find(c => c.id === charRef) || { name: charRef, id: charRef };
+    }
+
+    // ── 渲染函数 ──
+
+    function renderStats() {
+      const el = document.getElementById('stats');
+      const imgDone = allShots.filter(s => s.image_status === 'completed').length;
+      const totalLines = allShots.reduce((sum, s) => sum + (s.lines?.length || 0), 0);
+      const audioDone = allShots.reduce((sum, s) =>
+        sum + (s.lines || []).filter(l => l.audio_url).length, 0);
+      const videoDone = allShots.filter(s => s.video_url).length;
+
+      el.innerHTML = `
+        <div class="stat-item"><div class="stat-value">${allScenes.length}</div><div class="stat-label">场景数</div></div>
+        <div class="stat-item"><div class="stat-value">${allShots.length}</div><div class="stat-label">镜头数</div></div>
+        <div class="stat-item"><div class="stat-value">${imgDone}/${allShots.length}</div><div class="stat-label">已生图</div></div>
+        <div class="stat-item"><div class="stat-value">${audioDone}/${totalLines}</div><div class="stat-label">已配音</div></div>
+        <div class="stat-item"><div class="stat-value">${videoDone}/${allShots.length}</div><div class="stat-label">已生视频</div></div>
+        <div class="stat-item"><div class="stat-value">${totalLines}</div><div class="stat-label">总台词</div></div>
+      `;
+    }
+
+    function renderNav() {
+      const el = document.getElementById('nav');
+      el.innerHTML = allShots.map((shot, i) =>
+        `<a href="#${shot.id}" title="${shot.title}">${i + 1}. ${shot.title}</a>`
+      ).join('');
+    }
+
+    function renderShotCard(shot, index) {
+      const scene = getSceneInfo(shot.scene_ref);
+      const status = shot.image_status || 'pending';
+      const statusLabel = status === 'pending' ? '待生图' : '已生图';
+
+      // 图片：优先 image_url（远程），其次 image_path（相对路径）
+      const imgSrc = shot.image_url || (shot.image_path ? `shots/${shot.image_path}` : '');
+      const imageHtml = imgSrc && status !== 'pending'
+        ? `<img src="${imgSrc}" alt="${shot.title}" onclick="openModal('${imgSrc}')" onerror="this.parentElement.innerHTML='<div class=\\'placeholder\\'>图片加载失败</div>'">`
+        : `<div class="placeholder">待生成配图</div>`;
+
+      // 角色
+      const charsHtml = (shot.characters || []).map(c => {
+        const info = getCharacterInfo(c.ref);
+        return `<span><span class="character-name">${info.name}</span> <span class="character-action">${c.action || ''}${c.emotion ? ' · ' + c.emotion : ''}</span></span>`;
+      }).join('');
+
+      // 台词
+      const linesHtml = (shot.lines || []).map(line => {
+        const isNarr = line.speaker === '旁白';
+        const emo = line.emotion ? `<span class="emotion">⚡ ${line.emotion}</span>` : '';
+        const audio = line.audio_url ? `<audio controls preload="none" src="${line.audio_url}"></audio>` : '';
+        return `<p class="line ${isNarr ? 'narration' : 'character'}"><span class="speaker">【${line.speaker}】</span>${line.text}${emo}${audio}</p>`;
+      }).join('') || '<p class="line" style="color:var(--text-muted)">（无台词）</p>';
+
+      return `
+        <div class="shot-card" id="${shot.id}" data-status="${status}">
+          <div class="shot-image">
+            ${imageHtml}
+            <span class="shot-number">${String(index + 1).padStart(2, '0')}</span>
+            <span class="shot-status ${status}">${statusLabel}</span>
+          </div>
+          <div class="shot-info">
+            <h3>${shot.id} | ${shot.title}</h3>
+            <div class="tags">
+              <span class="tag scene">📍 ${scene.name}</span>
+              <span class="tag mood">💫 ${shot.mood || '—'}</span>
+              ${shot.lighting ? `<span class="tag lighting">💡 ${shot.lighting}</span>` : ''}
+              ${shot.shot_type ? `<span class="tag shot-type">📷 ${shot.shot_type}</span>` : ''}
+            </div>
+          </div>
+          ${charsHtml ? `<div class="characters-bar">${charsHtml}</div>` : ''}
+          <div class="lines">${linesHtml}</div>
+          ${shot.video_url ? `
+          <div class="shot-video">
+            <video controls preload="metadata" src="${shot.video_url}" poster="${imgSrc || ''}"></video>
+            <div class="video-meta">
+              ${shot.video_mode ? `<span>模式: <span class="video-mode">${shot.video_mode}</span></span>` : ''}
+              ${shot.video_duration ? `<span>时长: ${shot.video_duration}s</span>` : ''}
+            </div>
+          </div>` : ''}
+          <div class="collapsible-toggle" onclick="toggleCollapsible(this)">
+            <span class="arrow">▶</span> 查看配图提示词
+          </div>
+          <div class="collapsible-content">
+            <button class="copy-btn" onclick="copyPrompt(event, this)">复制</button>
+            ${shot.prompt || '（无提示词）'}
+          </div>
+        </div>`;
+    }
+
+    function renderShots() {
+      const container = document.getElementById('shots-container');
+      let html = '';
+      let currentScene = '';
+
+      allShots.forEach((shot, i) => {
+        if (shot.scene_ref !== currentScene) {
+          currentScene = shot.scene_ref;
+          const scene = getSceneInfo(currentScene);
+          html += `
+            <div class="scene-separator">
+              <h2>📍 ${scene.id} ${scene.name}</h2>
+              <div class="scene-meta">
+                ${scene.description ? `<span>${scene.description}</span>` : ''}
+                ${scene.mood ? `<span>💫 ${scene.mood}</span>` : ''}
+                ${scene.lighting ? `<span>💡 ${scene.lighting}</span>` : ''}
+              </div>
+            </div>`;
+        }
+        html += renderShotCard(shot, i);
+      });
+
+      container.innerHTML = html;
+    }
+
+    // ── 交互函数 ──
+
+    function toggleCollapsible(el) {
+      const content = el.nextElementSibling;
+      const isShow = content.classList.toggle('show');
+      el.classList.toggle('open', isShow);
+      el.querySelector('.arrow').textContent = isShow ? '▼' : '▶';
+    }
+
+    function copyPrompt(event, btn) {
+      event.stopPropagation();
+      const text = btn.parentElement.textContent.replace('复制', '').trim();
+      navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '已复制!';
+        setTimeout(() => btn.textContent = '复制', 1500);
+      });
+    }
+
+    function openModal(src) {
+      document.getElementById('modal-img').src = src;
+      document.getElementById('modal').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('modal').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ── 搜索 & 过滤 ──
+
+    document.getElementById('search').addEventListener('input', e => {
+      const q = e.target.value.toLowerCase().trim();
+      document.querySelectorAll('.shot-card').forEach(card => {
+        if (!q) { card.classList.remove('hidden', 'highlight'); return; }
+        const match = card.textContent.toLowerCase().includes(q);
+        card.classList.toggle('hidden', !match);
+        card.classList.toggle('highlight', match);
+      });
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.shot-card').forEach(card => {
+          const status = card.dataset.status;
+          card.classList.toggle('hidden',
+            filter === 'pending' ? status !== 'pending' :
+            filter === 'completed' ? status === 'pending' : false
+          );
+        });
+      });
+    });
+
+    // ── 快捷键 ──
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeModal();
+      if (e.key === '/' && e.target.tagName !== 'INPUT') {
+        e.preventDefault();
+        document.getElementById('search').focus();
+      }
+    });
+
+    // ── 返回顶部 ──
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('back-to-top').classList.toggle('show', window.scrollY > 500);
+    });
+
+    // ── 导航高亮 ──
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.nav a').forEach(a => a.classList.remove('current'));
+          const link = document.querySelector(`.nav a[href="#${entry.target.id}"]`);
+          if (link) link.classList.add('current');
+        }
+      });
+    }, { rootMargin: '-100px 0px -70% 0px' });
+
+    // ── 初始化渲染 ──
+
+    renderStats();
+    renderNav();
+    renderShots();
+
+    // 观察所有卡片
+    document.querySelectorAll('.shot-card').forEach(card => observer.observe(card));
+
+    // URL hash 跳转
+    if (window.location.hash) {
+      const el = document.getElementById(window.location.hash.substring(1));
+      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth' }), 100);
+    }
+  </script>
+</body>
+</html>
