@@ -297,36 +297,60 @@ export function getShots(projectName: string, sceneId?: string): {
   }> = [];
 
   for (const file of yamlFiles) {
-    const data = YAML.parse(readFileSync(join(shotsDir, file), "utf-8"));
-    const sid = data?.scene_id as string;
-    if (sceneId && sid !== sceneId) continue;
-    const rawShots = (data?.shots ?? []) as Record<string, unknown>[];
-    const mapped = rawShots.map((s) => ({
-      id: s.shot_id ?? s.id ?? "",
-      title: s.title ?? (typeof s.content === "string" ? s.content.slice(0, 60).replace(/\n/g, " ") : s.shot_id ?? ""),
-      shot_type: s.type ?? s.shot_type ?? "",
-      characters: s.characters ?? [],
-      mood: s.mood ?? "",
-      lighting: s.lighting ?? "",
-      lines: s.lines ?? [],
-      prompt: s.prompt ?? "",
-      image_url: s.image_url ?? undefined,
-      image_path: s.image_path ?? undefined,
-      image_status: s.image_status ?? "pending",
-      audio_url: s.audio_url ?? undefined,
-      audio_path: s.audio_path ?? undefined,
-      audio_status: s.audio_status ?? "pending",
-      audio_speaker: s.audio_speaker ?? undefined,
-      duration_sec: s.duration ?? s.duration_sec ?? undefined,
-    }));
-    scenes.push({
-      sceneId: sid,
-      sceneName: data?.scene_name ?? basename(file, ".yaml"),
-      shots: mapped,
-    });
+    try {
+      const data = YAML.parse(readFileSync(join(shotsDir, file), "utf-8"));
+      const sid = data?.scene_id as string | undefined;
+      if (!sid) continue;
+      if (sceneId && sid !== sceneId) continue;
+      const rawShots = (data?.shots ?? []) as Record<string, unknown>[];
+      const mapped = rawShots.map((s) => {
+        const lines = (s.lines ?? s.dialogue ?? []) as Record<string, unknown>[];
+
+        let audioUrl = s.audio_url as string | undefined;
+        let audioPath = s.audio_path as string | undefined;
+        let audioStatus = s.audio_status as string | undefined;
+        let audioSpeaker = s.audio_speaker as string | undefined;
+
+        if (!audioStatus || audioStatus === "pending") {
+          const withAudio = lines.filter((l) => l.audio_status === "completed");
+          if (withAudio.length > 0) {
+            audioStatus = "completed";
+            audioUrl = audioUrl ?? (withAudio[0].audio_url as string | undefined);
+            audioPath = audioPath ?? (withAudio[0].audio_path as string | undefined);
+            audioSpeaker = audioSpeaker ?? (withAudio[0].speaker as string | undefined);
+          }
+        }
+
+        return {
+          id: s.shot_id ?? s.id ?? "",
+          title: s.title ?? (typeof s.content === "string" ? s.content.slice(0, 60).replace(/\n/g, " ") : s.shot_id ?? ""),
+          shot_type: s.type ?? s.shot_type ?? "",
+          characters: s.characters ?? [],
+          mood: s.mood ?? "",
+          lighting: s.lighting ?? "",
+          lines,
+          prompt: s.prompt ?? "",
+          image_url: s.image_url ?? undefined,
+          image_path: s.image_path ?? undefined,
+          image_status: s.image_status ?? "pending",
+          audio_url: audioUrl ?? undefined,
+          audio_path: audioPath ?? undefined,
+          audio_status: audioStatus ?? "pending",
+          audio_speaker: audioSpeaker ?? undefined,
+          duration_sec: s.duration ?? s.duration_sec ?? undefined,
+        };
+      });
+      scenes.push({
+        sceneId: sid,
+        sceneName: data?.scene_name ?? basename(file, ".yaml"),
+        shots: mapped,
+      });
+    } catch {
+      // Skip malformed YAML files
+    }
   }
 
-  scenes.sort((a, b) => a.sceneId.localeCompare(b.sceneId));
+  scenes.sort((a, b) => (a.sceneId ?? "").localeCompare(b.sceneId ?? ""));
   return { manifest, scenes };
 }
 

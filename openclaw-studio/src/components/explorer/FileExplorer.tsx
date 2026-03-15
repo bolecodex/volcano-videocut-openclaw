@@ -70,6 +70,15 @@ export function FileExplorer() {
     setPickerMode(mode);
   }
 
+  function inferProjectName(files: FileList | File[], folderName?: string): string | null {
+    const preferred = folderName?.trim();
+    if (preferred) return preferred;
+    const first = Array.from(files)[0];
+    if (!first?.name) return null;
+    const base = first.name.replace(/\.[^/.]+$/, "").trim();
+    return base || null;
+  }
+
   const handleUpload = useCallback(
     async (files: FileList | null, folderName?: string) => {
       if (!files || files.length === 0) return;
@@ -87,6 +96,21 @@ export function FileExplorer() {
         } catch (err) {
           setUploadMsg(`创建项目失败: ${(err as Error).message}`);
           return;
+        }
+      }
+
+      if (!target) {
+        const inferred = inferProjectName(files, folderName);
+        if (inferred) {
+          try {
+            await api.workspace.createProject(inferred);
+            target = inferred;
+            setCurrentProject(inferred);
+            setQuickName("");
+          } catch (err) {
+            setUploadMsg(`创建项目失败: ${(err as Error).message}`);
+            return;
+          }
         }
       }
 
@@ -116,11 +140,7 @@ export function FileExplorer() {
 
   function triggerQuickUpload(type: "file" | "folder") {
     const name = quickName.trim();
-    if (!name) {
-      setUploadMsg("请先输入项目名称");
-      return;
-    }
-    uploadTargetRef.current = name;
+    uploadTargetRef.current = name || null;
     if (type === "file") {
       fileInputRef.current?.click();
     } else {

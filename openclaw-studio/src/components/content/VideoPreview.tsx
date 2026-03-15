@@ -1,5 +1,6 @@
 import { useShots } from "../../hooks/use-api";
 import { resolveImageSrc, resolveAudioSrc } from "../../lib/asset-resolver";
+import { FallbackImage } from "../ui/FallbackImage";
 import {
   Play,
   Pause,
@@ -82,11 +83,12 @@ function ShotTimeline({
           }`}
           style={{ width: 72 }}
         >
-          <img
+          <FallbackImage
             src={entry.imageUrl}
             alt={entry.shotId}
             className="h-10 w-full rounded object-cover"
             loading="lazy"
+            fallbackClassName="flex h-10 w-full items-center justify-center rounded bg-surface-3 text-gray-600 text-[8px]"
           />
           <span
             className={`text-[9px] tabular-nums ${i === currentIndex ? "text-accent" : "text-gray-500"}`}

@@ -64,7 +64,6 @@ export function ChatPanel() {
   const { messages, isStreaming, sendMessage, stopStreaming, clearMessages } =
     useChat(refreshAll);
 
-  // Load sessions when project changes
   useEffect(() => {
     if (!projectPath) return;
     let cancelled = false;
@@ -246,7 +245,6 @@ export function ChatPanel() {
     setImages([]);
     setMentionRefs([]);
 
-    // Auto-create session if none exists
     if (!activeSessionId && projectPath) {
       fetch("/api/sessions", {
         method: "POST",
@@ -313,38 +311,41 @@ export function ChatPanel() {
         .join(" > ")
     : null;
 
-  const mentionResults = showMentions
-    ? searchMentions(mentionQuery)
-    : [];
+  const mentionResults = showMentions ? searchMentions(mentionQuery) : [];
 
   return (
-    <div className="flex w-96 flex-col border-l border-white/5 bg-surface-1">
+    <div className="flex w-96 flex-col border-l border-white/[0.06] bg-surface-1">
       {/* Header */}
-      <div className="relative flex items-center justify-between border-b border-white/5 px-3 py-2">
+      <div className="relative flex items-center justify-between border-b border-white/[0.06] px-3 py-2.5">
         <div className="flex min-w-0 items-center gap-2">
           <button
             onClick={() => setShowSessions(!showSessions)}
-            className={`rounded p-1 ${showSessions ? "bg-white/10 text-white" : "text-gray-500 hover:bg-white/10 hover:text-gray-300"}`}
+            className={`rounded-md p-1 transition-colors ${
+              showSessions
+                ? "bg-white/10 text-white"
+                : "text-gray-500 hover:bg-white/5 hover:text-gray-300"
+            }`}
             title="会话列表"
           >
             <List size={13} />
           </button>
           <span className="truncate text-xs font-medium text-gray-300">
-            {activeSession?.title || (currentProject ? currentProject : "Agent")}
+            {activeSession?.title ||
+              (currentProject ? currentProject : "Agent")}
           </span>
           <TokenBadge usage={activeSession?.tokenUsage ?? null} />
         </div>
         <div className="flex items-center gap-0.5">
           <button
             onClick={handleCreateSession}
-            className="rounded p-1 text-gray-600 hover:bg-white/10 hover:text-gray-300"
+            className="rounded-md p-1 text-gray-600 transition-colors hover:bg-white/5 hover:text-gray-300"
             title="新建对话"
           >
             <Plus size={13} />
           </button>
           <button
             onClick={clearMessages}
-            className="rounded p-1 text-gray-600 hover:bg-white/10 hover:text-gray-300"
+            className="rounded-md p-1 text-gray-600 transition-colors hover:bg-white/5 hover:text-gray-300"
             title="清空消息"
           >
             <Trash2 size={13} />
@@ -364,13 +365,21 @@ export function ChatPanel() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-auto px-3 py-2 space-y-3">
+      <div className="flex-1 space-y-3 overflow-auto px-3 py-3">
         {messages.length === 0 && (
-          <p className="pt-8 text-center text-xs text-gray-600">
-            {currentProject
-              ? `当前项目: ${currentProject}\n发送消息开始对话...`
-              : "选择一个项目后开始对话..."}
-          </p>
+          <div className="flex flex-col items-center justify-center gap-2 pt-12 text-center">
+            <div className="rounded-2xl bg-surface-2 p-3">
+              <AtSign size={20} strokeWidth={1.5} className="text-gray-600" />
+            </div>
+            <p className="text-xs text-gray-500">
+              {currentProject
+                ? `当前项目: ${currentProject}`
+                : "选择一个项目后开始对话"}
+            </p>
+            <p className="text-[11px] text-gray-600">
+              发送消息开始对话...
+            </p>
+          </div>
         )}
         {messages.map((msg) => (
           <ChatMessage key={msg.id} message={msg} />
@@ -379,9 +388,9 @@ export function ChatPanel() {
       </div>
 
       {/* Input */}
-      <div className="border-t border-white/5 p-2">
+      <div className="border-t border-white/[0.06] p-2.5">
         {contextBreadcrumb && (
-          <div className="mb-1.5 flex items-center gap-1.5 px-1">
+          <div className="mb-2 flex items-center gap-1.5 px-1">
             <AtSign size={10} className="shrink-0 text-accent/60" />
             <span className="truncate text-[10px] text-gray-500">
               上下文: {contextBreadcrumb}
@@ -390,23 +399,23 @@ export function ChatPanel() {
         )}
 
         {imageError && (
-          <div className="mb-1.5 rounded bg-red-500/10 px-2 py-1 text-[10px] text-red-400">
+          <div className="mb-2 rounded-lg bg-red-500/10 px-2.5 py-1.5 text-[11px] text-red-400">
             {imageError}
           </div>
         )}
 
         {images.length > 0 && (
-          <div className="mb-1.5 flex flex-wrap gap-1.5 px-1">
+          <div className="mb-2 flex flex-wrap gap-1.5 px-1">
             {images.map((img) => (
               <div key={img.id} className="group relative">
                 <img
                   src={img.dataUrl}
                   alt={img.name ?? "attachment"}
-                  className="h-14 w-14 rounded-md border border-white/10 object-cover"
+                  className="h-14 w-14 rounded-lg border border-white/10 object-cover"
                 />
                 <button
                   onClick={() => removeImage(img.id)}
-                  className="absolute -right-1 -top-1 rounded-full bg-surface-1 p-0.5 text-gray-400 opacity-0 transition-opacity hover:text-white group-hover:opacity-100"
+                  className="absolute -right-1 -top-1 rounded-full bg-surface-1 p-0.5 text-gray-400 opacity-0 shadow-sm transition-opacity hover:text-white group-hover:opacity-100"
                 >
                   <X size={10} />
                 </button>
@@ -416,7 +425,7 @@ export function ChatPanel() {
         )}
 
         <div
-          className="relative flex items-end gap-1.5 rounded-lg bg-surface-2 px-3 py-2"
+          className="relative flex items-end gap-1.5 rounded-xl bg-surface-2 px-3 py-2.5 ring-1 ring-white/[0.06] transition-all focus-within:ring-accent/30"
           onDragOver={(e) => e.preventDefault()}
           onDrop={handleDrop}
         >
@@ -446,11 +455,11 @@ export function ChatPanel() {
                 : "输入指令..."
             }
             rows={6}
-            className="flex-1 resize-none bg-transparent text-sm outline-none placeholder:text-gray-600"
+            className="flex-1 resize-none bg-transparent text-sm leading-relaxed outline-none placeholder:text-gray-600"
           />
 
           <div className="flex shrink-0 items-center gap-0.5">
-            <label className="cursor-pointer rounded p-1 text-gray-600 hover:bg-white/10 hover:text-gray-400">
+            <label className="cursor-pointer rounded-md p-1.5 text-gray-600 transition-colors hover:bg-white/5 hover:text-gray-400">
               <ImageIcon size={14} />
               <input
                 type="file"
@@ -468,7 +477,7 @@ export function ChatPanel() {
             {isStreaming ? (
               <button
                 onClick={stopStreaming}
-                className="rounded p-1 text-red-400 hover:bg-white/10"
+                className="rounded-md p-1.5 text-red-400 transition-colors hover:bg-white/5"
               >
                 <Square size={16} />
               </button>
@@ -476,7 +485,7 @@ export function ChatPanel() {
               <button
                 onClick={handleSend}
                 disabled={!input.trim()}
-                className="rounded p-1 text-accent hover:bg-white/10 disabled:text-gray-700"
+                className="rounded-md p-1.5 text-accent transition-colors hover:bg-white/5 disabled:text-gray-700"
               >
                 <Send size={16} />
               </button>

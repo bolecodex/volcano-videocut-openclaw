@@ -1,0 +1,39 @@
+scene_id: SC_11
+scene_name: 关公建议
+scene_type: reality
+duration: 15
+total_shots: 3
+shots:
+  - shot_id: SH_11_001
+    duration: 5
+    content: 关羽：卢中郎已被逮，别人领兵，我等去无所依
+    characters: ["关羽", "刘备", "张飞"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，关羽神色凝重，向刘备分析当前形势，认为卢植被捕，他们去了也无依无靠，张飞在旁点头认同
+    dialogue:
+      - speaker: 关羽
+        text: 卢中郎已被逮，别人领兵
+      - speaker: 关羽
+        text: 我等去无所依
+
+  - shot_id: SH_11_002
+    duration: 5
+    content: 关羽：不如且回涿郡。刘备：从其言
+    characters: ["关羽", "刘备"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，关羽提出暂且回涿郡的建议，刘备沉吟片刻，点头同意
+    dialogue:
+      - speaker: 关羽
+        text: 不如且回涿郡
+      - speaker: 刘备
+        text: 从其言，遂引军北行
+
+  - shot_id: SH_11_003
+    duration: 5
+    content: 刘备率军北行，回涿郡，将士们沉默前行，气氛沉重
+    characters: ["刘备", "关羽", "张飞", "士兵"]
+    shot_type: 远景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备率军向北行进，将士们士气低落，三人骑马走在队伍前列，面色沉重，背景是苍茫的古道和黄昏的天空
+    dialogue:
+      - speaker: 旁白
+        text: 刘备率军北上，往涿郡而去，前路茫茫，不知何日才能再展宏图

@@ -1,6 +1,21 @@
 #!/usr/bin/env node
 
 import { createInterface } from 'readline';
+import { readFileSync } from 'fs';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+try {
+  const envFile = readFileSync(resolve(__dirname, '..', '..', '.env'), 'utf-8');
+  for (const line of envFile.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#') || !trimmed.includes('=')) continue;
+    const [key, ...rest] = trimmed.split('=');
+    const k = key.trim();
+    if (k && !(k in process.env)) process.env[k] = rest.join('=').trim();
+  }
+} catch {}
 
 const API_URL = process.env.XSKILL_MCP_URL || 'https://api.xskill.ai/api/v3/mcp-http';
 const API_KEY = process.env.XSKILL_API_KEY || '';

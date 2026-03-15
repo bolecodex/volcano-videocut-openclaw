@@ -1,0 +1,93 @@
+scene_id: SC_10
+scene_name: 卢植被捕
+scene_type: reality
+duration: 40
+total_shots: 7
+shots:
+  - shot_id: SH_10_001
+    duration: 5
+    content: 卢植被槛车押解，刘备滚鞍下马，询问缘由
+    characters: ["刘备", "卢植"]
+    shot_type: 特写
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备神色焦急，滚鞍下马，来到槛车前询问卢植被捕的原因，卢植在槛车中面色憔悴，神色悲愤
+    dialogue:
+      - speaker: 刘备
+        text: 大人何故至此？
+      - speaker: 卢植
+        text: 唉，我围张角，将次可破，因角用妖术，未能即胜
+
+  - shot_id: SH_10_002
+    duration: 5
+    content: 卢植：朝廷差黄门左丰前来体探，问我索取贿赂，我不肯与
+    characters: ["卢植", "刘备"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，卢植在槛车中诉说经过，提到左丰索贿时满脸愤懑，刘备在旁认真倾听，面露怒色
+    dialogue:
+      - speaker: 卢植
+        text: 朝廷差黄门左丰前来体探
+      - speaker: 卢植
+        text: 问我索取贿赂。我答曰
+      - speaker: 卢植
+        text: 军粮尚缺，安有馀钱奉承天使
+
+  - shot_id: SH_10_003
+    duration: 5
+    content: 卢植：左丰挟恨，回奏朝廷，说我高垒不战，惰慢军心
+    characters: ["卢植", "刘备", "关羽"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，卢植继续诉说左丰挟恨报复，诬陷他高垒不战、惰慢军心，关羽在旁眉头紧锁，面露不平之色
+    dialogue:
+      - speaker: 卢植
+        text: 左丰挟恨，回奏朝廷
+      - speaker: 卢植
+        text: 说我高垒不战，惰慢军心
+
+  - shot_id: SH_10_004
+    duration: 5
+    content: 卢植：因此朝廷震怒，遣中郎将董卓来代将我兵，取我回京问罪
+    characters: ["卢植", "刘备", "关羽", "张飞"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，卢植说完，满脸无奈，刘备、关羽、张飞三人听完，都义愤填膺，张飞更是怒目圆睁
+    dialogue:
+      - speaker: 卢植
+        text: 因此朝廷震怒，遣中郎将
+      - speaker: 卢植
+        text: 董卓来代将我兵
+      - speaker: 卢植
+        text: 取我回京问罪
+
+  - shot_id: SH_10_005
+    duration: 5
+    content: 张飞听毕大怒，要斩护送军人，以救卢植
+    characters: ["张飞", "护送军人"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，张飞听完勃然大怒，手持丈八蛇矛，就要冲上去斩杀护送的军人，护送军士吓得脸色发白，连连后退
+    dialogue:
+      - speaker: 张飞
+        text: 什么狗屁天使，竟敢陷害忠良！待我斩了这些鼠辈，救了卢公，再杀进京师，诛了那奸佞！
+      - speaker: 张飞
+        text: 要斩护送军人，以救卢植
+
+  - shot_id: SH_10_006
+    duration: 5
+    content: 刘备急忙拦住张飞，说道：朝廷自有公论，汝岂可造次
+    characters: ["刘备", "张飞"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备急忙上前拦住张飞，紧紧抓住他的手臂，出言劝阻，张飞虽然愤怒，但还是停下了动作
+    dialogue:
+      - speaker: 刘备
+        text: 三弟不可鲁莽！
+      - speaker: 刘备
+        text: 朝廷自有公论，汝岂可造次
+
+  - shot_id: SH_10_007
+    duration: 5
+    content: 军士押送卢植回京，刘备三人望着槛车远去，心中愤愤不平
+    characters: ["刘备", "关羽", "张飞"]
+    shot_type: 远景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，军士押解着卢植的槛车渐行渐远，刘备、关羽、张飞三人站在原地，望着远去的槛车，神色沉重，心中充满了不平和对朝廷的失望
+    dialogue:
+      - speaker: 关羽
+        text: 大哥，卢公忠良，竟遭此陷害，汉室危矣
+      - speaker: 刘备
+        text: 唉，国事至此，我等当如何自处

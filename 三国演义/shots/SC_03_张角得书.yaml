@@ -1,0 +1,111 @@
+scene_id: SC_03
+scene_name: 张角得书
+scene_type: reality
+duration: 35
+total_shots: 6
+shots:
+  - shot_id: SH_03_001
+    duration: 5
+    content: 时钜鹿郡有兄弟三人，一名张角，一名张宝，一名张梁
+    characters: ["张角", "张宝", "张梁"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，张角三兄弟站在钜鹿郡的乡间，张角居中，神色不凡，张宝张梁分立两旁，古代乡村背景
+    dialogue:
+      - speaker: 旁白
+        text: 时钜鹿郡有兄弟三人
+      - speaker: 旁白
+        text: 一名张角，一名张宝
+      - speaker: 旁白
+        text: 一名张梁。那张角本是个
+    image_path: ./shots/张角得书/shot_001.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b59/KBTV3CyiD4HANUCAdgZDu_86591e65b4044883b9ae130544ea8166.png
+    generated_at: 2026-03-09T10:33:54.841676
+
+  - shot_id: SH_03_002
+    duration: 5
+    content: 那张角本是个不第秀才，因入山采药
+    characters: ["张角"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，张角身着秀才服饰，背着药篓，在深山中行走采药，周围古木参天，云雾缭绕
+    dialogue:
+      - speaker: 旁白
+        text: 不第秀才，因入山采药
+      - speaker: 旁白
+        text: 遇一老人，碧眼童颜
+    image_path: ./shots/张角得书/shot_002.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b66/Cv9qEXRmuwb5vbxYQoLlm_42a27a8e4dbb442988f6fb9b85bc5a65.png
+    generated_at: 2026-03-09T10:35:54.129749
+
+  - shot_id: SH_03_003
+    duration: 5
+    content: 遇一老人，碧眼童颜，手执藜杖，唤角至一洞中
+    characters: ["张角", "南华老仙"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，南华老仙碧眼童颜，手执藜杖，站在山洞口，召唤张角过去，仙风道骨，仙气缭绕
+    dialogue:
+      - speaker: 旁白
+        text: 遇一老人，碧眼童颜
+      - speaker: 旁白
+        text: 手执藜杖，唤角至一洞中
+    image_path: ./shots/张角得书/shot_003.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b70/pGBDJ_9bSkuYjHhgU3e7e_d07e9e53a1064f05888177086dca3445.png
+    generated_at: 2026-03-09T10:37:32.443524
+
+  - shot_id: SH_03_004
+    duration: 5
+    content: 以天书三卷授之，曰：此名太平要术，汝得之，当代天宣化，普救世人
+    characters: ["张角", "南华老仙"]
+    shot_type: 特写
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，南华老仙将天书三卷递给张角，天书散发着金光，张角神色恭敬，双手接过
+    dialogue:
+      - speaker: 旁白
+        text: 以天书三卷授之，曰
+      - speaker: 南华老仙
+        text: 此名太平要术
+      - speaker: 南华老仙
+        text: 汝得之，当代天宣化
+      - speaker: 南华老仙
+        text: 普救世人。若萌异心
+    image_path: ./shots/张角得书/shot_004.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b79/YVbDfB9ECV23W2ZA_V1tm_924e95e43210445b98b6b1a837db993c.png
+    generated_at: 2026-03-09T10:39:10.029891
+
+  - shot_id: SH_03_005
+    duration: 5
+    content: 若萌异心，必获恶报。张角拜问姓名，南华老仙曰：吾乃南华老仙也
+    characters: ["张角", "南华老仙"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，张角跪拜在地，询问老人姓名，南华老仙站在面前，神色庄严，仙气飘飘
+    dialogue:
+      - speaker: 南华老仙
+        text: 必获恶报
+      - speaker: 张角
+        text: 角拜问姓名
+      - speaker: 南华老仙
+        text: 吾乃南华老仙也
+    image_path: ./shots/张角得书/shot_005.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b84/XXXrQ8OgaNko7b5aZZfSl_6505f2fd97304ab3be1943e8bb1f3d05.png
+    generated_at: 2026-03-09T10:40:59.481670
+
+  - shot_id: SH_03_006
+    duration: 5
+    content: 言讫，化阵清风而去。角得此书，晓夜功习，能呼风唤雨，号为太平道人
+    characters: ["张角"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，南华老仙化作一阵清风消失，张角站在原地，手中捧着天书，神色激动，夜晚在灯下苦读天书，周围有风云变幻的异象
+    dialogue:
+      - speaker: 旁白
+        text: 言讫，化阵清风而去
+      - speaker: 旁白
+        text: 角得此书，晓夜功习
+      - speaker: 旁白
+        text: 能呼风唤雨，号为太平道人
+    image_path: ./shots/张角得书/shot_006.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b8f/8Vi9-BcxvevwDErTDY3Wp_7f626a8ba4764ad58d3315249ab3887d.png
+    generated_at: 2026-03-09T10:42:49.238663

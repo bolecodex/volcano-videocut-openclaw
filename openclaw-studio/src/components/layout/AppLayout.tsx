@@ -14,31 +14,36 @@ export function AppLayout() {
   return (
     <div className="flex h-screen w-screen overflow-hidden bg-surface-0 text-gray-100">
       {/* Left Panel */}
-      <div className="flex w-56 flex-col border-r border-white/5 bg-surface-1">
-        <div className="flex items-center gap-2 border-b border-white/5 px-3 py-2">
-          <span className="text-xs font-bold text-white">OpenClaw Studio</span>
+      <div className="flex w-56 flex-col border-r border-white/[0.06] bg-surface-1">
+        <div className="flex items-center gap-2 border-b border-white/[0.06] px-3 py-2.5">
+          <div className="flex h-5 w-5 items-center justify-center rounded bg-accent/20">
+            <span className="text-[10px] font-bold text-accent">O</span>
+          </div>
+          <span className="text-xs font-bold tracking-wide text-white">
+            OpenClaw Studio
+          </span>
         </div>
 
-        <div className="flex border-b border-white/5">
+        <div className="flex border-b border-white/[0.06]">
           <button
             onClick={() => setCurrentView("workspace")}
-            className={`flex items-center justify-center gap-1 flex-1 px-3 py-1.5 text-xs ${
+            className={`flex flex-1 items-center justify-center gap-1.5 px-3 py-2 text-xs transition-colors ${
               currentView === "workspace"
                 ? "bg-white/5 text-white"
-                : "text-gray-500 hover:text-gray-300"
+                : "text-gray-500 hover:bg-white/[0.03] hover:text-gray-300"
             }`}
           >
-            <FolderOpen size={11} /> 项目
+            <FolderOpen size={12} /> 项目
           </button>
           <button
             onClick={() => setCurrentView("skills")}
-            className={`flex items-center justify-center gap-1 flex-1 px-3 py-1.5 text-xs ${
+            className={`flex flex-1 items-center justify-center gap-1.5 px-3 py-2 text-xs transition-colors ${
               currentView === "skills"
                 ? "bg-white/5 text-white"
-                : "text-gray-500 hover:text-gray-300"
+                : "text-gray-500 hover:bg-white/[0.03] hover:text-gray-300"
             }`}
           >
-            <Wrench size={11} /> Skills
+            <Wrench size={12} /> Skills
           </button>
         </div>
 

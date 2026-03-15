@@ -1,5 +1,6 @@
 import { useMedia } from "../../hooks/use-api";
 import { Image as ImageIcon, Music, Video, Inbox } from "lucide-react";
+import { FallbackImage } from "../ui/FallbackImage";
 
 const ICONS = {
   images: ImageIcon,
@@ -54,10 +55,11 @@ export function MediaGallery({
             key={f.path}
             className="flex flex-col rounded-lg border border-white/5 bg-surface-2 overflow-hidden"
           >
-            <img
+            <FallbackImage
               src={`/api/workspace/file-raw?path=${encodeURIComponent(f.path)}`}
               alt={f.name}
               className="h-32 w-full object-cover"
+              fallbackClassName="flex h-32 w-full items-center justify-center bg-surface-3 text-gray-600"
             />
             <div className="p-2">
               <p className="truncate text-xs text-gray-300">{f.name}</p>

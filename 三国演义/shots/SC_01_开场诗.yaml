@@ -1,0 +1,93 @@
+scene_id: SC_01
+scene_name: 开场诗
+scene_type: prologue
+duration: 30
+total_shots: 4
+shots:
+  - shot_id: SH_01_001
+    duration: 5
+    content: 滚滚长江东逝水，浪花淘尽英雄
+    characters: []
+    shot_type: 远景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，壮阔长江远景，历史沧桑感，夕阳下的长江水面波涛汹涌，远处山峦叠嶂，画面暗调略带褪色，历史厚重感
+    dialogue:
+      - speaker: 旁白
+        text: 滚滚长江东逝水
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd7595ca85e8165c3a7a82fb1cb4a0_1773027990077_1914.mp3?Expires=1773114390&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=MwnA74s7sULvzupk%2FIqrchmK%2B3o%3D"
+        audio_path: "assets/audio/SH_01_001_line_0.mp3"
+        audio_status: completed
+      - speaker: 旁白
+        text: 浪花淘尽英雄
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd75aae0313a7cb4a1105010e48bfb_1773028011373_864.mp3?Expires=1773114411&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=v2tTsxmxh1y1DnM2j5vzWA%2FbDf0%3D"
+        audio_path: "assets/audio/SH_01_001_line_1.mp3"
+        audio_status: completed
+    image_path: ./shots/开场诗/shot_001.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916af3/xVf2xMyq8V80rt1Q6Y3Ej_a5b59553717f4584b9f03a8a4bed17f6.png
+    generated_at: 2026-03-09T10:16:58.690634
+
+  - shot_id: SH_01_002
+    duration: 5
+    content: 是非成败转头空，青山依旧在，几度夕阳红
+    characters: []
+    shot_type: 远景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，青山依旧，夕阳西下，天空被染成橙红色，岁月流逝的沧桑感，画面暗调略带褪色
+    dialogue:
+      - speaker: 旁白
+        text: 是非成败转头空
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd75d85f83b1e5ea02f1f6c38467ca_1773028057620_4001.mp3?Expires=1773114457&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=eBNH88M9yQp1VuWlJIvhHnDWZYI%3D"
+        audio_path: "assets/audio/SH_01_002_line_0.mp3"
+        audio_status: completed
+      - speaker: 旁白
+        text: 青山依旧在，几度夕阳红
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd7602ca7e12a3e9be782c6e36ef02_1773028099387_5869.mp3?Expires=1773114499&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=YWm4Xe3z4Q6VZOiVvguV%2FoQmlNw%3D"
+        audio_path: "assets/audio/SH_01_002_line_1.mp3"
+        audio_status: completed
+    image_path: ./shots/开场诗/shot_002.png
+    image_status: completed
+    image_url: https://cdn-video.51sux.com/v3-tasks/2026/03/09/eb60b20422cb4f949a542bf2cfa6021d.png
+    generated_at: 2026-03-09T10:18:06
+
+  - shot_id: SH_01_003
+    duration: 5
+    content: 白发渔樵江渚上，惯看秋月春风
+    characters: []
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，白发渔翁在江边垂钓，神态悠然，背景是江面和远山，秋月春风的闲适感，画面暗调略带褪色
+    dialogue:
+      - speaker: 旁白
+        text: 白发渔樵江渚上
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd764af34098043137d03192c97afe_1773028171194_433.mp3?Expires=1773114571&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=FPycS%2BlcJ9PeMRjYuOX8IJyKoOo%3D"
+        audio_path: "assets/audio/SH_01_003_line_0.mp3"
+        audio_status: completed
+      - speaker: 旁白
+        text: 惯看秋月春风
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd76a25aa4cbcaf30de8d62b70ec82_1773028259355_7264.mp3?Expires=1773114659&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=KEq4kerbRrfXwpaaKPSqmLnekIc%3D"
+        audio_path: "assets/audio/SH_01_003_line_1.mp3"
+        audio_status: completed
+    image_path: ./shots/开场诗/shot_003.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b03/SCrx5N_VajqmlKscSMaX5_5dca074c997b4fca9f731e43df9bd11b.png
+    generated_at: 2026-03-09T10:19:32.238361
+
+  - shot_id: SH_01_004
+    duration: 5
+    content: 一壶浊酒喜相逢，古今多少事，都付笑谈中
+    characters: []
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，两位老者在江边对饮，笑容满面，桌上摆着一壶浊酒，历史沧桑尽在笑谈中，画面暗调略带褪色
+    dialogue:
+      - speaker: 旁白
+        text: 一壶浊酒喜相逢
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd76dffdc988c4c236e7c209fca324_1773028320659_2696.mp3?Expires=1773114720&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=9W0q%2FzxNxgjHbvDv3ovauu%2BFIwc%3D"
+        audio_path: "assets/audio/SH_01_004_line_0.mp3"
+        audio_status: completed
+      - speaker: 旁白
+        text: 古今多少事，都付笑谈中
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fd76f8473ce943d5611742637a85aa_1773028345322_1976.mp3?Expires=1773114745&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=%2FlzJgfzuIcCLyhqzKHojH%2FjJs5E%3D"
+        audio_path: "assets/audio/SH_01_004_line_1.mp3"
+        audio_status: completed
+    image_path: ./shots/开场诗/shot_004.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b0c/bC054Hiqv6uP2evsYxuuX_42dbe9d9b2ba4a1fb7ca1b61615f0b94.png
+    generated_at: 2026-03-09T10:20:54.976958

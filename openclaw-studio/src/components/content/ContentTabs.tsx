@@ -15,8 +15,10 @@ export function ContentTabs() {
   if (!currentProject) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-3 text-gray-600">
-        <FolderOpen size={40} strokeWidth={1} />
-        <p className="text-sm">选择一个项目开始</p>
+        <div className="rounded-2xl bg-surface-2 p-5">
+          <FolderOpen size={40} strokeWidth={1} />
+        </div>
+        <p className="text-sm font-medium text-gray-400">选择一个项目开始</p>
       </div>
     );
   }
@@ -26,18 +28,21 @@ export function ContentTabs() {
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
-      <div className="flex items-center gap-0.5 border-b border-white/5 px-2">
+      <div className="flex items-center gap-0.5 border-b border-white/[0.06] bg-surface-1/50 px-2">
         {VISIBLE_VIEWS.map((v) => (
           <button
             key={v.id}
             onClick={() => setCurrentTab(v.id)}
-            className={`px-3 py-2 text-xs transition-colors ${
+            className={`relative px-3 py-2.5 text-xs transition-colors ${
               currentTab === v.id
-                ? "border-b-2 border-accent text-white"
+                ? "text-white"
                 : "text-gray-500 hover:text-gray-300"
             }`}
           >
             {v.label}
+            {currentTab === v.id && (
+              <span className="absolute bottom-0 left-1 right-1 h-[2px] rounded-full bg-accent" />
+            )}
           </button>
         ))}
         {currentTab === "file" && selectedFile && (
@@ -53,7 +58,10 @@ export function ContentTabs() {
         {currentTab === "file" && selectedFile ? (
           <FileEditor path={selectedFile} />
         ) : ViewComponent ? (
-          <ViewComponent project={currentProject} {...(view?.componentProps || {})} />
+          <ViewComponent
+            project={currentProject}
+            {...(view?.componentProps || {})}
+          />
         ) : null}
       </div>
 

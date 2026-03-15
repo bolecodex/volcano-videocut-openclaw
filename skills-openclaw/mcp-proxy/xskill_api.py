@@ -21,8 +21,28 @@ import sys
 import urllib.request
 import urllib.error
 
+
+def _load_dotenv():
+    """Load .env from project root if env vars are not already set."""
+    env_path = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
+    env_path = os.path.normpath(env_path)
+    if not os.path.isfile(env_path):
+        return
+    with open(env_path) as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith('#') or '=' not in line:
+                continue
+            key, _, value = line.partition('=')
+            key, value = key.strip(), value.strip()
+            if key and key not in os.environ:
+                os.environ[key] = value
+
+
+_load_dotenv()
+
 API_URL = os.environ.get('XSKILL_MCP_URL', 'https://api.xskill.ai/api/v3/mcp-http')
-API_KEY = os.environ.get('XSKILL_API_KEY', 'sk-ea5ebc7effa99a85fdd52a070ade0211b8accfbaea6fe152')
+API_KEY = os.environ.get('XSKILL_API_KEY', '')
 
 session_id = None
 

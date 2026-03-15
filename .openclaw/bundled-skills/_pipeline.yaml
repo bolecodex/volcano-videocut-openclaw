@@ -1,0 +1,60 @@
+id: novel-creation
+name: 小说创作流水线
+description: 从小说到长视频的完整创作流程
+
+steps:
+  - id: input-novel
+    name: 输入小说
+    skill: null
+    order: 1
+
+  - id: novel-to-script
+    name: 改写剧本
+    skill: novel-to-script
+    order: 2
+    requires: [input-novel]
+
+  - id: extract-characters
+    name: 提取角色
+    skill: novel-01-character-extractor
+    order: 3
+    requires: [novel-to-script]
+
+  - id: script-to-scenes
+    name: 剧本转场景
+    skill: novel-02-script-to-scenes
+    order: 4
+    requires: [novel-to-script]
+
+  - id: scenes-to-storyboard
+    name: 场景转分镜
+    skill: novel-03-scenes-to-storyboard
+    order: 5
+    requires: [extract-characters, script-to-scenes]
+
+  - id: shots-to-images
+    name: 分镜出图
+    skill: novel-04-shots-to-images
+    order: 6
+    requires: [scenes-to-storyboard]
+
+  - id: shots-to-audio
+    name: 分镜配音
+    skill: novel-05-shots-to-audio
+    order: 7
+    requires: [scenes-to-storyboard]
+    parallel_with: [shots-to-images]
+
+  - id: shots-to-ai-video
+    name: 分镜AI视频
+    skill: novel-06-shots-to-ai-video
+    order: 8
+    requires: [scenes-to-storyboard]
+    optional: true
+
+  - id: compose-video
+    name: 合成长视频
+    skill: novel-07-remotion
+    order: 9
+    requires: [shots-to-images, shots-to-audio]
+    alternatives: [novel-07-shots-to-video]

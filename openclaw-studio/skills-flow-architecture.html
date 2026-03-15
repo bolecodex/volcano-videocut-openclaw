@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Studio 技能与业务流程架构图</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0b0f16;
+      --panel: #111827;
+      --panel-2: #0f172a;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #60a5fa;
+      --accent-2: #a78bfa;
+      --success: #22c55e;
+      --warning: #f59e0b;
+      --danger: #f97316;
+      --border: #1f2937;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at top, #111827 0%, #0b0f16 55%);
+      color: var(--text);
+      padding: 32px 20px 60px;
+    }
+    h1 {
+      font-size: 28px;
+      text-align: center;
+      margin-bottom: 8px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 36px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+    .section {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 22px;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    }
+    .section-title {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-title span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: #0b1220;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    }
+    .row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      min-width: 160px;
+    }
+    .card h3 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .card p { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .arrow {
+      color: var(--muted);
+      font-size: 18px;
+      padding: 0 6px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(96, 165, 250, 0.15);
+      color: var(--accent);
+      border: 1px solid rgba(96, 165, 250, 0.35);
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .flow-step {
+      background: var(--panel-2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .flow-step .step-id {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.2px;
+    }
+    .flow-step .step-name {
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .flow-step .step-skill {
+      font-size: 12px;
+      color: var(--accent);
+      word-break: break-word;
+    }
+    .badge {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 197, 94, 0.4);
+      color: var(--success);
+      background: rgba(34, 197, 94, 0.12);
+      align-self: flex-start;
+    }
+    .badge.optional {
+      border-color: rgba(245, 158, 11, 0.5);
+      color: var(--warning);
+      background: rgba(245, 158, 11, 0.12);
+    }
+    .badge.parallel {
+      border-color: rgba(167, 139, 250, 0.5);
+      color: var(--accent-2);
+      background: rgba(167, 139, 250, 0.12);
+    }
+    .badge.alt {
+      border-color: rgba(249, 115, 22, 0.5);
+      color: var(--danger);
+      background: rgba(249, 115, 22, 0.12);
+    }
+    .skill-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .skill-card {
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      padding: 12px 14px;
+      background: rgba(15, 23, 42, 0.7);
+    }
+    .skill-card h4 {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .skill-card p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+  </style>
+</head>
+<body>
+  <h1>OpenClaw Studio 技能与业务流程架构图</h1>
+  <div class="subtitle">覆盖运行架构、小说创作流水线与全部技能清单</div>
+  <div class="container">
+    <section class="section">
+      <div class="section-title">
+        运行架构
+        <span>Architecture</span>
+      </div>
+      <div class="row" style="margin-bottom: 12px;">
+        <div class="card">
+          <h3>用户</h3>
+          <p>触发对话与创作流程</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="card">
+          <h3>前端 UI</h3>
+          <p>React + Vite，负责聊天、流水线与素材视图</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="card">
+          <h3>后端服务</h3>
+          <p>Express API 汇聚 Workspace / Chat / Pipeline</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="card">
+          <h3>OpenClaw Gateway</h3>
+          <p>WebSocket 流式通信与工具回调</p>
+        </div>
+        <div class="arrow">→</div>
+        <div class="card">
+          <h3>Skills 运行时</h3>
+          <p>执行技能、调用模型与外部工具</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="pill">Tauri 桌面壳启动前端/后端/Gateway</div>
+        <div class="pill">Workspace 目录 + SQLite 保存项目与产物</div>
+        <div class="pill">SSE 流式输出驱动 UI 实时刷新</div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        业务流程（小说创作流水线）
+        <span>Pipeline</span>
+      </div>
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-id">input-novel</div>
+          <div class="step-name">输入小说</div>
+          <div class="step-skill">skill: 无</div>
+          <div class="badge">入口</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">novel-to-script</div>
+          <div class="step-name">改写剧本</div>
+          <div class="step-skill">skill: novel-to-script</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">extract-characters</div>
+          <div class="step-name">提取角色</div>
+          <div class="step-skill">skill: novel-01-character-extractor</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">script-to-scenes</div>
+          <div class="step-name">剧本转场景</div>
+          <div class="step-skill">skill: novel-02-script-to-scenes</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">scenes-to-storyboard</div>
+          <div class="step-name">场景转分镜</div>
+          <div class="step-skill">skill: novel-03-scenes-to-storyboard</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">shots-to-images</div>
+          <div class="step-name">分镜出图</div>
+          <div class="step-skill">skill: novel-04-shots-to-images</div>
+          <div class="badge parallel">并行分支</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">shots-to-audio</div>
+          <div class="step-name">分镜配音</div>
+          <div class="step-skill">skill: novel-05-shots-to-audio</div>
+          <div class="badge parallel">并行分支</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">shots-to-ai-video</div>
+          <div class="step-name">分镜 AI 视频</div>
+          <div class="step-skill">skill: novel-06-shots-to-ai-video</div>
+          <div class="badge optional">可选</div>
+        </div>
+        <div class="flow-step">
+          <div class="step-id">compose-video</div>
+          <div class="step-name">合成长视频</div>
+          <div class="step-skill">skill: novel-07-remotion</div>
+          <div class="badge alt">可替换 novel-07-shots-to-video</div>
+        </div>
+      </div>
+      <div class="legend">
+        <span class="badge parallel">并行执行</span>
+        <span class="badge optional">可选步骤</span>
+        <span class="badge alt">可替换实现</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        技能清单
+        <span>Skills</span>
+      </div>
+      <div class="skill-grid">
+        <div class="skill-card">
+          <h4>novel-01-character-extractor</h4>
+          <p>从剧本中提取角色并生成角色风格卡与资产。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-02-script-to-scenes</h4>
+          <p>将剧本原文转为对话脚本并完成场景切分。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-03-scenes-to-storyboard</h4>
+          <p>把场景文件转换为分镜数据并生成配图提示词。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-04-shots-to-images</h4>
+          <p>使用 Seedream 生成分镜图片并保持一致性。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-05-shots-to-audio</h4>
+          <p>使用 TTS 生成配音音频并维持角色音色。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-06-shots-to-ai-video</h4>
+          <p>使用 Seedance Lite 生成 AI 动画视频片段。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-07-remotion</h4>
+          <p>使用 Remotion 将分镜图片与音频合成视频。</p>
+        </div>
+        <div class="skill-card">
+          <h4>novel-07-shots-to-video</h4>
+          <p>FFmpeg 版快速合成分镜视频。</p>
+        </div>
+        <div class="skill-card">
+          <h4>seedream-image</h4>
+          <p>Seedream 4.5 文生图/图生图/图像编辑。</p>
+        </div>
+        <div class="skill-card">
+          <h4>seedance-video</h4>
+          <p>Seedance 文生视频与图生视频。</p>
+        </div>
+        <div class="skill-card">
+          <h4>nano-banana-pro</h4>
+          <p>Nano Banana Pro 图像生成与编辑。</p>
+        </div>
+        <div class="skill-card">
+          <h4>coze-upload</h4>
+          <p>上传本地文件并返回可访问 URL。</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

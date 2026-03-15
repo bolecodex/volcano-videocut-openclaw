@@ -150,18 +150,38 @@ export function AudioView({ project }: { project: string }) {
   const entries: AudioEntry[] = [];
   for (const scene of data?.scenes ?? []) {
     for (const shot of scene.shots as ShotInfo[]) {
-      if (shot.audio_status === "pending") continue;
-      const resolved = resolveAudioSrc(project, shot.audio_url, shot.audio_path);
-      if (!resolved) continue;
-      entries.push({
-        shotId: shot.id,
-        sceneId: scene.sceneId,
-        sceneName: scene.sceneName,
-        title: shot.title?.replace(/\*\*/g, "") ?? shot.id,
-        speaker: shot.audio_speaker,
-        audioUrl: resolved,
-        status: shot.audio_status ?? "completed",
-      });
+      let hasLineAudio = false;
+      if (shot.lines) {
+        for (let i = 0; i < shot.lines.length; i++) {
+          const line = shot.lines[i];
+          if (line.audio_status !== "completed") continue;
+          const resolved = resolveAudioSrc(project, line.audio_url, line.audio_path);
+          if (!resolved) continue;
+          hasLineAudio = true;
+          entries.push({
+            shotId: `${shot.id}_line_${i}`,
+            sceneId: scene.sceneId,
+            sceneName: scene.sceneName,
+            title: line.text ?? "",
+            speaker: line.speaker,
+            audioUrl: resolved,
+            status: "completed",
+          });
+        }
+      }
+      if (!hasLineAudio && shot.audio_status !== "pending") {
+        const resolved = resolveAudioSrc(project, shot.audio_url, shot.audio_path);
+        if (!resolved) continue;
+        entries.push({
+          shotId: shot.id,
+          sceneId: scene.sceneId,
+          sceneName: scene.sceneName,
+          title: shot.title?.replace(/\*\*/g, "") ?? shot.id,
+          speaker: shot.audio_speaker,
+          audioUrl: resolved,
+          status: shot.audio_status ?? "completed",
+        });
+      }
     }
   }
 

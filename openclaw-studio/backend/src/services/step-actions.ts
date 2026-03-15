@@ -45,11 +45,12 @@ export const STEP_DEFINITIONS: StepDefinition[] = [
         label: "图片模型",
         type: "select",
         options: [
+          { value: "seedream-5.0-lite", label: "Seedream 5.0 Lite" },
           { value: "seedream-4.5", label: "Seedream 4.5" },
           { value: "flux-2-flash", label: "Flux 2 Flash" },
           { value: "nano-banana-pro", label: "Nano Banana Pro" },
         ],
-        default: "seedream-4.5",
+        default: "seedream-5.0-lite",
       },
       {
         key: "image_size",
@@ -131,10 +132,11 @@ export const STEP_DEFINITIONS: StepDefinition[] = [
         label: "图片模型",
         type: "select",
         options: [
+          { value: "seedream-5.0-lite", label: "Seedream 5.0 Lite" },
           { value: "seedream-4.5", label: "Seedream 4.5" },
           { value: "flux-2-flash", label: "Flux 2 Flash" },
         ],
-        default: "seedream-4.5",
+        default: "seedream-5.0-lite",
       },
       {
         key: "use_character_ref",

@@ -1,0 +1,105 @@
+scene_id: SC_07
+scene_name: 救援青州
+scene_type: reality
+duration: 40
+total_shots: 7
+shots:
+  - shot_id: SH_07_001
+    duration: 5
+    content: 次日，接得青州太守龚景牒文，言黄巾贼围城将陷，乞赐救援
+    characters: ["刘备", "刘焉"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，信使呈上青州太守龚景的求援文书，刘备和刘焉查看文书，神色凝重
+    dialogue:
+      - speaker: 旁白
+        text: 次日，接得青州太守
+      - speaker: 旁白
+        text: 龚景牒文，言黄巾贼围城
+      - speaker: 旁白
+        text: 将陷，乞赐救援
+
+  - shot_id: SH_07_002
+    duration: 5
+    content: 刘备：备愿往救之。刘焉：令邹靖将兵五千，同玄德、关、张，投青州来
+    characters: ["刘备", "刘焉", "邹靖"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备主动请缨救援青州，刘焉赞许，下令邹靖率领五千兵马，随同刘备三人前往
+    dialogue:
+      - speaker: 刘备
+        text: 备愿往救之
+      - speaker: 刘焉
+        text: 令邹靖将兵五千
+      - speaker: 刘焉
+        text: 同玄德、关、张，投青州来
+
+  - shot_id: SH_07_003
+    duration: 5
+    content: 贼众见救兵至，分兵混战。刘备：贼众我寡；必出奇兵，方可取胜
+    characters: ["刘备", "关羽", "张飞"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，两军初战，刘备军稍退，刘备与关羽、张飞商议破敌之策，胸有成竹
+    dialogue:
+      - speaker: 旁白
+        text: 贼众见救兵至，分兵混战
+      - speaker: 刘备
+        text: 贼众我寡；必出奇兵
+      - speaker: 刘备
+        text: 方可取胜
+
+  - shot_id: SH_07_004
+    duration: 5
+    content: 刘备：乃分关公引一千军伏山左，张飞引一千军伏山右，鸣金为号，齐出接应
+    characters: ["刘备", "关羽", "张飞"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备部署伏兵，关羽领命埋伏山左，张飞领命埋伏山右，约定鸣金为号，夹击敌军
+    dialogue:
+      - speaker: 刘备
+        text: 乃分关公引一千军伏山左
+      - speaker: 刘备
+        text: 张飞引一千军伏山右
+      - speaker: 刘备
+        text: 鸣金为号，齐出接应
+
+  - shot_id: SH_07_005
+    duration: 5
+    content: 次日，玄德与邹靖引军鼓噪而进。贼众迎战，玄德引军便退
+    characters: ["刘备", "邹靖", "黄巾军将领"]
+    shot_type: 全景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备率军挑衅，黄巾军迎战，刘备假装败退，引敌追赶
+    dialogue:
+      - speaker: 旁白
+        text: 次日，玄德与邹靖引军
+      - speaker: 旁白
+        text: 鼓噪而进。贼众迎战
+      - speaker: 旁白
+        text: 玄德引军便退。贼众乘势追赶
+
+  - shot_id: SH_07_006
+    duration: 5
+    content: 方过山岭，玄德军中一齐鸣金，左右两军齐出，玄德麾军回身复杀
+    characters: ["刘备", "关羽", "张飞"]
+    shot_type: 全景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，黄巾军追过山岭，刘备军中鸣金，关羽、张飞率军从左右杀出，刘备回身再战，三路夹击
+    dialogue:
+      - speaker: 旁白
+        text: 方过山岭，玄德军中一齐鸣金
+      - speaker: 旁白
+        text: 左右两军齐出，玄德麾军回身复杀
+      - speaker: 旁白
+        text: 三路夹攻，贼众大溃
+
+  - shot_id: SH_07_007
+    duration: 5
+    content: 直赶至青州城下，太守龚景亦率民兵出城助战，贼势大败，遂解青州之围
+    characters: ["刘备", "龚景", "士兵"]
+    shot_type: 全景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，刘备军追杀至青州城下，太守龚景率民兵出城助战，黄巾军大败，青州解围，百姓夹道欢迎
+    dialogue:
+      - speaker: 旁白
+        text: 直赶至青州城下
+      - speaker: 旁白
+        text: 太守龚景亦率民兵出城助战
+      - speaker: 旁白
+        text: 贼势大败，剿戮极多
+      - speaker: 旁白
+        text: 遂解青州之围

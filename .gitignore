@@ -4,6 +4,10 @@ target/
 dist/
 *.tsbuildinfo
 
+.env
+.env.*
+!.env.example
+
 *.mp3
 *.mp4
 *.wav

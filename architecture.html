@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Studio — Architecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0b0f;--card:#12131a;--card-border:#1e2030;--text:#e2e8f0;--text-dim:#94a3b8;--text-muted:#475569;
+  --blue:#6c8aff;--green:#4ade80;--orange:#fb923c;--purple:#a78bfa;--cyan:#22d3ee;--pink:#f472b6;
+  --radius:14px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5;padding:40px 20px 80px;min-height:100vh}
+code,.mono{font-family:'JetBrains Mono',monospace;font-size:.85em}
+
+/* ── layout ── */
+.container{max-width:1280px;margin:0 auto}
+h1{font-size:2.4rem;font-weight:800;text-align:center;margin-bottom:6px;background:linear-gradient(135deg,var(--blue),var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.subtitle{text-align:center;color:var(--text-dim);font-size:1rem;margin-bottom:48px;letter-spacing:.02em}
+
+/* ── cards ── */
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:28px 32px;position:relative;transition:transform .25s,box-shadow .25s,border-color .3s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.card-header{display:flex;align-items:center;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.card-header h2{font-size:1.15rem;font-weight:700;letter-spacing:.01em}
+.card-header .port{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text-muted);margin-left:auto;background:#161825;padding:3px 10px;border-radius:6px}
+.badge{display:inline-block;font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:5px;letter-spacing:.03em;text-transform:uppercase}
+
+/* ── animated border on hero card ── */
+.hero-card{position:relative;border:none;overflow:hidden}
+.hero-card::before{content:'';position:absolute;inset:-2px;border-radius:calc(var(--radius) + 2px);background:linear-gradient(135deg,var(--blue),var(--purple),var(--cyan),var(--green),var(--orange));background-size:300% 300%;animation:borderGlow 6s ease infinite;z-index:0}
+.hero-card::after{content:'';position:absolute;inset:2px;background:var(--card);border-radius:calc(var(--radius) - 1px);z-index:0}
+.hero-card>*{position:relative;z-index:1}
+@keyframes borderGlow{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+
+/* ── grid helpers ── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+@media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr}}
+
+/* ── section spacer ── */
+.section{margin-top:36px}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:14px;padding-left:4px}
+
+/* ── connector ── */
+.connector{display:flex;align-items:center;justify-content:center;gap:12px;padding:18px 0;position:relative}
+.connector-line{width:2px;height:38px;background:linear-gradient(to bottom,transparent,var(--text-muted),transparent)}
+.connector-label{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-muted);background:var(--bg);padding:2px 12px;border:1px solid var(--card-border);border-radius:20px;white-space:nowrap;max-width:90vw;overflow-x:auto}
+.connector-horiz{flex-direction:row}
+.connector-horiz .connector-line{width:38px;height:2px;background:linear-gradient(to right,transparent,var(--text-muted),transparent)}
+
+/* ── chips ── */
+.chip-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chip{font-size:.73rem;padding:3px 10px;border-radius:6px;background:#161825;color:var(--text-dim);border:1px solid var(--card-border);transition:background .2s,color .2s;cursor:default}
+.chip:hover{background:#1e2030;color:var(--text)}
+.chip[data-color="blue"]{border-color:rgba(108,138,255,.3);color:var(--blue)}
+.chip[data-color="green"]{border-color:rgba(74,222,128,.3);color:var(--green)}
+.chip[data-color="orange"]{border-color:rgba(251,146,60,.3);color:var(--orange)}
+.chip[data-color="purple"]{border-color:rgba(167,139,250,.3);color:var(--purple)}
+.chip[data-color="cyan"]{border-color:rgba(34,211,238,.3);color:var(--cyan)}
+.chip[data-color="pink"]{border-color:rgba(244,114,182,.3);color:var(--pink)}
+
+/* ── sub-section inside card ── */
+.sub{margin-top:14px}
+.sub-title{font-size:.73rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px}
+
+/* ── pipeline row ── */
+.pipeline{display:flex;gap:0;align-items:stretch;overflow-x:auto;padding:4px 0}
+.pipeline-step{flex:1;min-width:110px;text-align:center;padding:14px 10px;background:var(--card);border:1px solid var(--card-border);position:relative;transition:transform .2s,background .2s}
+.pipeline-step:first-child{border-radius:var(--radius-sm) 0 0 var(--radius-sm)}
+.pipeline-step:last-child{border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.pipeline-step:hover{transform:translateY(-2px);background:#161825}
+.pipeline-step .num{font-family:'JetBrains Mono',monospace;font-size:.65rem;font-weight:600;color:var(--text-muted);margin-bottom:4px}
+.pipeline-step .name{font-size:.78rem;font-weight:600;color:var(--text)}
+.pipeline-step .tool{font-size:.62rem;color:var(--text-muted);margin-top:3px;font-family:'JetBrains Mono',monospace}
+.pipeline-step+.pipeline-step::before{content:'›';position:absolute;left:-7px;top:50%;transform:translateY(-50%);color:var(--text-muted);font-size:1rem;z-index:2}
+
+/* ── data flow ── */
+.flow{display:flex;align-items:center;gap:0;overflow-x:auto;padding:4px 0}
+.flow-node{flex:1;min-width:100px;text-align:center;padding:12px 8px;font-size:.78rem;font-weight:600;color:var(--text);background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-sm);transition:transform .2s}
+.flow-node:hover{transform:scale(1.04)}
+.flow-arrow{flex:0 0 32px;text-align:center;color:var(--text-muted);font-size:.85rem}
+
+/* ── config block ── */
+.config-title{font-size:.82rem;font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.config-title code{color:var(--cyan);font-weight:600}
+.config-items{list-style:none;padding:0}
+.config-items li{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);padding:2px 0;border-bottom:1px solid #1a1c28}
+.config-items li:last-child{border-bottom:none}
+
+/* ── legend ── */
+.legend{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;margin-bottom:32px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--text-dim)}
+
+/* ── tooltip ── */
+[data-tip]{position:relative}
+[data-tip]:hover::after{content:attr(data-tip);position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);background:#1e2030;color:var(--text);font-size:.7rem;padding:5px 10px;border-radius:6px;white-space:nowrap;z-index:10;box-shadow:0 4px 16px rgba(0,0,0,.5);pointer-events:none;animation:tipIn .15s ease}
+@keyframes tipIn{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+/* ── pulse animation ── */
+.pulse{animation:pulse 2.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* ── scrollbar ── */
+::-webkit-scrollbar{height:6px;width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#2a2d3e;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- ════════ HEADER ════════ -->
+<h1>OpenClaw Studio</h1>
+<p class="subtitle">Novel-to-Video Pipeline — Full-Stack Architecture</p>
+
+<div class="legend">
+  <span class="legend-item"><span class="dot" style="background:var(--blue)"></span> UI Frontend</span>
+  <span class="legend-item"><span class="dot" style="background:var(--green)"></span> Backend</span>
+  <span class="legend-item"><span class="dot" style="background:var(--orange)"></span> OpenClaw Gateway</span>
+  <span class="legend-item"><span class="dot" style="background:var(--purple)"></span> Skill System</span>
+  <span class="legend-item"><span class="dot" style="background:var(--cyan)"></span> MCP / External AI</span>
+  <span class="legend-item"><span class="dot" style="background:var(--pink)"></span> File System</span>
+</div>
+
+<!-- ════════ LAYER 1 — BROWSER ════════ -->
+<div class="section">
+  <div class="section-label">Layer 1 — Browser</div>
+  <div class="card hero-card">
+    <div class="card-header">
+      <span class="dot" style="background:var(--blue)"></span>
+      <h2>Vite + React Frontend</h2>
+      <span class="port">:1420 → proxy :3001</span>
+    </div>
+
+    <div class="grid-3" style="gap:16px">
+      <!-- Left Panel -->
+      <div>
+        <div class="sub-title">Left Panel — Explorer</div>
+        <div class="chip-list">
+          <span class="chip" data-color="blue" data-tip="Tree view of project files">FileExplorer</span>
+          <span class="chip" data-color="blue" data-tip="Available skills list">SkillList</span>
+          <span class="chip" data-color="blue" data-tip="Skill YAML + Markdown preview">SkillDetail</span>
+        </div>
+      </div>
+      <!-- Content Tabs -->
+      <div>
+        <div class="sub-title">Content Tabs</div>
+        <div class="chip-list">
+          <span class="chip" data-color="blue" data-tip="Project overview dashboard">Dashboard</span>
+          <span class="chip" data-color="blue" data-tip="8-step pipeline UI">PipelineView</span>
+          <span class="chip" data-color="blue" data-tip="style.yaml visual editor">StylePanel</span>
+          <span class="chip" data-color="blue" data-tip="Character cards gallery">CharacterView</span>
+          <span class="chip" data-color="blue" data-tip="Scene Markdown list">SceneList</span>
+          <span class="chip" data-color="blue" data-tip="Shot-level storyboard grid">StoryboardView</span>
+          <span class="chip" data-color="blue" data-tip="Generated image gallery">ImageGalleryView</span>
+          <span class="chip" data-color="blue" data-tip="Audio playback per shot">AudioView</span>
+          <span class="chip" data-color="blue" data-tip="Video preview + compose">VideoPage</span>
+        </div>
+      </div>
+      <!-- Right Panel -->
+      <div>
+        <div class="sub-title">Right Panel — Chat &amp; Execution</div>
+        <div class="chip-list">
+          <span class="chip" data-color="blue" data-tip="Conversational AI assistant">ChatPanel</span>
+          <span class="chip" data-color="blue" data-tip="SSE streaming hook">useChat (SSE)</span>
+          <span class="chip" data-color="blue" data-tip="Step-by-step run monitor">ExecutionPanel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-top:16px;gap:16px">
+      <div>
+        <div class="sub-title">State Management</div>
+        <div class="chip-list">
+          <span class="chip" data-color="blue">Zustand</span>
+          <span class="chip" data-color="blue">projectStore</span>
+          <span class="chip" data-color="blue">chatStore</span>
+          <span class="chip" data-color="blue">pipelineStore</span>
+          <span class="chip" data-color="blue">skillsStore</span>
+        </div>
+      </div>
+      <div>
+        <div class="sub-title">Data Fetching</div>
+        <div class="chip-list">
+          <span class="chip" data-color="blue">SWR hooks</span>
+          <span class="chip" data-color="blue">useSWR</span>
+          <span class="chip" data-color="blue">mutate</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──── CONNECTOR 1→2 ──── -->
+<div class="connector">
+  <div class="connector-line"></div>
+</div>
+<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+  <span class="connector-label">REST /api/* JSON</span>
+  <span class="connector-label">SSE streams (chat · pipeline · render)</span>
+  <span class="connector-label">File Watcher SSE</span>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ════════ LAYER 2 — EXPRESS BACKEND ════════ -->
+<div class="section">
+  <div class="section-label">Layer 2 — Backend Server</div>
+  <div class="card" style="border-color:rgba(74,222,128,.2)">
+    <div class="card-header">
+      <span class="dot" style="background:var(--green)"></span>
+      <h2>Express Backend</h2>
+      <span class="port">:3001 TypeScript</span>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">API Routes</div>
+      <div class="chip-list">
+        <span class="chip" data-color="green" data-tip="File tree & project CRUD">/api/workspace</span>
+        <span class="chip" data-color="green" data-tip="SSE streaming chat">/api/chat</span>
+        <span class="chip" data-color="green" data-tip="Session history">/api/sessions</span>
+        <span class="chip" data-color="green" data-tip="Skill CRUD & reload">/api/skills</span>
+        <span class="chip" data-color="green" data-tip="Pipeline run & status">/api/pipeline</span>
+        <span class="chip" data-color="green" data-tip="Remotion render trigger">/api/render</span>
+        <span class="chip" data-color="green" data-tip="Account & billing info">/api/account</span>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Core Services</div>
+      <div class="chip-list">
+        <span class="chip" data-color="green" data-tip="WebSocket to Gateway :18789">gateway-client</span>
+        <span class="chip" data-color="green" data-tip="FS + YAML read/write">workspace</span>
+        <span class="chip" data-color="green" data-tip="3-tier skill resolution">skills-manager</span>
+        <span class="chip" data-color="green" data-tip="Inject context into LLM">prompt-builder</span>
+        <span class="chip" data-color="green" data-tip="Pipeline FSM state">pipeline-state</span>
+        <span class="chip" data-color="green" data-tip="Human-in-the-loop review">step-review</span>
+      </div>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">Configuration</div>
+      <div class="chip-list">
+        <span class="chip" data-color="green">.env</span>
+        <span class="chip" data-color="green">openclaw-extra.json5</span>
+        <span class="chip" data-color="green">~/.openclaw/openclaw.json</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──── CONNECTOR 2→3 ──── -->
+<div class="connector"><div class="connector-line"></div></div>
+<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+  <span class="connector-label">WebSocket ws://127.0.0.1:18789</span>
+  <span class="connector-label">Protocol v3</span>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ════════ LAYER 3 — GATEWAY + SKILLS ════════ -->
+<div class="section">
+  <div class="section-label">Layer 3 — Agent Runtime &amp; Skills</div>
+  <div class="grid-2">
+
+    <!-- Gateway -->
+    <div class="card" style="border-color:rgba(251,146,60,.2)">
+      <div class="card-header">
+        <span class="dot" style="background:var(--orange)"></span>
+        <h2>OpenClaw Gateway</h2>
+        <span class="port">:18789</span>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">Agent Core</div>
+        <div class="chip-list">
+          <span class="chip" data-color="orange" data-tip="Claude / Doubao LLM">LLM Engine</span>
+          <span class="chip" data-color="orange" data-tip="Plugin-based tool use">Tool Calling</span>
+          <span class="chip" data-color="orange" data-tip="Persistent agent sessions">Session Mgmt</span>
+          <span class="chip" data-color="orange" data-tip="Match skill to intent">Skill Routing</span>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">Event Stream</div>
+        <div class="chip-list">
+          <span class="chip" data-color="orange">text</span>
+          <span class="chip" data-color="orange">thinking</span>
+          <span class="chip" data-color="orange">tool_start</span>
+          <span class="chip" data-color="orange">tool_output</span>
+          <span class="chip" data-color="orange">lifecycle</span>
+          <span class="chip" data-color="orange">UI:navigate</span>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">Auth &amp; Model</div>
+        <div class="chip-list">
+          <span class="chip" data-color="orange">Device RSA + Token</span>
+          <span class="chip" data-color="orange">tick heartbeat</span>
+          <span class="chip" data-color="orange" data-tip="Default LLM model">Claude Opus 4.6</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skill System -->
+    <div class="card" style="border-color:rgba(167,139,250,.2)">
+      <div class="card-header">
+        <span class="dot" style="background:var(--purple)"></span>
+        <h2>Skill System</h2>
+        <span class="badge" style="background:rgba(167,139,250,.15);color:var(--purple);margin-left:auto">3-tier</span>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">Resolution Priority (high → low)</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:6px">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--purple);min-width:18px;text-align:right">1.</span>
+            <span class="chip" data-color="purple" style="flex:1;text-align:center" data-tip="Project-level overrides">workspace/skills/</span>
+            <span style="font-size:.62rem;color:var(--text-muted)">highest</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--purple);min-width:18px;text-align:right">2.</span>
+            <span class="chip" data-color="purple" style="flex:1;text-align:center" data-tip="User-global skills">~/.openclaw/skills/</span>
+            <span style="font-size:.62rem;color:var(--text-muted)">medium</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--purple);min-width:18px;text-align:right">3.</span>
+            <span class="chip" data-color="purple" style="flex:1;text-align:center" data-tip="Shipped with OpenClaw">bundled-skills/</span>
+            <span style="font-size:.62rem;color:var(--text-muted)">lowest</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sub">
+        <div class="sub-title">Skill Format</div>
+        <div style="background:#161825;border-radius:var(--radius-sm);padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);line-height:1.7;margin-top:6px">
+          <span style="color:var(--purple)">SKILL.md</span> = YAML frontmatter + Markdown<br>
+          <span style="color:var(--text-muted)">├─</span> name, description, triggers<br>
+          <span style="color:var(--text-muted)">├─</span> input/output schema<br>
+          <span style="color:var(--text-muted)">└─</span> prompt template body
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ──── CONNECTOR 3→4 ──── -->
+<div class="connector"><div class="connector-line"></div></div>
+<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:4px">
+  <span class="connector-label">Plugin MCP stdio JSON-RPC</span>
+  <span class="connector-label">python xskill_api.py CLI</span>
+</div>
+<div class="connector"><div class="connector-line"></div></div>
+
+<!-- ════════ LAYER 4 — MCP / AI / FILES ════════ -->
+<div class="section">
+  <div class="section-label">Layer 4 — MCP Proxy, External AI &amp; Project Files</div>
+  <div class="grid-3">
+
+    <!-- MCP Proxy -->
+    <div class="card" style="border-color:rgba(34,211,238,.2)">
+      <div class="card-header">
+        <span class="dot" style="background:var(--cyan)"></span>
+        <h2>MCP Proxy</h2>
+      </div>
+      <div class="sub">
+        <div class="sub-title">Runtime</div>
+        <div class="chip-list">
+          <span class="chip" data-color="cyan" data-tip="Node.js stdio bridge">xskill-proxy.mjs</span>
+          <span class="chip" data-color="cyan" data-tip="Python HTTP client">xskill_api.py</span>
+        </div>
+      </div>
+      <div class="sub">
+        <div class="sub-title">Tools</div>
+        <div class="chip-list">
+          <span class="chip" data-color="cyan">generate</span>
+          <span class="chip" data-color="cyan">get_result</span>
+          <span class="chip" data-color="cyan">speak</span>
+          <span class="chip" data-color="cyan">search_models</span>
+          <span class="chip" data-color="cyan">parse_video</span>
+          <span class="chip" data-color="cyan">transfer_url</span>
+          <span class="chip" data-color="cyan">account</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- External AI -->
+    <div class="card" style="border-color:rgba(34,211,238,.2)">
+      <div class="card-header">
+        <span class="dot" style="background:var(--cyan)"></span>
+        <h2>External AI</h2>
+      </div>
+      <div class="chip-list" style="margin-top:4px">
+        <span class="chip" data-color="cyan" data-tip="Unified model API">XSkill API</span>
+        <span class="chip" data-color="cyan" data-tip="Image generation">Seedream 5.0 Lite</span>
+        <span class="chip" data-color="cyan" data-tip="Text-to-speech">Minimax TTS</span>
+        <span class="chip" data-color="cyan" data-tip="Video generation">Seedance Lite</span>
+        <span class="chip" data-color="cyan" data-tip="File hosting">Coze Upload</span>
+      </div>
+    </div>
+
+    <!-- Project Files -->
+    <div class="card" style="border-color:rgba(244,114,182,.2)">
+      <div class="card-header">
+        <span class="dot" style="background:var(--pink)"></span>
+        <h2>Project Files</h2>
+      </div>
+      <div style="background:#161825;border-radius:var(--radius-sm);padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--text-dim);line-height:1.8;margin-top:4px">
+        <span style="color:var(--pink)">{project}/</span><br>
+        <span style="color:var(--text-muted)">├─</span> style.yaml<br>
+        <span style="color:var(--text-muted)">├─</span> *_characters.yaml<br>
+        <span style="color:var(--text-muted)">├─</span> *_scene_index.yaml<br>
+        <span style="color:var(--text-muted)">├─</span> scenes/*.md<br>
+        <span style="color:var(--text-muted)">├─</span> shots/*.yaml + images<br>
+        <span style="color:var(--text-muted)">└─</span> assets/images + audio
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PIPELINE ════════ -->
+<div class="section" style="margin-top:48px">
+  <div class="section-label">Novel-to-Video Pipeline — 8 Steps</div>
+  <div class="pipeline">
+    <div class="pipeline-step" style="border-left-color:var(--pink)">
+      <div class="num">01</div>
+      <div class="name">Upload Novel</div>
+      <div class="tool">.txt input</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="num">02</div>
+      <div class="name">Script → Scenes</div>
+      <div class="tool">novel-02</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="num">03</div>
+      <div class="name">Characters</div>
+      <div class="tool">novel-01</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="num">04</div>
+      <div class="name">Storyboard</div>
+      <div class="tool">novel-03</div>
+    </div>
+    <div class="pipeline-step" style="border-color:rgba(34,211,238,.25)">
+      <div class="num">05</div>
+      <div class="name">AI Images</div>
+      <div class="tool">Seedream</div>
+    </div>
+    <div class="pipeline-step" style="border-color:rgba(34,211,238,.25)">
+      <div class="num">06</div>
+      <div class="name">AI Audio</div>
+      <div class="tool">Minimax</div>
+    </div>
+    <div class="pipeline-step" style="border-color:rgba(34,211,238,.25)">
+      <div class="num">07</div>
+      <div class="name">AI Video</div>
+      <div class="tool">Seedance</div>
+    </div>
+    <div class="pipeline-step" style="border-right-color:var(--blue)">
+      <div class="num">08</div>
+      <div class="name">Compose</div>
+      <div class="tool">Remotion</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DATA FLOW ════════ -->
+<div class="section" style="margin-top:40px">
+  <div class="section-label">Data Flow</div>
+  <div class="flow">
+    <div class="flow-node" style="border-color:rgba(108,138,255,.25)">User Input</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(74,222,128,.25)">Prompt Build</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(251,146,60,.25)">Gateway Agent</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(34,211,238,.25)">MCP / XSkill</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(244,114,182,.25)">Write Files</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(74,222,128,.25)">SSE Push</div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-node" style="border-color:rgba(108,138,255,.25)">UI Refresh</div>
+  </div>
+</div>
+
+<!-- ════════ CONFIGURATION ════════ -->
+<div class="section" style="margin-top:40px">
+  <div class="section-label">Configuration</div>
+  <div class="grid-3">
+
+    <div class="card" style="border-color:rgba(74,222,128,.15)">
+      <div class="config-title"><code>.env</code></div>
+      <ul class="config-items">
+        <li>ARK_API_KEY</li>
+        <li>ARK_MODEL_NAME</li>
+        <li>ARK_BASE_URL</li>
+        <li>XSKILL_API_KEY</li>
+        <li>XSKILL_MCP_URL</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(74,222,128,.15)">
+      <div class="config-title"><code>openclaw-extra.json5</code></div>
+      <ul class="config-items">
+        <li>agent.model</li>
+        <li>skills.load.watch</li>
+        <li>plugins.slots</li>
+        <li>browser.enabled</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-color:rgba(167,139,250,.15)">
+      <div class="config-title"><code>.openclaw/</code> <span style="font-size:.68rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace">directory</span></div>
+      <ul class="config-items">
+        <li>bundled-skills/</li>
+        <li>workspace/skills/</li>
+        <li>workspace-state.json</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ FOOTER ════════ -->
+<div style="text-align:center;margin-top:56px;padding-top:24px;border-top:1px solid var(--card-border)">
+  <p style="font-size:.72rem;color:var(--text-muted);letter-spacing:.04em">OpenClaw Studio Architecture · Generated <span id="date"></span></p>
+</div>
+
+</div>
+
+<script>
+document.getElementById('date').textContent = new Date().toISOString().slice(0,10);
+</script>
+</body>
+</html>

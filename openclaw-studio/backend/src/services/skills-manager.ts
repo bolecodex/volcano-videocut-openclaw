@@ -3,8 +3,18 @@ import { join, dirname } from "path";
 import { homedir } from "os";
 import { execSync } from "child_process";
 
-const OPENCLAW_HOME =
-  process.env.OPENCLAW_STATE_DIR || join(homedir(), ".openclaw");
+function resolveOpenclawHome(): string {
+  if (process.env.OPENCLAW_STATE_DIR) return process.env.OPENCLAW_STATE_DIR;
+  const candidates = [
+    join(process.cwd(), ".openclaw"),
+    join(process.cwd(), "..", ".openclaw"),
+    join(process.cwd(), "..", "..", ".openclaw"),
+  ];
+  const local = candidates.find((dir) => existsSync(dir));
+  return local || join(homedir(), ".openclaw");
+}
+
+const OPENCLAW_HOME = resolveOpenclawHome();
 
 const WORKSPACE_SKILLS = join(OPENCLAW_HOME, "workspace", "skills");
 const MANAGED_SKILLS = join(OPENCLAW_HOME, "skills");

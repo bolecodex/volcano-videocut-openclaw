@@ -1,0 +1,129 @@
+scene_id: SC_02
+scene_name: 汉朝宫廷之乱
+scene_type: reality
+duration: 45
+total_shots: 7
+shots:
+  - shot_id: SH_02_001
+    duration: 5
+    content: 话说天下大势，分久必合，合久必分
+    characters: []
+    shot_type: 远景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，古代中国地图俯瞰，朝代更迭的历史感，暗调宫廷背景，庄严肃穆
+    dialogue:
+      - speaker: 旁白
+        text: 话说天下大势，分久必合
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fec8d8a13dea9d7cbde2ef2f00aec0_1773114841210_9093.mp3?Expires=1773201241&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=tlT3cjzUCyNDJC8%2Be5EV6uINL%2F8%3D"
+        audio_path: "assets/audio/SH_02_001_line_0.mp3"
+        audio_status: completed
+      - speaker: 旁白
+        text: 合久必分。周末七国分争
+        audio_url: "https://minimax-algeng-chat-tts.oss-cn-wulanchabu.aliyuncs.com/audio%2Feffect%2F05fec8ed0187df502edbd8533c7311b7_1773114862793_8672.mp3?Expires=1773201262&OSSAccessKeyId=LTAI5tGLnRTkBjLuYPjNcKQ8&Signature=hWlIT%2FWhAp0ZXvXJVtwDSG%2BgzNs%3D"
+        audio_path: "assets/audio/SH_02_001_line_1.mp3"
+        audio_status: completed
+    image_path: ./shots/汉朝宫廷之乱/shot_001.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b15/uPaupKL8bHHGvXBA6EUbF_cfed6fd75d534c328cd983515a86baae.png
+    generated_at: 2026-03-09T10:22:24.493256
+
+  - shot_id: SH_02_002
+    duration: 5
+    content: 周末七国分争，并入于秦。及秦灭之后，楚、汉分争，又并入于汉
+    characters: []
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，古代战争场景，秦灭六国，楚汉相争的历史画面，战火纷飞，历史厚重感
+    dialogue:
+      - speaker: 旁白
+        text: 并入于秦。及秦灭之后
+      - speaker: 旁白
+        text: 楚、汉分争，又并入于汉
+    image_path: ./shots/汉朝宫廷之乱/shot_002.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b1d/nAtGP-EsszWEgbBMYNNna_d0c7b4f3b2ad4dfb8e19cb2d16b8bab4.png
+    generated_at: 2026-03-09T10:23:49.198841
+
+  - shot_id: SH_02_003
+    duration: 5
+    content: 汉朝自高祖斩白蛇而起义，一统天下
+    characters: ["刘邦"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，汉高祖刘邦斩白蛇起义，手持宝剑，白蛇在脚下，周围将士拥护，王者风范
+    dialogue:
+      - speaker: 旁白
+        text: 汉朝自高祖斩白蛇而起义
+      - speaker: 旁白
+        text: 一统天下。后来光武中兴
+    image_path: ./shots/汉朝宫廷之乱/shot_003.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b27/9za_8YuSrq1eexf_6wq4j_906c7599aa5b491f98b8467c85c7f54a.png
+    generated_at: 2026-03-09T10:25:22.346464
+
+  - shot_id: SH_02_004
+    duration: 5
+    content: 后来光武中兴，传至献帝，遂分为三国
+    characters: ["刘秀", "汉献帝"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，光武中兴的繁荣场景，汉献帝时期的衰落场景，对比呈现，历史变迁感
+    dialogue:
+      - speaker: 旁白
+        text: 后来光武中兴
+      - speaker: 旁白
+        text: 传至献帝，遂分为三国
+    image_path: ./shots/汉朝宫廷之乱/shot_004.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b30/yX4t-gF3yTDpJuMicq7YI_070502f4454d41118442d5542d52a8c6.png
+    generated_at: 2026-03-09T10:26:53.443960
+
+  - shot_id: SH_02_005
+    duration: 5
+    content: 推其致乱之由，殆始于桓、灵二帝，桓帝禁锢善类，崇信宦官
+    characters: ["汉桓帝", "汉灵帝"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，汉桓帝、汉灵帝坐在龙椅上，周围宦官环绕，朝政腐败的氛围，昏暗的宫廷灯光
+    dialogue:
+      - speaker: 旁白
+        text: 推其致乱之由，殆始于桓、灵二帝
+      - speaker: 旁白
+        text: 桓帝禁锢善类，崇信宦官
+    image_path: ./shots/汉朝宫廷之乱/shot_005.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b38/BDuve9ZtSERFTm_wtyj57_7d6da9795aef4d1b8a539da1b4f1dfbe.png
+    generated_at: 2026-03-09T10:28:23.941785
+
+  - shot_id: SH_02_006
+    duration: 5
+    content: 及桓帝崩，灵帝即位，大将军窦武、太傅陈蕃共相辅佐
+    characters: ["汉灵帝", "窦武", "陈蕃"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，汉灵帝刚刚即位，年少懵懂，大将军窦武和太傅陈蕃站在两旁，神色凝重，商议朝政
+    dialogue:
+      - speaker: 旁白
+        text: 及桓帝崩，灵帝即位
+      - speaker: 旁白
+        text: 大将军窦武、太傅陈蕃
+      - speaker: 旁白
+        text: 共相辅佐。时有宦官曹节等弄权
+    image_path: ./shots/汉朝宫廷之乱/shot_006.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b42/UT1rwbbU3GnEK2fbqHocH_cef1ced956604fffa18c5e281d23fdb7.png
+    generated_at: 2026-03-09T10:30:00.961547
+
+  - shot_id: SH_02_007
+    duration: 5
+    content: 时有宦官曹节等弄权，窦武、陈蕃谋诛之，作事不密，反为所害，中涓自此愈横
+    characters: ["曹节", "窦武", "陈蕃"]
+    shot_type: 中景
+    prompt: 真人写实高清，超细节刻画，古风人像写实，光影细腻，氛围感拉满，服饰纹理清晰，面部神态精准，宦官曹节面带奸笑，窦武和陈蕃被士兵逮捕，神色悲愤，宫廷斗争的紧张氛围
+    dialogue:
+      - speaker: 旁白
+        text: 时有宦官曹节等弄权
+      - speaker: 旁白
+        text: 窦武、陈蕃谋诛之
+      - speaker: 旁白
+        text: 作事不密，反为所害
+      - speaker: 旁白
+        text: 中涓自此愈横
+    image_path: ./shots/汉朝宫廷之乱/shot_007.png
+    image_status: completed
+    image_url: https://v3b.fal.media/files/b/0a916b4c/AAjWVH4Dw5_Md6kiY-g5Q_4c48e0f3f8cd4ecc99de152bd844fb03.png
+    generated_at: 2026-03-09T10:31:31.997547

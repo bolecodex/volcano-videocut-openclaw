@@ -1,5 +1,6 @@
 import { useFileContent } from "../../hooks/use-api";
 import { FileText } from "lucide-react";
+import { FallbackImage } from "../ui/FallbackImage";
 
 const IMAGE_EXTS = ["png", "jpg", "jpeg", "webp", "gif"];
 const VIDEO_EXTS = ["mp4", "webm", "mov"];
@@ -19,7 +20,12 @@ export function FileEditor({ path }: { path: string }) {
   if (isImage) {
     return (
       <div className="flex items-center justify-center p-4">
-        <img src={rawUrl} alt={path} className="max-h-[80vh] rounded" />
+        <FallbackImage
+          src={rawUrl}
+          alt={path}
+          className="max-h-[80vh] rounded-lg"
+          fallbackClassName="flex h-64 items-center justify-center rounded-lg bg-surface-2 text-gray-600"
+        />
       </div>
     );
   }
