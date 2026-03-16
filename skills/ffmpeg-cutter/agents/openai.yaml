@@ -1,0 +1,4 @@
+interface:
+  display_name: "FFmpeg 视频剪辑"
+  short_description: "使用 FFmpeg 切割合并高光片段为投流视频"
+  default_prompt: "根据确认的高光片段列表，剪辑合并生成投流广告视频"

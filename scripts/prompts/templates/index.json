@@ -1,0 +1,8 @@
+[
+  {"id": "default", "name": "通用剪辑", "icon": "scissors", "description": "跨集保留主线，删减废戏，适用于大部分短剧", "file": "default.txt"},
+  {"id": "conflict", "name": "冲突开场", "icon": "zap", "description": "强调激烈冲突与悬念，适合动作/复仇/权谋题材", "file": "conflict.txt"},
+  {"id": "romance", "name": "甜宠爱情", "icon": "heart", "description": "侧重CP互动与情感共鸣，适合甜宠/偶像剧", "file": "romance.txt"},
+  {"id": "suspense", "name": "悬疑烧脑", "icon": "eye", "description": "信息不对称剪辑，悬念前置，适合悬疑/推理剧", "file": "suspense.txt"},
+  {"id": "family", "name": "家庭情感", "icon": "home", "description": "家庭温馨与催泪场景，适合家庭/亲子/婆媳剧", "file": "family.txt"},
+  {"id": "content_clean", "name": "违规清理", "icon": "shield", "description": "精确删除违规画面、片尾闪光，保留正常剧情", "file": "content_clean.txt"}
+]

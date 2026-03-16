@@ -1,0 +1,4 @@
+interface:
+  display_name: "视频高光分析"
+  short_description: "分析短剧视频，提取投流广告高光片段"
+  default_prompt: "分析这个视频，找出适合制作投流广告素材的高光片段"
