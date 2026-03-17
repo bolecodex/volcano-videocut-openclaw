@@ -332,3 +332,106 @@ ipcMain.handle('chat-delete-session', async (_, sessionKey) => {
     return false;
   }
 });
+
+// ── Post-processing handlers (S-Level) ──
+
+ipcMain.handle('run-asr', async (_, { videoDir, outputDir }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [videoDir, '-o', outDir];
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('asr_extract.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-scene-detect', async (_, { videoDir, outputDir, threshold }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [videoDir, '-o', outDir];
+  if (threshold) args.push('-t', String(threshold));
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('scene_detect.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-burn-subtitle', async (_, { videoPath, subtitlePath, outputPath, style }) => {
+  const args = [videoPath, subtitlePath];
+  if (outputPath) args.push('-o', outputPath);
+  if (style) args.push('-s', style);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('burn_subtitle.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-bgm-mix', async (_, { videoPath, bgmPath, outputPath, bgmVolume, noDucking }) => {
+  const args = [videoPath, bgmPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (bgmVolume != null) args.push('--bgm-volume', String(bgmVolume));
+  if (noDucking) args.push('--no-ducking');
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('bgm_mix.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-platform-export', async (_, { videoPath, outputDir, platforms }) => {
+  const args = [videoPath];
+  if (outputDir) args.push('-o', outputDir);
+  if (platforms?.length) args.push('-p', ...platforms);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('platform_export.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-gen-cover', async (_, { videoPath, outputDir }) => {
+  const args = [videoPath];
+  if (outputDir) args.push('-o', outputDir);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('gen_cover.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-quality-score', async (_, { videoPath, outputDir }) => {
+  const args = [videoPath];
+  if (outputDir) args.push('-o', outputDir);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('score_quality.py', args, sendLog, sendLog);
+    const stem = path.basename(videoPath, path.extname(videoPath));
+    const scorePath = path.join(outputDir || OUTPUT_DIR, `score_${stem}.json`);
+    if (fs.existsSync(scorePath)) {
+      return { success: true, score: JSON.parse(fs.readFileSync(scorePath, 'utf-8')) };
+    }
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});

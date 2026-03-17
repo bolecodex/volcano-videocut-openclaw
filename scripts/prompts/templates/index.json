@@ -4,5 +4,8 @@
   {"id": "romance", "name": "甜宠爱情", "icon": "heart", "description": "侧重CP互动与情感共鸣，适合甜宠/偶像剧", "file": "romance.txt"},
   {"id": "suspense", "name": "悬疑烧脑", "icon": "eye", "description": "信息不对称剪辑，悬念前置，适合悬疑/推理剧", "file": "suspense.txt"},
   {"id": "family", "name": "家庭情感", "icon": "home", "description": "家庭温馨与催泪场景，适合家庭/亲子/婆媳剧", "file": "family.txt"},
-  {"id": "content_clean", "name": "违规清理", "icon": "shield", "description": "精确删除违规画面、片尾闪光，保留正常剧情", "file": "content_clean.txt"}
+  {"id": "content_clean", "name": "违规清理", "icon": "shield", "description": "精确删除违规画面、片尾闪光，保留正常剧情", "file": "content_clean.txt"},
+  {"id": "revenge", "name": "逆袭爽文", "icon": "fire", "description": "压抑→爆发→打脸节奏，适合赘婿/逆袭/隐藏身份题材", "file": "revenge.txt"},
+  {"id": "ancient_romance", "name": "古偶仙侠", "icon": "sparkles", "description": "唯美画面+虐心情感+仙侠奇观，适合古装/仙侠/玄幻题材", "file": "ancient_romance.txt"},
+  {"id": "cute_kids", "name": "萌娃引流", "icon": "baby", "description": "萌娃优先+亲情催泪+反差萌，适合亲子/认亲/身世之谜题材", "file": "cute_kids.txt"}
 ]

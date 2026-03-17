@@ -5,6 +5,7 @@ import SkillDetail from './components/SkillDetail';
 
 const ICON_MAP = {
   scissors: '✂️', zap: '⚡', heart: '💕', eye: '🔍', home: '🏠', shield: '🛡️',
+  fire: '🔥', sparkles: '✨', baby: '👶',
 };
 
 function formatTime(sec) {
@@ -136,6 +137,10 @@ function VideoEditorView({ onContextChange }) {
   const [cutLog, setCutLog] = useState('');
   const [outputFile, setOutputFile] = useState('');
   const [rightTab, setRightTab] = useState('prompt');
+  const [postprocessLog, setPostprocessLog] = useState('');
+  const [postprocessing, setPostprocessing] = useState('');
+  const [qualityScore, setQualityScore] = useState(null);
+  const [exportPlatforms, setExportPlatforms] = useState(['douyin', 'toutiao']);
   const logEndRef = useRef(null);
 
   useEffect(() => {
@@ -189,6 +194,11 @@ function VideoEditorView({ onContextChange }) {
   useEffect(() => {
     if (!api?.onCutLog) return;
     return api.onCutLog((text) => setCutLog((p) => p + text));
+  }, []);
+
+  useEffect(() => {
+    if (!api?.onPostprocessLog) return;
+    return api.onPostprocessLog((text) => setPostprocessLog((p) => p + text));
   }, []);
 
   useEffect(() => {
@@ -267,6 +277,61 @@ function VideoEditorView({ onContextChange }) {
 
   const handleOpenOutput = () => {
     if (outputDirPath) api.openOutputFolder(outputDirPath);
+  };
+
+  const handlePostprocess = async (action) => {
+    if (!outputDirPath && !videoDir) return;
+    setPostprocessing(action);
+    setPostprocessLog('');
+    setRightTab('log');
+
+    try {
+      let result;
+      switch (action) {
+        case 'asr':
+          result = await api.runAsr({ videoDir, outputDir: outputDirPath || undefined });
+          break;
+        case 'scene':
+          result = await api.runSceneDetect({ videoDir, outputDir: outputDirPath || undefined });
+          break;
+        case 'subtitle':
+          if (outputFile) {
+            const videoPath = `${outputDirPath}/${outputFile}`;
+            const srtFile = `asr_${outputFile.replace('promo_', '').replace('.mp4', '')}.srt`;
+            const srtPath = `${outputDirPath}/${srtFile}`;
+            result = await api.runBurnSubtitle({ videoPath, subtitlePath: srtPath });
+          }
+          break;
+        case 'cover':
+          if (outputFile) {
+            result = await api.runGenCover({ videoPath: `${outputDirPath}/${outputFile}`, outputDir: outputDirPath });
+          }
+          break;
+        case 'score':
+          if (outputFile) {
+            result = await api.runQualityScore({ videoPath: `${outputDirPath}/${outputFile}`, outputDir: outputDirPath });
+            if (result?.score) setQualityScore(result.score);
+          }
+          break;
+        case 'export':
+          if (outputFile) {
+            result = await api.runPlatformExport({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputDir: outputDirPath ? `${outputDirPath}/exports` : undefined,
+              platforms: exportPlatforms,
+            });
+          }
+          break;
+        default:
+          break;
+      }
+      if (result && !result.success) {
+        setPostprocessLog((p) => p + `\n[错误] ${result.error}`);
+      }
+    } catch (err) {
+      setPostprocessLog((p) => p + `\n[错误] ${err.message}`);
+    }
+    setPostprocessing('');
   };
 
   return (
@@ -368,13 +433,17 @@ function VideoEditorView({ onContextChange }) {
       <div className="panel-right">
         <div className="tab-bar">
           <button className={`tab ${rightTab === 'prompt' ? 'active' : ''}`} onClick={() => setRightTab('prompt')}>
-            提示词预览
+            提示词
           </button>
           <button className={`tab ${rightTab === 'results' ? 'active' : ''}`} onClick={() => setRightTab('results')}>
             分析结果
           </button>
+          <button className={`tab ${rightTab === 'postprocess' ? 'active' : ''}`} onClick={() => setRightTab('postprocess')}>
+            后期处理
+            {postprocessing && <span className="tab-dot" />}
+          </button>
           <button className={`tab ${rightTab === 'log' ? 'active' : ''}`} onClick={() => setRightTab('log')}>
-            运行日志
+            日志
             {(analyzing || cutting) && <span className="tab-dot" />}
           </button>
         </div>
@@ -430,6 +499,133 @@ function VideoEditorView({ onContextChange }) {
           </div>
         )}
 
+        {rightTab === 'postprocess' && (
+          <div className="tab-content">
+            <div className="postprocess-panel">
+              <div className="pp-section">
+                <h4 className="pp-title">预处理</h4>
+                <div className="pp-actions">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!videoDir || !!postprocessing}
+                    onClick={() => handlePostprocess('asr')}
+                  >
+                    {postprocessing === 'asr' && <span className="spinner" />}
+                    🎤 ASR 提取台词
+                  </button>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!videoDir || !!postprocessing}
+                    onClick={() => handlePostprocess('scene')}
+                  >
+                    {postprocessing === 'scene' && <span className="spinner" />}
+                    🎬 场景检测
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">后期处理</h4>
+                <div className="pp-actions">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!postprocessing}
+                    onClick={() => handlePostprocess('subtitle')}
+                  >
+                    {postprocessing === 'subtitle' && <span className="spinner" />}
+                    📝 烧录字幕
+                  </button>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!postprocessing}
+                    onClick={() => handlePostprocess('cover')}
+                  >
+                    {postprocessing === 'cover' && <span className="spinner" />}
+                    🖼️ 生成封面
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">质量 & 导出</h4>
+                <div className="pp-actions">
+                  <button
+                    className="btn btn-accent btn-sm"
+                    disabled={!outputFile || !!postprocessing}
+                    onClick={() => handlePostprocess('score')}
+                  >
+                    {postprocessing === 'score' && <span className="spinner" />}
+                    📊 AI 质量评分
+                  </button>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    disabled={!outputFile || !!postprocessing}
+                    onClick={() => handlePostprocess('export')}
+                  >
+                    {postprocessing === 'export' && <span className="spinner" />}
+                    📤 多平台导出
+                  </button>
+                </div>
+                <div className="pp-export-platforms">
+                  {[
+                    { id: 'douyin', label: '抖音/快手' },
+                    { id: 'toutiao', label: '头条' },
+                    { id: 'wechat_video', label: '视频号' },
+                    { id: 'moments', label: '朋友圈' },
+                  ].map((p) => (
+                    <label key={p.id} className="pp-platform-check">
+                      <input
+                        type="checkbox"
+                        checked={exportPlatforms.includes(p.id)}
+                        onChange={(e) => {
+                          setExportPlatforms((prev) =>
+                            e.target.checked ? [...prev, p.id] : prev.filter((x) => x !== p.id)
+                          );
+                        }}
+                      />
+                      <span>{p.label}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              {qualityScore && (
+                <div className="pp-section pp-score-card">
+                  <h4 className="pp-title">
+                    质量评分: {qualityScore.overall_score}/100
+                    <span className={`pp-grade pp-grade-${(qualityScore.grade || 'C').toLowerCase()}`}>
+                      {qualityScore.grade}
+                    </span>
+                  </h4>
+                  <div className="pp-score-dims">
+                    {Object.entries(qualityScore.scores || {}).map(([key, val]) => (
+                      <div key={key} className="pp-score-dim">
+                        <span className="pp-dim-label">{key.replace('_score', '').replace('_', ' ')}</span>
+                        <div className="pp-dim-bar">
+                          <div className="pp-dim-fill" style={{ width: `${val}%` }} />
+                        </div>
+                        <span className="pp-dim-val">{val}</span>
+                      </div>
+                    ))}
+                  </div>
+                  {qualityScore.suggestions?.length > 0 && (
+                    <div className="pp-suggestions">
+                      <strong>改进建议：</strong>
+                      <ul>
+                        {qualityScore.suggestions.map((s, i) => <li key={i}>{s}</li>)}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {postprocessLog && (
+                <pre className="log-view pp-log">{postprocessLog}</pre>
+              )}
+            </div>
+          </div>
+        )}
+
         {rightTab === 'log' && (
           <div className="tab-content">
             <pre className="log-view">
@@ -466,7 +662,7 @@ function PromptRenderer({ text }) {
 }
 
 function ResultsViewer({ data }) {
-  const { drama_name, summary, episodes, hook, segments_to_keep, segments_to_remove, final_structure, total_source_duration_seconds } = data;
+  const { drama_name, summary, episodes, hook, segments_to_keep, segments_to_remove, final_structure, total_source_duration_seconds, versions } = data;
   const keepDur = (segments_to_keep || []).reduce((s, seg) => s + (seg.duration_seconds || 0), 0);
   const hookDur = hook?.enabled ? (parseHMS(hook.source_end) - parseHMS(hook.source_start)) : 0;
   const totalKeep = keepDur + hookDur;
@@ -567,6 +763,30 @@ function ResultsViewer({ data }) {
           <span className="structure-dur">
             预计时长：{formatTime(final_structure.estimated_duration_seconds || 0)}
           </span>
+        </div>
+      )}
+
+      {versions?.length > 0 && (
+        <div className="result-card">
+          <h4>多版本方案 ({versions.length})</h4>
+          <div className="versions-list">
+            {versions.map((ver, i) => {
+              const vName = ver.name || ver.type || `版本${i + 1}`;
+              const vSegs = ver.segments_to_keep?.length || 0;
+              const vDur = ver.final_structure?.estimated_duration_seconds || 0;
+              return (
+                <div key={i} className="version-card">
+                  <div className="version-header">
+                    <span className="version-name">{vName}</span>
+                    <span className="version-stats">{vSegs} 段 · {formatTime(vDur)}</span>
+                  </div>
+                  {ver.final_structure?.description && (
+                    <p className="version-desc">{ver.final_structure.description}</p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

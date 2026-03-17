@@ -42,4 +42,14 @@ contextBridge.exposeInMainWorld('electronAPI', {
   chatListSessions: () => ipcRenderer.invoke('chat-list-sessions'),
   chatDeleteSession: (key) => ipcRenderer.invoke('chat-delete-session', key),
   onChatStream: (cb) => onChannel('chat-stream', cb),
+
+  // Post-processing (S-Level)
+  runAsr: (opts) => ipcRenderer.invoke('run-asr', opts),
+  runSceneDetect: (opts) => ipcRenderer.invoke('run-scene-detect', opts),
+  runBurnSubtitle: (opts) => ipcRenderer.invoke('run-burn-subtitle', opts),
+  runBgmMix: (opts) => ipcRenderer.invoke('run-bgm-mix', opts),
+  runPlatformExport: (opts) => ipcRenderer.invoke('run-platform-export', opts),
+  runGenCover: (opts) => ipcRenderer.invoke('run-gen-cover', opts),
+  runQualityScore: (opts) => ipcRenderer.invoke('run-quality-score', opts),
+  onPostprocessLog: (cb) => onChannel('postprocess-log', cb),
 });
