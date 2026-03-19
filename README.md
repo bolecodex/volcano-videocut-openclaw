@@ -170,9 +170,10 @@ volcano-videocut-openclaw/
 │   ├── analyze_video.py     # 视频分析（火山方舟 Seed 2.0）
 │   ├── ffmpeg_cut.py        # FFmpeg 剪辑合并
 │   └── prompts/templates/   # 剪辑提示词模板
-├── skills/
-│   ├── video-analyzer/      # 内置 Skill：视频分析
-│   └── ffmpeg-cutter/       # 内置 Skill：FFmpeg 剪辑
+├── skills/                  # 各子目录为技能 id；界面展示名为中文
+│   ├── video-analyzer/      # 内置：投流高光片段分析
+│   ├── ffmpeg-cutter/       # 内置：高光切片与成片合成
+│   └── …                    # 其余见应用内 Skills 列表
 ├── video/                   # 视频素材 & 输出目录
 ├── package.json
 └── .env                     # API 密钥配置

@@ -1062,33 +1062,35 @@ body {
 
 .chat-input-row {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   align-items: flex-end;
 }
 
 .chat-input {
   flex: 1;
-  padding: 8px 10px;
+  padding: 10px 12px;
   background: var(--bg-elevated);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   resize: none;
   outline: none;
-  min-height: 34px;
-  max-height: 100px;
+  min-height: 92px;
+  max-height: min(42vh, 280px);
   transition: border-color 0.2s;
-  line-height: 1.5;
+  line-height: 1.55;
+  overflow-y: auto;
+  box-sizing: border-box;
 }
 
 .chat-input:focus { border-color: var(--accent); }
 .chat-input::placeholder { color: var(--text-muted); }
 
 .chat-send-btn {
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  align-self: stretch;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1097,7 +1099,7 @@ body {
   border: none;
   border-radius: var(--radius);
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   flex-shrink: 0;
   transition: all 0.15s;
@@ -1140,6 +1142,14 @@ body {
 .mention-tag-template { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
 .mention-tag-input { background: rgba(52, 211, 153, 0.12); color: var(--success); }
 .mention-tag-output { background: var(--accent-muted); color: var(--accent); }
+.mention-tag-file { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+.mention-tag-character { background: rgba(244, 114, 182, 0.12); color: #f472b6; }
+.mention-tag-scene { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+.mention-tag-storyboard { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+.mention-tag-audio { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+.mention-tag-video { background: rgba(167, 139, 250, 0.14); color: #a78bfa; }
+
+.mention-tag-text { max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
 
 .mention-tag-remove {
   background: none;
@@ -1168,6 +1178,97 @@ body {
   overflow-y: auto;
   box-shadow: var(--shadow-lg);
   z-index: 100;
+}
+
+.mention-dropdown-with-tabs {
+  max-height: min(52vh, 420px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0;
+}
+
+.mention-tab-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2px;
+  padding: 6px 6px 4px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+  scrollbar-width: thin;
+}
+
+.mention-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.65rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: background 0.12s, color 0.12s;
+}
+
+.mention-tab:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.mention-tab.active {
+  background: linear-gradient(135deg, var(--accent2) 0%, #7c3aed 100%);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.35);
+}
+
+.mention-tab-icon { font-size: 0.75rem; line-height: 1; }
+.mention-tab-label { line-height: 1.2; }
+.mention-tab-badge {
+  font-size: 0.55rem;
+  padding: 1px 4px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  color: inherit;
+  margin-left: 1px;
+}
+
+.mention-tab.active .mention-tab-badge {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.mention-list-wrap {
+  overflow-y: auto;
+  flex: 1;
+  min-height: 120px;
+  max-height: 320px;
+}
+
+.mention-empty {
+  padding: 20px 14px;
+  text-align: center;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.mention-item-type {
+  flex-shrink: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 2.2rem;
+  text-align: center;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .mention-group-label {
@@ -1255,6 +1356,12 @@ body {
 .mention-inline-template { background: rgba(236, 72, 153, 0.12); color: #ec4899; }
 .mention-inline-input { background: rgba(52, 211, 153, 0.12); color: var(--success); }
 .mention-inline-output { background: var(--accent-muted); color: var(--accent); }
+.mention-inline-file { background: rgba(148, 163, 184, 0.15); color: #94a3b8; }
+.mention-inline-character { background: rgba(244, 114, 182, 0.12); color: #f472b6; }
+.mention-inline-scene { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+.mention-inline-storyboard { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+.mention-inline-audio { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+.mention-inline-video { background: rgba(167, 139, 250, 0.14); color: #a78bfa; }
 
 /* ══════════════════════════════════════
    Existing component styles (Cards, etc)
@@ -2036,6 +2143,58 @@ body {
   font-size: 0.78rem;
   color: var(--text-secondary);
   line-height: 1.5;
+}
+
+/* ══════════════════════════════════════
+   Seedance 2.0 Panel
+   ══════════════════════════════════════ */
+
+.seedance-panel .pp-section { padding-bottom: 10px; }
+
+.seedance-panel .pp-title {
+  font-size: 0.82rem;
+  margin-bottom: 4px;
+}
+
+.seedance-panel .pp-desc {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin: 0 0 6px 0;
+  line-height: 1.4;
+}
+
+.seedance-config {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.seedance-config .field-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seedance-label {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.seedance-fast-toggle {
+  margin-left: auto;
+  font-size: 0.72rem;
+}
+
+.seedance-preset-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seedance-preset-row .select {
+  flex: 1;
+  min-width: 0;
 }
 
 /* ── Scrollbar ── */

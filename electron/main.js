@@ -215,6 +215,81 @@ ipcMain.handle('list-output-files', async (_, dirPath) => {
   }
 });
 
+const MENTION_IGNORE_DIRS = new Set([
+  'node_modules', '.git', 'build', 'dist', '.venv', '__pycache__', '.cursor',
+  'mcps', 'terminals',
+]);
+const MENTION_SKIP_TOP = new Set(['skills']); // 技能由 list-skills 提供，避免重复
+
+function classifyMentionAsset(relPosix, ext) {
+  const lower = relPosix.toLowerCase();
+  const e = ext.toLowerCase();
+  if (['.mp3', '.wav', '.m4a', '.aac', '.flac', '.ogg'].includes(e)) return 'audio';
+  if (['.mp4', '.mov', '.webm', '.mkv', '.avi', '.m4v'].includes(e)) return 'video';
+  if (
+    lower.includes('/characters/') || lower.includes('/角色') || lower.includes('character_card')
+    || lower.includes('角色卡') || lower.includes('/char/')
+  ) return 'character';
+  if (
+    lower.includes('/scenes/') || lower.includes('/场景') || lower.includes('scene_bible')
+    || lower.includes('场景库')
+  ) return 'scene';
+  if (
+    lower.includes('分镜') || lower.includes('shot_list') || lower.includes('storyboard')
+    || lower.includes('/shots/') || lower.includes('shotlist') || lower.includes('highlights_')
+  ) return 'storyboard';
+  if (['.md', '.json', '.txt', '.yaml', '.yml', '.csv'].includes(e)) return 'file';
+  return null;
+}
+
+/** 扫描工程目录，供 @ 引用：音频/视频/剧本资产/分镜 JSON 等 */
+ipcMain.handle('list-workspace-mention-assets', async () => {
+  const perCat = { audio: 0, video: 0, character: 0, scene: 0, storyboard: 0, file: 0 };
+  const maxPer = 120;
+  const maxTotal = 500;
+  const maxDepth = 8;
+  const out = [];
+
+  function walk(dir, depth, topLevelName) {
+    if (depth > maxDepth || out.length >= maxTotal) return;
+    let entries;
+    try {
+      entries = fs.readdirSync(dir, { withFileTypes: true });
+    } catch {
+      return;
+    }
+    for (const ent of entries) {
+      if (ent.name.startsWith('.')) continue;
+      if (MENTION_IGNORE_DIRS.has(ent.name)) continue;
+      const full = path.join(dir, ent.name);
+      if (ent.isDirectory()) {
+        if (depth === 0 && MENTION_SKIP_TOP.has(ent.name)) continue;
+        walk(full, depth + 1, depth === 0 ? ent.name : topLevelName);
+        continue;
+      }
+      const rel = path.relative(PROJECT_ROOT, full).split(path.sep).join('/');
+      const ext = path.extname(ent.name);
+      const cat = classifyMentionAsset(rel, ext);
+      if (!cat || perCat[cat] >= maxPer) continue;
+      perCat[cat] += 1;
+      out.push({
+        category: cat,
+        id: rel,
+        label: ent.name,
+        desc: rel,
+        absPath: full,
+      });
+    }
+  }
+
+  try {
+    walk(PROJECT_ROOT, 0, '');
+  } catch {
+    return [];
+  }
+  return out;
+});
+
 // ── Skills handlers ──
 
 ipcMain.handle('list-skills', async () => {
@@ -430,6 +505,112 @@ ipcMain.handle('run-quality-score', async (_, { videoPath, outputDir }) => {
       return { success: true, score: JSON.parse(fs.readFileSync(scorePath, 'utf-8')) };
     }
     return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+// ── Seedance 2.0 skill handlers ──
+
+ipcMain.handle('run-seedance-replicate', async (_, { reference, outputDir, prompt, style, images, duration, ratio, resolution, fast }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [reference, '-o', outDir];
+  if (prompt) args.push('-p', prompt);
+  if (style) args.push('-s', style);
+  if (images?.length) args.push('-i', ...images);
+  if (duration) args.push('-d', String(duration));
+  if (ratio) args.push('-r', ratio);
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_replicate.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-seedance-hook', async (_, { outputDir, style, prompt, firstFrame, sourceVideo, duration, ratio, resolution, fast, noAudio }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = ['-o', outDir];
+  if (style) args.push('-s', style);
+  if (prompt) args.push('-p', prompt);
+  if (firstFrame) args.push('-f', firstFrame);
+  if (sourceVideo) args.push('-v', sourceVideo);
+  if (duration) args.push('-d', String(duration));
+  if (ratio) args.push('-r', ratio);
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  if (noAudio) args.push('--no-audio');
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_hook.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-seedance-extend', async (_, { video, outputDir, prompt, tail, duration, chain, ratio, resolution, fast }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [video, '-o', outDir];
+  if (prompt) args.push('-p', prompt);
+  if (tail) args.push('-t', String(tail));
+  if (duration) args.push('-d', String(duration));
+  if (chain) args.push('-c', String(chain));
+  if (ratio) args.push('-r', ratio);
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_extend.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-seedance-restyle', async (_, { video, outputDir, prompt, style, image, duration, ratio, resolution, fast }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [video, '-o', outDir];
+  if (prompt) args.push('-p', prompt);
+  if (style) args.push('-s', style);
+  if (image) args.push('-i', image);
+  if (duration) args.push('-d', String(duration));
+  if (ratio) args.push('-r', ratio);
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_restyle.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-seedance-trending', async (_, { outputDir, theme, prompts, count, duration, ratio, resolution, fast, webSearch, searchQuery }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = ['-o', outDir];
+  if (theme) args.push('-t', theme);
+  if (prompts?.length) args.push('-p', ...prompts);
+  if (count) args.push('-c', String(count));
+  if (duration) args.push('-d', String(duration));
+  if (ratio) args.push('-r', ratio);
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  if (webSearch) args.push('--web-search');
+  if (searchQuery) args.push('--search-query', searchQuery);
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_trending.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
   } catch (err) {
     sendLog?.(err.message);
     return { success: false, error: err.message };

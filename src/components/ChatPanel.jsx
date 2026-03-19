@@ -1,13 +1,43 @@
-import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const MENTION_CATEGORIES = [
-  { id: 'skill', label: '技能', icon: '🧩' },
-  { id: 'template', label: '剪辑模板', icon: '✂️' },
-  { id: 'input', label: '输入素材', icon: '📁' },
-  { id: 'output', label: '剪辑素材', icon: '🎬' },
+/** 与参考 UI 一致：分栏类型 */
+const MENTION_TABS = [
+  { id: 'all', label: '全部', icon: '📋' },
+  { id: 'file', label: '文件', icon: '📄' },
+  { id: 'template', label: '模版', icon: '✂️' },
+  { id: 'character', label: '角色', icon: '👥' },
+  { id: 'scene', label: '场景', icon: '🪟' },
+  { id: 'storyboard', label: '分镜', icon: '🎬' },
+  { id: 'audio', label: '音频', icon: '🔊' },
+  { id: 'video', label: '视频', icon: '🎥' },
+  { id: 'skill', label: '技能', icon: '⚡' },
 ];
+
+const MENTION_LIST_LIMIT = 100;
+const CHAT_INPUT_MIN_PX = 92;
+const CHAT_INPUT_MAX_PX = 280;
+
+function joinPath(dir, file) {
+  if (!dir || !file) return file || dir || '';
+  const d = String(dir).replace(/[/\\]+$/, '');
+  const sep = d.includes('\\') ? '\\' : '/';
+  return `${d}${sep}${file}`;
+}
+
+function mentionIconForCategory(cat) {
+  const t = MENTION_TABS.find((x) => x.id === cat);
+  return t?.icon || '📎';
+}
+
+/** @ 可作为提及触发：行首，或前一个字符不是英文/数字/_（避免 email 里的 user@） */
+function isMentionAt(textBeforeCursor, atIdx) {
+  if (atIdx < 0) return false;
+  if (atIdx === 0) return true;
+  const prev = textBeforeCursor[atIdx - 1];
+  return !/[a-zA-Z0-9_]/.test(prev);
+}
 
 function ChatPanel({ collapsed, onToggle, editorContext }) {
   const api = window.electronAPI;
@@ -24,11 +54,15 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
 
   const [mentionOpen, setMentionOpen] = useState(false);
   const [mentionQuery, setMentionQuery] = useState('');
+  const [mentionTab, setMentionTab] = useState('all');
   const [mentionIdx, setMentionIdx] = useState(0);
   const [mentionItems, setMentionItems] = useState([]);
   const [mentions, setMentions] = useState([]);
   const mentionAnchorRef = useRef(null);
+  const mentionOpenRef = useRef(false);
   const inputRef = useRef(null);
+  const mentionCacheRef = useRef({ items: null, at: 0, ctxKey: '' });
+  const MENTION_CACHE_MS = 25000;
 
   useEffect(() => {
     if (!api) return;
@@ -121,46 +155,95 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Load mention data sources
+  useLayoutEffect(() => {
+    const ta = inputRef.current;
+    if (!ta || sending) return;
+    ta.style.height = '0px';
+    const h = Math.max(CHAT_INPUT_MIN_PX, Math.min(ta.scrollHeight, CHAT_INPUT_MAX_PX));
+    ta.style.height = `${h}px`;
+  }, [input, sending, mentionOpen]);
+
   const loadMentionItems = useCallback(async () => {
     if (!api) return [];
+    const now = Date.now();
+    const ctx = editorContext || {};
+    const ctxKey = `${ctx.videoDir || ''}|${ctx.outputDir || ''}|${(ctx.templates || []).length}`;
+    const c = mentionCacheRef.current;
+    if (c.items && now - c.at < MENTION_CACHE_MS && c.ctxKey === ctxKey) {
+      return c.items;
+    }
+
+    const seen = new Set();
     const items = [];
+
+    const push = (it) => {
+      const key = `${it.category}:${it.id}`;
+      if (seen.has(key)) return;
+      seen.add(key);
+      items.push({
+        ...it,
+        icon: it.icon || mentionIconForCategory(it.category),
+      });
+    };
 
     try {
       const skills = await api.listSkills();
       (skills || []).forEach((s) => {
-        items.push({ category: 'skill', id: s.id || s.name, label: s.name, desc: s.description?.slice(0, 50), icon: '🧩' });
+        push({
+          category: 'skill',
+          id: s.id || s.name,
+          label: s.name,
+          desc: s.description?.slice(0, 56),
+        });
       });
     } catch {}
 
-    const ctx = editorContext || {};
-
     (ctx.templates || []).forEach((tpl) => {
       const isActive = tpl.id === ctx.selectedTemplate;
-      items.push({
+      push({
         category: 'template',
         id: `tpl:${tpl.id}`,
-        label: tpl.name,
-        desc: tpl.description?.slice(0, 60),
+        label: tpl.name || tpl.id,
+        desc: tpl.description?.slice(0, 56) || '剪辑提示模版',
         icon: isActive ? '✅' : '✂️',
       });
     });
 
     if (ctx.customRequirements?.trim()) {
-      items.push({
+      push({
         category: 'template',
         id: 'tpl:custom',
         label: '自定义要求',
-        desc: ctx.customRequirements.slice(0, 60),
+        desc: ctx.customRequirements.slice(0, 56),
         icon: '📝',
       });
     }
+
+    try {
+      const assets = await api.listWorkspaceMentionAssets();
+      (assets || []).forEach((a) => {
+        push({
+          category: a.category,
+          id: a.id,
+          label: a.label,
+          desc: a.desc || a.id,
+          absPath: a.absPath,
+        });
+      });
+    } catch {}
 
     if (ctx.videoDir) {
       try {
         const files = await api.listVideoFiles(ctx.videoDir);
         (files || []).forEach((f) => {
-          items.push({ category: 'input', id: f, label: f, desc: ctx.videoDir, icon: '📁' });
+          const abs = joinPath(ctx.videoDir, f);
+          push({
+            category: 'video',
+            id: abs,
+            label: f,
+            desc: ctx.videoDir,
+            absPath: abs,
+          });
         });
       } catch {}
     }
@@ -169,54 +252,106 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
       try {
         const result = await api.listOutputFiles(ctx.outputDir);
         (result?.highlights || []).forEach((f) => {
-          items.push({ category: 'output', id: f, label: f.replace('highlights_', '').replace('.json', ''), desc: '分析结果', icon: '📊' });
+          const abs = joinPath(ctx.outputDir, f);
+          push({
+            category: 'storyboard',
+            id: abs,
+            label: f.replace('highlights_', '').replace('.json', ''),
+            desc: '高光/分镜 JSON',
+            absPath: abs,
+          });
         });
         (result?.promos || []).forEach((f) => {
-          items.push({ category: 'output', id: f, label: f, desc: '剪辑输出', icon: '🎬' });
+          const abs = joinPath(ctx.outputDir, f);
+          push({
+            category: 'video',
+            id: abs,
+            label: f,
+            desc: '剪辑输出',
+            absPath: abs,
+          });
         });
       } catch {}
     }
 
+    mentionCacheRef.current = { items, at: now, ctxKey };
     return items;
   }, [api, editorContext]);
 
   const filteredMentions = useMemo(() => {
     if (!mentionOpen) return [];
-    const q = mentionQuery.toLowerCase();
-    return mentionItems.filter((item) =>
-      item.label.toLowerCase().includes(q) || item.category.includes(q)
-    ).slice(0, 12);
-  }, [mentionOpen, mentionQuery, mentionItems]);
+    const q = mentionQuery.toLowerCase().trim();
+    let list = mentionItems.filter((item) => {
+      if (!q) return true;
+      return (
+        item.label.toLowerCase().includes(q)
+        || (item.desc && item.desc.toLowerCase().includes(q))
+        || item.category.toLowerCase().includes(q)
+        || item.id.toLowerCase().includes(q)
+      );
+    });
+    if (mentionTab !== 'all') {
+      list = list.filter((it) => it.category === mentionTab);
+    }
+    return list.slice(0, MENTION_LIST_LIMIT);
+  }, [mentionOpen, mentionQuery, mentionItems, mentionTab]);
 
   useEffect(() => {
     if (mentionIdx >= filteredMentions.length) setMentionIdx(0);
   }, [filteredMentions, mentionIdx]);
 
-  const openMention = useCallback(async (cursorPos) => {
-    mentionAnchorRef.current = cursorPos;
-    const items = await loadMentionItems();
-    setMentionItems(items);
-    setMentionOpen(true);
-    setMentionQuery('');
-    setMentionIdx(0);
-  }, [loadMentionItems]);
-
   const closeMention = useCallback(() => {
+    mentionOpenRef.current = false;
     setMentionOpen(false);
     setMentionQuery('');
     setMentionIdx(0);
     mentionAnchorRef.current = null;
   }, []);
 
+  /** 根据光标同步 @ 面板：须立即打开 UI，避免 await 期间误关面板 */
+  const syncMentionFromCursor = useCallback(
+    (val, pos) => {
+      const textBefore = val.slice(0, pos);
+      const atIdx = textBefore.lastIndexOf('@');
+      if (atIdx >= 0 && isMentionAt(textBefore, atIdx)) {
+        const query = textBefore.slice(atIdx + 1);
+        if (!query.includes(' ') && !query.includes('\n')) {
+          mentionAnchorRef.current = atIdx;
+          setMentionQuery(query);
+          if (!mentionOpenRef.current) {
+            mentionOpenRef.current = true;
+            setMentionOpen(true);
+            setMentionTab('all');
+            setMentionIdx(0);
+            loadMentionItems().then((items) => setMentionItems(items));
+          }
+          return;
+        }
+      }
+      if (mentionOpenRef.current) closeMention();
+    },
+    [loadMentionItems, closeMention]
+  );
+
   const insertMention = useCallback((item) => {
     const anchor = mentionAnchorRef.current;
     if (anchor == null) return;
 
     const before = input.slice(0, anchor);
-    const after = input.slice(anchor + mentionQuery.length + 1);
+    const afterAt = input.slice(anchor + 1);
+    const queryLen = afterAt.match(/^[^\s\n]*/)?.[0]?.length ?? 0;
+    const after = input.slice(anchor + 1 + queryLen);
     const tag = `@${item.label} `;
     setInput(before + tag + after);
-    setMentions((prev) => [...prev, { category: item.category, id: item.id, label: item.label }]);
+    setMentions((prev) => [
+      ...prev,
+      {
+        category: item.category,
+        id: item.id,
+        label: item.label,
+        absPath: item.absPath,
+      },
+    ]);
     closeMention();
 
     setTimeout(() => {
@@ -227,39 +362,37 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
         el.focus();
       }
     }, 0);
-  }, [input, mentionQuery, closeMention]);
+  }, [input, closeMention]);
 
-  const handleInputChange = useCallback((e) => {
-    const val = e.target.value;
-    const pos = e.target.selectionStart;
-    setInput(val);
+  const handleInputChange = useCallback(
+    (e) => {
+      const val = e.target.value;
+      const pos = e.target.selectionStart ?? val.length;
+      setInput(val);
+      syncMentionFromCursor(val, pos);
+    },
+    [syncMentionFromCursor]
+  );
 
-    const textBeforeCursor = val.slice(0, pos);
-    const atIdx = textBeforeCursor.lastIndexOf('@');
-
-    if (atIdx >= 0) {
-      const charBefore = atIdx > 0 ? textBeforeCursor[atIdx - 1] : ' ';
-      if (charBefore === ' ' || charBefore === '\n' || atIdx === 0) {
-        const query = textBeforeCursor.slice(atIdx + 1);
-        if (!query.includes(' ') && !query.includes('\n')) {
-          if (!mentionOpen) {
-            openMention(atIdx);
-          }
-          setMentionQuery(query);
-          return;
-        }
-      }
-    }
-
-    if (mentionOpen) closeMention();
-  }, [mentionOpen, openMention, closeMention]);
+  const handleInputSelect = useCallback(
+    (e) => {
+      const val = e.target.value;
+      const pos = e.target.selectionStart ?? val.length;
+      syncMentionFromCursor(val, pos);
+    },
+    [syncMentionFromCursor]
+  );
 
   const handleSend = useCallback(async () => {
     const text = input.trim();
     if (!text || sending || !api) return;
 
     const mentionContext = mentions.length > 0
-      ? '\n\n[引用上下文] ' + mentions.map((m) => `@${m.category}:${m.id}`).join(', ')
+      ? '\n\n[引用上下文 — Agent 请结合以下路径/资源]\n'
+        + mentions.map((m) => {
+          const loc = m.absPath ? m.absPath : m.id;
+          return `- [${m.category}] ${m.label} → ${loc}`;
+        }).join('\n')
       : '';
 
     setInput('');
@@ -278,19 +411,31 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
     await api.chatSend({ message: text + mentionContext, sessionKey });
   }, [input, sending, sessionKey, api, mentions, closeMention]);
 
+  const handleInputKeyUp = useCallback(
+    (e) => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End', 'Backspace', 'Delete'].includes(e.key)) return;
+      const el = inputRef.current;
+      if (!el || !mentionOpenRef.current) return;
+      requestAnimationFrame(() => {
+        syncMentionFromCursor(el.value, el.selectionStart ?? 0);
+      });
+    },
+    [syncMentionFromCursor]
+  );
+
   const handleKeyDown = (e) => {
-    if (mentionOpen && filteredMentions.length > 0) {
-      if (e.key === 'ArrowDown') {
+    if (mentionOpen) {
+      if (e.key === 'ArrowDown' && filteredMentions.length > 0) {
         e.preventDefault();
         setMentionIdx((i) => (i + 1) % filteredMentions.length);
         return;
       }
-      if (e.key === 'ArrowUp') {
+      if (e.key === 'ArrowUp' && filteredMentions.length > 0) {
         e.preventDefault();
         setMentionIdx((i) => (i - 1 + filteredMentions.length) % filteredMentions.length);
         return;
       }
-      if (e.key === 'Enter' || e.key === 'Tab') {
+      if ((e.key === 'Enter' || e.key === 'Tab') && filteredMentions.length > 0) {
         e.preventDefault();
         insertMention(filteredMentions[mentionIdx]);
         return;
@@ -330,6 +475,25 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
     }
     loadSessions();
   };
+
+  const tabCounts = useMemo(() => {
+    const q = mentionQuery.toLowerCase().trim();
+    const match = (item) => {
+      if (!q) return true;
+      return (
+        item.label.toLowerCase().includes(q)
+        || (item.desc && item.desc.toLowerCase().includes(q))
+        || item.id.toLowerCase().includes(q)
+      );
+    };
+    const base = mentionItems.filter(match);
+    const counts = { all: base.length };
+    MENTION_TABS.forEach((t) => {
+      if (t.id === 'all') return;
+      counts[t.id] = base.filter((it) => it.category === t.id).length;
+    });
+    return counts;
+  }, [mentionItems, mentionQuery]);
 
   if (collapsed) {
     return (
@@ -386,7 +550,7 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           <div className="chat-empty">
             <div className="chat-empty-icon">💬</div>
             <p>与 Agent 对话</p>
-            <p className="chat-empty-hint">输入问题或指令开始</p>
+            <p className="chat-empty-hint">输入 @ 引用技能、模版、素材路径</p>
           </div>
         )}
 
@@ -407,45 +571,62 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           <div className="mention-tags">
             {mentions.map((m, i) => (
               <span key={i} className={`mention-tag mention-tag-${m.category}`}>
-                <span className="mention-tag-icon">
-                  {m.category === 'skill' ? '🧩' : m.category === 'template' ? '✂️' : m.category === 'input' ? '📁' : '🎬'}
-                </span>
-                {m.label}
-                <button className="mention-tag-remove" onClick={() => setMentions((prev) => prev.filter((_, j) => j !== i))}>×</button>
+                <span className="mention-tag-icon">{mentionIconForCategory(m.category)}</span>
+                <span className="mention-tag-text">{m.label}</span>
+                <button type="button" className="mention-tag-remove" onClick={() => setMentions((prev) => prev.filter((_, j) => j !== i))}>×</button>
               </span>
             ))}
           </div>
         )}
 
         <div className="chat-input-wrapper">
-          {mentionOpen && filteredMentions.length > 0 && (
-            <div className="mention-dropdown">
-              {MENTION_CATEGORIES.map((cat) => {
-                const catItems = filteredMentions.filter((it) => it.category === cat.id);
-                if (!catItems.length) return null;
-                return (
-                  <div key={cat.id} className="mention-group">
-                    <div className="mention-group-label">{cat.icon} {cat.label}</div>
-                    {catItems.map((item) => {
-                      const globalIdx = filteredMentions.indexOf(item);
-                      return (
-                        <div
-                          key={item.id}
-                          className={`mention-item ${globalIdx === mentionIdx ? 'active' : ''}`}
-                          onMouseEnter={() => setMentionIdx(globalIdx)}
-                          onMouseDown={(e) => { e.preventDefault(); insertMention(item); }}
-                        >
-                          <span className="mention-item-icon">{item.icon}</span>
-                          <div className="mention-item-text">
-                            <span className="mention-item-label">{item.label}</span>
-                            {item.desc && <span className="mention-item-desc">{item.desc}</span>}
-                          </div>
-                        </div>
-                      );
-                    })}
+          {mentionOpen && (
+            <div className="mention-dropdown mention-dropdown-with-tabs">
+              <div className="mention-tab-bar">
+                {MENTION_TABS.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    className={`mention-tab ${mentionTab === tab.id ? 'active' : ''}`}
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={() => {
+                      setMentionTab(tab.id);
+                      setMentionIdx(0);
+                    }}
+                  >
+                    <span className="mention-tab-icon">{tab.icon}</span>
+                    <span className="mention-tab-label">{tab.label}</span>
+                    {tab.id !== 'all' && tabCounts[tab.id] > 0 && (
+                      <span className="mention-tab-badge">{tabCounts[tab.id] > 99 ? '99+' : tabCounts[tab.id]}</span>
+                    )}
+                  </button>
+                ))}
+              </div>
+              <div className="mention-list-wrap">
+                {filteredMentions.length === 0 ? (
+                  <div className="mention-empty">
+                    {mentionItems.length === 0
+                      ? '正在加载或暂无可用资源…'
+                      : '当前分类下无匹配项，试试其它分栏或修改筛选'}
                   </div>
-                );
-              })}
+                ) : (
+                  filteredMentions.map((item, idx) => (
+                    <div
+                      key={`${item.category}:${item.id}`}
+                      className={`mention-item ${idx === mentionIdx ? 'active' : ''}`}
+                      onMouseEnter={() => setMentionIdx(idx)}
+                      onMouseDown={(e) => { e.preventDefault(); insertMention(item); }}
+                    >
+                      <span className="mention-item-type">{MENTION_TABS.find((t) => t.id === item.category)?.label || item.category}</span>
+                      <span className="mention-item-icon">{item.icon}</span>
+                      <div className="mention-item-text">
+                        <span className="mention-item-label">{item.label}</span>
+                        {item.desc && <span className="mention-item-desc">{item.desc}</span>}
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
             </div>
           )}
 
@@ -455,9 +636,12 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
               className="chat-input"
               value={input}
               onChange={handleInputChange}
+              onSelect={handleInputSelect}
+              onClick={handleInputSelect}
               onKeyDown={handleKeyDown}
-              placeholder="输入指令... 使用 @ 引用技能或素材"
-              rows={1}
+              onKeyUp={handleInputKeyUp}
+              placeholder="输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）"
+              rows={4}
               disabled={sending}
             />
             <button
@@ -503,7 +687,7 @@ function ChatMessage({ message }) {
           <div className="msg-mentions">
             {message.mentions.map((m, i) => (
               <span key={i} className={`mention-inline mention-inline-${m.category}`}>
-                {m.category === 'skill' ? '🧩' : m.category === 'template' ? '✂️' : m.category === 'input' ? '📁' : '🎬'} {m.label}
+                {mentionIconForCategory(m.category)} {m.label}
               </span>
             ))}
           </div>
@@ -517,7 +701,7 @@ function ChatMessage({ message }) {
     <div className="chat-msg assistant">
       {thinking && (
         <div className="thinking-block">
-          <button className="thinking-toggle" onClick={() => setShowThinking(!showThinking)}>
+          <button type="button" className="thinking-toggle" onClick={() => setShowThinking(!showThinking)}>
             {showThinking ? '▾ ' : '▸ '}思考中...
           </button>
           {showThinking && <div className="thinking-content">{thinking}</div>}

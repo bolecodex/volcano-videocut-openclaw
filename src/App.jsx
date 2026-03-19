@@ -141,6 +141,14 @@ function VideoEditorView({ onContextChange }) {
   const [postprocessing, setPostprocessing] = useState('');
   const [qualityScore, setQualityScore] = useState(null);
   const [exportPlatforms, setExportPlatforms] = useState(['douyin', 'toutiao']);
+  const [seedanceLog, setSeedanceLog] = useState('');
+  const [seedanceRunning, setSeedanceRunning] = useState('');
+  const [seedanceHookStyle, setSeedanceHookStyle] = useState('suspense_zoom');
+  const [seedanceRestylePreset, setSeedanceRestylePreset] = useState('night_scene');
+  const [seedanceTrendingTheme, setSeedanceTrendingTheme] = useState('drama_highlight');
+  const [seedanceRatio, setSeedanceRatio] = useState('9:16');
+  const [seedanceFast, setSeedanceFast] = useState(false);
+  const [seedancePrompt, setSeedancePrompt] = useState('');
   const logEndRef = useRef(null);
 
   useEffect(() => {
@@ -199,6 +207,11 @@ function VideoEditorView({ onContextChange }) {
   useEffect(() => {
     if (!api?.onPostprocessLog) return;
     return api.onPostprocessLog((text) => setPostprocessLog((p) => p + text));
+  }, []);
+
+  useEffect(() => {
+    if (!api?.onSeedanceLog) return;
+    return api.onSeedanceLog((text) => setSeedanceLog((p) => p + text));
   }, []);
 
   useEffect(() => {
@@ -334,6 +347,81 @@ function VideoEditorView({ onContextChange }) {
     setPostprocessing('');
   };
 
+  const handleSeedance = async (action) => {
+    setSeedanceRunning(action);
+    setSeedanceLog('');
+    setRightTab('seedance');
+
+    const outDir = outputDirPath || outputDir || 'video/output';
+    const commonOpts = {
+      outputDir: outDir,
+      ratio: seedanceRatio,
+      resolution: '720p',
+      fast: seedanceFast,
+    };
+
+    try {
+      let result;
+      switch (action) {
+        case 'replicate':
+          if (outputFile) {
+            result = await api.runSeedanceReplicate({
+              ...commonOpts,
+              reference: `${outputDirPath}/${outputFile}`,
+              prompt: seedancePrompt || undefined,
+            });
+          }
+          break;
+        case 'hook':
+          result = await api.runSeedanceHook({
+            ...commonOpts,
+            style: seedanceHookStyle,
+            prompt: seedancePrompt || undefined,
+            sourceVideo: outputFile ? `${outputDirPath}/${outputFile}` : undefined,
+            duration: 5,
+          });
+          break;
+        case 'extend':
+          if (outputFile) {
+            result = await api.runSeedanceExtend({
+              ...commonOpts,
+              video: `${outputDirPath}/${outputFile}`,
+              prompt: seedancePrompt || undefined,
+              duration: 8,
+              chain: 1,
+            });
+          }
+          break;
+        case 'restyle':
+          if (outputFile) {
+            result = await api.runSeedanceRestyle({
+              ...commonOpts,
+              video: `${outputDirPath}/${outputFile}`,
+              style: seedanceRestylePreset,
+              prompt: seedancePrompt || undefined,
+            });
+          }
+          break;
+        case 'trending':
+          result = await api.runSeedanceTrending({
+            ...commonOpts,
+            theme: seedanceTrendingTheme,
+            count: 4,
+            duration: 5,
+          });
+          break;
+        default:
+          break;
+      }
+      if (result && !result.success) {
+        setSeedanceLog((p) => p + `\n[错误] ${result.error}`);
+      }
+    } catch (err) {
+      setSeedanceLog((p) => p + `\n[错误] ${err.message}`);
+    }
+    setSeedanceRunning('');
+  };
+
   return (
     <div className="editor-layout">
       <div className="panel-left">
@@ -441,6 +529,10 @@ function VideoEditorView({ onContextChange }) {
           <button className={`tab ${rightTab === 'postprocess' ? 'active' : ''}`} onClick={() => setRightTab('postprocess')}>
             后期处理
             {postprocessing && <span className="tab-dot" />}
+          </button>
+          <button className={`tab ${rightTab === 'seedance' ? 'active' : ''}`} onClick={() => setRightTab('seedance')}>
+            Seedance
+            {seedanceRunning && <span className="tab-dot" />}
           </button>
           <button className={`tab ${rightTab === 'log' ? 'active' : ''}`} onClick={() => setRightTab('log')}>
             日志
@@ -621,6 +713,142 @@ function VideoEditorView({ onContextChange }) {
 
               {postprocessLog && (
                 <pre className="log-view pp-log">{postprocessLog}</pre>
+              )}
+            </div>
+          </div>
+        )}
+
+        {rightTab === 'seedance' && (
+          <div className="tab-content">
+            <div className="postprocess-panel seedance-panel">
+              <div className="pp-section">
+                <h4 className="pp-title">🎬 Seedance 2.0 AI视频生成</h4>
+                <div className="seedance-config">
+                  <div className="field-row">
+                    <label className="seedance-label">画面比例</label>
+                    <select className="select select-sm" value={seedanceRatio} onChange={(e) => setSeedanceRatio(e.target.value)}>
+                      <option value="9:16">9:16 竖屏</option>
+                      <option value="16:9">16:9 横屏</option>
+                      <option value="1:1">1:1 方形</option>
+                      <option value="adaptive">自适应</option>
+                    </select>
+                    <label className="toggle-label seedance-fast-toggle">
+                      <input type="checkbox" checked={seedanceFast} onChange={(e) => setSeedanceFast(e.target.checked)} />
+                      <span>快速模式</span>
+                    </label>
+                  </div>
+                  <input
+                    className="input input-sm"
+                    value={seedancePrompt}
+                    onChange={(e) => setSeedancePrompt(e.target.value)}
+                    placeholder="自定义提示词（可选）"
+                  />
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">🔥 爆款复刻</h4>
+                <p className="pp-desc">用剪辑好的视频作为参考，复刻其风格和运镜</p>
+                <div className="pp-actions">
+                  <button
+                    className="btn btn-accent btn-sm"
+                    disabled={!outputFile || !!seedanceRunning}
+                    onClick={() => handleSeedance('replicate')}
+                  >
+                    {seedanceRunning === 'replicate' && <span className="spinner" />}
+                    复刻视频风格
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">🎣 开场钩子</h4>
+                <p className="pp-desc">生成吸睛开场，提升3秒留存率</p>
+                <div className="seedance-preset-row">
+                  <select className="select select-sm" value={seedanceHookStyle} onChange={(e) => setSeedanceHookStyle(e.target.value)}>
+                    <option value="suspense_zoom">悬疑推进</option>
+                    <option value="explosion_reveal">爆炸揭示</option>
+                    <option value="emotional_rain">情感雨景</option>
+                    <option value="epic_slow_motion">史诗慢镜</option>
+                    <option value="glitch_rewind">故障回放</option>
+                    <option value="luxury_reveal">奢华揭幕</option>
+                    <option value="mystery_approach">神秘逼近</option>
+                  </select>
+                  <button
+                    className="btn btn-accent btn-sm"
+                    disabled={!!seedanceRunning}
+                    onClick={() => handleSeedance('hook')}
+                  >
+                    {seedanceRunning === 'hook' && <span className="spinner" />}
+                    生成钩子
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">⏩ 智能续写</h4>
+                <p className="pp-desc">AI续写片段尾部，自动延长视频时长</p>
+                <div className="pp-actions">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!seedanceRunning}
+                    onClick={() => handleSeedance('extend')}
+                  >
+                    {seedanceRunning === 'extend' && <span className="spinner" />}
+                    续写片段
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">🎨 风格化编辑</h4>
+                <p className="pp-desc">改变画面风格——夜景、雪景、赛博朋克…</p>
+                <div className="seedance-preset-row">
+                  <select className="select select-sm" value={seedanceRestylePreset} onChange={(e) => setSeedanceRestylePreset(e.target.value)}>
+                    <option value="night_scene">夜景月光</option>
+                    <option value="snow_effect">冬日飘雪</option>
+                    <option value="rain_mood">雨夜霓虹</option>
+                    <option value="golden_hour">黄金时刻</option>
+                    <option value="luxury_upgrade">奢华质感</option>
+                    <option value="cyberpunk">赛博朋克</option>
+                    <option value="ancient_chinese">中国古风</option>
+                    <option value="horror_tint">恐怖氛围</option>
+                  </select>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!seedanceRunning}
+                    onClick={() => handleSeedance('restyle')}
+                  >
+                    {seedanceRunning === 'restyle' && <span className="spinner" />}
+                    风格化
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">📈 热点素材批量生成</h4>
+                <p className="pp-desc">一键批量生成4条主题短视频素材</p>
+                <div className="seedance-preset-row">
+                  <select className="select select-sm" value={seedanceTrendingTheme} onChange={(e) => setSeedanceTrendingTheme(e.target.value)}>
+                    <option value="drama_highlight">戏剧高光</option>
+                    <option value="visual_spectacle">视觉奇观</option>
+                    <option value="product_tease">产品预告</option>
+                    <option value="emotion_hook">情感触动</option>
+                    <option value="action_energy">高能动作</option>
+                  </select>
+                  <button
+                    className="btn btn-primary btn-sm"
+                    disabled={!!seedanceRunning}
+                    onClick={() => handleSeedance('trending')}
+                  >
+                    {seedanceRunning === 'trending' && <span className="spinner" />}
+                    批量生成 (×4)
+                  </button>
+                </div>
+              </div>
+
+              {seedanceLog && (
+                <pre className="log-view pp-log">{seedanceLog}</pre>
               )}
             </div>
           </div>

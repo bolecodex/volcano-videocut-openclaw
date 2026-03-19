@@ -23,6 +23,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   openOutputFolder: (path) => ipcRenderer.invoke('open-output-folder', path),
   listVideoFiles: (dir) => ipcRenderer.invoke('list-video-files', dir),
   listOutputFiles: (dir) => ipcRenderer.invoke('list-output-files', dir),
+  listWorkspaceMentionAssets: () => ipcRenderer.invoke('list-workspace-mention-assets'),
 
   // Log listeners
   onAnalyzeLog: (cb) => onChannel('analyze-log', cb),
@@ -52,4 +53,12 @@ contextBridge.exposeInMainWorld('electronAPI', {
   runGenCover: (opts) => ipcRenderer.invoke('run-gen-cover', opts),
   runQualityScore: (opts) => ipcRenderer.invoke('run-quality-score', opts),
   onPostprocessLog: (cb) => onChannel('postprocess-log', cb),
+
+  // Seedance 2.0 skills
+  runSeedanceReplicate: (opts) => ipcRenderer.invoke('run-seedance-replicate', opts),
+  runSeedanceHook: (opts) => ipcRenderer.invoke('run-seedance-hook', opts),
+  runSeedanceExtend: (opts) => ipcRenderer.invoke('run-seedance-extend', opts),
+  runSeedanceRestyle: (opts) => ipcRenderer.invoke('run-seedance-restyle', opts),
+  runSeedanceTrending: (opts) => ipcRenderer.invoke('run-seedance-trending', opts),
+  onSeedanceLog: (cb) => onChannel('seedance-log', cb),
 });
