@@ -199,7 +199,8 @@ volcano-videocut-openclaw/
 - **Python** 3.x（含 `openai`、`python-dotenv`）
 - **FFmpeg** 已安装并在 PATH 中
 - **OpenClaw** 已安装并运行（Gateway 默认端口 18789）
-- `.env` 文件配置 `ARK_API_KEY` 等
+- `.env` 文件配置 `ARK_API_KEY` 等（可参考根目录 `.env.example`）
+- **Seedance 2.0**：在 `.env` 中设置 `SEEDANCE_MODEL=ep-你的接入点ID`；Key 可用 `ARK_API_KEY` 或单独设置 `SEEDANCE_API_KEY`
 
 ## 安装与运行
 

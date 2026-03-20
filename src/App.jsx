@@ -147,6 +147,7 @@ function VideoEditorView({ onContextChange }) {
   const [seedanceRestylePreset, setSeedanceRestylePreset] = useState('night_scene');
   const [seedanceTrendingTheme, setSeedanceTrendingTheme] = useState('drama_highlight');
   const [seedanceRatio, setSeedanceRatio] = useState('9:16');
+  const [seedanceReframeTarget, setSeedanceReframeTarget] = useState('9:16');
   const [seedanceFast, setSeedanceFast] = useState(false);
   const [seedancePrompt, setSeedancePrompt] = useState('');
   const logEndRef = useRef(null);
@@ -409,6 +410,17 @@ function VideoEditorView({ onContextChange }) {
             count: 4,
             duration: 5,
           });
+          break;
+        case 'reframe':
+          if (outputFile) {
+            result = await api.runSeedanceReframe({
+              ...commonOpts,
+              video: `${outputDirPath}/${outputFile}`,
+              targetRatio: seedanceReframeTarget,
+              prompt: seedancePrompt || undefined,
+              duration: 8,
+            });
+          }
           break;
         default:
           break;
@@ -821,6 +833,26 @@ function VideoEditorView({ onContextChange }) {
                   >
                     {seedanceRunning === 'restyle' && <span className="spinner" />}
                     风格化
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">📐 横竖屏比例转换</h4>
+                <p className="pp-desc">横屏转竖屏、竖屏转横屏，AI 智能重构图</p>
+                <div className="seedance-preset-row">
+                  <select className="select select-sm" value={seedanceReframeTarget} onChange={(e) => setSeedanceReframeTarget(e.target.value)}>
+                    <option value="9:16">横转竖 9:16</option>
+                    <option value="16:9">竖转横 16:9</option>
+                    <option value="1:1">转为方形 1:1</option>
+                  </select>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!seedanceRunning}
+                    onClick={() => handleSeedance('reframe')}
+                  >
+                    {seedanceRunning === 'reframe' && <span className="spinner" />}
+                    比例转换
                   </button>
                 </div>
               </div>

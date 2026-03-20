@@ -616,3 +616,21 @@ ipcMain.handle('run-seedance-trending', async (_, { outputDir, theme, prompts, c
     return { success: false, error: err.message };
   }
 });
+
+ipcMain.handle('run-seedance-reframe', async (_, { video, outputDir, targetRatio, prompt, duration, resolution, fast }) => {
+  const outDir = outputDir || OUTPUT_DIR;
+  const args = [video, '-o', outDir];
+  if (targetRatio) args.push('-r', targetRatio);
+  if (prompt) args.push('-p', prompt);
+  if (duration) args.push('-d', String(duration));
+  if (resolution) args.push('--resolution', resolution);
+  if (fast) args.push('--fast');
+  const sendLog = (text) => mainWindow?.webContents?.send('seedance-log', text);
+  try {
+    await runPython('seedance_reframe.py', args, sendLog, sendLog);
+    return { success: true, outputDir: outDir };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});

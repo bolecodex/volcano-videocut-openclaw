@@ -60,5 +60,6 @@ contextBridge.exposeInMainWorld('electronAPI', {
   runSeedanceExtend: (opts) => ipcRenderer.invoke('run-seedance-extend', opts),
   runSeedanceRestyle: (opts) => ipcRenderer.invoke('run-seedance-restyle', opts),
   runSeedanceTrending: (opts) => ipcRenderer.invoke('run-seedance-trending', opts),
+  runSeedanceReframe: (opts) => ipcRenderer.invoke('run-seedance-reframe', opts),
   onSeedanceLog: (cb) => onChannel('seedance-log', cb),
 });

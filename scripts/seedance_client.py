@@ -6,6 +6,11 @@ Shared async task client for all Seedance-powered skills.
 Handles task creation, polling, and video download via the Ark content generation API.
 
 API: POST https://ark.cn-beijing.volces.com/api/v3/contents/generations/tasks
+
+环境变量（项目根目录 .env）：
+- SEEDANCE_API_KEY：可选；若设置则 Seedance 专用，否则使用 ARK_API_KEY
+- SEEDANCE_MODEL：推理接入点 ID，如 ep-xxxx（方舟控制台创建的 Seedance 2.0 端点）
+- ARK_BASE_URL：默认 https://ark.cn-beijing.volces.com/api/v3
 """
 
 import json
@@ -25,9 +30,9 @@ def get_project_root() -> Path:
 
 def _load_config() -> dict:
     load_dotenv(get_project_root() / ".env")
-    api_key = os.getenv("ARK_API_KEY")
+    api_key = os.getenv("SEEDANCE_API_KEY") or os.getenv("ARK_API_KEY")
     if not api_key:
-        print("ERROR: ARK_API_KEY not set in .env", file=sys.stderr)
+        print("ERROR: Set SEEDANCE_API_KEY or ARK_API_KEY in .env", file=sys.stderr)
         sys.exit(1)
     model = os.getenv("SEEDANCE_MODEL", "doubao-seedance-2-0-260128")
     base_url = os.getenv("ARK_BASE_URL", "https://ark.cn-beijing.volces.com/api/v3")
