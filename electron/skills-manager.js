@@ -90,6 +90,38 @@ class SkillsManager {
     };
   }
 
+  createSkill(skillId, skillData) {
+    const { name, description, trigger, tags, icon, content } = skillData;
+    if (!name || !skillId) {
+      throw new Error('Skill name and ID are required');
+    }
+
+    const targetPath = path.join(this.skillsDir, skillId);
+    if (fs.existsSync(targetPath)) {
+      throw new Error(`Skill "${skillId}" already exists`);
+    }
+
+    fs.mkdirSync(targetPath, { recursive: true });
+
+    const frontmatter = {
+      name,
+      description: description || '',
+      trigger: trigger || '',
+      tags: tags || [],
+      icon: icon || '🔧',
+    };
+
+    const yamlStr = yaml.dump(frontmatter, { lineWidth: -1, noRefs: true });
+    const skillMdContent = `---\n${yamlStr}---\n\n${content || `# ${name}\n\n${description || ''}`}`;
+    fs.writeFileSync(path.join(targetPath, 'SKILL.md'), skillMdContent, 'utf-8');
+
+    return {
+      id: skillId,
+      name,
+      path: targetPath,
+    };
+  }
+
   deleteSkill(skillName) {
     if (BUILTIN_SKILLS.has(skillName)) {
       throw new Error(`Cannot delete built-in skill: ${skillName}`);
@@ -137,6 +169,83 @@ class SkillsManager {
       }
     }
     return results;
+  }
+
+  async importSkillFromUrl(url) {
+    const https = require('https');
+    const http = require('http');
+    const { URL } = require('url');
+
+    const urlObj = new URL(url);
+    let skillName = '';
+    let downloadUrl = url;
+
+    if (urlObj.hostname === 'github.com' || urlObj.hostname.includes('github')) {
+      if (url.includes('/raw/')) {
+        downloadUrl = url;
+        const match = url.match(/github\.com\/[^\/]+\/([^\/]+)\//);
+        skillName = match ? match[1] : 'imported-skill';
+      } else {
+        throw new Error('GitHub URL must be a raw file URL (e.g., https://github.com/user/repo/raw/branch/path/SKILL.md). For full repos, please download and import from local folder.');
+      }
+    } else {
+      skillName = path.basename(urlObj.pathname, path.extname(urlObj.pathname)) || 'imported-skill';
+    }
+
+    const skillMdContent = await this._downloadText(downloadUrl);
+    if (!skillMdContent || !skillMdContent.includes('---')) {
+      throw new Error('Invalid SKILL.md content or not a valid skill file');
+    }
+
+    const meta = this._parseFrontmatterFromContent(skillMdContent);
+    const finalSkillName = meta.name ? meta.name.toLowerCase().replace(/\s+/g, '-') : skillName;
+    const targetPath = path.join(this.skillsDir, finalSkillName);
+
+    if (fs.existsSync(targetPath)) {
+      throw new Error(`Skill "${finalSkillName}" already exists`);
+    }
+
+    fs.mkdirSync(targetPath, { recursive: true });
+    fs.writeFileSync(path.join(targetPath, 'SKILL.md'), skillMdContent, 'utf-8');
+
+    return {
+      id: finalSkillName,
+      name: meta.name || finalSkillName,
+      path: targetPath,
+    };
+  }
+
+  _downloadText(url) {
+    return new Promise((resolve, reject) => {
+      const https = require('https');
+      const http = require('http');
+      const { URL } = require('url');
+      const urlObj = new URL(url);
+      const client = urlObj.protocol === 'https:' ? https : http;
+
+      client.get(url, (response) => {
+        if (response.statusCode === 301 || response.statusCode === 302) {
+          return this._downloadText(response.headers.location).then(resolve).catch(reject);
+        }
+        if (response.statusCode !== 200) {
+          reject(new Error(`Download failed: ${response.statusCode}`));
+          return;
+        }
+        let data = '';
+        response.on('data', (chunk) => { data += chunk; });
+        response.on('end', () => resolve(data));
+      }).on('error', reject);
+    });
+  }
+
+  _parseFrontmatterFromContent(content) {
+    const match = content.match(/^---\n([\s\S]*?)\n---/);
+    if (!match) return {};
+    try {
+      return yaml.load(match[1]) || {};
+    } catch {
+      return {};
+    }
   }
 
   _copyDirRecursive(src, dest) {

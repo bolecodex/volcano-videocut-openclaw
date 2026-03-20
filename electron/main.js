@@ -10,6 +10,17 @@ const SCRIPTS_DIR = path.join(PROJECT_ROOT, 'scripts');
 const OUTPUT_DIR = path.join(PROJECT_ROOT, 'video', 'output');
 const TEMPLATES_DIR = path.join(PROJECT_ROOT, 'scripts', 'prompts', 'templates');
 const SKILLS_DIR = path.join(PROJECT_ROOT, 'skills');
+const ENV_PATH = path.join(PROJECT_ROOT, '.env');
+
+const ENV_KEYS = [
+  'ARK_API_KEY',
+  'ARK_BASE_URL',
+  'ARK_MODEL_NAME',
+  'SEEDANCE_MODEL',
+  'SEEDANCE_API_KEY',
+  'ARK_TTS_ENDPOINT',
+  'ARK_TTS_MODEL',
+];
 
 const skillsManager = new SkillsManager(SKILLS_DIR);
 
@@ -98,6 +109,64 @@ ipcMain.handle('read-prompt-template', async (_, templateId) => {
     return fs.readFileSync(filePath, 'utf-8');
   } catch {
     return null;
+  }
+});
+
+// ── Settings (.env) ──
+function parseEnvFile(content) {
+  const obj = {};
+  for (const key of ENV_KEYS) obj[key] = '';
+  if (!content) return obj;
+  for (const line of content.split('\n')) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith('#')) continue;
+    const eq = trimmed.indexOf('=');
+    if (eq <= 0) continue;
+    const key = trimmed.slice(0, eq).trim();
+    if (ENV_KEYS.includes(key)) {
+      const val = trimmed.slice(eq + 1).trim();
+      obj[key] = val.replace(/^["']|["']$/g, '');
+    }
+  }
+  return obj;
+}
+
+function stringifyEnvConfig(obj) {
+  const comments = {
+    ARK_API_KEY: '# 火山引擎方舟 API Key（视频分析、OpenClaw、Seedance 等）',
+    ARK_BASE_URL: '# 方舟 API 地址（可选）',
+    ARK_MODEL_NAME: '# 多模态/对话模型接入点（可选）',
+    SEEDANCE_MODEL: '# Seedance 2.0 推理接入点 ID（形如 ep-xxxx）',
+    SEEDANCE_API_KEY: '# 可选：Seedance 专用 Key，不填则用 ARK_API_KEY',
+    ARK_TTS_ENDPOINT: '# 可选：语音合成接入点',
+    ARK_TTS_MODEL: '# 可选：TTS 模型 ID',
+  };
+  let out = '# 复制为 .env 后填写真实值（.env 勿提交到 Git）\n\n';
+  for (const key of ENV_KEYS) {
+    if (comments[key]) out += comments[key] + '\n';
+    const val = (obj[key] || '').trim();
+    out += `${key}=${val ? val : ''}\n`;
+    if (['ARK_API_KEY', 'SEEDANCE_MODEL'].includes(key)) out += '\n';
+  }
+  return out;
+}
+
+ipcMain.handle('get-env-config', async () => {
+  try {
+    const content = fs.existsSync(ENV_PATH) ? fs.readFileSync(ENV_PATH, 'utf-8') : '';
+    return parseEnvFile(content);
+  } catch {
+    return ENV_KEYS.reduce((o, k) => ({ ...o, [k]: '' }), {});
+  }
+});
+
+ipcMain.handle('set-env-config', async (_, config) => {
+  try {
+    const obj = { ...parseEnvFile(fs.existsSync(ENV_PATH) ? fs.readFileSync(ENV_PATH, 'utf-8') : ''), ...config };
+    fs.writeFileSync(ENV_PATH, stringifyEnvConfig(obj), 'utf-8');
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: err.message };
   }
 });
 
@@ -323,6 +392,25 @@ ipcMain.handle('import-skill', async () => {
   }
 });
 
+ipcMain.handle('import-skill-from-url', async (_, url) => {
+  try {
+    const result = await skillsManager.importSkillFromUrl(url);
+    return { success: true, ...result };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('create-skill', async (_, skillData) => {
+  try {
+    const { skillId, ...data } = skillData;
+    const result = skillsManager.createSkill(skillId, data);
+    return { success: true, ...result };
+  } catch (err) {
+    return { success: false, error: err.message };
+  }
+});
+
 ipcMain.handle('delete-skill', async (_, skillName) => {
   try {
     skillsManager.deleteSkill(skillName);
@@ -504,6 +592,113 @@ ipcMain.handle('run-quality-score', async (_, { videoPath, outputDir }) => {
     if (fs.existsSync(scorePath)) {
       return { success: true, score: JSON.parse(fs.readFileSync(scorePath, 'utf-8')) };
     }
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-video-compress', async (_, { videoPath, outputPath, maxSizeMb, maxDuration }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (maxSizeMb) args.push('--max-size-mb', String(maxSizeMb));
+  if (maxDuration) args.push('--max-duration', String(maxDuration));
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('video_compress.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-video-resize', async (_, { videoPath, width, height, outputPath, method }) => {
+  const args = [videoPath, String(width), String(height)];
+  if (outputPath) args.push('-o', outputPath);
+  if (method) args.push('-m', method);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('video_resize.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-add-watermark', async (_, { videoPath, outputPath, title, disclaimer, position, fontsize, fontcolor, alpha }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (title) args.push('--title', title);
+  if (disclaimer) args.push('--disclaimer', disclaimer);
+  if (position) args.push('--position', position);
+  if (fontsize) args.push('--fontsize', String(fontsize));
+  if (fontcolor) args.push('--fontcolor', fontcolor);
+  if (alpha != null) args.push('--alpha', String(alpha));
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('add_watermark.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-video-censor', async (_, { videoPath, outputPath, subtitlePath }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (subtitlePath) args.push('--subtitle', subtitlePath);
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('video_censor.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-remove-freeze-zoom', async (_, { videoPath, outputPath, tailSeconds, forceCut }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (tailSeconds) args.push('--tail', String(tailSeconds));
+  if (forceCut != null) args.push('--force', String(forceCut));
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('remove_freeze_zoom.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-ai-narration', async (_, { videoPath, outputPath, voiceId, speed }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (voiceId) args.push('--voice', voiceId);
+  if (speed != null) args.push('--speed', String(speed));
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('ai_narration.py', args, sendLog, sendLog);
+    return { success: true };
+  } catch (err) {
+    sendLog?.(err.message);
+    return { success: false, error: err.message };
+  }
+});
+
+ipcMain.handle('run-bgm-auto-match', async (_, { videoPath, outputPath, bgmDir, noAi }) => {
+  const args = [videoPath];
+  if (outputPath) args.push('-o', outputPath);
+  if (bgmDir) args.push('--bgm-dir', bgmDir);
+  if (noAi) args.push('--no-ai');
+  const sendLog = (text) => mainWindow?.webContents?.send('postprocess-log', text);
+  try {
+    await runPython('bgm_auto_match.py', args, sendLog, sendLog);
     return { success: true };
   } catch (err) {
     sendLog?.(err.message);

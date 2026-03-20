@@ -105,6 +105,102 @@ body {
   letter-spacing: 0.04em;
 }
 
+/* ── Settings modal ── */
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.settings-modal {
+  background: var(--bg-main);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  min-width: 420px;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.settings-hint {
+  margin: 0;
+  padding: 12px 20px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  background: var(--bg-subtle);
+  border-bottom: 1px solid var(--border);
+}
+
+.settings-form {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.settings-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.settings-label:last-child {
+  margin-bottom: 0;
+}
+
+.settings-label span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.settings-label span em {
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+.settings-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.settings-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+
+.settings-status {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-right: auto;
+}
+
 /* ── Three-column layout ── */
 .layout-three-col {
   flex: 1;
@@ -474,10 +570,131 @@ body {
   flex-shrink: 0;
 }
 
+.skills-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skills-create-btn,
 .skills-import-btn {
   width: 100%;
   justify-content: center;
   font-size: 0.75rem;
+}
+
+/* ── Skill Dialog (Create/Import) ── */
+.skill-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.skill-dialog {
+  background: var(--bg-main);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  min-width: 480px;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-dialog-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.skill-dialog-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.skill-form-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.skill-form-label:last-child {
+  margin-bottom: 0;
+}
+
+.skill-form-label span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.skill-form-label span em {
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-style: normal;
+}
+
+.skill-dialog-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 14px 20px;
+  border-top: 1px solid var(--border);
+  background: var(--bg-subtle);
+}
+
+.skill-import-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.skill-import-tab {
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.skill-import-tab:hover {
+  color: var(--text-primary);
+}
+
+.skill-import-tab.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.skill-import-local,
+.skill-import-url {
+  padding: 12px 0;
+}
+
+.skill-import-hint {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
 }
 
 /* ══════════════════════════════════════
@@ -1999,6 +2216,23 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+
+.pp-watermark-row,
+.pp-resize-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pp-label-inline {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.pp-num {
+  width: 72px;
 }
 
 .pp-export-platforms {

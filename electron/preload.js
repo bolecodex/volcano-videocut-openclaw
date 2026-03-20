@@ -11,6 +11,10 @@ contextBridge.exposeInMainWorld('electronAPI', {
   listPromptTemplates: () => ipcRenderer.invoke('list-prompt-templates'),
   readPromptTemplate: (id) => ipcRenderer.invoke('read-prompt-template', id),
 
+  // Settings (env config)
+  getEnvConfig: () => ipcRenderer.invoke('get-env-config'),
+  setEnvConfig: (config) => ipcRenderer.invoke('set-env-config', config),
+
   // File dialogs
   selectVideoDir: () => ipcRenderer.invoke('select-video-dir'),
   selectOutputDir: () => ipcRenderer.invoke('select-output-dir'),
@@ -33,6 +37,8 @@ contextBridge.exposeInMainWorld('electronAPI', {
   listSkills: () => ipcRenderer.invoke('list-skills'),
   getSkillDetail: (name) => ipcRenderer.invoke('get-skill-detail', name),
   importSkill: () => ipcRenderer.invoke('import-skill'),
+  importSkillFromUrl: (url) => ipcRenderer.invoke('import-skill-from-url', url),
+  createSkill: (skillData) => ipcRenderer.invoke('create-skill', skillData),
   deleteSkill: (name) => ipcRenderer.invoke('delete-skill', name),
 
   // Gateway
@@ -52,6 +58,13 @@ contextBridge.exposeInMainWorld('electronAPI', {
   runPlatformExport: (opts) => ipcRenderer.invoke('run-platform-export', opts),
   runGenCover: (opts) => ipcRenderer.invoke('run-gen-cover', opts),
   runQualityScore: (opts) => ipcRenderer.invoke('run-quality-score', opts),
+  runVideoCompress: (opts) => ipcRenderer.invoke('run-video-compress', opts),
+  runVideoResize: (opts) => ipcRenderer.invoke('run-video-resize', opts),
+  runAddWatermark: (opts) => ipcRenderer.invoke('run-add-watermark', opts),
+  runVideoCensor: (opts) => ipcRenderer.invoke('run-video-censor', opts),
+  runRemoveFreezeZoom: (opts) => ipcRenderer.invoke('run-remove-freeze-zoom', opts),
+  runAiNarration: (opts) => ipcRenderer.invoke('run-ai-narration', opts),
+  runBgmAutoMatch: (opts) => ipcRenderer.invoke('run-bgm-auto-match', opts),
   onPostprocessLog: (cb) => onChannel('postprocess-log', cb),
 
   // Seedance 2.0 skills

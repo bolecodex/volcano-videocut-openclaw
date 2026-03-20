@@ -390,6 +390,36 @@ def process_combined(
 
     _cleanup_temp(temp_dir)
 
+    # Optional: remove trailing freeze/zoom then compress if over 500MB
+    auto_trim = os.environ.get("FFMPEG_CUT_AUTO_TRIM", "").lower() in ("1", "true", "yes")
+    auto_compress = os.environ.get("FFMPEG_CUT_AUTO_COMPRESS", "").lower() in ("1", "true", "yes")
+    scripts_dir = get_project_root() / "scripts"
+    py = "python3"
+    for out_path in output_files[:]:
+        if auto_trim:
+            trim_path = out_path.replace(".mp4", "_trim.mp4")
+            r = subprocess.run(
+                [py, str(scripts_dir / "remove_freeze_zoom.py"), out_path, "-o", trim_path, "--tail", "5"],
+                cwd=get_project_root(),
+                capture_output=True,
+                text=True,
+            )
+            if r.returncode == 0 and os.path.exists(trim_path):
+                try:
+                    os.unlink(out_path)
+                    os.rename(trim_path, out_path)
+                except OSError:
+                    pass
+        if auto_compress:
+            r = subprocess.run(
+                [py, str(scripts_dir / "video_compress.py"), out_path, "-o", out_path, "--max-size-mb", "500", "--max-duration", "1200"],
+                cwd=get_project_root(),
+                capture_output=True,
+                text=True,
+            )
+            if r.returncode != 0 and r.stderr:
+                print(f"  [Compress] {r.stderr[-200:]}", file=sys.stderr)
+
     if output_files:
         return output_files[0]
     return None

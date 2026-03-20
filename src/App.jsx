@@ -32,6 +32,9 @@ function App() {
   const [mainView, setMainView] = useState('editor'); // 'editor' | 'skill'
 
   const [editorContext, setEditorContext] = useState({ videoDir: '', outputDir: '' });
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [envConfig, setEnvConfigForm] = useState({});
+  const [settingsSaveStatus, setSettingsSaveStatus] = useState('');
 
   const handleSelectSkill = (skillId) => {
     setSelectedSkill(skillId);
@@ -46,6 +49,21 @@ function App() {
   const handleSkillDeleted = () => {
     setSelectedSkill(null);
     setMainView('editor');
+  };
+
+  useEffect(() => {
+    if (settingsOpen && api?.getEnvConfig) {
+      api.getEnvConfig().then((c) => setEnvConfigForm(c || {}));
+      setSettingsSaveStatus('');
+    }
+  }, [settingsOpen, api]);
+
+  const handleSaveSettings = async () => {
+    if (!api?.setEnvConfig) return;
+    setSettingsSaveStatus('保存中…');
+    const result = await api.setEnvConfig(envConfig);
+    setSettingsSaveStatus(result?.success ? '已保存' : (result?.error || '保存失败'));
+    if (result?.success) setTimeout(() => setSettingsSaveStatus(''), 2000);
   };
 
   if (!api) {
@@ -64,6 +82,9 @@ function App() {
           <span className="header-badge">OpenClaw Studio</span>
         </div>
         <div className="header-right">
+          <button className="btn btn-ghost" onClick={() => setSettingsOpen(true)} title="设置">
+            ⚙️ 设置
+          </button>
           {!skillsCollapsed ? null : (
             <button className="btn btn-ghost" onClick={() => setSkillsCollapsed(false)}>
               🧩 Skills
@@ -108,6 +129,91 @@ function App() {
           editorContext={editorContext}
         />
       </div>
+
+      {settingsOpen && (
+        <div className="settings-overlay" onClick={() => setSettingsOpen(false)}>
+          <div className="settings-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="settings-header">
+              <h2>设置</h2>
+              <button type="button" className="btn btn-ghost btn-sm" onClick={() => setSettingsOpen(false)}>关闭</button>
+            </div>
+            <p className="settings-hint">火山引擎等 API 配置会写入项目根目录的 .env 文件，脚本下次运行时生效。</p>
+            <div className="settings-form">
+              <label className="settings-label">
+                <span>ARK_API_KEY <em>（必填）</em></span>
+                <input
+                  type="password"
+                  className="input settings-input"
+                  value={envConfig.ARK_API_KEY || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, ARK_API_KEY: e.target.value }))}
+                  placeholder="火山引擎方舟 API Key"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>SEEDANCE_MODEL</span>
+                <input
+                  type="text"
+                  className="input settings-input"
+                  value={envConfig.SEEDANCE_MODEL || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, SEEDANCE_MODEL: e.target.value }))}
+                  placeholder="Seedance 2.0 接入点 ID，如 ep-xxxx"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>SEEDANCE_API_KEY <em>（可选）</em></span>
+                <input
+                  type="password"
+                  className="input settings-input"
+                  value={envConfig.SEEDANCE_API_KEY || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, SEEDANCE_API_KEY: e.target.value }))}
+                  placeholder="不填则使用 ARK_API_KEY"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>ARK_MODEL_NAME <em>（可选）</em></span>
+                <input
+                  type="text"
+                  className="input settings-input"
+                  value={envConfig.ARK_MODEL_NAME || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, ARK_MODEL_NAME: e.target.value }))}
+                  placeholder="多模态/对话模型接入点"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>ARK_BASE_URL <em>（可选）</em></span>
+                <input
+                  type="text"
+                  className="input settings-input"
+                  value={envConfig.ARK_BASE_URL || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, ARK_BASE_URL: e.target.value }))}
+                  placeholder="https://ark.cn-beijing.volces.com/api/v3"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>ARK_TTS_ENDPOINT / ARK_TTS_MODEL <em>（可选）</em></span>
+                <input
+                  type="text"
+                  className="input settings-input"
+                  value={envConfig.ARK_TTS_ENDPOINT || envConfig.ARK_TTS_MODEL || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, ARK_TTS_ENDPOINT: e.target.value, ARK_TTS_MODEL: e.target.value }))}
+                  placeholder="语音合成接入点或模型 ID"
+                  autoComplete="off"
+                />
+              </label>
+            </div>
+            <div className="settings-footer">
+              <span className="settings-status">{settingsSaveStatus}</span>
+              <button type="button" className="btn btn-primary" onClick={handleSaveSettings}>保存</button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
@@ -141,6 +247,16 @@ function VideoEditorView({ onContextChange }) {
   const [postprocessing, setPostprocessing] = useState('');
   const [qualityScore, setQualityScore] = useState(null);
   const [exportPlatforms, setExportPlatforms] = useState(['douyin', 'toutiao']);
+  const [watermarkTitle, setWatermarkTitle] = useState('');
+  const [watermarkDisclaimer, setWatermarkDisclaimer] = useState('热播短剧，本故事纯属虚构');
+  const [watermarkPosition, setWatermarkPosition] = useState('bottom_center');
+  const [watermarkFontsize, setWatermarkFontsize] = useState(24);
+  const [watermarkFontcolor, setWatermarkFontcolor] = useState('white');
+  const [watermarkAlpha, setWatermarkAlpha] = useState(0.8);
+  const [customWidth, setCustomWidth] = useState(1080);
+  const [customHeight, setCustomHeight] = useState(1920);
+  const [customResizeMethod, setCustomResizeMethod] = useState('scale');
+  const [narrationVoice, setNarrationVoice] = useState('zh_female_huayan');
   const [seedanceLog, setSeedanceLog] = useState('');
   const [seedanceRunning, setSeedanceRunning] = useState('');
   const [seedanceHookStyle, setSeedanceHookStyle] = useState('suspense_zoom');
@@ -297,7 +413,7 @@ function VideoEditorView({ onContextChange }) {
     if (!outputDirPath && !videoDir) return;
     setPostprocessing(action);
     setPostprocessLog('');
-    setRightTab('log');
+    setRightTab('postprocess');
 
     try {
       let result;
@@ -333,6 +449,78 @@ function VideoEditorView({ onContextChange }) {
               videoPath: `${outputDirPath}/${outputFile}`,
               outputDir: outputDirPath ? `${outputDirPath}/exports` : undefined,
               platforms: exportPlatforms,
+            });
+          }
+          break;
+        case 'compress':
+          if (outputFile) {
+            result = await api.runVideoCompress({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_compressed.mp4')}`,
+              maxSizeMb: 500,
+              maxDuration: 1200,
+            });
+          }
+          break;
+        case 'resize':
+          if (outputFile) {
+            result = await api.runVideoResize({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              width: customWidth,
+              height: customHeight,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', `_${customWidth}x${customHeight}.mp4`)}`,
+              method: customResizeMethod,
+            });
+          }
+          break;
+        case 'watermark':
+          if (outputFile) {
+            result = await api.runAddWatermark({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_watermark.mp4')}`,
+              title: watermarkTitle,
+              disclaimer: watermarkDisclaimer,
+              position: watermarkPosition,
+              fontsize: watermarkFontsize,
+              fontcolor: watermarkFontcolor,
+              alpha: watermarkAlpha,
+            });
+          }
+          break;
+        case 'censor':
+          if (outputFile) {
+            const srtFile = `asr_${outputFile.replace('promo_', '').replace('.mp4', '')}.srt`;
+            result = await api.runVideoCensor({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_censor.mp4')}`,
+              subtitlePath: `${outputDirPath}/${srtFile}`,
+            });
+          }
+          break;
+        case 'freeze':
+          if (outputFile) {
+            result = await api.runRemoveFreezeZoom({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_trim.mp4')}`,
+              tailSeconds: 5,
+            });
+          }
+          break;
+        case 'narration':
+          if (outputFile) {
+            result = await api.runAiNarration({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_narration.mp4')}`,
+              voiceId: narrationVoice,
+              speed: 1,
+            });
+          }
+          break;
+        case 'bgm_auto':
+          if (outputFile) {
+            result = await api.runBgmAutoMatch({
+              videoPath: `${outputDirPath}/${outputFile}`,
+              outputPath: `${outputDirPath}/${outputFile.replace('.mp4', '_bgm.mp4')}`,
             });
           }
           break;
@@ -646,6 +834,90 @@ function VideoEditorView({ onContextChange }) {
                   >
                     {postprocessing === 'cover' && <span className="spinner" />}
                     🖼️ 生成封面
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">剧名 / 风险语</h4>
+                <div className="pp-watermark-row">
+                  <input
+                    className="input input-sm"
+                    value={watermarkTitle}
+                    onChange={(e) => setWatermarkTitle(e.target.value)}
+                    placeholder="剧名（可选）"
+                  />
+                  <input
+                    className="input input-sm"
+                    value={watermarkDisclaimer}
+                    onChange={(e) => setWatermarkDisclaimer(e.target.value)}
+                    placeholder="风险语"
+                  />
+                  <select className="select select-sm" value={watermarkPosition} onChange={(e) => setWatermarkPosition(e.target.value)}>
+                    <option value="top_center">顶部居中</option>
+                    <option value="top_left">左上</option>
+                    <option value="top_right">右上</option>
+                    <option value="bottom_center">底部居中</option>
+                    <option value="bottom_left">左下</option>
+                    <option value="bottom_right">右下</option>
+                  </select>
+                  <label className="pp-label-inline">字号</label>
+                  <input type="number" className="input input-sm pp-num" min={12} max={48} value={watermarkFontsize} onChange={(e) => setWatermarkFontsize(Number(e.target.value) || 24)} />
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    disabled={!outputFile || !!postprocessing}
+                    onClick={() => handlePostprocess('watermark')}
+                  >
+                    {postprocessing === 'watermark' && <span className="spinner" />}
+                    添加
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">尺寸与压缩</h4>
+                <div className="pp-actions pp-resize-row">
+                  <input type="number" className="input input-sm pp-num" value={customWidth} onChange={(e) => setCustomWidth(Number(e.target.value) || 1080)} placeholder="宽" />
+                  <span>×</span>
+                  <input type="number" className="input input-sm pp-num" value={customHeight} onChange={(e) => setCustomHeight(Number(e.target.value) || 1920)} placeholder="高" />
+                  <select className="select select-sm" value={customResizeMethod} onChange={(e) => setCustomResizeMethod(e.target.value)}>
+                    <option value="scale">缩放+黑边</option>
+                    <option value="crop">裁剪居中</option>
+                    <option value="stretch">拉伸</option>
+                  </select>
+                  <button className="btn btn-secondary btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('resize')}>
+                    {postprocessing === 'resize' && <span className="spinner" />}
+                    自定义尺寸
+                  </button>
+                  <button className="btn btn-secondary btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('compress')}>
+                    {postprocessing === 'compress' && <span className="spinner" />}
+                    压缩(&lt;500MB)
+                  </button>
+                </div>
+              </div>
+
+              <div className="pp-section">
+                <h4 className="pp-title">打码 / 结尾 / 解说 / BGM</h4>
+                <div className="pp-actions">
+                  <button className="btn btn-secondary btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('censor')}>
+                    {postprocessing === 'censor' && <span className="spinner" />}
+                    🔒 违规打码
+                  </button>
+                  <button className="btn btn-secondary btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('freeze')}>
+                    {postprocessing === 'freeze' && <span className="spinner" />}
+                    ✂️ 删除结尾静帧
+                  </button>
+                  <select className="select select-sm" value={narrationVoice} onChange={(e) => setNarrationVoice(e.target.value)}>
+                    <option value="zh_female_huayan">女声-花颜</option>
+                    <option value="zh_male_chengfeng">男声-成风</option>
+                  </select>
+                  <button className="btn btn-accent btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('narration')}>
+                    {postprocessing === 'narration' && <span className="spinner" />}
+                    🎙️ AI解说
+                  </button>
+                  <button className="btn btn-secondary btn-sm" disabled={!outputFile || !!postprocessing} onClick={() => handlePostprocess('bgm_auto')}>
+                    {postprocessing === 'bgm_auto' && <span className="spinner" />}
+                    🎵 自动匹配BGM
                   </button>
                 </div>
               </div>

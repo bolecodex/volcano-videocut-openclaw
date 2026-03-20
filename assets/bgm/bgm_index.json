@@ -1,0 +1,14 @@
+[
+  {
+    "path": "example_tense.mp3",
+    "name": "example_tense",
+    "emotion": "tense",
+    "style": "紧张悬疑"
+  },
+  {
+    "path": "example_warm.mp3",
+    "name": "example_warm",
+    "emotion": "warm",
+    "style": "温馨治愈"
+  }
+]
