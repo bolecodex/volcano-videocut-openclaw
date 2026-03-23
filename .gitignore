@@ -1,5 +1,8 @@
 node_modules/
-docs/
+# 默认忽略对客/内部文档；架构汇报与 SVG 纳入版本库便于 README 与协作
+docs/*
+!docs/architecture/
+!docs/architecture/**
 build/
 dist/
 .env

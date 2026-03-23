@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" width="1200" height="380">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ecfeff"/>
+      <stop offset="100%" style="stop-color:#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="n1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0369a1"/>
+      <stop offset="100%" style="stop-color:#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="n2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="n3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0d9488"/>
+      <stop offset="100%" style="stop-color:#0f766e"/>
+    </linearGradient>
+    <linearGradient id="n4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ea580c"/>
+      <stop offset="100%" style="stop-color:#c2410c"/>
+    </linearGradient>
+    <linearGradient id="n5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <filter id="ds">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#0c4a6e" flood-opacity="0.18"/>
+    </filter>
+    <marker id="arrW" markerWidth="12" markerHeight="12" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L0,8 L10,4 z" fill="#0284c7"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="380" fill="url(#bg3)"/>
+  <text x="600" y="46" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="22" font-weight="700" fill="#0c4a6e">&#x9F99;&#x867E;&#x4EF7;&#x503C;&#x6D41; &#xB7; &#x4ECE;&#x610F;&#x56FE;&#x5230;&#x6210;&#x7247;</text>
+  <text x="600" y="72" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#64748b">&#x628A;&#x300C;&#x8BF4;&#x6CD5;&#x300D;&#x53D8;&#x6210;&#x300C;&#x52A8;&#x4F5C;&#x300D;&#xB7; &#x5DEE;&#x4E00;&#x70B9;&#x611F;&#x89C9;&#x5C31;&#x518D;&#x804A;&#x4E00;&#x8F6E;</text>
+  <g filter="url(#ds)">
+    <rect x="60" y="120" width="200" height="88" rx="14" fill="url(#n1)"/>
+    <text x="160" y="158" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#ffffff">&#x8FD0;&#x8425;&#x4E0E;&#x526A;&#x8F91;</text>
+    <text x="160" y="178" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#bae6fd">&#x610F;&#x56FE;&#x4E0E; vibe</text>
+    <text x="160" y="196" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#7dd3fc">&#x6C1B;&#x56F4; / &#x8282;&#x594F; / &#x94A9;&#x5B50;&#x611F;&#x89C9;</text>
+  </g>
+  <line x1="260" y1="164" x2="300" y2="164" stroke="#0284c7" stroke-width="3" marker-end="url(#arrW)"/>
+  <g filter="url(#ds)">
+    <rect x="300" y="120" width="200" height="88" rx="14" fill="url(#n2)"/>
+    <text x="400" y="158" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#ffffff">&#x9F99;&#x867E; Agent</text>
+    <text x="400" y="182" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#ddd6fe">&#x7406;&#x89E3;&#x4E0E;&#x62C6;&#x89E3;</text>
+    <text x="400" y="198" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#c4b5fd">OpenClaw</text>
+  </g>
+  <line x1="500" y1="164" x2="540" y2="164" stroke="#0284c7" stroke-width="3" marker-end="url(#arrW)"/>
+  <g filter="url(#ds)">
+    <rect x="540" y="120" width="200" height="88" rx="14" fill="url(#n3)"/>
+    <text x="640" y="158" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#ffffff">&#x5BF9;&#x9F50;&#x6267;&#x884C;&#x9762;</text>
+    <text x="640" y="182" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#99f6e4">&#x6A21;&#x677F; &#xB7; &#x6280;&#x80FD; &#xB7; &#x7D20;&#x6750;</text>
+  </g>
+  <line x1="740" y1="164" x2="780" y2="164" stroke="#0284c7" stroke-width="3" marker-end="url(#arrW)"/>
+  <g filter="url(#ds)">
+    <rect x="780" y="120" width="200" height="88" rx="14" fill="url(#n4)"/>
+    <text x="880" y="158" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#ffffff">&#x5206;&#x6790;&#x4E0E;&#x6DF1;&#x52A0;&#x5DE5;</text>
+    <text x="880" y="182" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#fed7aa">&#x6309;&#x7F16;&#x6392;&#x6267;&#x884C;</text>
+  </g>
+  <line x1="980" y1="164" x2="1020" y2="164" stroke="#0284c7" stroke-width="3" marker-end="url(#arrW)"/>
+  <g filter="url(#ds)">
+    <rect x="1020" y="120" width="120" height="88" rx="14" fill="url(#n5)"/>
+    <text x="1080" y="162" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#ffffff">&#x6210;&#x7247;</text>
+    <text x="1080" y="186" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#bfdbfe">&#x672C;&#x5730;&#x8F93;&#x51FA;</text>
+  </g>
+  <path d="M 1080 220 Q 600 320 160 220" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="12 8"/>
+  <polygon points="170,228 150,218 160,208" fill="#7c3aed"/>
+  <text x="600" y="310" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#6d28d9">&#x518D;&#x804A;&#x4E00;&#x8F6E; &#xB7; &#x5FAE;&#x8C03; vibe &#x4E0E;&#x53E3;&#x5F84;</text>
+</svg>

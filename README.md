@@ -51,6 +51,22 @@ graph TB
     FFmpeg -->|"CLI"| FFmpegBin["FFmpeg"]
 ```
 
+## 解决方案架构图（SVG）
+
+矢量图位于 [`docs/architecture/svg/`](docs/architecture/svg/)，可直接插入 Keynote / 浏览器打开；完整汇报页见 [`docs/architecture/短剧投流智能剪辑-架构汇报.html`](docs/architecture/短剧投流智能剪辑-架构汇报.html)。
+
+| 文件 | 内容 |
+|------|------|
+| [`01-business-value-chain.svg`](docs/architecture/svg/01-business-value-chain.svg) | 业务价值链：上游输入、本方案智能素材生产、下游投放迭代与经营闭环 |
+| [`02-smart-architecture-lobster.svg`](docs/architecture/svg/02-smart-architecture-lobster.svg) | 智能剪辑架构与 OpenClaw（龙虾）编排 |
+| [`03-lobster-value-flow.svg`](docs/architecture/svg/03-lobster-value-flow.svg) | 龙虾侧价值流 / 对话与工具协同 |
+| [`04-main-data-pipeline.svg`](docs/architecture/svg/04-main-data-pipeline.svg) | 主数据管线：分析、剪点、成片与输出 |
+
+<p align="center"><img src="docs/architecture/svg/01-business-value-chain.svg" alt="业务价值链" width="920" /></p>
+<p align="center"><img src="docs/architecture/svg/02-smart-architecture-lobster.svg" alt="智能架构与龙虾" width="920" /></p>
+<p align="center"><img src="docs/architecture/svg/03-lobster-value-flow.svg" alt="龙虾价值流" width="920" /></p>
+<p align="center"><img src="docs/architecture/svg/04-main-data-pipeline.svg" alt="主数据管线" width="920" /></p>
+
 ## 三栏 UI 布局
 
 ```
@@ -175,6 +191,11 @@ volcano-videocut-openclaw/
 │   ├── ffmpeg-cutter/       # 内置：高光切片与成片合成
 │   └── …                    # 其余见应用内 Skills 列表
 ├── video/                   # 视频素材 & 输出目录
+├── docs/
+│   ├── architecture/
+│   │   ├── svg/             # 对客架构图（01–04 SVG）
+│   │   └── 短剧投流智能剪辑-架构汇报.html
+│   └── …                    # 解决方案说明、项目介绍等 Markdown
 ├── package.json
 └── .env                     # API 密钥配置
 ```

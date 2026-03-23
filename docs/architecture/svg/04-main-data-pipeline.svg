@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="1100" height="220">
+  <defs>
+    <linearGradient id="pbg" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#475569"/>
+      <stop offset="100%" style="stop-color:#334155"/>
+    </linearGradient>
+    <linearGradient id="p2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2563eb"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    <linearGradient id="p3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#0e7490"/>
+    </linearGradient>
+    <linearGradient id="p4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669"/>
+      <stop offset="100%" style="stop-color:#047857"/>
+    </linearGradient>
+    <filter id="ps">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.12"/>
+    </filter>
+    <marker id="pm" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+    </marker>
+  </defs>
+  <rect width="1100" height="220" fill="url(#pbg)" rx="0"/>
+  <text x="550" y="36" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#0f172a">&#x4E3B;&#x8DEF;&#x5F84;&#x6570;&#x636E;&#x6D41; &#xB7; &#x672C;&#x5730;&#x6210;&#x7247;</text>
+  <text x="550" y="58" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#64748b">&#x753B;&#x9762;&#x6765;&#x81EA;&#x539F;&#x7247;&#x88C1;&#x5207; &#xB7; &#x526A;&#x70B9;&#x65B9;&#x6848;&#x7ECF;&#x4E91;&#x7AEF;&#x5206;&#x6790;&#x56DE;&#x5199;&#x672C;&#x5730;&#x540E;&#x9A71;&#x52A8; FFmpeg</text>
+
+  <g filter="url(#ps)">
+    <rect x="40" y="95" width="140" height="72" rx="12" fill="url(#p1)"/>
+    <text x="110" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&#x539F;&#x59CB;&#x89C6;&#x9891;</text>
+    <text x="110" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#cbd5e1">&#x672C;&#x5730;</text>
+  </g>
+  <line x1="180" y1="131" x2="215" y2="131" stroke="#64748b" stroke-width="2.5" marker-end="url(#pm)"/>
+
+  <g filter="url(#ps)">
+    <rect x="215" y="95" width="140" height="72" rx="12" fill="url(#p2)"/>
+    <text x="285" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&#x5206;&#x6790;&#x5F15;&#x64CE;</text>
+    <text x="285" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#bfdbfe">&#x672C;&#x5730;&#x4EFB;&#x52A1;</text>
+  </g>
+  <line x1="355" y1="131" x2="390" y2="131" stroke="#64748b" stroke-width="2.5" marker-end="url(#pm)"/>
+
+  <g filter="url(#ps)">
+    <rect x="390" y="95" width="160" height="72" rx="12" fill="url(#p3)"/>
+    <text x="470" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&#x591A;&#x6A21;&#x6001; API</text>
+    <text x="470" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#a5f3fc">&#x4E91;&#x7AEF;</text>
+  </g>
+  <line x1="550" y1="131" x2="585" y2="131" stroke="#64748b" stroke-width="2.5" marker-end="url(#pm)"/>
+
+  <g filter="url(#ps)">
+    <rect x="585" y="95" width="160" height="72" rx="12" fill="url(#p2)"/>
+    <text x="665" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&#x526A;&#x70B9;&#x65B9;&#x6848;</text>
+    <text x="665" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#bfdbfe">&#x672C;&#x5730;&#x843D;&#x76D8;</text>
+  </g>
+  <line x1="745" y1="131" x2="780" y2="131" stroke="#64748b" stroke-width="2.5" marker-end="url(#pm)"/>
+
+  <g filter="url(#ps)">
+    <rect x="780" y="95" width="140" height="72" rx="12" fill="url(#p4)"/>
+    <text x="850" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">FFmpeg</text>
+    <text x="850" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#a7f3d0">&#x88C1;&#x5207;&#x5408;&#x6210;</text>
+  </g>
+  <line x1="920" y1="131" x2="955" y2="131" stroke="#64748b" stroke-width="2.5" marker-end="url(#pm)"/>
+
+  <g filter="url(#ps)">
+    <rect x="955" y="95" width="105" height="72" rx="12" fill="url(#p1)"/>
+    <text x="1007" y="128" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="700" fill="#ffffff">&#x6210;&#x7247;</text>
+    <text x="1007" y="148" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#cbd5e1">&#x672C;&#x5730;</text>
+  </g>
+
+  <path d="M 850 95 L 850 75 L 110 75 L 110 95" fill="none" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <text x="480" y="68" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="9" fill="#64748b">&#x539F;&#x7247;&#x540C;&#x6B65;&#x8FDB;&#x5165; FFmpeg</text>
+</svg>

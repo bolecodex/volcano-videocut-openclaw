@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="1200" height="720">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f5f3ff"/>
+      <stop offset="50%" style="stop-color:#ede9fe"/>
+      <stop offset="100%" style="stop-color:#e0e7ff"/>
+    </linearGradient>
+    <linearGradient id="studioGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff"/>
+      <stop offset="100%" style="stop-color:#f1f5f9"/>
+    </linearGradient>
+    <linearGradient id="lobsterGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="50%" style="stop-color:#6d28d9"/>
+      <stop offset="100%" style="stop-color:#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="engineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cloudGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#38bdf8"/>
+      <stop offset="100%" style="stop-color:#0284c7"/>
+    </linearGradient>
+    <filter id="sh" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#312e81" flood-opacity="0.15"/>
+    </filter>
+    <marker id="mArrBlue" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/>
+    </marker>
+    <marker id="mArrSky" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#0284c7"/>
+    </marker>
+    <marker id="mArrPurple" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L9,3 z" fill="#7c3aed"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="720" fill="url(#bg2)"/>
+  <text x="600" y="42" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, system-ui, sans-serif" font-size="24" font-weight="700" fill="#1e1b4b">智能架构 · 主路径 + 龙虾（OpenClaw）提效层</text>
+  <text x="600" y="68" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" fill="#64748b">分析理解走云端 API · 成片在本地 · 龙虾可选，专攻协作与迭代提效</text>
+  <!-- 云端 -->
+  <g filter="url(#sh)">
+    <ellipse cx="600" cy="128" rx="200" ry="36" fill="url(#cloudGrad)" opacity="0.95"/>
+    <text x="600" y="126" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="14" font-weight="700" fill="#ffffff">多模态大模型 API</text>
+    <text x="600" y="142" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#e0f2fe">云端智能</text>
+  </g>
+  <!-- 体验层 -->
+  <rect x="120" y="198" width="960" height="100" rx="16" fill="url(#studioGrad)" stroke="#cbd5e1" stroke-width="2" filter="url(#sh)"/>
+  <text x="600" y="226" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="700" fill="#475569">体验层 · OpenClaw Studio</text>
+  <rect x="160" y="240" width="260" height="48" rx="10" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="290" y="270" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#3730a3">技能与模板</text>
+  <rect x="470" y="240" width="260" height="48" rx="10" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="600" y="270" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#3730a3">编辑与高光结果</text>
+  <rect x="780" y="240" width="260" height="48" rx="10" fill="#e0e7ff" stroke="#818cf8" stroke-width="1.5"/>
+  <text x="910" y="270" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="13" font-weight="600" fill="#3730a3">对话与 @ 引用</text>
+  <!-- 云 → Studio（居中） -->
+  <path d="M600 164 L600 198" fill="none" stroke="#0ea5e9" stroke-width="2.5" marker-end="url(#mArrSky)"/>
+  <!-- 主路径：左、中两列垂直入本地（无横穿汇合线与云端线重叠） -->
+  <path d="M290 288 L290 348" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#mArrBlue)"/>
+  <path d="M600 288 L600 318 L400 318 L400 348" fill="none" stroke="#2563eb" stroke-width="2.5" marker-end="url(#mArrBlue)"/>
+  <!-- 可选：对话列 → 龙虾 -->
+  <path d="M910 288 L910 348" fill="none" stroke="#7c3aed" stroke-width="2.5" stroke-dasharray="8 5" marker-end="url(#mArrPurple)"/>
+  <!-- 龙虾层 -->
+  <g filter="url(#sh)">
+    <rect x="780" y="348" width="300" height="200" rx="18" fill="url(#lobsterGrad)" stroke="#c4b5fd" stroke-width="2"/>
+  </g>
+  <text x="930" y="378" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="800" fill="#ffffff">龙虾层（可选）</text>
+  <text x="930" y="398" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#ddd6fe">OpenClaw · 提效核心</text>
+  <rect x="810" y="408" width="240" height="48" rx="10" fill="#ffffff" fill-opacity="0.2"/>
+  <text x="930" y="438" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#ffffff">OpenClaw Gateway</text>
+  <rect x="810" y="464" width="240" height="48" rx="10" fill="#ffffff" fill-opacity="0.25"/>
+  <text x="930" y="494" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#ffffff">Agent 编排与多轮迭代</text>
+  <!-- 本地层 -->
+  <g filter="url(#sh)">
+    <rect x="120" y="348" width="380" height="200" rx="18" fill="url(#engineGrad)" stroke="#475569" stroke-width="2"/>
+    <text x="310" y="378" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">本地执行与媒资</text>
+  </g>
+  <rect x="150" y="394" width="320" height="40" rx="8" fill="#334155"/>
+  <text x="310" y="419" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">分析任务与剪辑任务</text>
+  <rect x="150" y="440" width="320" height="40" rx="8" fill="#334155"/>
+  <text x="310" y="465" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">FFmpeg · 裁切合成</text>
+  <rect x="150" y="486" width="320" height="40" rx="8" fill="#334155"/>
+  <text x="310" y="511" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" font-weight="600" fill="#e2e8f0">原片与成片目录</text>
+  <!-- 龙虾 → 本地：走两框之间的竖直中线附近，标签在连线上方 -->
+  <path d="M780 498 L500 498" fill="none" stroke="#a78bfa" stroke-width="2.5" stroke-dasharray="10 6" marker-end="url(#mArrPurple)"/>
+  <text x="640" y="488" text-anchor="middle" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="11" fill="#5b21b6">驱动技能与上下文</text>
+  <!-- 本地 ↔ 云：左侧绕行，不横穿 Studio→本地 主路径 -->
+  <path d="M120 455 L88 455 L88 128 L398 128" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#mArrSky)"/>
+  <text x="102" y="312" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="10" fill="#0369a1">分析请求 / 结果回写</text>
+  <!-- 图例：一行说清楚 -->
+  <rect x="120" y="588" width="960" height="56" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="140" y="622" font-family="PingFang SC, Microsoft YaHei, sans-serif" font-size="12" fill="#475569">读图：蓝实线为主路径（技能 / 编辑 → 本地）；左侧蓝虚线为分析类 API 往返；紫虚线为可选「对话 → 龙虾 → 驱动本地」。</text>
+</svg>

@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>短剧投流智能剪辑解决方案 — 架构汇报</title>
+  <style>
+    :root {
+      --bg: #eceff3;
+      --card: #ffffff;
+      --text: #0f1419;
+      --muted: #5b6672;
+      --accent: #1d4ed8;
+      --accent-soft: #dbeafe;
+      --border: #d8dee6;
+      --nav-bg: #0c1222;
+      --nav-hover: #1a2332;
+      --diagram-bg: linear-gradient(165deg, #f8fafc 0%, #eef2f7 45%, #e8edf4 100%);
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+      --shadow-md: 0 8px 30px rgba(15, 23, 42, 0.08);
+      --shadow-inset: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: 272px 1fr;
+      min-height: 100vh;
+    }
+    @media (max-width: 960px) {
+      .layout { grid-template-columns: 1fr; }
+      nav { position: relative !important; height: auto; }
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      background: var(--nav-bg);
+      color: #e8edf4;
+      padding: 1.75rem 1.35rem;
+      border-right: 1px solid #1e293b;
+    }
+    nav h1 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem;
+      line-height: 1.4;
+      letter-spacing: 0.03em;
+    }
+    nav .meta {
+      font-size: 0.72rem;
+      color: #8b9cb3;
+      margin-bottom: 1.35rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 1px solid #243044;
+      line-height: 1.5;
+    }
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav li.nav-group {
+      margin-top: 1rem;
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      padding: 0 0.5rem 0.35rem;
+    }
+    nav a {
+      display: block;
+      color: #c5d0e0;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 0.42rem 0.55rem;
+      border-radius: 8px;
+      margin-bottom: 2px;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+    nav a:hover { background: var(--nav-hover); color: #fff; }
+    main {
+      padding: 2.25rem 2.75rem 4rem;
+      max-width: 1180px;
+    }
+    .hero {
+      background: linear-gradient(125deg, #0c1222 0%, #152a52 42%, #1e3a6e 100%);
+      color: #fff;
+      padding: 2.35rem 2.75rem;
+      margin: -2.25rem -2.75rem 2.25rem;
+      box-shadow: var(--shadow-md);
+    }
+    .hero .badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #93c5fd;
+      margin-bottom: 0.65rem;
+    }
+    .hero h2 {
+      margin: 0 0 0.65rem;
+      font-size: 1.72rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 0;
+      color: #b8c9e0;
+      font-size: 0.95rem;
+      max-width: 54em;
+    }
+    section {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.65rem 1.85rem;
+      margin-bottom: 1.35rem;
+      box-shadow: var(--shadow-sm), var(--shadow-inset);
+    }
+    section h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    section .kicker {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    section .desc {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-bottom: 1.1rem;
+    }
+    .callout {
+      background: linear-gradient(135deg, #f0f7ff 0%, #f8fafc 100%);
+      border: 1px solid #bfdbfe;
+      border-radius: 12px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      color: #334155;
+    }
+    .callout strong { color: #1e40af; }
+    .callout-grid {
+      display: grid;
+      gap: 0.85rem;
+      margin-top: 0.85rem;
+    }
+    @media (min-width: 720px) {
+      .callout-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .diagram-frame {
+      background: var(--diagram-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 1.25rem;
+      margin-top: 0.25rem;
+      box-shadow: var(--shadow-md), var(--shadow-inset);
+    }
+    .mermaid-wrap {
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .mermaid-wrap svg { max-width: 100%; height: auto; }
+    .svg-panel {
+      background: linear-gradient(180deg, #fafbfc 0%, #f1f5f9 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-top: 0.5rem;
+      box-shadow: var(--shadow-md), var(--shadow-inset);
+    }
+    .svg-embed {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 12px;
+    }
+    footer {
+      margin-top: 2.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <nav>
+      <h1>短剧投流智能剪辑<br />架构汇报</h1>
+      <div class="meta">OpenClaw Studio<br />客户汇报 · 建议全屏投屏</div>
+      <ul>
+        <li class="nav-group">叙事与范式</li>
+        <li><a href="#sec-openclaw">OpenClaw 与 Vibe Filmmaking</a></li>
+        <li><a href="#sec-openclaw-stack">OpenClaw 编排关系</a></li>
+        <li><a href="#sec-vibe-loop">氛围驱动闭环</a></li>
+        <li class="nav-group">架构视图</li>
+        <li><a href="#sec-business">业务价值链</a></li>
+        <li><a href="#sec-product">产品功能架构</a></li>
+        <li><a href="#sec-tech">技术分层架构</a></li>
+        <li><a href="#sec-deploy">部署与网络拓扑</a></li>
+        <li><a href="#sec-dataflow">主路径数据流</a></li>
+        <li class="nav-group">流程</li>
+        <li><a href="#sec-sequence">端到端业务时序</a></li>
+        <li><a href="#sec-sequence-agent">可选 Agent 协作时序</a></li>
+        <li class="nav-group">SVG 矢量图 免联网</li>
+        <li><a href="#sec-svg-business">SVG 业务价值链</a></li>
+        <li><a href="#sec-svg-lobster-arch">SVG 智能架构</a></li>
+        <li><a href="#sec-svg-lobster-flow">SVG 龙虾价值流</a></li>
+        <li><a href="#sec-svg-pipeline">SVG 主路径数据流</a></li>
+      </ul>
+    </nav>
+    <main>
+      <div class="hero">
+        <div class="badge">Architecture Deck</div>
+        <h2>短剧投流智能剪辑解决方案</h2>
+        <p>本页为汇报专用：OpenClaw（口语「龙虾」）与 Vibe Filmmaking 说明 + Mermaid 动态图（需 CDN）。文末附 <strong>高清 SVG 矢量图</strong>，本地相对路径加载，<strong>离线可展示</strong>，亦可单独插入 PPT。</p>
+      </div>
+
+      <section id="sec-openclaw">
+        <div class="kicker">Narrative</div>
+        <h3>OpenClaw 与 Vibe Filmmaking</h3>
+        <p class="desc"><strong>OpenClaw</strong> 在本方案中是 <strong>可选的智能编排层</strong>：经 OpenClaw Gateway（WebSocket，常见端口 18789）连接桌面端对话面板与 AI Agent，负责多轮对话、工具与技能（Skills）编排。<strong>主路径</strong>「高光分析 + 本地 FFmpeg 成片」可不依赖 OpenClaw 独立完成。</p>
+        <div class="callout">
+          <strong>Vibe Filmmaking（氛围驱动式创作）</strong>：先对齐素材应有的整体气质、情绪节奏与受众观感（vibe），再反推剪点、钩子与包装；而非完全依赖固定分镜表逐格执行。投流场景版本多、迭代快，对话式编排能把「差一点感觉」快速翻译成可复跑的模板与提示词，并与本地成片链路衔接。
+        </div>
+        <div class="callout-grid callout">
+          <div><strong>OpenClaw 带来的价值</strong>：统一上下文（@ 引用技能、模板、素材、成片）、自然语言迭代口径、工具调用过程可追溯。</div>
+          <div><strong>与主路径的关系</strong>：多模态 API 负责「看懂内容」；FFmpeg 负责「按时间轴落地」；OpenClaw 负责「如何把当下 vibe 与策略编排成可执行动作」。</div>
+        </div>
+      </section>
+
+      <section id="sec-openclaw-stack">
+        <div class="kicker">Integration</div>
+        <h3>OpenClaw 编排关系（可选路径）</h3>
+        <p class="desc">当客户环境启用 OpenClaw 时，创作者意图经 Gateway 进入 Agent，再驱动技能与本地任务；未启用时仅走中间栏剪辑与脚本调度。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart TB
+  subgraph people ["创作与运营"]
+    U1["自然语言意图与 vibe 描述"]
+    U2["业务审核与定稿"]
+  end
+  subgraph desktop ["OpenClaw Studio 桌面端"]
+    UI["三栏工作台与 @ 引用"]
+    IPC["系统编排与任务调度"]
+    UI --> IPC
+  end
+  subgraph openclaw ["OpenClaw 层 可选"]
+    GW["OpenClaw Gateway"]
+    AG["Agent 推理与工具选择"]
+    GW <--> AG
+  end
+  subgraph exec ["执行与媒资"]
+    SK["Skills 技能库语义与配置"]
+    PY["Python 与 FFmpeg 本地执行"]
+    AS["本地媒资与成片目录"]
+    SK --> PY
+    PY --> AS
+  end
+  people --> UI
+  UI <-->|"WebSocket 可选"| GW
+  IPC --> PY
+  AG --> SK
+  AG -.->|"建议与说明"| UI
+  U2 --> U1
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-vibe-loop">
+        <div class="kicker">Workflow</div>
+        <h3>氛围驱动闭环（Vibe Loop）</h3>
+        <p class="desc">从「气质对齐」到「可投放成片」的抽象闭环；其中分析、剪辑与 Agent 对话可在产品上组合使用。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart LR
+  V0["对齐 vibe 与渠道假设"]
+  V1["模板与提示词或对话迭代"]
+  V2["高光分析与剪点方案"]
+  V3["本地成片与日志"]
+  V4["试投反馈与下一版 vibe"]
+  V0 --> V1
+  V1 --> V2
+  V2 --> V3
+  V3 --> V4
+  V4 -.->|"策略回流"| V0
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-business">
+        <div class="kicker">Business</div>
+        <h3>业务价值链架构</h3>
+        <p class="desc">本方案位于智能素材生产中段，承接战略与内容资产，服务投放与运营闭环。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart TB
+  subgraph strategy ["战略与增长"]
+    G1["投放目标与 KPI"]
+    G2["受众与渠道策略"]
+  end
+  subgraph content ["内容与版权"]
+    C1["短剧媒资与分集管理"]
+    C2["版权与合规口径"]
+  end
+  subgraph production ["智能素材生产"]
+    P1["多取向模板与自定义要求"]
+    P2["跨集高光分析与剪点规划"]
+    P3["自动切片与成片合成"]
+    P4["可选深加工能力"]
+  end
+  subgraph ops ["投放与运营"]
+    O1["多版本试投与 A B 测试"]
+    O2["数据回流与素材迭代"]
+  end
+  strategy --> production
+  content --> production
+  production --> ops
+  ops -.->|"策略反馈"| strategy
+  C2 -.->|"合规约束"| P1
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-product">
+        <div class="kicker">Product</div>
+        <h3>产品功能架构</h3>
+        <p class="desc">核心剪辑闭环、技能中心、协作域与媒资交付域的关系。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart TB
+  subgraph coreDomain ["核心剪辑域"]
+    U1["素材与目录"]
+    U2["模板与自定义要求"]
+    U3["高光分析与结果可视"]
+    U4["一键成片与日志"]
+  end
+  subgraph skillDomain ["技能中心"]
+    S1["技能浏览与说明"]
+    S2["内置与导入 Skills"]
+  end
+  subgraph collabDomain ["协作域 含 OpenClaw"]
+    A1["Agent 对话面板"]
+    A2["资源引用与上下文"]
+  end
+  subgraph assetDomain ["媒资与交付"]
+    D1["输入分集视频"]
+    D2["结构化剪点方案"]
+    D3["输出成片与衍生文件"]
+  end
+  coreDomain --> assetDomain
+  skillDomain --> coreDomain
+  collabDomain --> coreDomain
+  collabDomain --> skillDomain
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-tech">
+        <div class="kicker">Technology</div>
+        <h3>技术分层架构</h3>
+        <p class="desc">体验层、编排层、媒体工程层、智能服务层与本地数据层。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart TB
+  subgraph experience ["体验层"]
+    E1["三栏工作台"]
+    E2["模板与提示词管理"]
+    E3["分析结果与时间轴展示"]
+    E4["对话与资源引用"]
+  end
+  subgraph orchestration ["编排与系统层"]
+    O1["前后端通信与安全桥接"]
+    O2["技能元数据与导入管理"]
+    O3["本地任务调度"]
+    O4["OpenClaw Gateway 客户端"]
+  end
+  subgraph media ["媒体工程层"]
+    M1["视频分析引擎"]
+    M2["剪辑与合成引擎"]
+    M3["FFmpeg 媒体处理"]
+    M4["其他技能本地任务"]
+  end
+  subgraph intelligence ["智能服务层"]
+    I1["多模态大模型 API"]
+    I2["OpenClaw Agent 服务 可选"]
+  end
+  subgraph data ["数据与资产层"]
+    D1["原始分集视频目录"]
+    D2["结构化高光与剪点方案"]
+    D3["输出成片与运行日志"]
+  end
+  experience --> orchestration
+  orchestration --> media
+  orchestration --> intelligence
+  media --> M3
+  M1 --> I1
+  O4 --> I2
+  media <--> data
+  experience <--> data
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-deploy">
+        <div class="kicker">Deployment</div>
+        <h3>部署与网络拓扑</h3>
+        <p class="desc">本地媒资与成片；出网访问多模态 API；可选 WebSocket 连接 OpenClaw Gateway。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart TB
+  subgraph customer ["客户环境"]
+    PC["终端设备"]
+    APP["OpenClaw Studio"]
+    LOCAL["本地媒资与成片目录"]
+    PY["Python 任务与 FFmpeg"]
+    PC --> APP
+    APP --> LOCAL
+    APP --> PY
+    PY --> LOCAL
+  end
+  subgraph network ["网络边界"]
+    OUT["受控出网通道"]
+  end
+  subgraph cloud ["云端与可选服务"]
+    API["多模态大模型 API"]
+    GW["OpenClaw Gateway 可选"]
+  end
+  APP --> OUT
+  PY --> OUT
+  OUT --> API
+  OUT -.->|"WebSocket 可选"| GW
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-dataflow">
+        <div class="kicker">Data path</div>
+        <h3>主路径数据流</h3>
+        <p class="desc">成片画面来自原片；剪点方案经模型生成后在本地驱动 FFmpeg。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+flowchart LR
+  V1["原始视频 本地"]
+  V2["分析引擎"]
+  V3["多模态 API"]
+  V4["剪点方案 本地"]
+  V5["FFmpeg 引擎"]
+  V6["成片输出 本地"]
+  V1 --> V2
+  V2 --> V3
+  V3 --> V4
+  V4 --> V5
+  V1 --> V5
+  V5 --> V6
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-sequence">
+        <div class="kicker">Process</div>
+        <h3>端到端业务时序（主路径）</h3>
+        <p class="desc">不强制经过 OpenClaw 的标准生产路径。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+sequenceDiagram
+  participant Biz as 业务运营
+  participant User as 操作员
+  participant App as OpenClaw Studio
+  participant AI as 多模态 API
+  participant FF as FFmpeg
+  Biz->>User: 投放取向与合规要求
+  User->>App: 选择目录与模板或自定义要求
+  User->>App: 启动分析
+  App->>AI: 视频与提示词按策略传输
+  AI-->>App: 结构化高光与剪点方案
+  App-->>User: 展示结果与时间信息
+  User->>Biz: 审核与确认
+  User->>App: 启动剪辑
+  App->>FF: 按方案切片与合成
+  FF-->>App: 成片与日志
+  App-->>User: 输出路径与预览
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-sequence-agent">
+        <div class="kicker">Process</div>
+        <h3>可选 Agent 协作时序（Vibe 迭代）</h3>
+        <p class="desc">启用 OpenClaw 时，自然语言与 @ 引用可触发多轮编排；具体工具链以实际版本为准。</p>
+        <div class="diagram-frame">
+          <div class="mermaid-wrap">
+            <pre class="mermaid">
+sequenceDiagram
+  participant User as 创作者或运营
+  participant App as Studio 客户端
+  participant GW as OpenClaw Gateway
+  participant Agent as AI Agent
+  participant Skills as 技能与脚本层
+  participant API as 多模态 API
+  User->>App: 描述 vibe 与策略并引用资源
+  App->>GW: WebSocket 会话与上下文
+  GW->>Agent: 推理与工具规划
+  Agent-->>GW: 调用建议与说明
+  GW-->>App: 流式响应与工具状态
+  App->>Skills: 触发分析与剪辑等任务
+  Skills->>API: 按需请求多模态分析
+  API-->>Skills: 结构化结果
+  Skills-->>App: 日志与输出路径
+  App-->>User: 可继续对话微调 vibe
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      <section id="sec-svg-business">
+        <div class="kicker">SVG Vector</div>
+        <h3>业务价值链（矢量图）</h3>
+        <p class="desc">文件：<code>svg/01-business-value-chain.svg</code> — 渐变与阴影已内嵌，适合印刷与 Keynote。</p>
+        <div class="svg-panel">
+          <img class="svg-embed" src="svg/01-business-value-chain.svg" alt="业务价值链架构图" />
+        </div>
+      </section>
+
+      <section id="sec-svg-lobster-arch">
+        <div class="kicker">SVG Vector</div>
+        <h3>智能架构 · 主路径 + 龙虾层（矢量图）</h3>
+        <p class="desc">文件：<code>svg/02-smart-architecture-lobster.svg</code></p>
+        <div class="svg-panel">
+          <img class="svg-embed" src="svg/02-smart-architecture-lobster.svg" alt="智能架构含龙虾层" />
+        </div>
+      </section>
+
+      <section id="sec-svg-lobster-flow">
+        <div class="kicker">SVG Vector</div>
+        <h3>龙虾价值流（矢量图）</h3>
+        <p class="desc">文件：<code>svg/03-lobster-value-flow.svg</code></p>
+        <div class="svg-panel">
+          <img class="svg-embed" src="svg/03-lobster-value-flow.svg" alt="龙虾价值流" />
+        </div>
+      </section>
+
+      <section id="sec-svg-pipeline">
+        <div class="kicker">SVG Vector</div>
+        <h3>主路径数据流（矢量图）</h3>
+        <p class="desc">文件：<code>svg/04-main-data-pipeline.svg</code></p>
+        <div class="svg-panel">
+          <img class="svg-embed" src="svg/04-main-data-pipeline.svg" alt="主路径数据流" />
+        </div>
+      </section>
+
+      <footer>
+        短剧投流智能剪辑解决方案 · 架构汇报 · SVG 与 docs 对客材料同步维护
+      </footer>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js" crossorigin="anonymous"></script>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: "base",
+      securityLevel: "strict",
+      themeVariables: {
+        primaryColor: "#dbeafe",
+        primaryTextColor: "#0f172a",
+        primaryBorderColor: "#2563eb",
+        secondaryColor: "#f1f5f9",
+        secondaryTextColor: "#334155",
+        secondaryBorderColor: "#94a3b8",
+        tertiaryColor: "#ffffff",
+        mainBkg: "#ffffff",
+        nodeBorder: "#3b82f6",
+        clusterBkg: "#f8fafc",
+        clusterBorder: "#cbd5e1",
+        lineColor: "#64748b",
+        arrowheadColor: "#2563eb",
+        edgeLabelBackground: "#ffffff",
+        actorBkg: "#eff6ff",
+        actorBorder: "#2563eb",
+        actorTextColor: "#0f172a",
+        actorLineColor: "#64748b",
+        signalColor: "#475569",
+        labelTextColor: "#0f172a",
+        loopTextColor: "#334155",
+        activationBkgColor: "#dbeafe",
+        activationBorderColor: "#2563eb",
+        titleColor: "#0f172a",
+        subtitleColor: "#64748b",
+        fontFamily: '"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,sans-serif',
+        fontSize: "14px"
+      },
+      flowchart: {
+        htmlLabels: true,
+        curve: "basis",
+        padding: 20,
+        nodeSpacing: 50,
+        rankSpacing: 58,
+        diagramPadding: 16,
+        useMaxWidth: true
+      },
+      sequence: {
+        actorMargin: 55,
+        boxMargin: 12,
+        messageMargin: 30
+      }
+    });
+  </script>
+</body>
+</html>
