@@ -65,8 +65,12 @@ def cut_segment_precise(
         return False
 
     if reencode:
-        vf_parts = []
-        af_parts = []
+        # 用 trim/atrim 在同一时间轴上裁切音视频，避免 -t 与编码帧对齐导致的「尾端 1～2 帧有画面无声音」卡顿感
+        trim_v = f"trim=start={start_sec}:end={end_sec},setpts=PTS-STARTPTS"
+        trim_a = f"atrim=start={start_sec}:end={end_sec},asetpts=PTS-STARTPTS"
+
+        vf_parts = [trim_v]
+        af_parts = [trim_a]
 
         if fade_in > 0:
             vf_parts.append(f"fade=t=in:st=0:d={fade_in}")
@@ -76,21 +80,18 @@ def cut_segment_precise(
             vf_parts.append(f"fade=t=out:st={fade_start}:d={fade_out}")
             af_parts.append(f"afade=t=out:st={fade_start}:d={fade_out}")
 
-        vf = ",".join(vf_parts) if vf_parts else None
-        af = ",".join(af_parts) if af_parts else None
+        vf = ",".join(vf_parts)
+        af = ",".join(af_parts)
 
         args = [
-            "-ss", str(start_sec),
             "-i", source_video,
-            "-t", str(duration),
+            "-filter_complex", f"[0:v]{vf}[v];[0:a]{af}[a]",
+            "-map", "[v]", "-map", "[a]",
             "-c:v", "libx264", "-preset", "medium", "-crf", "18",
-            "-c:a", "aac", "-b:a", "192k",
+            "-c:a", "aac", "-b:a", "192k", "-ar", "48000",
+            "-movflags", "+faststart",
+            output_path,
         ]
-        if vf:
-            args.extend(["-vf", vf])
-        if af:
-            args.extend(["-af", af])
-        args.extend(["-avoid_negative_ts", "make_zero", output_path])
     else:
         args = [
             "-ss", str(start_sec),
@@ -148,10 +149,11 @@ def _concat_standard(segment_files: list[str], output_path: str, normalize_audio
     if normalize_audio:
         af_chain = ",loudnorm=I=-16:TP=-1.5:LRA=11"
 
+    # 不使用 aresample=async=1，避免拼接处被「拉伸/补静音」造成听感卡顿或与画面微不同步
     filter_str = (
         "".join(filter_parts)
         + f"concat=n={len(segment_files)}:v=1:a=1[outv][outa_raw];"
-        + f"[outa_raw]aresample=async=1{af_chain}[outa]"
+        + f"[outa_raw]aformat=sample_rates=48000:channel_layouts=stereo{af_chain}[outa]"
     )
 
     args = inputs + [
@@ -340,6 +342,9 @@ def process_combined(
     os.makedirs(temp_dir, exist_ok=True)
 
     safe_name = output_name or drama_name.replace(" ", "_").replace("/", "_")
+    # 避免 -n 已含 promo_ 前缀时再拼成 promo_promo_xxx
+    if safe_name.startswith("promo_"):
+        safe_name = safe_name[len("promo_") :]
 
     output_files = []
 

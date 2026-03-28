@@ -1,0 +1,33 @@
+[project]
+name = "audit-skill"
+version = "0.1.0"
+description = "Video Audit and Censorship Skill"
+requires-python = ">=3.10"
+dependencies = [
+     "demucs",
+     "qwen-asr",
+     "torch",
+     "moviepy",
+     "ffmpeg-python",
+     "python-dotenv",
+     "requests",
+     "librosa",
+     "nagisa==0.2.11",
+     "soynlp==0.0.493",
+     "accelerate==1.12.0",
+     "qwen-omni-utils",
+     "torchcodec",
+     "soxr>=1.0.0",
+]
+
+[project.optional-dependencies]
+vllm = [
+"vllm==0.14.0",
+]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest",
+    "black",
+    "isort"
+]

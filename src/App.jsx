@@ -194,6 +194,40 @@ function App() {
                   autoComplete="off"
                 />
               </label>
+              <p className="settings-hint" style={{ marginTop: '12px', marginBottom: '4px' }}>火山 AI MediaKit（VOD）— 技能 <code>volcengine-ai-mediakit</code>，不使用时可留空</p>
+              <label className="settings-label">
+                <span>VOLCENGINE_ACCESS_KEY</span>
+                <input
+                  type="password"
+                  className="input settings-input"
+                  value={envConfig.VOLCENGINE_ACCESS_KEY || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, VOLCENGINE_ACCESS_KEY: e.target.value }))}
+                  placeholder="火山引擎 AK（点播/MediaKit）"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>VOLCENGINE_SECRET_KEY</span>
+                <input
+                  type="password"
+                  className="input settings-input"
+                  value={envConfig.VOLCENGINE_SECRET_KEY || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, VOLCENGINE_SECRET_KEY: e.target.value }))}
+                  placeholder="火山引擎 SK"
+                  autoComplete="off"
+                />
+              </label>
+              <label className="settings-label">
+                <span>VOD_SPACE_NAME</span>
+                <input
+                  type="text"
+                  className="input settings-input"
+                  value={envConfig.VOD_SPACE_NAME || ''}
+                  onChange={(e) => setEnvConfigForm((c) => ({ ...c, VOD_SPACE_NAME: e.target.value }))}
+                  placeholder="点播空间名称"
+                  autoComplete="off"
+                />
+              </label>
               <label className="settings-label">
                 <span>ARK_TTS_ENDPOINT / ARK_TTS_MODEL <em>（可选）</em></span>
                 <input

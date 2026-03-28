@@ -1,5 +1,5 @@
 ---
-name: AI解说
+name: AI 解说配音
 description: 根据视频内容生成与画面匹配的解说旁白，使用 Ark TTS 合成有吸引力的配音并替换原音轨
 trigger: AI解说、配音、旁白、narration、解说
 tags:

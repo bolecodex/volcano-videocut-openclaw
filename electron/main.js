@@ -20,6 +20,9 @@ const ENV_KEYS = [
   'SEEDANCE_API_KEY',
   'ARK_TTS_ENDPOINT',
   'ARK_TTS_MODEL',
+  'VOLCENGINE_ACCESS_KEY',
+  'VOLCENGINE_SECRET_KEY',
+  'VOD_SPACE_NAME',
 ];
 
 const skillsManager = new SkillsManager(SKILLS_DIR);
@@ -140,6 +143,9 @@ function stringifyEnvConfig(obj) {
     SEEDANCE_API_KEY: '# 可选：Seedance 专用 Key，不填则用 ARK_API_KEY',
     ARK_TTS_ENDPOINT: '# 可选：语音合成接入点',
     ARK_TTS_MODEL: '# 可选：TTS 模型 ID',
+    VOLCENGINE_ACCESS_KEY: '# 技能「火山 AI MediaKit」：火山引擎 Access Key（VOD）',
+    VOLCENGINE_SECRET_KEY: '# 技能「火山 AI MediaKit」：火山引擎 Secret Key（VOD）',
+    VOD_SPACE_NAME: '# 技能「火山 AI MediaKit」：点播空间名称',
   };
   let out = '# 复制为 .env 后填写真实值（.env 勿提交到 Git）\n\n';
   for (const key of ENV_KEYS) {

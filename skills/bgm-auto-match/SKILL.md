@@ -1,5 +1,5 @@
 ---
-name: BGM自动匹配
+name: BGM 自动匹配
 description: 根据视频情绪/风格从音乐库中自动匹配合适的 BGM 并混音，支持 ducking
 trigger: BGM、背景音乐、自动配乐、匹配BGM
 tags:

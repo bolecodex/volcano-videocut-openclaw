@@ -17,6 +17,7 @@ import argparse
 import base64
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -35,6 +36,15 @@ KEYFRAME_MAX_FRAMES = 60
 
 def get_project_root() -> Path:
     return Path(__file__).resolve().parent.parent
+
+
+def natural_sort_video_paths(paths: list[Path]) -> list[Path]:
+    """Sort Episode1, Episode2, … Episode10 correctly (not lexicographic)."""
+
+    def key(p: Path):
+        return [int(t) if t.isdigit() else t.lower() for t in re.split(r"(\d+)", p.stem)]
+
+    return sorted(paths, key=key)
 
 
 def load_prompt(prompt_path: Path | None = None) -> str:
@@ -376,7 +386,10 @@ def _refine_cut_points(
         "1. 切入点在一句完整台词开始之前（不切在说话中途）\n"
         "2. 切出点在一句完整台词结束之后（不切在说话中途）\n"
         "3. 如果发现切点不精确，调整到最近的台词边界\n"
-        "4. 调整幅度通常在 +-2 秒以内\n\n"
+        "4. 调整幅度通常在 +-2 秒以内\n"
+        "5. 宁可在句间多留极短气口（约 0.2～0.5 秒），也不要把切点卡在半句话中间，减少「下一段开头无声一两帧/半句残留」的卡顿感\n"
+        "6. 若某段末尾紧邻血腥特写（中枪流血、伤口特写等），可将 end_time 略提前到特写开始前（仍尽量落在完整台词之后）\n"
+        "7. 本轮只调整各段的 start_time/end_time，不要增删片段条数，不要改动 segments_to_remove\n\n"
         f"## 当前片段列表\n```json\n{segment_summary}\n```\n"
         f"{asr_context}\n\n"
         "请返回修正后的完整片段列表 JSON 数组（格式不变，只调整时间戳）。\n"
@@ -732,10 +745,10 @@ def main():
     input_path = Path(args.input)
 
     if input_path.is_dir():
-        video_files = sorted(
+        video_files = natural_sort_video_paths([
             p for p in input_path.iterdir()
             if p.suffix.lower() in {".mp4", ".mov", ".mpeg", ".webm", ".avi"}
-        )
+        ])
         if not video_files:
             print(f"No video files found in {args.input}")
             sys.exit(1)

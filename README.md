@@ -121,6 +121,37 @@ graph TB
 - 从本地文件夹导入新 Skill
 - 删除已导入的 Skill（系统内置受保护）
 
+已内置 **[火山 AI MediaKit（VOD 音视频）](https://clawhub.ai/volc-ai-mediakit/volcengine-ai-mediakit)**（`skills/volcengine-ai-mediakit/`）：云端拼接、裁剪、超分、人声分离等，需在 `.env` 配置 `VOLCENGINE_ACCESS_KEY`、`VOLCENGINE_SECRET_KEY`、`VOD_SPACE_NAME`（见 `.env.example`）。更新该技能可从 [ClawHub 页面](https://clawhub.ai/volc-ai-mediakit/volcengine-ai-mediakit) 下载 zip 覆盖同名目录。
+
+另从字节 **[agentkit-samples / skills](https://github.com/bytedance/agentkit-samples/tree/main/skills)** 同步了与本项目最相关的一批技能（各目录以 `byted-` 开头，详见对应 `SKILL.md` 中的环境变量与 API 说明）：
+
+| 目录（界面展示名为中文） | 用途 |
+|------|------|
+| `byted-seedance-video-generate` | **Seedance 视频生成**（文/图/参考） |
+| `byted-seedream-image-generate` | **Seedream 文生图** |
+| `byted-openclaw-diag` | **OpenClaw 诊断与分析**（`/diag` 等） |
+| `byted-las-asr-pro` | **LAS 大模型语音识别** |
+| `byted-voice-to-text` | **语音转文字（豆包 ASR）** |
+| `byted-text-to-speech` | **豆包语音合成（TTS）** |
+| `byted-las-video-edit` | **LAS 视频智能剪辑** |
+| `byted-las-audio-extract-and-split` | **LAS 音频提取与切分** |
+
+上述技能多为 **火山 / LAS / Ark** 等云端能力，需按各 `SKILL.md` 单独配置密钥与接入点；与本地 `ffmpeg-cutter`、`video-analyzer` 等可并存，由 Agent 按场景选用。
+
+自 **`docs/ai-media-skills-main`** 已挑选与投流/音视频后期相关的技能复制到 `skills/`（源目录可作对照与更新；以 `skills/` 内副本为准）：
+
+| 目录 | 展示名 | 说明 |
+|------|--------|------|
+| `video-translation` | 视频翻译配音（端到端） | 译制、音色复刻、字幕压制 |
+| `video-redaction` | 视频敏感内容去敏 | 敏感词消音与去敏字幕 |
+| `video-effects` | 视频花字与动效包装 | 花字/人物条等 Remotion 动效 |
+| `song-production` | GenSong 人物情绪歌 | 火山 GenSong 歌曲生成 |
+| `mv-production` | MV 智能制作 | 歌词对齐 + Seedance/Seedream 分镜 |
+| `motion-comics-production` | 漫剧视频全流程 | 故事→分镜→合成漫剧 |
+| `ktv-video-production` | KTV 歌词特效视频 | ASR→LRC→KTV 样式叠加 |
+
+未纳入 **`knowledge-video-production`**（偏知识科普脚本，与短剧投流主路径重叠度低）。若需可自行复制到 `skills/`。
+
 ## 数据流
 
 ```mermaid
