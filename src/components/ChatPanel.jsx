@@ -104,6 +104,86 @@ function buildSilentProgressLine(waitedSec, assistantMsg) {
   return `${head}。当前尚未解析到技能/素材/工具行（请同时看上方「当前处理」）。长任务会持续较久无输出；要中断请点「停止」。`;
 }
 
+/**
+ * 按当前 mentions 的完整 label 匹配 @引用（优先最长，避免 @BGM 吃掉「BGM 自动匹配」）。
+ * 未匹配的 @xxx 仍按「@ + 非空白段」高亮为 unknown。
+ */
+function segmentTextWithAtMentions(text, mentions) {
+  if (text == null || text === '') return [];
+  const list = (mentions || [])
+    .filter((x) => x?.label)
+    .map((x) => ({
+      label: String(x.label),
+      category: typeof x.category === 'string' ? x.category : 'unknown',
+      absPath: x.absPath,
+    }))
+    .sort((a, b) => b.label.length - a.label.length);
+
+  const segs = [];
+  let i = 0;
+  while (i < text.length) {
+    if (text[i] !== '@') {
+      const start = i;
+      while (i < text.length && text[i] !== '@') i += 1;
+      segs.push({ type: 'text', value: text.slice(start, i) });
+      continue;
+    }
+    let hit = null;
+    for (const m of list) {
+      const full = `@${m.label}`;
+      if (text.startsWith(full, i)) {
+        hit = { ...m, full, end: i + full.length };
+        break;
+      }
+    }
+    if (hit) {
+      segs.push({ type: 'at', category: hit.category, absPath: hit.absPath, full: hit.full });
+      i = hit.end;
+      continue;
+    }
+    const rest = text.slice(i);
+    const fm = rest.match(/^@([^\s@]+)/);
+    if (fm) {
+      segs.push({
+        type: 'at',
+        category: 'unknown',
+        absPath: undefined,
+        full: fm[0],
+      });
+      i += fm[0].length;
+      continue;
+    }
+    segs.push({ type: 'text', value: '@' });
+    i += 1;
+  }
+  return segs;
+}
+
+function renderTextWithAtHighlights(text, mentions) {
+  const segs = segmentTextWithAtMentions(text, mentions);
+  if (segs.length === 0) return text === '' || text == null ? null : text;
+  const nodes = [];
+  let key = 0;
+  for (const s of segs) {
+    if (s.type === 'text' && s.value) {
+      nodes.push(<span key={`t-${key++}`}>{s.value}</span>);
+    } else if (s.type === 'at') {
+      const cat = s.category || 'unknown';
+      nodes.push(
+        <span
+          key={`a-${key++}`}
+          className={`chat-at-ref chat-at-${cat}`}
+          title={s.absPath ? String(s.absPath) : undefined}
+        >
+          {s.full}
+        </span>
+      );
+    }
+  }
+  if (nodes.length === 0) return text;
+  return <>{nodes}</>;
+}
+
 function ChatPanel({ collapsed, onToggle, editorContext }) {
   const api = window.electronAPI;
   const [messages, setMessages] = useState([]);
@@ -133,6 +213,8 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
   const mentionAnchorRef = useRef(null);
   const mentionOpenRef = useRef(false);
   const inputRef = useRef(null);
+  const inputStackRef = useRef(null);
+  const inputMirrorRef = useRef(null);
   const mentionCacheRef = useRef({ items: null, at: 0, ctxKey: '' });
   const MENTION_CACHE_MS = 25000;
 
@@ -305,10 +387,14 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
 
   useLayoutEffect(() => {
     const ta = inputRef.current;
-    if (!ta || sending) return;
+    const stack = inputStackRef.current;
+    if (!ta || !stack) return;
     ta.style.height = '0px';
+    stack.style.height = 'auto';
     const h = Math.max(CHAT_INPUT_MIN_PX, Math.min(ta.scrollHeight, CHAT_INPUT_MAX_PX));
     ta.style.height = `${h}px`;
+    stack.style.height = `${h}px`;
+    if (inputMirrorRef.current) inputMirrorRef.current.scrollTop = ta.scrollTop;
   }, [input, sending, mentionOpen]);
 
   const loadMentionItems = useCallback(async () => {
@@ -800,22 +886,33 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           )}
 
           <div className="chat-input-row">
-            <textarea
-              ref={inputRef}
-              className="chat-input"
-              value={input}
-              onChange={handleInputChange}
-              onSelect={handleInputSelect}
-              onClick={handleInputSelect}
-              onKeyDown={handleKeyDown}
-              onKeyUp={handleInputKeyUp}
-              placeholder={
-                sending
-                  ? '生成中… 可在此起草下一条（Enter 不会发送）；点右侧「停止」可中断并修改提示词后重发'
-                  : '输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）'
-              }
-              rows={4}
-            />
+            <div ref={inputStackRef} className="chat-input-stack">
+              <div ref={inputMirrorRef} className="chat-input-mirror" aria-hidden>
+                {renderTextWithAtHighlights(input, mentions)}
+              </div>
+              <textarea
+                ref={inputRef}
+                className="chat-input chat-input-layered"
+                value={input}
+                onChange={handleInputChange}
+                onSelect={handleInputSelect}
+                onClick={handleInputSelect}
+                onScroll={(e) => {
+                  if (inputMirrorRef.current) {
+                    inputMirrorRef.current.scrollTop = e.target.scrollTop;
+                  }
+                }}
+                onKeyDown={handleKeyDown}
+                onKeyUp={handleInputKeyUp}
+                placeholder={
+                  sending
+                    ? '生成中… 可在此起草下一条（Enter 不会发送）；点右侧「停止」可中断并修改提示词后重发'
+                    : '输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）'
+                }
+                rows={4}
+                spellCheck={false}
+              />
+            </div>
             <div className="chat-input-actions">
               {sending ? (
                 <button
@@ -843,41 +940,6 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
       </div>
     </div>
   );
-}
-
-/** 用户气泡内 @技能名 / @文件名 等高亮（与上方 chips 同类配色） */
-function renderTextWithAtHighlights(text, mentions) {
-  if (text == null || text === '') return null;
-  const list = mentions || [];
-  const nodes = [];
-  let lastIdx = 0;
-  let key = 0;
-  const re = /@([^\s@]+)/g;
-  let m;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > lastIdx) {
-      nodes.push(<span key={`txt-${key++}`}>{text.slice(lastIdx, m.index)}</span>);
-    }
-    const full = m[0];
-    const label = m[1];
-    const hit = list.find((x) => x.label === label);
-    const cat = hit?.category && typeof hit.category === 'string' ? hit.category : 'unknown';
-    nodes.push(
-      <span
-        key={`at-${key++}`}
-        className={`chat-at-ref chat-at-${cat}`}
-        title={hit?.absPath ? String(hit.absPath) : undefined}
-      >
-        {full}
-      </span>
-    );
-    lastIdx = m.index + full.length;
-  }
-  if (lastIdx < text.length) {
-    nodes.push(<span key={`txt-${key++}`}>{text.slice(lastIdx)}</span>);
-  }
-  if (nodes.length === 0) return text;
-  return <>{nodes}</>;
 }
 
 function ChatMessage({ message }) {

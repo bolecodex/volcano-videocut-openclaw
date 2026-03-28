@@ -1416,6 +1416,68 @@ body {
 .chat-input:focus { border-color: var(--accent); }
 .chat-input::placeholder { color: var(--text-muted); }
 
+/* 输入框：底层镜像高亮 @，上层 textarea 透明文字 + 可见光标 */
+.chat-input-stack {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  min-height: 92px;
+  max-height: min(42vh, 280px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.chat-input-stack:focus-within {
+  border-color: var(--accent);
+}
+
+.chat-input-mirror {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 10px 12px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow: hidden auto;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--text-primary);
+}
+
+.chat-input.chat-input-layered {
+  display: block;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 92px;
+  height: 100%;
+  border: none !important;
+  background: transparent !important;
+  color: transparent !important;
+  caret-color: var(--text-primary);
+  flex: none;
+}
+
+.chat-input.chat-input-layered:focus {
+  border: none !important;
+  outline: none;
+}
+
+.chat-input.chat-input-layered::placeholder {
+  color: var(--text-muted);
+  opacity: 1;
+}
+
 .chat-send-btn {
   width: 44px;
   align-self: stretch;
