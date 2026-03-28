@@ -46,6 +46,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
 
   // Chat
   chatSend: (opts) => ipcRenderer.invoke('chat-send', opts),
+  chatStop: () => ipcRenderer.invoke('chat-stop'),
   chatListSessions: () => ipcRenderer.invoke('chat-list-sessions'),
   chatDeleteSession: (key) => ipcRenderer.invoke('chat-delete-session', key),
   onChatStream: (cb) => onChannel('chat-stream', cb),

@@ -446,7 +446,12 @@ ipcMain.handle('gateway-status', async () => {
   }
 });
 
-ipcMain.handle('chat-send', async (event, { message, sessionKey, extraSystemPrompt }) => {
+const DEFAULT_CHAT_AGENT_TIMEOUT_MS = 2 * 60 * 60 * 1000;
+
+/** 当前正在泵送的对话 run，供 chat-stop 中止 */
+let activeChatRun = null;
+
+ipcMain.handle('chat-send', async (event, { message, sessionKey, extraSystemPrompt, agentTimeoutMs }) => {
   const gw = ensureGateway();
 
   if (!gw.isConnected) {
@@ -456,7 +461,10 @@ ipcMain.handle('chat-send', async (event, { message, sessionKey, extraSystemProm
   }
 
   try {
-    const handle = await gw.sendPrompt(message, { sessionKey, extraSystemPrompt });
+    const timeout = typeof agentTimeoutMs === 'number' && agentTimeoutMs > 0
+      ? agentTimeoutMs
+      : DEFAULT_CHAT_AGENT_TIMEOUT_MS;
+    const handle = await gw.sendPrompt(message, { sessionKey, extraSystemPrompt, timeout });
 
     if (handle.error) {
       mainWindow?.webContents?.send('chat-stream', { type: 'error', error: handle.error });
@@ -464,15 +472,21 @@ ipcMain.handle('chat-send', async (event, { message, sessionKey, extraSystemProm
       return { error: handle.error };
     }
 
+    activeChatRun = { runId: handle.runId, sessionKey };
+
     (async () => {
-      while (true) {
-        if (handle.eventQueue.length > 0) {
-          const evt = handle.eventQueue.shift();
-          mainWindow?.webContents?.send('chat-stream', evt);
-          if (evt.type === 'done' || evt.type === 'error') break;
-          continue;
+      try {
+        while (true) {
+          if (handle.eventQueue.length > 0) {
+            const evt = handle.eventQueue.shift();
+            mainWindow?.webContents?.send('chat-stream', evt);
+            if (evt.type === 'done' || evt.type === 'error') break;
+            continue;
+          }
+          await handle.waitForEvent();
         }
-        await handle.waitForEvent();
+      } finally {
+        if (activeChatRun?.runId === handle.runId) activeChatRun = null;
       }
     })();
 
@@ -481,6 +495,20 @@ ipcMain.handle('chat-send', async (event, { message, sessionKey, extraSystemProm
     mainWindow?.webContents?.send('chat-stream', { type: 'error', error: err.message });
     mainWindow?.webContents?.send('chat-stream', { type: 'done' });
     return { error: err.message };
+  }
+});
+
+ipcMain.handle('chat-stop', async () => {
+  const gw = ensureGateway();
+  const ar = activeChatRun;
+  if (!ar?.runId) {
+    return { ok: false, error: 'no active run' };
+  }
+  try {
+    await gw.abortAgentRun(ar.runId, { sessionKey: ar.sessionKey });
+    return { ok: true };
+  } catch (err) {
+    return { ok: false, error: err.message || String(err) };
   }
 });
 

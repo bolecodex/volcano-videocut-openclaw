@@ -4,11 +4,18 @@ const { readFileSync, existsSync } = require('fs');
 const { join } = require('path');
 const { homedir } = require('os');
 
+const {
+  detailFromToolInput,
+  detailFromProgressMessage,
+} = require('./chat-progress-hints');
+
 const PROTOCOL_VERSION = 3;
 const RECONNECT_BASE_MS = 1000;
 const RECONNECT_MAX_MS = 30000;
 const CONNECT_DELAY_MS = 750;
 const TICK_TIMEOUT_MULTIPLIER = 2;
+/** 视频分析/多步技能可能超过默认网关超时，由客户端显式拉长 */
+const DEFAULT_AGENT_TIMEOUT_MS = 2 * 60 * 60 * 1000;
 const ED25519_SPKI_PREFIX = Buffer.from('302a300506032b6570032100', 'hex');
 
 function loadGatewayConfig() {
@@ -88,6 +95,10 @@ class OpenClawGateway {
     this.lastTick = null;
     this.tickTimer = null;
     this.instanceId = randomUUID();
+    /** @type {Map<string, string>} runId::toolId -> 未换行缓冲，用于解析 analyze_video 等日志 */
+    this.toolOutputBuffers = new Map();
+    /** @type {Map<string, () => void>} runId -> 用户停止时解除阻塞并结束 UI 泵送 */
+    this.promptRunHandlers = new Map();
   }
 
   get isConnected() {
@@ -154,8 +165,10 @@ class OpenClawGateway {
 
     const idempotencyKey = randomUUID();
     const runId = idempotencyKey;
+    this.toolOutputBuffers.clear();
     const eventQueue = [];
     let resolveWait = null;
+    let userAborted = false;
 
     const listenerId = randomUUID();
     this.eventListeners.set(listenerId, (evtRunId, event) => {
@@ -164,7 +177,24 @@ class OpenClawGateway {
       resolveWait?.();
     });
 
-    const cleanup = () => this.eventListeners.delete(listenerId);
+    const cleanup = () => {
+      this.eventListeners.delete(listenerId);
+      this.promptRunHandlers.delete(runId);
+    };
+
+    const abortLocal = () => {
+      if (userAborted) return;
+      userAborted = true;
+      this.eventListeners.delete(listenerId);
+      this.promptRunHandlers.delete(runId);
+      eventQueue.push({ type: 'stopped', reason: 'user' });
+      eventQueue.push({ type: 'done' });
+      const wake = resolveWait;
+      resolveWait = null;
+      wake?.();
+    };
+
+    this.promptRunHandlers.set(runId, abortLocal);
 
     const requestPromise = this._request('agent', {
       message,
@@ -172,15 +202,58 @@ class OpenClawGateway {
       sessionKey: opts.sessionKey,
       idempotencyKey,
       extraSystemPrompt: opts.extraSystemPrompt,
-      timeout: opts.timeout,
+      timeout: opts.timeout ?? DEFAULT_AGENT_TIMEOUT_MS,
     }, { expectFinal: true });
 
     requestPromise
-      .then(() => { eventQueue.push({ type: 'done' }); resolveWait?.(); })
-      .catch((err) => { eventQueue.push({ type: 'error', error: err.message || String(err) }); resolveWait?.(); })
+      .then(() => {
+        if (!userAborted) {
+          eventQueue.push({ type: 'done' });
+          resolveWait?.();
+        }
+      })
+      .catch((err) => {
+        if (!userAborted) {
+          eventQueue.push({ type: 'error', error: err.message || String(err) });
+          eventQueue.push({ type: 'done' });
+          resolveWait?.();
+        }
+      })
       .finally(cleanup);
 
-    return { runId, eventQueue, waitForEvent: () => new Promise((r) => { resolveWait = r; }), cleanup };
+    return { runId, eventQueue, waitForEvent: () => new Promise((r) => { resolveWait = r; }), cleanup, abortLocal };
+  }
+
+  /**
+   * 停止一次 Agent 运行：先本地结束 UI 泵送，再尝试通知网关（agent.abort / chat.abort）。
+   */
+  abortAgentRun(runId, opts = {}) {
+    const fn = runId ? this.promptRunHandlers.get(runId) : null;
+    if (typeof fn === 'function') {
+      try {
+        fn();
+      } catch (e) {
+        console.warn('[gateway-client] abortLocal failed:', e?.message || e);
+      }
+    }
+    if (!this.connected || !runId) return Promise.resolve({ ok: true, remote: false });
+    const sessionKey = opts.sessionKey;
+    const agentId = opts.agentId ?? 'main';
+    const payloads = [
+      ['agent.abort', { runId, sessionKey, agentId }],
+      ['chat.abort', { runId, sessionKey, agentId }],
+    ];
+    return (async () => {
+      for (const [method, params] of payloads) {
+        try {
+          await this._request(method, params);
+          return { ok: true, remote: true, method };
+        } catch {
+          /* try next */
+        }
+      }
+      return { ok: true, remote: false };
+    })();
   }
 
   async listSessions() {
@@ -334,6 +407,58 @@ class OpenClawGateway {
     }
   }
 
+  _emitProgressDetail(runId, detail) {
+    if (!runId || !detail || typeof detail !== 'object') return;
+    const keys = Object.keys(detail).filter((k) => detail[k] != null && String(detail[k]).trim() !== '');
+    if (!keys.length) return;
+    const evt = { type: 'progress_detail', detail };
+    for (const listener of this.eventListeners.values()) {
+      try {
+        listener(runId, evt);
+      } catch { /* ignore */ }
+    }
+  }
+
+  _emitProgressOnly(runId, message) {
+    if (!runId || !message) return;
+    const progressEvt = { type: 'progress', message };
+    for (const listener of this.eventListeners.values()) {
+      try {
+        listener(runId, progressEvt);
+      } catch { /* ignore */ }
+    }
+  }
+
+  _emitProgress(runId, message) {
+    if (!runId || !message) return;
+    this._emitProgressOnly(runId, message);
+    const hint = detailFromProgressMessage(String(message));
+    if (hint) this._emitProgressDetail(runId, hint);
+  }
+
+  _flushToolOutputBuffer(runId, toolId) {
+    const key = `${runId}::${toolId}`;
+    const rest = this.toolOutputBuffers.get(key);
+    this.toolOutputBuffers.delete(key);
+    if (rest && rest.trim()) {
+      const hint = detailFromProgressMessage(rest);
+      if (hint) this._emitProgressDetail(runId, hint);
+    }
+  }
+
+  _appendToolOutputLineParsing(runId, toolId, chunk) {
+    if (!chunk) return;
+    const key = `${runId}::${toolId}`;
+    let buf = (this.toolOutputBuffers.get(key) || '') + chunk;
+    const parts = buf.split('\n');
+    const tail = parts.pop() ?? '';
+    this.toolOutputBuffers.set(key, tail);
+    for (const line of parts) {
+      const hint = detailFromProgressMessage(line);
+      if (hint) this._emitProgressDetail(runId, hint);
+    }
+  }
+
   _dispatchAgentEvent(evt) {
     const payload = evt.payload;
     if (!payload) return;
@@ -353,9 +478,42 @@ class OpenClawGateway {
       }
       case 'lifecycle': {
         const phase = data?.phase;
-        if (phase === 'start') event = { type: 'lifecycle', phase: 'start' };
-        else if (phase === 'end') event = { type: 'lifecycle', phase: 'end' };
+        if (phase === 'start') this._emitProgress(runId, 'Agent 已开始处理…');
+        else if (phase === 'end') this._emitProgress(runId, 'Agent 本轮执行已结束');
         else if (phase === 'error') event = { type: 'error', error: data?.error ?? 'Agent error' };
+        break;
+      }
+      case 'progress':
+      case 'status': {
+        const msg = data?.message ?? data?.text ?? data?.delta ?? '';
+        if (msg) this._emitProgress(runId, String(msg));
+        break;
+      }
+      case 'log':
+      case 'stderr':
+      case 'stdout': {
+        const chunk = data?.text ?? data?.delta ?? data?.line ?? data?.message ?? '';
+        const text = chunk != null ? String(chunk) : '';
+        const trimmed = text.trim();
+        if (!trimmed) break;
+        const lines = text.split(/\r?\n/);
+        let hadDetail = false;
+        let emittedShort = false;
+        for (const line of lines) {
+          const s = line.trim();
+          if (!s) continue;
+          const d = detailFromProgressMessage(s);
+          if (d) {
+            hadDetail = true;
+            this._emitProgressDetail(runId, d);
+          } else if (s.length <= 500) {
+            this._emitProgressOnly(runId, s.slice(0, 2000));
+            emittedShort = true;
+          }
+        }
+        if (!hadDetail && !emittedShort) {
+          this._emitProgressOnly(runId, trimmed.slice(0, 500));
+        }
         break;
       }
       case 'tool': {
@@ -365,6 +523,17 @@ class OpenClawGateway {
 
         if (phase === 'start' || phase === 'invoke') {
           const inputRaw = data?.input ?? data?.args ?? data?.arguments;
+          const hints = detailFromToolInput(toolName, inputRaw);
+          if (hints) {
+            this._emitProgressDetail(runId, hints);
+            const bits = [];
+            if (hints.skill) bits.push(hints.skill);
+            if (hints.video) bits.push(`视频 ${hints.video}`);
+            if (hints.phase) bits.push(hints.phase);
+            this._emitProgress(runId, bits.length ? `▸ ${bits.join(' · ')}（${toolName}）` : `正在执行工具：${toolName}`);
+          } else {
+            this._emitProgress(runId, `正在执行工具：${toolName}`);
+          }
           event = {
             type: 'tool_start',
             toolCall: {
@@ -373,18 +542,22 @@ class OpenClawGateway {
             },
           };
         } else if (phase === 'end' || phase === 'result') {
+          this._flushToolOutputBuffer(runId, toolId);
           const output = data?.result ?? data?.output ?? data?.meta;
+          const ok = !(data?.error || data?.isError);
+          this._emitProgress(runId, ok ? `工具完成：${toolName}` : `工具失败：${toolName}`);
           event = {
             type: 'tool_update',
             toolCall: {
               id: toolId, title: toolName,
-              status: (data?.error || data?.isError) ? 'failed' : 'completed',
+              status: ok ? 'completed' : 'failed',
               output: output ? (typeof output === 'string' ? output : JSON.stringify(output)) : undefined,
             },
           };
         } else if (phase === 'output' || phase === 'stream' || phase === 'chunk') {
           const chunk = data?.text ?? data?.delta ?? data?.output ?? '';
           if (chunk) {
+            this._appendToolOutputLineParsing(runId, toolId, typeof chunk === 'string' ? chunk : JSON.stringify(chunk));
             event = {
               type: 'tool_output',
               toolCall: { id: toolId, title: toolName, status: 'running' },

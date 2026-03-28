@@ -39,6 +39,71 @@ function isMentionAt(textBeforeCursor, atIdx) {
   return !/[a-zA-Z0-9_]/.test(prev);
 }
 
+function mergeProgressFocus(prev, next) {
+  const o = { ...(prev && typeof prev === 'object' ? prev : {}) };
+  if (!next || typeof next !== 'object') return o;
+  for (const k of ['skill', 'video', 'phase', 'note']) {
+    if (next[k] != null && String(next[k]).trim() !== '') o[k] = String(next[k]).trim();
+  }
+  return o;
+}
+
+function mentionFileBasename(label) {
+  if (!label) return '';
+  const s = String(label).replace(/\\/g, '/');
+  return s.split('/').pop() || s;
+}
+
+/** 从用户 @ 引用得到初始「当前在处理什么」 */
+function buildInitialProgressFocus(mentions) {
+  const list = mentions || [];
+  const skills = list.filter((m) => m.category === 'skill').map((m) => m.label);
+  const templates = list.filter((m) => m.category === 'template').map((m) => m.label);
+  const files = list.filter((m) => ['video', 'file'].includes(m.category)).map((m) => m.label);
+  const basenames = files.map(mentionFileBasename).filter(Boolean);
+  const skillText =
+    skills.length === 0 ? '' : skills.length === 1 ? skills[0] : `将按顺序涉及：${skills.join(' → ')}`;
+  const videoText =
+    basenames.length === 0
+      ? ''
+      : basenames.length === 1
+        ? basenames[0]
+        : `${basenames.length} 个文件：${basenames.join('、')}`;
+  return mergeProgressFocus(
+    {},
+    {
+      ...(skillText ? { skill: skillText } : {}),
+      ...(videoText ? { video: videoText } : {}),
+      ...(templates.length ? { note: `剪辑模版：${templates.join('、')}` } : {}),
+      phase: '已接收指令，等待 Agent 开始执行…',
+    },
+  );
+}
+
+/** 长时间无流式事件时写入日志：只陈述界面已掌握的进度，不用「可能」 */
+function buildSilentProgressLine(waitedSec, assistantMsg) {
+  const f = assistantMsg?.progressFocus && typeof assistantMsg.progressFocus === 'object'
+    ? assistantMsg.progressFocus
+    : {};
+  const runningTools = (assistantMsg?.tools || [])
+    .filter((t) => t.status === 'running')
+    .map((t) => t.title || t.name)
+    .filter(Boolean);
+
+  const segments = [];
+  if (f.skill) segments.push(`技能：${f.skill}`);
+  if (f.video) segments.push(`素材：${f.video}`);
+  if (f.phase) segments.push(`步骤：${f.phase}`);
+  if (f.note) segments.push(`说明：${f.note}`);
+  if (runningTools.length) segments.push(`运行中工具：${runningTools.join('、')}`);
+
+  const head = `⏳ 已 ${waitedSec}s 无新的网关流式事件`;
+  if (segments.length) {
+    return `${head}。当前界面记录的进度 — ${segments.join(' · ')}。长任务（例如视频分析）会持续数十秒至数分钟无新日志，属正常；要中断请点「停止」。`;
+  }
+  return `${head}。当前尚未解析到技能/素材/工具行（请同时看上方「当前处理」）。长任务会持续较久无输出；要中断请点「停止」。`;
+}
+
 function ChatPanel({ collapsed, onToggle, editorContext }) {
   const api = window.electronAPI;
   const [messages, setMessages] = useState([]);
@@ -51,6 +116,13 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
   const messagesEndRef = useRef(null);
   const streamBufferRef = useRef('');
   const thinkingBufferRef = useRef('');
+  const lastStreamEventAtRef = useRef(0);
+  const MAX_PROGRESS_LINES = 80;
+
+  const capProgressLog = useCallback((log) => {
+    if (!log || log.length <= MAX_PROGRESS_LINES) return log;
+    return log.slice(-MAX_PROGRESS_LINES);
+  }, []);
 
   const [mentionOpen, setMentionOpen] = useState(false);
   const [mentionQuery, setMentionQuery] = useState('');
@@ -75,7 +147,30 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
   useEffect(() => {
     if (!api?.onChatStream) return;
     return api.onChatStream((evt) => {
+      lastStreamEventAtRef.current = Date.now();
       switch (evt.type) {
+        case 'progress':
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === 'assistant' && last.streaming && evt.message) {
+              const log = capProgressLog([...(last.progressLog || []), evt.message]);
+              return [...prev.slice(0, -1), { ...last, progressLog: log }];
+            }
+            return prev;
+          });
+          break;
+
+        case 'progress_detail':
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === 'assistant' && last.streaming && evt.detail) {
+              const progressFocus = mergeProgressFocus(last.progressFocus, evt.detail);
+              return [...prev.slice(0, -1), { ...last, progressFocus }];
+            }
+            return prev;
+          });
+          break;
+
         case 'text':
           streamBufferRef.current += (evt.delta || evt.content || '');
           setMessages((prev) => {
@@ -110,7 +205,6 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           break;
 
         case 'tool_update':
-        case 'tool_output':
           setMessages((prev) => {
             const last = prev[prev.length - 1];
             if (last?.role === 'assistant' && last.streaming && last.tools?.length) {
@@ -121,6 +215,41 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
             }
             return prev;
           });
+          break;
+
+        case 'tool_output': {
+          const chunk = evt.content ?? '';
+          if (!chunk) break;
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role !== 'assistant' || !last.streaming) return prev;
+            const tools = last.tools || [];
+            if (!tools.length) return prev;
+            const tid = evt.toolCall?.id;
+            let targetId = tid;
+            if (!tid || !tools.some((t) => t.id === tid)) {
+              const running = [...tools].reverse().find((t) => t.status === 'running');
+              if (running) targetId = running.id;
+            }
+            if (!targetId) return prev;
+            const nextTools = tools.map((t) =>
+              t.id === targetId ? { ...t, output: (t.output || '') + chunk } : t
+            );
+            return [...prev.slice(0, -1), { ...last, tools: nextTools }];
+          });
+          break;
+        }
+
+        case 'stopped':
+          setMessages((prev) => {
+            const last = prev[prev.length - 1];
+            if (last?.role === 'assistant' && last.streaming) {
+              const log = capProgressLog([...(last.progressLog || []), '— 你已停止生成']);
+              return [...prev.slice(0, -1), { ...last, streaming: false, stopped: true, progressLog: log }];
+            }
+            return prev;
+          });
+          setSending(false);
           break;
 
         case 'error':
@@ -149,7 +278,26 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           break;
       }
     });
-  }, [api]);
+  }, [api, capProgressLog]);
+
+  /** 长时间无流式事件：用 progressFocus + 运行中工具拼明确进度，避免模糊「可能」 */
+  useEffect(() => {
+    if (!sending) return;
+    const tick = setInterval(() => {
+      const silentMs = Date.now() - lastStreamEventAtRef.current;
+      if (silentMs < 45000) return;
+      lastStreamEventAtRef.current = Date.now();
+      const waitedSec = Math.round(silentMs / 1000);
+      setMessages((prev) => {
+        const last = prev[prev.length - 1];
+        if (last?.role !== 'assistant' || !last.streaming) return prev;
+        const line = buildSilentProgressLine(waitedSec, last);
+        const log = capProgressLog([...(last.progressLog || []), line]);
+        return [...prev.slice(0, -1), { ...last, progressLog: log }];
+      });
+    }, 12000);
+    return () => clearInterval(tick);
+  }, [sending, capProgressLog]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -401,15 +549,35 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
     closeMention();
     streamBufferRef.current = '';
     thinkingBufferRef.current = '';
+    lastStreamEventAtRef.current = Date.now();
 
     setMessages((prev) => [
       ...prev,
       { role: 'user', content: text, mentions: [...mentions] },
-      { role: 'assistant', content: '', streaming: true, tools: [], thinking: '' },
+      {
+        role: 'assistant',
+        content: '',
+        streaming: true,
+        tools: [],
+        thinking: '',
+        progressFocus: buildInitialProgressFocus(mentions),
+        progressLog: [
+          '已发送至 OpenClaw Gateway。请查看上方「当前处理」中的技能与素材；视频分析等长任务常需数分钟才有下一条日志。',
+        ],
+      },
     ]);
 
-    await api.chatSend({ message: text + mentionContext, sessionKey });
+    void api.chatSend({ message: text + mentionContext, sessionKey });
   }, [input, sending, sessionKey, api, mentions, closeMention]);
+
+  const handleStop = useCallback(async () => {
+    if (!api || !sending) return;
+    try {
+      await api.chatStop();
+    } catch {
+      /* 主进程仍会 abortLocal，忽略 */
+    }
+  }, [api, sending]);
 
   const handleInputKeyUp = useCallback(
     (e) => {
@@ -449,6 +617,7 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
 
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
+      if (sending) return;
       handleSend();
     }
   };
@@ -640,17 +809,35 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
               onClick={handleInputSelect}
               onKeyDown={handleKeyDown}
               onKeyUp={handleInputKeyUp}
-              placeholder="输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）"
+              placeholder={
+                sending
+                  ? '生成中… 可在此起草下一条（Enter 不会发送）；点右侧「停止」可中断并修改提示词后重发'
+                  : '输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）'
+              }
               rows={4}
-              disabled={sending}
             />
-            <button
-              className="chat-send-btn"
-              onClick={handleSend}
-              disabled={sending || !input.trim() || !gatewayConnected}
-            >
-              {sending ? <span className="spinner" /> : '➤'}
-            </button>
+            <div className="chat-input-actions">
+              {sending ? (
+                <button
+                  type="button"
+                  className="chat-stop-btn"
+                  onClick={handleStop}
+                  title="停止当前生成（类似 Cursor Stop）"
+                >
+                  停止
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  className="chat-send-btn"
+                  onClick={handleSend}
+                  disabled={!input.trim() || !gatewayConnected}
+                  title="发送"
+                >
+                  ➤
+                </button>
+              )}
+            </div>
           </div>
         </div>
       </div>
@@ -658,8 +845,45 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
   );
 }
 
+/** 用户气泡内 @技能名 / @文件名 等高亮（与上方 chips 同类配色） */
+function renderTextWithAtHighlights(text, mentions) {
+  if (text == null || text === '') return null;
+  const list = mentions || [];
+  const nodes = [];
+  let lastIdx = 0;
+  let key = 0;
+  const re = /@([^\s@]+)/g;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > lastIdx) {
+      nodes.push(<span key={`txt-${key++}`}>{text.slice(lastIdx, m.index)}</span>);
+    }
+    const full = m[0];
+    const label = m[1];
+    const hit = list.find((x) => x.label === label);
+    const cat = hit?.category && typeof hit.category === 'string' ? hit.category : 'unknown';
+    nodes.push(
+      <span
+        key={`at-${key++}`}
+        className={`chat-at-ref chat-at-${cat}`}
+        title={hit?.absPath ? String(hit.absPath) : undefined}
+      >
+        {full}
+      </span>
+    );
+    lastIdx = m.index + full.length;
+  }
+  if (lastIdx < text.length) {
+    nodes.push(<span key={`txt-${key++}`}>{text.slice(lastIdx)}</span>);
+  }
+  if (nodes.length === 0) return text;
+  return <>{nodes}</>;
+}
+
 function ChatMessage({ message }) {
-  const { role, content, streaming, tools, thinking, error } = message;
+  const { role, content, streaming, tools, thinking, error, progressLog, progressFocus, stopped } = message;
+  const runningTools = (tools || []).filter((t) => t.status === 'running');
+  const runningToolTitle = runningTools.length ? runningTools.map((t) => t.title).join('、') : '';
   const [showThinking, setShowThinking] = useState(false);
   const [expandedTools, setExpandedTools] = useState(new Set());
 
@@ -692,13 +916,64 @@ function ChatMessage({ message }) {
             ))}
           </div>
         )}
-        <div className="chat-msg-content user-bubble">{content}</div>
+        <div className="chat-msg-content user-bubble">
+          {renderTextWithAtHighlights(content, message.mentions)}
+        </div>
       </div>
     );
   }
 
+  const focus = progressFocus && typeof progressFocus === 'object' ? progressFocus : {};
+  const hasFocus =
+    !!(focus.skill || focus.video || focus.phase || focus.note || runningToolTitle);
+
   return (
     <div className="chat-msg assistant">
+      {hasFocus && (
+        <div className="chat-progress-focus" aria-live="polite">
+          <div className="chat-progress-focus-title">当前处理</div>
+          {focus.skill && (
+            <div className="chat-progress-focus-row">
+              <span className="chat-progress-focus-k">技能 / 流程</span>
+              <span className="chat-progress-focus-v">{focus.skill}</span>
+            </div>
+          )}
+          {focus.video && (
+            <div className="chat-progress-focus-row">
+              <span className="chat-progress-focus-k">视频 / 文件</span>
+              <span className="chat-progress-focus-v">{focus.video}</span>
+            </div>
+          )}
+          {focus.phase && (
+            <div className="chat-progress-focus-row">
+              <span className="chat-progress-focus-k">当前步骤</span>
+              <span className="chat-progress-focus-v">{focus.phase}</span>
+            </div>
+          )}
+          {runningToolTitle && (
+            <div className="chat-progress-focus-row">
+              <span className="chat-progress-focus-k">运行中工具</span>
+              <span className="chat-progress-focus-v">{runningToolTitle}</span>
+            </div>
+          )}
+          {focus.note && (
+            <div className="chat-progress-focus-row chat-progress-focus-note">
+              <span className="chat-progress-focus-k">备注</span>
+              <span className="chat-progress-focus-v">{focus.note}</span>
+            </div>
+          )}
+        </div>
+      )}
+
+      {progressLog?.length > 0 && (
+        <div className="chat-progress-log" aria-live="polite">
+          <div className="chat-progress-log-title">详细日志</div>
+          {progressLog.map((line, i) => (
+            <div key={i} className="chat-progress-line">{line}</div>
+          ))}
+        </div>
+      )}
+
       {thinking && (
         <div className="thinking-block">
           <button type="button" className="thinking-toggle" onClick={() => setShowThinking(!showThinking)}>
@@ -732,12 +1007,25 @@ function ChatMessage({ message }) {
         </div>
       )}
 
-      {streaming && !content && !thinking && !tools?.length && (
+      {streaming && !content && !thinking && !tools?.length && !(progressLog?.length) && (
         <div className="chat-msg-content assistant-bubble">
           <span className="typing-indicator">
             <span /><span /><span />
           </span>
         </div>
+      )}
+
+      {streaming && !content && progressLog?.length > 0 && (
+        <div className="chat-msg-content assistant-bubble chat-inline-wait">
+          <span className="typing-indicator typing-indicator-inline">
+            <span /><span /><span />
+          </span>
+          <span className="chat-inline-wait-text">执行中</span>
+        </div>
+      )}
+
+      {stopped && !error && (
+        <div className="chat-stopped-hint">已停止</div>
       )}
 
       {error && (
