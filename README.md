@@ -100,8 +100,13 @@ graph TB
 - 右侧对话面板，与 AI Agent 实时交互
 - 流式文本输出，支持 Markdown 渲染
 - thinking / tool 调用过程可视化
+- **停止生成**：进行中显示「停止」按钮（类似 Cursor），可中断当前轮次；主进程会结束本地流式泵送，并依次尝试网关 `agent.abort` / `chat.abort`（视 OpenClaw 版本而定）
+- **长任务超时**：单次 Agent 请求默认最长约 2 小时，避免视频分析类任务被过早断开
+- **进度展示**：**「当前处理」**卡片展示已从 `@` 引用与网关事件中解析出的技能、素材、步骤；**「详细日志」**为时间线；长时间无新事件时，日志会拼接**当前界面已掌握**的技能/素材/工具信息（避免「可能正在跑某命令」式模糊描述）
 - 多会话管理（新建、切换、删除）
 - Gateway 连接状态实时监测
+
+终端类输出（如 `analyze_video.py` / `ffmpeg_cut.py` 的打印）由 `electron/chat-progress-hints.js` 与 `gateway-client.js` 解析，用于刷新上述进度（实际效果依赖 OpenClaw 是否转发 tool/stdout 事件）。
 
 ### @ 引用系统
 在对话输入框中输入 `@` 可引用以下资源：
@@ -114,6 +119,8 @@ graph TB
 | 剪辑素材 | 🎬 | 分析结果和输出视频 |
 
 支持键盘导航（↑↓选择、Enter/Tab 确认、Esc 关闭）和模糊搜索过滤。
+
+**高亮**：输入框采用底层镜像 + 透明文字的 `textarea`，对 `@引用` **按完整展示名（含空格）** 与类别配色高亮；发出后的用户气泡内同样高亮，便于辨认技能名（如 `@BGM 自动匹配`）。
 
 ### Skills 管理
 - 左侧边栏浏览所有 Skills（系统/已导入分类）
@@ -191,10 +198,13 @@ sequenceDiagram
     UI->>Main: IPC chat-send
     Main->>GW: WebSocket agent.prompt
     loop 流式响应
-        GW-->>Main: text / thinking / tool_start / done
-        Main-->>UI: chat-stream 事件
-        UI->>UI: 实时渲染消息
+        GW-->>Main: text / thinking / tool / progress / done
+        Main-->>UI: chat-stream（含 progress、progress_detail、stopped 等）
+        UI->>UI: 实时渲染消息与进度
     end
+    User->>UI: 点击「停止」（可选）
+    UI->>Main: IPC chat-stop
+    Main->>GW: agent.abort / chat.abort（若支持）
 ```
 
 ## 项目结构
@@ -202,9 +212,10 @@ sequenceDiagram
 ```
 volcano-videocut-openclaw/
 ├── electron/
-│   ├── main.js              # Electron 主进程 & IPC 路由
+│   ├── main.js              # Electron 主进程 & IPC 路由（含 chat-send / chat-stop）
 │   ├── preload.js           # 安全 API 桥接
-│   ├── gateway-client.js    # OpenClaw Gateway WebSocket 客户端
+│   ├── gateway-client.js    # OpenClaw Gateway WebSocket（流式事件、中止、长超时）
+│   ├── chat-progress-hints.js  # 从工具入参与日志行解析技能/视频/步骤，供对话进度 UI
 │   └── skills-manager.js    # Skills 扫描/解析/导入管理
 ├── src/
 │   ├── App.jsx              # 三栏布局 + VideoEditorView
@@ -274,7 +285,7 @@ npm run electron:build    # 输出到 dist/
 3. **开始分析** — AI 分析视频内容，识别高光片段
 4. **查看结果** — 在右侧面板查看分析结果、时间轴、片段详情
 5. **开始剪辑** — 一键生成投流素材
-6. **Agent 对话** — 在右侧聊天面板与 AI 交互，使用 @ 引用素材和技能
+6. **Agent 对话** — 在右侧聊天面板与 AI 交互，使用 @ 引用素材和技能；长任务可看「当前处理」与详细日志，必要时点「停止」后修改提示词再发
 
 ## 许可证
 
