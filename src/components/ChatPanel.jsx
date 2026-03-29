@@ -5,6 +5,7 @@ import remarkGfm from 'remark-gfm';
 /** 与参考 UI 一致：分栏类型 */
 const MENTION_TABS = [
   { id: 'all', label: '全部', icon: '📋' },
+  { id: 'folder', label: '文件夹', icon: '📁' },
   { id: 'file', label: '文件', icon: '📄' },
   { id: 'template', label: '模版', icon: '✂️' },
   { id: 'character', label: '角色', icon: '👥' },
@@ -37,6 +38,36 @@ function isMentionAt(textBeforeCursor, atIdx) {
   if (atIdx === 0) return true;
   const prev = textBeforeCursor[atIdx - 1];
   return !/[a-zA-Z0-9_]/.test(prev);
+}
+
+/** 从进度日志 / 工具输出中解析 analyze_video、ffmpeg_cut 写入的路径，用于回合结束时展示 */
+function extractMediaArtifactsFromText(text) {
+  if (!text || typeof text !== 'string') return [];
+  const seen = new Set();
+  const add = (raw) => {
+    const t = String(raw).trim().replace(/^["']|["']$/g, '');
+    if (!t || seen.has(t)) return;
+    if (t.endsWith('.mp4') || t.endsWith('.json')) seen.add(t);
+  };
+  try {
+    for (const m of text.matchAll(/Output:\s*(.+?\.mp4)/gi)) add(m[1]);
+    for (const m of text.matchAll(/Results saved to:\s*(.+?\.json)/gi)) add(m[1]);
+    for (const m of text.matchAll(/Batch \d+ saved to:\s*(.+?\.json)/gi)) add(m[1]);
+  } catch {
+    /* matchAll 不可用时忽略 */
+  }
+  return [...seen];
+}
+
+function extractArtifactsFromAssistantRun(msg) {
+  const found = new Set();
+  const scan = (s) => {
+    for (const p of extractMediaArtifactsFromText(s)) found.add(p);
+  };
+  (msg.progressLog || []).forEach(scan);
+  (msg.tools || []).forEach((t) => scan(t.output || ''));
+  scan(msg.content || '');
+  return [...found];
 }
 
 function mergeProgressFocus(prev, next) {
@@ -349,7 +380,15 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           setMessages((prev) => {
             const last = prev[prev.length - 1];
             if (last?.role === 'assistant' && last.streaming) {
-              return [...prev.slice(0, -1), { ...last, streaming: false }];
+              const artifacts = extractArtifactsFromAssistantRun(last);
+              const tail = artifacts.length
+                ? `\n\n---\n**本次输出文件**\n${artifacts.map((p) => `- \`${p}\``).join('\n')}`
+                : '';
+              return [...prev.slice(0, -1), {
+                ...last,
+                streaming: false,
+                content: `${last.content || ''}${tail}`,
+              }];
             }
             return prev;
           });
@@ -450,6 +489,17 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
         label: '自定义要求',
         desc: ctx.customRequirements.slice(0, 56),
         icon: '📝',
+      });
+    }
+
+    if (ctx.videoDir?.trim()) {
+      const vd = ctx.videoDir.trim();
+      push({
+        category: 'folder',
+        id: `panel:${vd}`,
+        label: `剪辑面板 · ${vd.split(/[/\\]/).pop() || vd}`,
+        desc: `与左侧「视频文件夹」相同 · ${vd}`,
+        absPath: vd,
       });
     }
 
@@ -805,7 +855,7 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
           <div className="chat-empty">
             <div className="chat-empty-icon">💬</div>
             <p>与 Agent 对话</p>
-            <p className="chat-empty-hint">输入 @ 引用技能、模版、素材路径</p>
+            <p className="chat-empty-hint">输入 @ 引用技能、模版、视频文件夹或文件</p>
           </div>
         )}
 
@@ -907,7 +957,7 @@ function ChatPanel({ collapsed, onToggle, editorContext }) {
                 placeholder={
                   sending
                     ? '生成中… 可在此起草下一条（Enter 不会发送）；点右侧「停止」可中断并修改提示词后重发'
-                    : '输入指令。@ 可选技能、模版、音视频与工程文件（任意位置）'
+                    : '输入指令。@ 可选技能、模版、视频文件夹（整夹分析）、音视频文件'
                 }
                 rows={4}
                 spellCheck={false}

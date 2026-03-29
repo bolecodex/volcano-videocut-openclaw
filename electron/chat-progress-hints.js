@@ -181,6 +181,15 @@ function detailFromLogLine(line) {
     };
   }
 
+  m = s.match(/Batch \d+ saved to:\s*(.+)/i);
+  if (m) {
+    return {
+      skill: '投流高光片段分析',
+      phase: '批次结果已写入',
+      note: basename(m[1].trim()),
+    };
+  }
+
   m = s.match(/Output:\s*(.+?\.mp4)/i);
   if (m) {
     return {

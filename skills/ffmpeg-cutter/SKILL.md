@@ -19,64 +19,53 @@ description: >
 
 ## 工作流程
 
+### 多集一条成片（与投流高光分析配套）
+
+本仓库的 `ffmpeg_cut.py` 读取的是 **跨集分析 JSON**（含 `segments_to_keep`、`hook`、`final_structure.segment_order`），**不是**旧版 `highlights` 数组。
+
+- **必须**使用 **一次** `analyze_video.py` 对**整夹**分析得到的 **一个** `highlights_*.json`（勿对每集单独分析再拼多条成片）。
+- 第二个参数传 **原片所在文件夹**（与 JSON 里 `source_file` 一致），不是单个 mp4：
+  ```bash
+  python3 scripts/ffmpeg_cut.py "video/output/highlights_某剧.json" "video/某剧/" -o video/output -n 某剧_投流
+  ```
+- 默认会 **重编码** 以保证切点精确与音画同步；输出日志含 `Output: ...promo_*.mp4`。
+
+**Agent 收尾**：在回复里写出 **`promo_*.mp4` 与输入 JSON 的完整路径**，便于用户在对话面板看到产出文件位置。
+
 ### 第一步：确认输入
 
 确认用户已准备好：
-1. 高光 JSON 文件（来自 `video/output/highlights_*.json`）
-2. 对应的原始视频文件
-3. FFmpeg 已安装（运行 `which ffmpeg` 验证）
+1. **一个** 跨集高光 JSON（`video/output/highlights_*.json`）
+2. **原片目录**（内含 JSON 中引用的各集 mp4）
+3. FFmpeg 已安装（`which ffmpeg`）
 
-### 第二步：选择处理模式
+### 第二步：执行合成（本仓库常用命令）
 
-脚本支持三种模式：
-
-**模式 A — 使用推荐组合：**
 ```bash
-python3 scripts/ffmpeg_cut.py video/output/highlights_05.json "video/原始短剧/05.mp4" -v 1
+python3 scripts/ffmpeg_cut.py "video/output/highlights_原始短剧2.json" "video/原始短剧2/" -o video/output -n 原始短剧2_投流
 ```
 
-**模式 B — 指定片段 ID：**
-```bash
-python3 scripts/ffmpeg_cut.py video/output/highlights_05.json "video/原始短剧/05.mp4" -s 3 1 5 7
-```
-
-**模式 C — 生成所有推荐版本：**
-```bash
-python3 scripts/ffmpeg_cut.py video/output/highlights_05.json "video/原始短剧/05.mp4" --all-versions
-```
+可选：`--no-reencode` 加快但切点可能不精确；`--no-normalize` 跳过响度归一。
 
 ### 第三步：输出选项
 
 ```bash
-# 自定义输出目录
-python3 scripts/ffmpeg_cut.py highlights.json source.mp4 -o /path/to/output/
-
-# 重新编码（较慢，但能处理不同编码格式的片段）
-python3 scripts/ffmpeg_cut.py highlights.json source.mp4 --reencode
+python3 scripts/ffmpeg_cut.py highlights.json "video/原片目录/" -o /path/to/output/ -n 成片名称
 ```
 
 ### 处理细节
 
-1. **切割**：使用 `-ss`（输入定位）快速精确切割，配合 `-c copy`（流拷贝，不重新编码）
-2. **合并**：使用 FFmpeg 的 concat 分离器拼接片段
-3. **重新编码模式**：开启 `--reencode` 后使用 libx264/aac 统一编码输出（源片段编码不一致时需要）
+1. 按 `segment_order` 切割各段（含可选全局 **hook**），再 concat；**整条成片只有开头一个 hook**（前提是 JSON 来自跨集单次分析）。
+2. 合并后做响度归一等后处理（见脚本默认行为）。
 
 ### 输出
 
-- 视频默认保存到 `video/output/`，文件名格式为 `promo_{集数}_{版本名}.mp4`
-- 临时切片文件在合并后自动清理
+- 默认 `video/output/promo_{名称}.mp4`（名称由 `-n` 决定，脚本会自动加 `promo_` 前缀）
+- 日志中的 `Output:` 行即为最终成片路径
 
-### 高光 JSON 格式要求
+### JSON 格式要求（本仓库）
 
-输入的 JSON 必须包含 `highlights` 数组，每个对象至少包含：
-- `id`：整数标识符
-- `start_time`：开始时间戳（HH:MM:SS）
-- `end_time`：结束时间戳（HH:MM:SS）
-
-可选的 `recommended_combinations` 数组：
-- `version`：版本号（整数）
-- `segments`：按播放顺序排列的高光 ID 数组
-- `name`：版本名称
+输入 JSON 须包含：`segments_to_keep`（含 `id`、`source_file`、`start_time`、`end_time`）、可选 `hook`、`final_structure.segment_order`。结构见 `skills/video-analyzer/references/output_schema.md` 或与 `analyze_video.py` 实际输出一致。
 
 ## 常见问题
 

@@ -362,6 +362,40 @@ ipcMain.handle('list-workspace-mention-assets', async () => {
   } catch {
     return [];
   }
+
+  // 供 @ 引用：可直接选「整夹」作为 analyze_video 输入，无需逐个点 mp4
+  try {
+    const videoRoot = path.join(PROJECT_ROOT, 'video');
+    if (fs.existsSync(videoRoot)) {
+      const dirEnts = fs.readdirSync(videoRoot, { withFileTypes: true });
+      const seenAbs = new Set(out.map((x) => x.absPath));
+      for (const ent of dirEnts) {
+        if (!ent.isDirectory()) continue;
+        if (ent.name.startsWith('.') || MENTION_IGNORE_DIRS.has(ent.name)) continue;
+        const full = path.join(videoRoot, ent.name);
+        let hasVideo = false;
+        try {
+          hasVideo = fs.readdirSync(full).some((f) =>
+            VIDEO_EXT.includes(path.extname(f).toLowerCase()));
+        } catch {
+          continue;
+        }
+        if (!hasVideo || seenAbs.has(full)) continue;
+        seenAbs.add(full);
+        const rel = path.relative(PROJECT_ROOT, full).split(path.sep).join('/');
+        out.unshift({
+          category: 'folder',
+          id: rel,
+          label: ent.name,
+          desc: `视频文件夹（整夹分析）· ${rel}`,
+          absPath: full,
+        });
+      }
+    }
+  } catch {
+    /* ignore */
+  }
+
   return out;
 });
 

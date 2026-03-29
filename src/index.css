@@ -1573,6 +1573,7 @@ body {
 .mention-tag-storyboard { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
 .mention-tag-audio { background: rgba(52, 211, 153, 0.12); color: #34d399; }
 .mention-tag-video { background: rgba(167, 139, 250, 0.14); color: #a78bfa; }
+.mention-tag-folder { background: rgba(251, 191, 36, 0.14); color: #fbbf24; }
 
 .mention-tag-text { max-width: 140px; overflow: hidden; text-overflow: ellipsis; }
 
@@ -1787,6 +1788,7 @@ body {
 .mention-inline-storyboard { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
 .mention-inline-audio { background: rgba(52, 211, 153, 0.12); color: #34d399; }
 .mention-inline-video { background: rgba(167, 139, 250, 0.14); color: #a78bfa; }
+.mention-inline-folder { background: rgba(251, 191, 36, 0.14); color: #fbbf24; }
 
 /* 用户消息正文里的 @引用 高亮（与 mention-inline 同色） */
 .chat-at-ref {
@@ -1811,6 +1813,7 @@ body {
 .chat-at-ref.chat-at-storyboard { background: rgba(251, 191, 36, 0.18); color: #fcd34d; }
 .chat-at-ref.chat-at-audio { background: rgba(52, 211, 153, 0.14); color: #6ee7b7; }
 .chat-at-ref.chat-at-video { background: rgba(167, 139, 250, 0.22); color: #c4b5fd; }
+.chat-at-ref.chat-at-folder { background: rgba(251, 191, 36, 0.18); color: #fcd34d; }
 .chat-at-ref.chat-at-unknown {
   background: rgba(255, 255, 255, 0.12);
   color: var(--text-primary);

@@ -19,6 +19,24 @@ description: >
 
 ## 工作流程
 
+### 多集短剧 → 一条成片（必读，避免「每集一个钩子」）
+
+**错误做法**：对用户给出的多集 mp4 **逐个**运行 `analyze_video.py 某集.mp4`，或对同一目录使用 **`--single`**，再分别 `ffmpeg_cut` 得到多条成片后手动拼接。这样每集 JSON 都会带各自的 **hook**，合并后会在**每集前重复高光**，剧情不连贯。
+
+**正确做法（跨集一次分析）**：
+
+1. 输入路径选 **整夹目录**（内含多集 `Episode*.mp4` 等），**只跑一条命令**，**不要**加 `--single`：
+   ```bash
+   python3 scripts/analyze_video.py "video/原始短剧2/" -o video/output --name highlights_原始短剧2
+   ```
+2. 得到 **一个** 合并结果 `highlights_*.json`（集数多时会先写 `*_batch*.json` 再合并为一个顶层 JSON），其中 **全局仅一个** `hook`，`segments_to_keep` 按故事顺序跨集排列。
+3. 再 **只跑一次** `ffmpeg_cut.py`，第二个参数填**同一原片目录**：
+   ```bash
+   python3 scripts/ffmpeg_cut.py "video/output/highlights_原始短剧2.json" "video/原始短剧2/" -o video/output -n 原始短剧2_投流
+   ```
+
+**Agent 收尾**：在回复正文里**明确写出**生成的 `highlights_*.json` 与 `promo_*.mp4` 的完整路径（或相对项目根路径），便于用户在对话里直接看到产出位置。
+
 ### 第一步：确认项目环境
 
 找到包含 `scripts/analyze_video.py` 脚本和 `video/` 目录的工作区，确认 `.env` 中已配置 `ARK_API_KEY`。
@@ -31,8 +49,8 @@ description: >
 # 分析单个视频（大于 20MB 自动压缩）
 python3 scripts/analyze_video.py "video/原始短剧/05.mp4" -o video/output/
 
-# 批量分析目录下所有视频
-python3 scripts/analyze_video.py "video/原始短剧/" -o video/output/
+# 跨集一次分析（多集投流素材，推荐：整夹、勿用 --single）
+python3 scripts/analyze_video.py "video/原始短剧/" -o video/output/ --name highlights_原始短剧
 
 # 使用自定义提示词
 python3 scripts/analyze_video.py "video/原始短剧/05.mp4" --prompt scripts/prompts/custom_prompt.txt
